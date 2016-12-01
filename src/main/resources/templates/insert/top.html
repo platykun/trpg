@@ -1,0 +1,102 @@
+<html xmlns:th="http://www.thmeleaf.org">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.min.css"
+	integrity="sha256-iK7AZM7Xa42iuURdMdo1sp38ld/JJ3fDtS0523GKqdk="
+	crossorigin="anonymous" />
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script src="/css/marked/lib/marked.js"></script>
+<style type="text/css">
+body {
+	background-color: #FFFFFF;
+}
+
+.main.container {
+	margin-top: 4em;
+}
+</style>
+<head>
+<title>Home</title>
+</head>
+<body>
+	<!-- JavaScript読み込み -->
+	<script type="text/javascript" src="rollDice.js"></script>
+	<!-- サイドバーメニュー -->
+
+	<div class="ui sidebar">
+		<div class="ui labeled button" tabindex="0">
+			<div class="ui red button" id="dice1">
+				<i class="play icon"></i> 1D100
+			</div>
+			<a class="ui basic red left pointing label" id="dice1_value"> - </a>
+		</div>
+		<br />
+		<div class="ui labeled button" tabindex="0">
+			<div class="ui red button" id="dice2">
+				<i class="play icon"></i> 1D4
+			</div>
+			<a class="ui basic red left pointing label" id="dice2_value"> - </a>
+		</div>
+		<br />
+		<div class="ui labeled button" tabindex="0">
+			<div class="ui red button" id="dice3">
+				<i class="play icon"></i> 2D6
+			</div>
+			<a class="ui basic red left pointing label" id="dice3_value"> - </a>
+		</div>
+	</div>
+
+	<!-- 上部ナビゲーションメニュー -->
+	<div class="ui fixed inverted menu">
+		<div class="ui container">
+			<a href="#" class="header item"> Project Name </a> <a href="#"
+				class="item">Home</a>
+		</div>
+	</div>
+
+	<div class="ui main text container">
+		<P>はろーわーるど</P>
+		<script>
+			document.write(rollDice(1, 100));
+		</script>
+		<form th:object="${insertForm}" method="post">
+		<div class="ui button" id="side_button" th:text="*{innerText}"></div>
+		
+		<div id="content"></div>
+		<script th:inline="javascript" >
+		/*<![CDATA[*/
+			document.getElementById('content').innerHTML = marked(/*[[ ${insertForm.innerText} ]]*/);
+		/*]]>*/
+		</script>
+		</form>
+	</div>
+
+
+	<!-- jQuery 読み込み -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<!-- semantic.js 読み込み -->
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.min.js"
+		integrity="sha256-HcON65l89nxNl7vaRECVPe/zNDBzhCcJYBE7O+EcruU="
+		crossorigin="anonymous"></script>
+	<!-- サイドバーの開閉処理 -->
+	<script>
+		$('#side_button').click(function() {
+			$('.ui.sidebar').sidebar('toggle');
+		});
+		$(function() {
+			$('#dice1').click(function() {
+				$('#dice1_value').text(rollDice(1, 100));
+			});
+			$('#dice2').click(function() {
+				$('#dice2_value').text(rollDice(1, 4));
+			});
+			$('#dice3').click(function() {
+				$('#dice3_value').text(rollDice(2, 6));
+			});
+
+		});
+	</script>
+</body>
+</html>
