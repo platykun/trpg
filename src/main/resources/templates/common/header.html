@@ -1,0 +1,15 @@
+<html xmlns:th="http://www.thmeleaf.org">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<!-- Header -->
+<body>
+	<div th:fragment="header (title)">
+		<div class="ui fixed inverted menu">
+			<div class="ui dividing header item" th:text="${title}"></div>
+			<div class="right menu">
+				<a href="#" class="header item">TOP</a>
+				<a href="#" class="item">ログイン</a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
