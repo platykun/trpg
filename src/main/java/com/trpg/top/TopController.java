@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
  *
  */
 @Controller
-public class Top {
+public class TopController {
 
 	/**
 	 * トップ画面を表示する。
 	 * @param model モデル
-	 * @return フォワード先URL
+	 * @return トップ画面
 	 */
 	@RequestMapping("/top")
 	public String top(Model model){
