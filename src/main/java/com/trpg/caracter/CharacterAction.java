@@ -32,5 +32,16 @@ public class CharacterAction {
 	CharacterInfo getCharacter(int id) {
 		return characterInfoRepository.findOne(id);
 	}
+	
+	/**
+	 * キャラクターを登録する。
+	 * 
+	 * @param character キャラクター情報詳細
+	 * @return 登録後のキャラクター情報
+	 */
+	CharacterInfo setCharacter(CharacterInfo character){
+		//idが重複していないことを確認
+		return characterInfoRepository.save(character);
+	}
 
 }

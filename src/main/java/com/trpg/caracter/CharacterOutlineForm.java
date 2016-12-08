@@ -12,7 +12,7 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class CharacterOutlineForm {
-	private int characterId;
+	private int id;
 	private String name;
 	private int sanityPoint;
 	

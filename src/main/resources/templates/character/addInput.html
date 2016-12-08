@@ -20,42 +20,46 @@ body {
 </head>
 <body>
 	<!-- 上部ナビゲーションメニュー -->
-	<div th:include="common/header :: header('キャラクター一覧画面')"></div>
+	<div th:include="common/header :: header('キャラクター新規追加画面')"></div>
 
 	<div class="ui main text container">
-		<P>キャラクター一覧表示画面です</P>
+		<P>キャラクター新規追加画面です</P>
 	</div>
 
 	<table class="ui celled table" th:object="${character}">
 		<tr>
 			<td>キャラクターID</td>
-			<td th:text="*{id}">0</td>
+			<td><input type="text" th:field="*{id}" value="" /></td>
 		</tr>
 		<tr>
 			<td>名前</td>
-			<td th:text="*{name}">0</td>
+			<td><input type="text" th:field="*{name}" value="" /></td>
 		</tr>
 		<tr>
 			<td>学校・学位</td>
-			<td th:text="*{school}">0</td>
+			<td><input type="text" th:field="*{school}" value="" /></td>
 		</tr>
 		<tr>
 			<td>出身</td>
-			<td th:text="*{comeFrom}">0</td>
+			<td><input type="text" th:field="*{comeFrom}" value="" /></td>
 		</tr>
 		<tr>
 			<td>精神的な障害</td>
-			<td th:text="*{mentalDisorder}">0</td>
+			<td><input type="text" th:field="*{mentalDisorder}" value="" /></td>
 		</tr>
 		<tr>
 			<td>性別</td>
-			<td th:text="*{sex}">0</td>
+			<td><input type="text" th:field="*{sex}" value="" /></td>
 		</tr>
 		<tr>
 			<td>年齢</td>
-			<td th:text="*{age}">0</td>
+			<td><input type="text" th:field="*{age}" value="" /></td>
 		</tr>
 	</table>
+
+	<form th:action="@{/character/add/confirm}">
+		<button class="ui teal button" type="submit">作成</button>
+	</form>
 
 </body>
 </html>

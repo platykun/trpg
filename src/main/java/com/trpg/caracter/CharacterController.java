@@ -6,8 +6,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.trpg.common.ParseCharacter;
 import com.trpg.entity.CharacterInfo;
 import com.trpg.entity.CharacterInfoRepository;
 
@@ -36,7 +38,7 @@ public class CharacterController {
 		List<CharacterOutlineForm> characters = new ArrayList<CharacterOutlineForm>();
 		results.stream().forEach(result -> characters.add(
 					    new CharacterOutlineForm(
-							result.getCharacterId(),
+							result.getId(),
 						    result.getName(), 
 						    result.getSanityPoint()))
 						);
@@ -54,7 +56,7 @@ public class CharacterController {
 	@RequestMapping("/detail")
 	public String detail(Model model, String id) {
 		CharacterInfo result = characterAction.getCharacter(Integer.parseInt(id));
-		model.addAttribute("character", parseCharacterDetail(result));
+		model.addAttribute("character", ParseCharacter.parseCharacterDetail(result));
 
 		return "character/detail";
 	}
@@ -66,39 +68,22 @@ public class CharacterController {
 	 * @return トップ画面
 	 */
 	@RequestMapping("/add/input")
-	public String addInput(Model model, String id) {
-		CharacterInfo result = characterAction.getCharacter(Integer.parseInt(id));
-		model.addAttribute("character", parseCharacterDetail(result));
-
-		return "character/detail";
+	public String addInput(Model model) {
+		model.addAttribute("character", new CharacterDetailForm());
+		return "character/addInput";
 	}
 	
 	/**
-	 * characterInfoからキャラクター詳細のformクラスへ変換する。
-	 * @param info　キャラクター情報
-	 * @return キャラクター詳細情報form
+	 * キャラクター新規追加画面を表示する。
+	 * 
+	 * @param model モデル
+	 * @return トップ画面
 	 */
-	private CharacterDetailForm parseCharacterDetail(CharacterInfo info){
-		return new CharacterDetailForm(
-				info.getCharacterId()
-				,info.getName()
-				,info.getSchool()
-				,info.getComeFrom()
-				,info.getMentalDisorder()
-				,info.getSex()
-				,info.getAge()
-				,info.getStr()
-				,info.getIntelligence()
-				,info.getApp()
-				,info.getSiz()
-				,info.getDex()
-				,info.getCon()
-				,info.getPow()
-				,info.getEdu()
-				,info.getSanityPoint()
-				,info.getMagicPoint()
-				,info.getDurability()
-				);
+	@RequestMapping("/add/confirm")
+	public String addConfirm(Model model, @ModelAttribute CharacterDetailForm character) {
+		CharacterInfo createdCharacter = characterAction.setCharacter(ParseCharacter.parseCharacterInfo(character));
+		model.addAttribute("character", createdCharacter);
+		return "character/detail";
 	}
 	
 }

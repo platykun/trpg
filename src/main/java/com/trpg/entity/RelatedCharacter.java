@@ -10,21 +10,20 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "scenario")
+@Table(name = "related_character")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Scenario {
+public class RelatedCharacter {
+	
+	/** ID */
 	@Id
 	@GeneratedValue
 	private int id;
-
-	/** タイトル */
-	private String title;
-	/** 概要 */
-	private String outline;
-
-	/** シナリオ本文ファイル名 */
-	private String textFileName;
-
+	/** シナリオID */
+	private int scenarioId;
+	/** キャラクターID */
+	private int characterInfoId;
+	/** カテゴリ */
+	private int category;
 }

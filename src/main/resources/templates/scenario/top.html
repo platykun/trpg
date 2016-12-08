@@ -20,39 +20,32 @@ body {
 </head>
 <body>
 	<!-- 上部ナビゲーションメニュー -->
-	<div th:include="common/header :: header('キャラクター一覧画面')"></div>
+	<div th:include="common/header :: header('シナリオ一覧画面')"></div>
 
 	<div class="ui main text container">
-		<P>キャラクター一覧表示画面です</P>
+		<P>シナリオ一覧画面です</P>
 	</div>
-	
-	<form th:action="@{/character/add/input}">
-		<button class="ui teal button" type="submit">
-			<i class="add icon"></i> Add
-		</button>
-	</form>
 
 	<table class="ui celled table">
 		<thead>
 			<tr>
-				<th>ID</th>
-				<th>名前</th>
-				<th>正気度</th>
+				<th>シナリオID</th>
+				<th>タイトル</th>
+				<th>概要</th>
 				<th>詳細</th>
 			</tr>
 		</thead>
-		<tr th:each="character: ${characters}">
-			<td th:text="${character.id}">1</td>
-			<td th:text="${character.name}">name</td>
-			<td th:text="${character.sanityPoint}">10</td>
+		<tr th:each="scenario: ${scenarios}">
+			<td th:text="${scenario.id}">1</td>
+			<td th:text="${scenario.title}">title</td>
+			<td th:text="${scenario.outline}">outline</td>
 			<td>
-				<form th:action="@{/character/detail}" method="post">
-					<input class="ui button" type="submit" value="詳細" /> <input
-						type="hidden" name="id" th:value="${character.id}" />
+				<form th:action="@{/scenario/detail}" method="post">
+					<input class="ui button" type="submit" value="詳細" />
+					<input type="hidden" name="id" th:value="${scenario.id}" />
 				</form>
 			</td>
 		</tr>
 	</table>
-
 </body>
 </html>

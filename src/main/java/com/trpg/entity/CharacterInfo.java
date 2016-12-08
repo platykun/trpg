@@ -18,7 +18,8 @@ import lombok.NoArgsConstructor;
 public class CharacterInfo {
 	/** キャラクターID */
 	@Id
-	private int characterId;
+	@GeneratedValue
+	private int id;
 
 	////基礎プロフィール////
 	/** 名前 */

@@ -1,0 +1,107 @@
+<html xmlns:th="http://www.thmeleaf.org">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.min.css"
+	integrity="sha256-iK7AZM7Xa42iuURdMdo1sp38ld/JJ3fDtS0523GKqdk="
+	crossorigin="anonymous" />
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script src="/css/marked/lib/marked.js"></script>
+<style type="text/css">
+body {
+	background-color: #FFFFFF;
+}
+
+.main.container {
+	margin-top: 4em;
+}
+</style>
+<head>
+<title>Home</title>
+</head>
+<body>
+	<!-- 上部ナビゲーションメニュー -->
+	<div th:include="common/header :: header('シナリオ一覧画面')"></div>
+
+	<div class="ui main text container">
+		<P>シナリオ一覧画面です</P>
+	</div>
+
+	<table class="ui celled table" th:object="${detail}">
+		<tr>
+			<td>シナリオID</td>
+			<td th:text="*{scenario.id}">0</td>
+		</tr>
+		<tr>
+			<td>タイトル</td>
+			<td th:text="*{scenario.title}">0</td>
+		</tr>
+	</table>
+
+
+
+	<div class="ui text container">
+		<P>NPC一覧</P>
+	</div>
+
+	<table class="ui celled table">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>名前</th>
+				<th>正気度</th>
+				<th>詳細</th>
+			</tr>
+		</thead>
+		<tr th:each="character: ${detail.npcs}">
+			<td th:text="${character.id}">1</td>
+			<td th:text="${character.name}">name</td>
+			<td th:text="${character.sanityPoint}">10</td>
+			<td>
+				<form th:action="@{/character/detail}" method="post">
+					<input class="ui button" type="submit" value="詳細" /> <input
+						type="hidden" name="id" th:value="${character.id}" />
+				</form>
+			</td>
+		</tr>
+	</table>
+
+	<div class="ui text container">
+		<P>敵一覧</P>
+	</div>
+
+	<table class="ui celled table">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>名前</th>
+				<th>正気度</th>
+				<th>詳細</th>
+			</tr>
+		</thead>
+		<tr th:each="character: ${detail.enemies}">
+			<td th:text="${character.id}">1</td>
+			<td th:text="${character.name}">name</td>
+			<td th:text="${character.sanityPoint}">10</td>
+			<td>
+				<form th:action="@{/character/detail}" method="post">
+					<input class="ui button" type="submit" value="詳細" /> <input
+						type="hidden" name="id" th:value="${character.id}" />
+				</form>
+			</td>
+		</tr>
+	</table>
+
+	<div class="ui text container">
+		<P>本文</P>
+	</div>
+	<div class="ui main text container">
+		<div id="content"></div>
+		<script th:inline="javascript">
+			/*<![CDATA[*/
+			document.getElementById('content').innerHTML = marked(/*[[ ${detail.text} ]]*/);
+			/*]]>*/
+		</script>
+	</div>
+
+</body>
+</html>

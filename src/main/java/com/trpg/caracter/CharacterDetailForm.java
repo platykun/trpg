@@ -14,8 +14,13 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class CharacterDetailForm {
+	/**
+	 * 引数がない場合はデフォルト値を設定する。
+	 */
+	public CharacterDetailForm() {
+	}
 	/** キャラクターID */
-	private int characterId;
+	private int id;
 
 	////基礎プロフィール////
 	/** 名前 */
