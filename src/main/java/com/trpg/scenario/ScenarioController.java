@@ -1,8 +1,8 @@
 package com.trpg.scenario;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
+import com.trpg.entity.CharacterInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,9 +31,8 @@ public class ScenarioController {
 	 */
 	@RequestMapping("/top")
 	public String top(Model model){
-		List<Scenario> results = scenarioAction.getScenarioList();
 		List<ScenarioOutlineForm> scenarios = new ArrayList<ScenarioOutlineForm>();
-		results.stream().forEach(result -> 
+		scenarioAction.getScenarioList().stream().forEach(result ->
 			scenarios.add(parseScenarioOutline(result)));
 		model.addAttribute("scenarios", scenarios);
 		return "scenario/top";
@@ -47,7 +46,13 @@ public class ScenarioController {
 	@RequestMapping("/detail")
 	public String detail(Model model, String id){
 		ScenarioDetail result = scenarioAction.getScenarioDetail(Integer.parseInt(id));
-		//TODO:formで格納するように修正
+
+        ScenarioDetailForm form = new ScenarioDetailForm();
+        form.setScenario(result.getScenario());
+        form.setText(result.getText());
+        form.setNpcs(parseScenarioCharacterForm(result.getNpcs()));
+        form.setEnemies(parseScenarioCharacterForm(result.getEnemies()));
+
 		model.addAttribute("detail", result);
 		return "scenario/detail";
 	}
@@ -55,5 +60,17 @@ public class ScenarioController {
 	private ScenarioOutlineForm parseScenarioOutline(Scenario scenario) {
 		return new ScenarioOutlineForm(scenario.getId(), scenario.getTitle(), scenario.getOutline());
 	}
+
+    /**
+     * ScenarioCharacterFormへ変換する。
+     *
+     * @param cInfo キャラクター情報のリスト
+     * @return 変換後のformオブジェクト
+     */
+	private List<ScenarioCharacterForm> parseScenarioCharacterForm(List<CharacterInfo> cInfo){
+	    List<ScenarioCharacterForm> form = new ArrayList<ScenarioCharacterForm>();
+	    cInfo.stream().forEach(ci -> form.add(new ScenarioCharacterForm(ci.getId(), ci.getName(), ci.getSanityPoint())));
+	    return form;
+    }
 
 }

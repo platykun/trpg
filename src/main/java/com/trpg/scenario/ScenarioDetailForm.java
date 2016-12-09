@@ -22,8 +22,8 @@ public class ScenarioDetailForm {
 	String text;
 	
 	/** NPCのリスト */
-	List<CharacterDetailForm> npcs;
+	List<ScenarioCharacterForm> npcs;
 	
 	/** 敵のリスト */
-	List<CharacterDetailForm> enemies;
+	List<ScenarioCharacterForm> enemies;
 }
