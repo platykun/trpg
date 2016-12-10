@@ -80,7 +80,7 @@ public class CharacterController {
 	 * @return トップ画面
 	 */
 	@RequestMapping("/add/confirm")
-	public String addConfirm(Model model, @ModelAttribute CharacterDetailForm character) {
+	public String addConfirm(Model model, CharacterDetailForm character) {
 		CharacterInfo createdCharacter = characterAction.setCharacter(ParseCharacter.parseCharacterInfo(character));
 		model.addAttribute("character", createdCharacter);
 		return "character/detail";
