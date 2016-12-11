@@ -26,40 +26,43 @@ body {
 		<P>キャラクター更新画面です</P>
 	</div>
 
-	<form  th:object="${character}">
+	<form th:object="${character}" th:action="@{/character/update/confirm}">
 
-	<table class="ui celled table" th:action="@{/character/add/confirm}">
-		<tr>
-			<td>キャラクターID</td>
-			<td><input type="text" th:field="*{id}" /></td>
-		</tr>
-		<tr>
-			<td>名前</td>
-			<td><input type="text" th:field="*{name}" /></td>
-		</tr>
-		<tr>
-			<td>学校・学位</td>
-			<td><input type="text" th:field="*{school}" /></td>
-		</tr>
-		<tr>
-			<td>出身</td>
-			<td><input type="text" th:field="*{comeFrom}" /></td>
-		</tr>
-		<tr>
-			<td>精神的な障害</td>
-			<td><input type="text" th:field="*{mentalDisorder}" /></td>
-		</tr>
-		<tr>
-			<td>性別</td>
-			<td><input type="text" th:field="*{sex}" /></td>
-		</tr>
-		<tr>
-			<td>年齢</td>
-			<td><input type="text" th:field="*{age}" /></td>
-		</tr>
-	</table>
+		<table class="ui celled table">
+			<tr>
+				<td>キャラクターID</td>
+				<td><input type="text" th:field="*{id}" /></td>
+			</tr>
+			<tr>
+				<td>名前</td>
+				<td><input type="text" th:field="*{name}" /></td>
+			</tr>
+			<tr>
+				<td>学校・学位</td>
+				<td><input type="text" th:field="*{school}" /></td>
+			</tr>
+			<tr>
+				<td>出身</td>
+				<td><input type="text" th:field="*{comeFrom}" /></td>
+			</tr>
+			<tr>
+				<td>精神的な障害</td>
+				<td><input type="text" th:field="*{mentalDisorder}" /></td>
+			</tr>
+			<tr>
+				<td>性別</td>
+				<td><input type="text" th:field="*{sex}" /></td>
+			</tr>
+			<tr>
+				<td>年齢</td>
+				<td><input type="text" th:field="*{age}" /></td>
+			</tr>
+		</table>
+		<button class="ui teal button" type="submit">
+			<i class="edit icon"></i>更新
+		</button>
+
 	</form>
-	<button class="ui teal button" type="submit">更新</button>
 
 
 </body>

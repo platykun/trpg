@@ -43,5 +43,17 @@ public class CharacterAction {
 		//idが重複していないことを確認
 		return characterInfoRepository.save(character);
 	}
+	
+	/**
+	 * キャラクターを更新する。
+	 * 
+	 * @param character 更新するキャラクター情報
+	 * @param id 更新するキャラクターのID
+	 * @return 更新後のキャラクター情報
+	 */
+	CharacterInfo updateCharacter(CharacterInfo character, int id){
+		character.setId(id);
+		return characterInfoRepository.save(character);
+	}
 
 }

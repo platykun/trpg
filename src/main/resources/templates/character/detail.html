@@ -27,10 +27,11 @@ body {
 	</div>
 
 	<div th:object="${character}">
-		<form th:action="@{/character/add/input}">
+		<form th:action="@{/character/update/input}">
 			<button class="ui teal button" type="submit">
 				<i class="edit icon"></i> 更新
 			</button>
+			<input type="hidden" name="id" th:value="${character.id}" />
 		</form>
 
 		<table class="ui celled table">

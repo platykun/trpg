@@ -93,8 +93,22 @@ public class CharacterController {
 	 * @return キャラクター編集画面
 	 */
 	@RequestMapping("/update/input")
-	public String fupdateInput(Model model){
+	public String updateInput(Model model, int id){
+		model.addAttribute("character", characterAction.getCharacter(id));
 		return "character/updateInput";
+	}
+	
+	/**
+	 * キャラクターの修正を反映させる。
+	 * @param model モデル
+	 * @param character 修正後のキャラクター情報
+	 * @return 画面
+	 */
+	@RequestMapping("/update/confirm")
+	public String updateConfirm(Model model, CharacterDetailForm character){
+		CharacterInfo updatedCharacter = characterAction.updateCharacter(ParseCharacter.parseCharacterInfo(character), character.getId());
+		model.addAttribute("character", updatedCharacter);
+		return "character/detail";
 	}
 	
 }
