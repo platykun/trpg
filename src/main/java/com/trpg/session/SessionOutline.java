@@ -2,6 +2,7 @@ package com.trpg.session;
 
 import com.trpg.entity.Scenario;
 import com.trpg.scenario.ScenarioCharacterForm;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.util.List;
@@ -15,11 +16,14 @@ import java.util.List;
 @Data
 public class SessionOutline {
 	/** セッションID */
-	int id;
+	private int id;
 
 	/** シナリオID */
-	int scenarioId;
+	private int scenarioId;
 
 	/** */
-	int status;
+	private int status;
+
+	/** タイトル */
+	private String title;
 }

@@ -30,7 +30,7 @@ body {
 		<thead>
 		<tr>
 			<th>セッションID</th>
-			<th>シナリオID</th>
+			<th>タイトル</th>
 			<th>ステータス</th>
 			<th>詳細</th>
 			<th>参加</th>
@@ -38,7 +38,7 @@ body {
 		</thead>
 		<tr th:each="session: ${sessions}">
 			<td th:text="${session.id}"></td>
-			<td th:text="${session.scenarioId}"></td>
+			<td th:text="${session.title}"></td>
 			<td th:text="${session.status}"></td>
 			<td>
 				<form th:action="@{/session/detail}" method="post">

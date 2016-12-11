@@ -30,6 +30,7 @@ public class SessionAction {
 		sessionOutline.setId(rs.getInt("id"));
 		sessionOutline.setScenarioId(rs.getInt("scenario_id"));
 		sessionOutline.setStatus(rs.getInt("status"));
+		sessionOutline.setTitle(rs.getString("title"));
 		return sessionOutline;
 	};
 
@@ -39,7 +40,7 @@ public class SessionAction {
 	 * @return シナリオ一覧
 	 */
 	List<SessionOutline> getSessionList() {
-		String getSessionSQL = "SELECT * FROM SESSION_INFO";
+		String getSessionSQL = "SELECT SF.ID ID, SF.SCENARIO_ID SCENARIO_ID, SF.STATUS STATUS, S.TITLE TITLE FROM SESSION_INFO SF, SCENARIO S WHERE SF.SCENARIO_ID = S.ID";
 
 		List<SessionOutline> result = jdbcTemplate.query(getSessionSQL, new MapSqlParameterSource(), sessionInfoRowMapper);
 
