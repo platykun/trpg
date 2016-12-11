@@ -85,5 +85,16 @@ public class CharacterController {
 		model.addAttribute("character", createdCharacter);
 		return "character/detail";
 	}
+
+	/**
+	 * キャラクター編集画面を初期表示させる。
+	 *
+	 * @param model モデル
+	 * @return キャラクター編集画面
+	 */
+	@RequestMapping("/update/input")
+	public String fupdateInput(Model model){
+		return "character/updateInput";
+	}
 	
 }

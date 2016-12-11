@@ -26,42 +26,50 @@ body {
 		<P>キャラクター一覧表示画面です</P>
 	</div>
 
-	<table class="ui celled table" th:object="${character}">
-		<tr>
-			<td>キャラクターID</td>
-			<td th:text="*{id}">0</td>
-		</tr>
-		<tr>
-			<td>名前</td>
-			<td th:text="*{name}">0</td>
-		</tr>
-		<tr>
-			<td>学校・学位</td>
-			<td th:text="*{school}">0</td>
-		</tr>
-		<tr>
-			<td>出身</td>
-			<td th:text="*{comeFrom}">0</td>
-		</tr>
-		<tr>
-			<td>精神的な障害</td>
-			<td th:text="*{mentalDisorder}">0</td>
-		</tr>
-		<tr>
-			<td>性別</td>
-			<td th:text="*{sex}">0</td>
-		</tr>
-		<tr>
-			<td>年齢</td>
-			<td th:text="*{age}">0</td>
-		</tr>
-	</table>
+	<div th:object="${character}">
+		<form th:action="@{/character/add/input}">
+			<button class="ui teal button" type="submit">
+				<i class="edit icon"></i> 更新
+			</button>
+		</form>
 
-    <form th:action="@{/character/top}">
-        <button class="ui teal button" type="submit">
-            <i class="left arrow icon"></i> back
-        </button>
-    </form>
+		<table class="ui celled table">
+			<tr>
+				<td>キャラクターID</td>
+				<td th:text="*{id}">0</td>
+			</tr>
+			<tr>
+				<td>名前</td>
+				<td th:text="*{name}">0</td>
+			</tr>
+			<tr>
+				<td>学校・学位</td>
+				<td th:text="*{school}">0</td>
+			</tr>
+			<tr>
+				<td>出身</td>
+				<td th:text="*{comeFrom}">0</td>
+			</tr>
+			<tr>
+				<td>精神的な障害</td>
+				<td th:text="*{mentalDisorder}">0</td>
+			</tr>
+			<tr>
+				<td>性別</td>
+				<td th:text="*{sex}">0</td>
+			</tr>
+			<tr>
+				<td>年齢</td>
+				<td th:text="*{age}">0</td>
+			</tr>
+		</table>
+
+		<form th:action="@{/character/top}">
+			<button class="ui teal button" type="submit">
+				<i class="left arrow icon"></i> back
+			</button>
+		</form>
+	</div>
 
 </body>
 </html>

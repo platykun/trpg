@@ -1,0 +1,66 @@
+<html xmlns:th="http://www.thmeleaf.org">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.min.css"
+	integrity="sha256-iK7AZM7Xa42iuURdMdo1sp38ld/JJ3fDtS0523GKqdk="
+	crossorigin="anonymous" />
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script src="/css/marked/lib/marked.js"></script>
+<style type="text/css">
+body {
+	background-color: #FFFFFF;
+}
+
+.main.container {
+	margin-top: 4em;
+}
+</style>
+<head>
+<title>Home</title>
+</head>
+<body>
+	<!-- 上部ナビゲーションメニュー -->
+	<div th:include="common/header :: header('キャラクター更新画面')"></div>
+
+	<div class="ui main text container">
+		<P>キャラクター更新画面です</P>
+	</div>
+
+	<form  th:object="${character}">
+
+	<table class="ui celled table" th:action="@{/character/add/confirm}">
+		<tr>
+			<td>キャラクターID</td>
+			<td><input type="text" th:field="*{id}" /></td>
+		</tr>
+		<tr>
+			<td>名前</td>
+			<td><input type="text" th:field="*{name}" /></td>
+		</tr>
+		<tr>
+			<td>学校・学位</td>
+			<td><input type="text" th:field="*{school}" /></td>
+		</tr>
+		<tr>
+			<td>出身</td>
+			<td><input type="text" th:field="*{comeFrom}" /></td>
+		</tr>
+		<tr>
+			<td>精神的な障害</td>
+			<td><input type="text" th:field="*{mentalDisorder}" /></td>
+		</tr>
+		<tr>
+			<td>性別</td>
+			<td><input type="text" th:field="*{sex}" /></td>
+		</tr>
+		<tr>
+			<td>年齢</td>
+			<td><input type="text" th:field="*{age}" /></td>
+		</tr>
+	</table>
+	</form>
+	<button class="ui teal button" type="submit">更新</button>
+
+
+</body>
+</html>
