@@ -76,27 +76,6 @@ public class ScenarioAction {
 		List<CharacterInfo> enemies = jdbcTemplate.query(getCharacterSQL, enemyParam, characterInfoRowMapper);
 		detail.setEnemies(enemies);
 
-		// ファイルを読み込んでシナリオ本文に格納する。
-		String fileName = "";
-		try {
-			Resource resource = resourceLoader
-					.getResource("classpath:" + "static/scenario/" + detail.getScenario().getTextFileName());
-			fileName = resource.getFile().toString();
-		} catch (IOException e) {
-			// TODO ファイル名が取得できなかった場合
-			e.printStackTrace();
-		}
-		StringBuilder sb = new StringBuilder();
-		try {
-			Files.readAllLines(Paths.get(fileName), StandardCharsets.UTF_8).stream().forEach(line -> {
-				sb.append(line).append("\n");
-			});
-		} catch (IOException e1) {
-			// TODO ファイルの読み込みに失敗した場合
-			e1.printStackTrace();
-		}
-		detail.setText(sb.toString());
-
 		return detail;
 	}
 

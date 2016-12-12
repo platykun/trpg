@@ -46,7 +46,8 @@ public class InsertController {
         Resource resource = resourceLoader.getResource("classpath:" + filepath);
         String name = "null";
 		try {
-			name = resource.getFile().toString();
+			name = resource.getInputStream().toString();
+			//name = resource.getFile().toString();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

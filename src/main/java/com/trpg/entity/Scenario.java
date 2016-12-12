@@ -24,7 +24,7 @@ public class Scenario {
 	/** 概要 */
 	private String outline;
 
-	/** シナリオ本文ファイル名 */
-	private String textFileName;
+	/** シナリオ本文 */
+	private String text;
 
 }

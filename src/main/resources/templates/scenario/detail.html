@@ -98,7 +98,7 @@ body {
 		<div id="content"></div>
 		<script th:inline="javascript">
 			/*<![CDATA[*/
-			document.getElementById('content').innerHTML = marked(/*[[ ${detail.text} ]]*/);
+			document.getElementById('content').innerHTML = marked(/*[[ ${detail.scenario.text} ]]*/);
 			/*]]>*/
 		</script>
 	</div>

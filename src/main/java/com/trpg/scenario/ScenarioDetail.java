@@ -18,9 +18,6 @@ public class ScenarioDetail {
 	/** シナリオ */
 	Scenario scenario;
 	
-	/** 本文 */
-	String text;
-	
 	/** NPCのリスト */
 	List<CharacterInfo> npcs;
 	

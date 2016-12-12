@@ -49,7 +49,6 @@ public class ScenarioController {
 
         ScenarioDetailForm form = new ScenarioDetailForm();
         form.setScenario(result.getScenario());
-        form.setText(result.getText());
         form.setNpcs(parseScenarioCharacterForm(result.getNpcs()));
         form.setEnemies(parseScenarioCharacterForm(result.getEnemies()));
 
