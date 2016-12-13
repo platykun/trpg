@@ -94,6 +94,7 @@ public class CharacterController {
 	 */
 	@RequestMapping("/update/input")
 	public String updateInput(Model model, int id){
+		//TODO: formで返却する。
 		model.addAttribute("character", characterAction.getCharacter(id));
 		return "character/updateInput";
 	}
@@ -106,6 +107,7 @@ public class CharacterController {
 	 */
 	@RequestMapping("/update/confirm")
 	public String updateConfirm(Model model, CharacterDetailForm character){
+		//TODO: formで返却する。
 		CharacterInfo updatedCharacter = characterAction.updateCharacter(ParseCharacter.parseCharacterInfo(character), character.getId());
 		model.addAttribute("character", updatedCharacter);
 		return "character/detail";

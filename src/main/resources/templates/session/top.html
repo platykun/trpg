@@ -41,7 +41,7 @@ body {
 			<td th:text="${session.title}"></td>
 			<td th:text="${session.status}"></td>
 			<td>
-				<form th:action="@{/session/detail}" method="post">
+				<form th:action="@{/scenario/detail}" method="post">
 					<input class="ui button" type="submit" value="詳細" />
 					<input type="hidden" name="id" th:value="${session.id}" />
 				</form>

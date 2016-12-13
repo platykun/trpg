@@ -70,7 +70,6 @@ public class ScenarioAction {
 		List<CharacterInfo> npcs = jdbcTemplate.query(getCharacterSQL, npcParam, characterInfoRowMapper);
 		detail.setNpcs(npcs);
 
-		// TODO:enemyの値が取得できないため修正する
 		SqlParameterSource enemyParam = new MapSqlParameterSource().addValue("id", id).addValue("category",
 				RC_CATEGORY_ENEMY);
 		List<CharacterInfo> enemies = jdbcTemplate.query(getCharacterSQL, enemyParam, characterInfoRowMapper);
