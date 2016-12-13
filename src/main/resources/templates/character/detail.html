@@ -33,7 +33,6 @@ body {
 			</button>
 			<input type="hidden" name="id" th:value="${character.id}" />
 		</form>
-
 		<table class="ui celled table">
 			<tr>
 				<td>キャラクターID</td>
@@ -63,300 +62,321 @@ body {
 				<td>年齢</td>
 				<td th:text="*{age}">0</td>
 			</tr>
-			<tr>
-				<td>言いくるめ</td>
-				<td th:text="*{dictionary}">0</td>
-			</tr>
-			<tr>
-				<td>医学</td>
-				<td th:text="*{medicine}">0</td>
-			</tr>
-			<tr>
-				<td>運転（自動車）</td>
-				<td th:text="*{driveCarriage}">0</td>
-			</tr>
-			<tr>
-				<td>応急手当</td>
-				<td th:text="*{firstAid}">0</td>
-			</tr>
-			<tr>
-				<td>オカルト</td>
-				<td th:text="*{occult}">0</td>
-			</tr>
-			<tr>
-				<td>回避</td>
-				<td th:text="*{dodge}">0</td>
-			</tr>
-			<tr>
-				<td>化学</td>
-				<td th:text="*{chemistry}">0</td>
-			</tr>
-			<tr>
-				<td>鍵開け</td>
-				<td th:text="*{locksmith}">0</td>
-			</tr>
-			<tr>
-				<td>隠す</td>
-				<td th:text="*{conceal}">0</td>
-			</tr>
-			<tr>
-				<td>隠れる</td>
-				<td th:text="*{hide}">0</td>
-			</tr>
-			<tr>
-				<td>機械修理</td>
-				<td th:text="*{mechanicalRepair}">0</td>
-			</tr>
-			<tr>
-				<td>聞き耳</td>
-				<td th:text="*{listen}">0</td>
-			</tr>
-			<tr>
-				<td>クトゥルフ神話</td>
-				<td th:text="*{cthulhuMythos}">0</td>
-			</tr>
-			<tr>
-				<td>芸術</td>
-				<td th:text="*{art}">0</td>
-			</tr>
-			<tr>
-				<td>経理</td>
-				<td th:text="*{accounting}">0</td>
-			</tr>
-			<tr>
-				<td>考古学</td>
-				<td th:text="*{archaeology}">0</td>
-			</tr>
-			<tr>
-				<td>コンピューター</td>
-				<td th:text="*{computer}">0</td>
-			</tr>
-			<tr>
-				<td>忍び歩き</td>
-				<td th:text="*{sneak}">0</td>
-			</tr>
-			<tr>
-				<td>写真術</td>
-				<td th:text="*{photography}">0</td>
-			</tr>
-			<tr>
-				<td>重機械操作</td>
-				<td th:text="*{operateHvyMachine}">0</td>
-			</tr>
-			<tr>
-				<td>乗馬</td>
-				<td th:text="*{ride}">0</td>
-			</tr>
-			<tr>
-				<td>信用</td>
-				<td th:text="*{creditRating}">0</td>
-			</tr>
-			<tr>
-				<td>心理学</td>
-				<td th:text="*{psychology}">0</td>
-			</tr>
-			<tr>
-				<td>人類学</td>
-				<td th:text="*{anthropology}">0</td>
-			</tr>
-			<tr>
-				<td>水泳</td>
-				<td th:text="*{swim}">0</td>
-			</tr>
-			<tr>
-				<td>制作1</td>
-				<td th:text="*{production1}">0</td>
-			</tr>
-			<tr>
-				<td>制作2</td>
-				<td th:text="*{production2}">0</td>
-			</tr>
-			<tr>
-				<td>制作3</td>
-				<td th:text="*{production3}">0</td>
-			</tr>
-			<tr>
-				<td>精神分析</td>
-				<td th:text="*{psychoanalysis}">0</td>
-			</tr>
-			<tr>
-				<td>生物学</td>
-				<td th:text="*{biology}">0</td>
-			</tr>
-			<tr>
-				<td>説得</td>
-				<td th:text="*{persuade}">0</td>
-			</tr>
-			<tr>
-				<td>操縦1</td>
-				<td th:text="*{pilot1}">0</td>
-			</tr>
-			<tr>
-				<td>操縦2</td>
-				<td th:text="*{pilot2}">0</td>
-			</tr>
-			<tr>
-				<td>操縦3</td>
-				<td th:text="*{pilot3}">0</td>
-			</tr>
-			<tr>
-				<td>地質学</td>
-				<td th:text="*{geology}">0</td>
-			</tr>
-			<tr>
-				<td>跳躍</td>
-				<td th:text="*{jump}">0</td>
-			</tr>
-			<tr>
-				<td>追跡</td>
-				<td th:text="*{pursuit}">0</td>
-			</tr>
-			<tr>
-				<td>電気修理</td>
-				<td th:text="*{electricalRepair}">0</td>
-			</tr>
-			<tr>
-				<td>電子工学</td>
-				<td th:text="*{electronics}">0</td>
-			</tr>
-			<tr>
-				<td>天文学</td>
-				<td th:text="*{astronomy}">0</td>
-			</tr>
-			<tr>
-				<td>投擲</td>
-				<td th:text="*{throwSomething}">0</td>
-			</tr>
-			<tr>
-				<td>登攀</td>
-				<td th:text="*{climb}">0</td>
-			</tr>
-			<tr>
-				<td>図書館</td>
-				<td th:text="*{library}">0</td>
-			</tr>
-			<tr>
-				<td>ナビゲート</td>
-				<td th:text="*{navigate}">0</td>
-			</tr>
-			<tr>
-				<td>値切り</td>
-				<td th:text="*{priceCut}">0</td>
-			</tr>
-			<tr>
-				<td>博物学</td>
-				<td th:text="*{naturalHistory}">0</td>
-			</tr>
-			<tr>
-				<td>物理学</td>
-				<td th:text="*{physics}">0</td>
-			</tr>
-			<tr>
-				<td>変装</td>
-				<td th:text="*{disguise}">0</td>
-			</tr>
-			<tr>
-				<td>法律</td>
-				<td th:text="*{law}">0</td>
-			</tr>
-			<tr>
-				<td>他の言語1</td>
-				<td th:text="*{otherLanguage1}">0</td>
-			</tr>
-			<tr>
-				<td>他の言語2</td>
-				<td th:text="*{otherLanguage2}">0</td>
-			</tr>
-			<tr>
-				<td>母国語（EDU×２）</td>
-				<td th:text="*{ownLanguage}">0</td>
-			</tr>
-			<tr>
-				<td>マーシャルアーツ</td>
-				<td th:text="*{martial}">0</td>
-			</tr>
-			<tr>
-				<td>目星</td>
-				<td th:text="*{spotHidden}">0</td>
-			</tr>
-			<tr>
-				<td>薬学</td>
-				<td th:text="*{pharmacy}">0</td>
-			</tr>
-			<tr>
-				<td>歴史1</td>
-				<td th:text="*{history1}">0</td>
-			</tr>
-			<tr>
-				<td>歴史2</td>
-				<td th:text="*{history2}">0</td>
-			</tr>
-			<tr>
-				<td>サブマシンガン</td>
-				<td th:text="*{subMachineGun}">0</td>
-			</tr>
-			<tr>
-				<td>ショットガン</td>
-				<td th:text="*{shotgun}">0</td>
-			</tr>
-			<tr>
-				<td>マシンガン</td>
-				<td th:text="*{machineGun}">0</td>
-			</tr>
-			<tr>
-				<td>ライフル</td>
-				<td th:text="*{rifle}">0</td>
-			</tr>
-			<tr>
-				<td>キック</td>
-				<td th:text="*{kick}">0</td>
-			</tr>
-			<tr>
-				<td>組み付き</td>
-				<td th:text="*{assembly}">0</td>
-			</tr>
-			<tr>
-				<td>こぶし</td>
-				<td th:text="*{first}">0</td>
-			</tr>
-			<tr>
-				<td>頭突き</td>
-				<td th:text="*{headButt}">0</td>
-			</tr>
-			<tr>
-				<td>近接戦1</td>
-				<td th:text="*{handWeapon1}">0</td>
-			</tr>
-			<tr>
-				<td>近接戦2</td>
-				<td th:text="*{handWeapon2}">0</td>
-			</tr>
-			<tr>
-				<td>火器1</td>
-				<td th:text="*{firearm1}">0</td>
-			</tr>
-			<tr>
-				<td>火器2</td>
-				<td th:text="*{firearm2}">0</td>
-			</tr>
-			<tr>
-				<td>火器3</td>
-				<td th:text="*{firearm3}">0</td>
-			</tr>
-			<tr>
-				<td>火器4</td>
-				<td th:text="*{firearm4}">0</td>
-			</tr>
-			<tr>
-				<td>火器5</td>
-				<td th:text="*{firearm5}">0</td>
-			</tr>
-			<tr>
-				<td>火器6</td>
-				<td th:text="*{firearm6}">0</td>
-			</tr>
 		</table>
-
+		<div class="ui five column doubling stackable grid container">
+			<div class="column">
+				<table class="ui celled table">
+					<tr>
+						<td>言いくるめ</td>
+						<td th:text="*{dictionary}">0</td>
+					</tr>
+					<tr>
+						<td>医学</td>
+						<td th:text="*{medicine}">0</td>
+					</tr>
+					<tr>
+						<td>運転（自動車）</td>
+						<td th:text="*{driveCarriage}">0</td>
+					</tr>
+					<tr>
+						<td>応急手当</td>
+						<td th:text="*{firstAid}">0</td>
+					</tr>
+					<tr>
+						<td>オカルト</td>
+						<td th:text="*{occult}">0</td>
+					</tr>
+					<tr>
+						<td>回避</td>
+						<td th:text="*{dodge}">0</td>
+					</tr>
+					<tr>
+						<td>化学</td>
+						<td th:text="*{chemistry}">0</td>
+					</tr>
+					<tr>
+						<td>鍵開け</td>
+						<td th:text="*{locksmith}">0</td>
+					</tr>
+					<tr>
+						<td>隠す</td>
+						<td th:text="*{conceal}">0</td>
+					</tr>
+					<tr>
+						<td>隠れる</td>
+						<td th:text="*{hide}">0</td>
+					</tr>
+					<tr>
+						<td>機械修理</td>
+						<td th:text="*{mechanicalRepair}">0</td>
+					</tr>
+					<tr>
+						<td>聞き耳</td>
+						<td th:text="*{listen}">0</td>
+					</tr>
+					<tr>
+						<td>クトゥルフ神話</td>
+						<td th:text="*{cthulhuMythos}">0</td>
+					</tr>
+					<tr>
+						<td>芸術</td>
+						<td th:text="*{art}">0</td>
+					</tr>
+					<tr>
+						<td>経理</td>
+						<td th:text="*{accounting}">0</td>
+					</tr>
+				</table>
+			</div>
+			<div class="column">
+				<table class="ui celled table">
+					<tr>
+						<td>考古学</td>
+						<td th:text="*{archaeology}">0</td>
+					</tr>
+					<tr>
+						<td>コンピューター</td>
+						<td th:text="*{computer}">0</td>
+					</tr>
+					<tr>
+						<td>忍び歩き</td>
+						<td th:text="*{sneak}">0</td>
+					</tr>
+					<tr>
+						<td>写真術</td>
+						<td th:text="*{photography}">0</td>
+					</tr>
+					<tr>
+						<td>重機械操作</td>
+						<td th:text="*{operateHvyMachine}">0</td>
+					</tr>
+					<tr>
+						<td>乗馬</td>
+						<td th:text="*{ride}">0</td>
+					</tr>
+					<tr>
+						<td>信用</td>
+						<td th:text="*{creditRating}">0</td>
+					</tr>
+					<tr>
+						<td>心理学</td>
+						<td th:text="*{psychology}">0</td>
+					</tr>
+					<tr>
+						<td>人類学</td>
+						<td th:text="*{anthropology}">0</td>
+					</tr>
+					<tr>
+						<td>水泳</td>
+						<td th:text="*{swim}">0</td>
+					</tr>
+					<tr>
+						<td>制作1</td>
+						<td th:text="*{production1}">0</td>
+					</tr>
+					<tr>
+						<td>制作2</td>
+						<td th:text="*{production2}">0</td>
+					</tr>
+					<tr>
+						<td>制作3</td>
+						<td th:text="*{production3}">0</td>
+					</tr>
+					<tr>
+						<td>精神分析</td>
+						<td th:text="*{psychoanalysis}">0</td>
+					</tr>
+					<tr>
+						<td>生物学</td>
+						<td th:text="*{biology}">0</td>
+					</tr>
+				</table>
+			</div>
+			<div class="column">
+				<table class="ui celled table">
+					<tr>
+						<td>説得</td>
+						<td th:text="*{persuade}">0</td>
+					</tr>
+					<tr>
+						<td>操縦1</td>
+						<td th:text="*{pilot1}">0</td>
+					</tr>
+					<tr>
+						<td>操縦2</td>
+						<td th:text="*{pilot2}">0</td>
+					</tr>
+					<tr>
+						<td>操縦3</td>
+						<td th:text="*{pilot3}">0</td>
+					</tr>
+					<tr>
+						<td>地質学</td>
+						<td th:text="*{geology}">0</td>
+					</tr>
+					<tr>
+						<td>跳躍</td>
+						<td th:text="*{jump}">0</td>
+					</tr>
+					<tr>
+						<td>追跡</td>
+						<td th:text="*{pursuit}">0</td>
+					</tr>
+					<tr>
+						<td>電気修理</td>
+						<td th:text="*{electricalRepair}">0</td>
+					</tr>
+					<tr>
+						<td>電子工学</td>
+						<td th:text="*{electronics}">0</td>
+					</tr>
+					<tr>
+						<td>天文学</td>
+						<td th:text="*{astronomy}">0</td>
+					</tr>
+					<tr>
+						<td>投擲</td>
+						<td th:text="*{throwSomething}">0</td>
+					</tr>
+					<tr>
+						<td>登攀</td>
+						<td th:text="*{climb}">0</td>
+					</tr>
+					<tr>
+						<td>図書館</td>
+						<td th:text="*{library}">0</td>
+					</tr>
+					<tr>
+						<td>ナビゲート</td>
+						<td th:text="*{navigate}">0</td>
+					</tr>
+					<tr>
+						<td>値切り</td>
+						<td th:text="*{priceCut}">0</td>
+					</tr>
+				</table>
+			</div>
+			<div class="column">
+				<table class="ui celled table">
+					<tr>
+						<td>博物学</td>
+						<td th:text="*{naturalHistory}">0</td>
+					</tr>
+					<tr>
+						<td>物理学</td>
+						<td th:text="*{physics}">0</td>
+					</tr>
+					<tr>
+						<td>変装</td>
+						<td th:text="*{disguise}">0</td>
+					</tr>
+					<tr>
+						<td>法律</td>
+						<td th:text="*{law}">0</td>
+					</tr>
+					<tr>
+						<td>他の言語1</td>
+						<td th:text="*{otherLanguage1}">0</td>
+					</tr>
+					<tr>
+						<td>他の言語2</td>
+						<td th:text="*{otherLanguage2}">0</td>
+					</tr>
+					<tr>
+						<td>母国語</td>
+						<td th:text="*{ownLanguage}">0</td>
+					</tr>
+					<tr>
+						<td>ﾏｰｼｬﾙｱｰﾂ</td>
+						<td th:text="*{martial}">0</td>
+					</tr>
+					<tr>
+						<td>目星</td>
+						<td th:text="*{spotHidden}">0</td>
+					</tr>
+					<tr>
+						<td>薬学</td>
+						<td th:text="*{pharmacy}">0</td>
+					</tr>
+					<tr>
+						<td>歴史1</td>
+						<td th:text="*{history1}">0</td>
+					</tr>
+					<tr>
+						<td>歴史2</td>
+						<td th:text="*{history2}">0</td>
+					</tr>
+				</table>
+			</div>
+			<div class="column">
+				<table class="ui celled table">
+					<tr>
+						<td>サブマシンガン</td>
+						<td th:text="*{subMachineGun}">0</td>
+					</tr>
+					<tr>
+						<td>ショットガン</td>
+						<td th:text="*{shotgun}">0</td>
+					</tr>
+					<tr>
+						<td>マシンガン</td>
+						<td th:text="*{machineGun}">0</td>
+					</tr>
+					<tr>
+						<td>ライフル</td>
+						<td th:text="*{rifle}">0</td>
+					</tr>
+					<tr>
+						<td>キック</td>
+						<td th:text="*{kick}">0</td>
+					</tr>
+					<tr>
+						<td>組み付き</td>
+						<td th:text="*{assembly}">0</td>
+					</tr>
+					<tr>
+						<td>こぶし</td>
+						<td th:text="*{first}">0</td>
+					</tr>
+					<tr>
+						<td>頭突き</td>
+						<td th:text="*{headButt}">0</td>
+					</tr>
+					<tr>
+						<td>近接戦1</td>
+						<td th:text="*{handWeapon1}">0</td>
+					</tr>
+					<tr>
+						<td>近接戦2</td>
+						<td th:text="*{handWeapon2}">0</td>
+					</tr>
+					<tr>
+						<td>火器1</td>
+						<td th:text="*{firearm1}">0</td>
+					</tr>
+					<tr>
+						<td>火器2</td>
+						<td th:text="*{firearm2}">0</td>
+					</tr>
+					<tr>
+						<td>火器3</td>
+						<td th:text="*{firearm3}">0</td>
+					</tr>
+					<tr>
+						<td>火器4</td>
+						<td th:text="*{firearm4}">0</td>
+					</tr>
+					<tr>
+						<td>火器5</td>
+						<td th:text="*{firearm5}">0</td>
+					</tr>
+					<tr>
+						<td>火器6</td>
+						<td th:text="*{firearm6}">0</td>
+					</tr>
+				</table>
+			</div>
+		</div>
 		<form th:action="@{/character/top}">
 			<button class="ui teal button" type="submit">
 				<i class="left arrow icon"></i> back
