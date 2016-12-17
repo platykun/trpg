@@ -15,9 +15,10 @@
 	width: 40px;
 	padding: 5px 5px !important;
 }
+
 .abilityText {
-    width: 80px;
-    padding: 5px 5px !important;
+	width: 80px;
+	padding: 5px 5px !important;
 }
 </style>
 <head>
@@ -79,48 +80,46 @@
 				</div>
 			</div>
 
-			<h2 class="ui dividing header">能力値および能力ロール
-				<div class="ui icon button" id="abilityRamdom">
-					<i class="random icon"></i>
-				</div>
-			</h2>
+			<h2 class="ui dividing header">能力値および能力ロール</h2>
+			<div class="ui icon button" id="abilityRamdom">
+				<i class="random icon"></i>
+			</div>
 			<table class="ui celled table">
 				<tr>
 					<td>筋力(STR)</td>
-					<td class="ui input"><input id="str" class="abilityText" type="text"
-						th:field="*{str}" placeholder="3D6" />
-					</td>
+					<td class="ui input"><input id="str" class="abilityText"
+						type="text" th:field="*{str}" placeholder="3D6" /></td>
 					<td>敏捷性(DEX)</td>
-					<td class="ui input"><input id="dex" class="abilityText" type="text"
-						th:field="*{dex}" placeholder="3D6" /></td>
+					<td class="ui input"><input id="dex" class="abilityText"
+						type="text" th:field="*{dex}" placeholder="3D6" /></td>
 					<td>知性(INT)</td>
-					<td class="ui input"><input id="int" class="abilityText" type="text"
-						th:field="*{intelligence}" placeholder="2D6＋6" /></td>
+					<td class="ui input"><input id="int" class="abilityText"
+						type="text" th:field="*{intelligence}" placeholder="2D6＋6" /></td>
 					<td>アイデア</td>
 					<td><p id="idea">INT*5</p></td>
 				</tr>
 				<tr>
 					<td>体力(CON)</td>
-					<td class="ui input"><input id="con" class="abilityText" type="text"
-						th:field="*{con}" placeholder="3D6" /></td>
+					<td class="ui input"><input id="con" class="abilityText"
+						type="text" th:field="*{con}" placeholder="3D6" /></td>
 					<td>外見(APP)</td>
-					<td class="ui input"><input id="app" class="abilityText" type="text"
-						th:field="*{app}" placeholder="3D6" /></td>
+					<td class="ui input"><input id="app" class="abilityText"
+						type="text" th:field="*{app}" placeholder="3D6" /></td>
 					<td>精神力(POW)</td>
-					<td class="ui input"><input id="pow" class="abilityText" type="text"
-						th:field="*{pow}" placeholder="3D6" /></td>
+					<td class="ui input"><input id="pow" class="abilityText"
+						type="text" th:field="*{pow}" placeholder="3D6" /></td>
 					<td>幸運</td>
 					<td><p id="fortune">POW*5</p></td>
 				</tr>
 				<tr>
 					<td>体格(SIZ)</td>
-					<td class="ui input"><input id="siz" class="abilityText" type="text"
-						th:field="*{siz}" placeholder="2D6＋6" /></td>
+					<td class="ui input"><input id="siz" class="abilityText"
+						type="text" th:field="*{siz}" placeholder="2D6＋6" /></td>
 					<td>正気度(SAN)</td>
 					<td><p id="san">POW×5 *</p></td>
 					<td>精神力(EDU)</td>
-					<td class="ui input"><input id="edu" class="abilityText" type="text"
-						th:field="*{edu}" placeholder="3D6+3" /></td>
+					<td class="ui input"><input id="edu" class="abilityText"
+						type="text" th:field="*{edu}" placeholder="3D6+3" /></td>
 					<td>知識</td>
 					<td><p id="knowledge">EDU*5</p></td>
 				</tr>
@@ -146,9 +145,20 @@
 				</tr>
 			</table>
 
+			<h2 class="ui dividing header">職業</h2>
+
+			<div class="ui right input">
+				<input type="text" placeholder="職業を入力"> <select name="job"
+					class="ui dropdown label" id="job">
+					<option value="0">-</option>
+					<option value="1">医師</option>
+					<option value="2">エンジニア</option>
+					<option value="3">エンターテイナー</option>
+				</select>
+			</div>
 
 			<h2 class="ui dividing header">探索者の技能</h2>
-			<div class="ui five column doubling stackable grid container">
+			<div class="ui five column doubling stackable grid">
 				<div class="column">
 					<table class="ui celled table">
 						<tr>
@@ -162,7 +172,7 @@
 								th:field="*{medicine}" /></td>
 						</tr>
 						<tr>
-							<td>運転（自動車）</td>
+							<td>運転（自動車）<i class="Idea yellow icon"></i></td>
 							<td class="ui input"><input class="skillText" type="text"
 								th:field="*{driveCarriage}" /></td>
 						</tr>
@@ -214,7 +224,7 @@
 						<tr>
 							<td>クトゥルフ神話</td>
 							<td class="ui input"><input class="skillText" type="text"
-								th:field="*{cthulhuMythos}" id="cthulhuMythos"/></td>
+								th:field="*{cthulhuMythos}" id="cthulhuMythos" /></td>
 						</tr>
 						<tr>
 							<td>芸術</td>
@@ -540,57 +550,79 @@
 			</button>
 		</form>
 	</div>
+	<script>
+		$('#job').dropdown();
+	</script>
+
 </body>
 <!-- jQuery 読み込み -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <!-- JavaScript読み込み -->
-<script type="text/javascript" src="rollDice.js"></script>
+<script type="text/javascript" src="../common/rollDice.js"></script>
 <script>
-/*<![CDATA[*/
-		$('#int').keyup(function() {
-    		$('#idea').text($('#int').val() * 5);
-		});
-		$('#pow').keyup(function() {
-    		$('#fortune').text($('#pow').val() * 5);
-    		var sanValue = $('#pow').val() * 5;
-    		var maxSan = 99 - $('#cthulhuMythos').val();
-    		if(sanValue > maxSan){
-    			sanValue = maxSan;
-    		}
-    		$('#san').text(sanValue);
-    		$('#sanity').text(sanValue);
-    		$('#mp').text($('#pow').val());
-		});
-		$('#edu').keyup(function() {
-    		$('#knowledge').text($('#edu').val() * 5);
-		});
-		$('#con, #siz').keyup(function(){
-			var durabilityValue = Math.ceil((parseInt($('#con').val()) + parseInt($('#siz').val()))/2);
-    		$('#durability').text(durabilityValue);
-		});
-	    $('#str, #siz').keyup(function(){
-    		var total = parseInt($('#str').val()) + parseInt($('#siz').val());
-    		var text='2 ≦ STR + SIZ ≦ 72';
-    		if(total < 13){
-    			text='-1D6';
-    		}else if(total < 17){
-    			text='-1D4';
-    		}else if(total < 25){
-	  			text='±0';
-    		}else if(total < 33){
-    			text='+1D4';
-    		}else if(total < 41){
-	  			text='+1D6';
-	  		}else if(total < 57){
-    			text='+2D6';
-    		}else if(total < 73){
-    		    text='+3D6'
-    		}
-    		$('#damageBonus').text(text);
-		});
-		$('#abilityRamdom').click(function() {
-			$('#str').val('乱数が格納される');
-		});
-		/*]]>*/
+	/*<![CDATA[*/
+	$('#int').keyup(function() {
+		$('#idea').text($('#int').val() * 5);
+	});
+	$('#pow').keyup(function() {
+		$('#fortune').text($('#pow').val() * 5);
+		var sanValue = $('#pow').val() * 5;
+		var maxSan = 99 - $('#cthulhuMythos').val();
+		if (sanValue > maxSan) {
+			sanValue = maxSan;
+		}
+		$('#san').text(sanValue);
+		$('#sanity').text(sanValue);
+		$('#mp').text($('#pow').val());
+	});
+	$('#edu').keyup(function() {
+		$('#knowledge').text($('#edu').val() * 5);
+	});
+	$('#con, #siz').keyup(
+			function() {
+				var durabilityValue = Math
+						.ceil((parseInt($('#con').val()) + parseInt($('#siz')
+								.val())) / 2);
+				$('#durability').text(durabilityValue);
+			});
+	$('#str, #siz').keyup(function() {
+		var total = parseInt($('#str').val()) + parseInt($('#siz').val());
+		var text = '2 ≦ STR + SIZ ≦ 72';
+		if (total < 13) {
+			text = '-1D6';
+		} else if (total < 17) {
+			text = '-1D4';
+		} else if (total < 25) {
+			text = '±0';
+		} else if (total < 33) {
+			text = '+1D4';
+		} else if (total < 41) {
+			text = '+1D6';
+		} else if (total < 57) {
+			text = '+2D6';
+		} else if (total < 73) {
+			text = '+3D6'
+		}
+		$('#damageBonus').text(text);
+	});
+	$('#abilityRamdom').click(function() {
+		$('#str').val(rollDice(3, 6));
+		$('#con').val(rollDice(3, 6));
+		$('#siz').val(rollDice(2, 6) + 6);
+		$('#dex').val(rollDice(3, 6));
+		$('#app').val(rollDice(3, 6));
+		$('#int').val(rollDice(2, 6) + 6);
+		$('#pow').val(rollDice(3, 6));
+		$('#edu').val(rollDice(3, 6) + 3);
+	});
+	$('#job').change(function() {
+		var select = $('#str').val();
+		if (select == 1) {
+			//医師
+		}
+
+	});
+	/*]]>*/
 </script>
 </html>
