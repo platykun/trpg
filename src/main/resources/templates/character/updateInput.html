@@ -550,79 +550,14 @@
 			</button>
 		</form>
 	</div>
-	<script>
-		$('#job').dropdown();
+	<!-- jQuery 読み込み -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<!-- JavaScript読み込み -->
+	<script type="text/javascript" src="/js/rollDice.js"></script>
+	<script type="text/javascript" src="/js/characterInput.js"></script>
+	<script type="text/javascript">
+		window.onload =	setRelatedParam();
 	</script>
-
 </body>
-<!-- jQuery 読み込み -->
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<!-- JavaScript読み込み -->
-<script type="text/javascript" src="/js/rollDice.js"></script>
-<script>
-	/*<![CDATA[*/
-	$('#int').keyup(function() {
-		$('#idea').text($('#int').val() * 5);
-	});
-	$('#pow').keyup(function() {
-		$('#fortune').text($('#pow').val() * 5);
-		var sanValue = $('#pow').val() * 5;
-		var maxSan = 99 - $('#cthulhuMythos').val();
-		if (sanValue > maxSan) {
-			sanValue = maxSan;
-		}
-		$('#san').text(sanValue);
-		$('#sanity').text(sanValue);
-		$('#mp').text($('#pow').val());
-	});
-	$('#edu').keyup(function() {
-		$('#knowledge').text($('#edu').val() * 5);
-	});
-	$('#con, #siz').keyup(
-			function() {
-				var durabilityValue = Math
-						.ceil((parseInt($('#con').val()) + parseInt($('#siz')
-								.val())) / 2);
-				$('#durability').text(durabilityValue);
-			});
-	$('#str, #siz').keyup(function() {
-		var total = parseInt($('#str').val()) + parseInt($('#siz').val());
-		var text = '2 ≦ STR + SIZ ≦ 72';
-		if (total < 13) {
-			text = '-1D6';
-		} else if (total < 17) {
-			text = '-1D4';
-		} else if (total < 25) {
-			text = '±0';
-		} else if (total < 33) {
-			text = '+1D4';
-		} else if (total < 41) {
-			text = '+1D6';
-		} else if (total < 57) {
-			text = '+2D6';
-		} else if (total < 73) {
-			text = '+3D6'
-		}
-		$('#damageBonus').text(text);
-	});
-	$('#abilityRamdom').click(function() {
-		$('#str').val(rollDice(3, 6));
-		$('#con').val(rollDice(3, 6));
-		$('#siz').val(rollDice(2, 6) + 6);
-		$('#dex').val(rollDice(3, 6));
-		$('#app').val(rollDice(3, 6));
-		$('#int').val(rollDice(2, 6) + 6);
-		$('#pow').val(rollDice(3, 6));
-		$('#edu').val(rollDice(3, 6) + 3);
-	});
-	$('#job').change(function() {
-		var select = $('#str').val();
-		if (select == 1) {
-			//医師
-		}
-
-	});
-	/*]]>*/
-</script>
 </html>
