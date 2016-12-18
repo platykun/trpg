@@ -79,6 +79,7 @@ $('#str, #siz').keyup(function() {
 });
 $('#abilityRamdom').click(function() {
 	setAbilityRandom();
+	setRelatedParam();
 });
 $('#job').change(function() {
 	var select = $('#str').val();
