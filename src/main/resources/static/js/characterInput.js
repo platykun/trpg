@@ -60,6 +60,19 @@ function setAbilityRandom() {
 	$('#pow').val(rollDice(3, 6));
 	$('#edu').val(rollDice(3, 6) + 3);
 }
+function createSkillSelect(){
+    var objects = document.getElementsByClassName("skillSelect");
+    for(var i = 0, len = objects.length; i < len; i++){
+        createSkillSelectOption(objects.item(i));
+    }
+}
+function createSkillSelectOption(object){
+    var option = document.createElement('option');
+    option.textContent = "hoge";
+    var objects = document.getElementsByClassName("skillSelect");
+    object.appendChild(option);
+}
+
 
 $('#int').keyup(function() {
 	setIdea();
