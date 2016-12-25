@@ -79,6 +79,60 @@ function createSkillSelect() {
 		}
 	}
 }
+function updateSkillSelect(s1, s2, s3, s4, s5, s6, s7, s8){
+document.getElementById("skillSelect1").getElementsByTagName('option')[s1].selected = true;
+document.getElementById("skillSelect2").getElementsByTagName('option')[s2].selected = true;
+document.getElementById("skillSelect3").getElementsByTagName('option')[s3].selected = true;
+document.getElementById("skillSelect4").getElementsByTagName('option')[s4].selected = true;
+document.getElementById("skillSelect5").getElementsByTagName('option')[s5].selected = true;
+document.getElementById("skillSelect6").getElementsByTagName('option')[s6].selected = true;
+document.getElementById("skillSelect7").getElementsByTagName('option')[s7].selected = true;
+document.getElementById("skillSelect8").getElementsByTagName('option')[s8].selected = true;
+}
+function updateSkillBackgroundsColor(){
+    updateSkillBackgroundColor(document.getElementById("skillSelect1").value);
+    updateSkillBackgroundColor(document.getElementById("skillSelect2").value);
+    updateSkillBackgroundColor(document.getElementById("skillSelect3").value);
+    updateSkillBackgroundColor(document.getElementById("skillSelect4").value);
+    updateSkillBackgroundColor(document.getElementById("skillSelect5").value);
+    updateSkillBackgroundColor(document.getElementById("skillSelect6").value);
+    updateSkillBackgroundColor(document.getElementById("skillSelect7").value);
+    updateSkillBackgroundColor(document.getElementById("skillSelect8").value);
+}
+
+function updateSkillBackgroundColor(value){
+    var element;
+    if(value == '言いくるめ'){
+        element = document.getElementById('dictionaryTr');
+    }else if(value == '医学'){
+        element = document.getElementById('medicineTr');
+    }
+    element.style.backgroundColor='Yellow';
+    element.childNodes.item(3).childNodes.item(0).className = "skillText expert";
+}
+function clearSkillBackgroundColor(){
+    document.getElementById('dictionaryTr').style.backgroundColor='';
+    document.getElementById('dictionaryTr').childNodes.item(3).childNodes.item(0).className = "skillText beginner";
+    document.getElementById('medicineTr').style.backgroundColor='';
+    document.getElementById('medicineTr').childNodes.item(3).childNodes.item(0).className = "skillText beginner";
+}
+function getExpertTotalValue(){
+    var length = document.getElementsByClassName('skillText expert').length;
+    var total = 0;
+    for(var i = 0;i < length; i++){
+        total += parseInt(document.getElementsByClassName('skillText expert').item(i).value);
+    }
+    return total;
+}
+function getBeginnerTotalValue(){
+    var length = document.getElementsByClassName('skillText beginner').length;
+    var total = 0;
+    for(var i = 0;i < length; i++){
+        total += parseInt(document.getElementsByClassName('skillText beginner').item(i).value);
+    }
+    return total;
+}
+
 
 $('#int').keyup(function() {
 	setIdea();
@@ -101,8 +155,24 @@ $('#abilityRamdom').click(function() {
 	setRelatedParam();
 });
 $('#job').change(function() {
-	var select = $('#str').val();
+	var select = $('#job').val();
 	if (select == 1) {
-		// 医師
+		updateSkillSelect(1,2,3,4,5,6,7,0);
+	}else if (select == 2){
+		updateSkillSelect(8,9,10,11,12,13,14,0);
+	}else if (select == 3){
+		updateSkillSelect(15,16,17,18,19,20,21,0);
 	}
+	clearSkillBackgroundColor();
+	updateSkillBackgroundsColor();
+});
+$('.skillSelect').change(function(){
+    clearSkillBackgroundColor();
+    updateSkillBackgroundsColor();
+});
+$('#expertProgress').progress({
+    label: 'ratio',
+    text: {
+      ratio: '{value} ¥/ {total}'
+    }
 });
