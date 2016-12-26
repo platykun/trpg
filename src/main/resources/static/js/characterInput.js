@@ -116,6 +116,8 @@ function setRelatedParam() {
 	setExpertMaxPoint();
 	setBeginnerMaxPoint();
 	updateSkillProgress();
+	setDodge();
+	setOwnLanguage();
 }
 function setIdea() {
 	$('#idea').text($('#int').val() * 5);
@@ -177,6 +179,13 @@ function setExpertMaxPoint(){
 function setBeginnerMaxPoint(){
 	$('#beginnerMaxPoint').text($('#int').val() * 10);
 }
+function setDodge(){
+	$('#dodge').val($('#int').val() * 2);
+}
+function setOwnLanguage(){
+	$('#ownLanguage').val($('#edu').val() * 5);
+	
+}
 function createSkillSelect() {
 	var objects = document.getElementsByClassName("skillSelect");
 	for (var i = 0, len = objects.length; i < len; i++) {
@@ -197,26 +206,26 @@ function createJobSelect() {
 	}
 }
 function updateSkillSelect(s1, s2, s3, s4, s5, s6, s7, s8, s9){
-
-document.getElementById("skillSelect1").getElementsByTagName('option')[s1].selected = true;
-document.getElementById("skillSelect2").getElementsByTagName('option')[s2].selected = true;
-document.getElementById("skillSelect3").getElementsByTagName('option')[s3].selected = true;
-document.getElementById("skillSelect4").getElementsByTagName('option')[s4].selected = true;
-document.getElementById("skillSelect5").getElementsByTagName('option')[s5].selected = true;
-document.getElementById("skillSelect6").getElementsByTagName('option')[s6].selected = true;
-document.getElementById("skillSelect7").getElementsByTagName('option')[s7].selected = true;
-document.getElementById("skillSelect8").getElementsByTagName('option')[s8].selected = true;
-document.getElementById("skillSelect8").getElementsByTagName('option')[s9].selected = true;
+	$('#skillSelect1').children('option')[s1].selected = true;
+	$('#skillSelect2').children('option')[s2].selected = true;
+	$('#skillSelect3').children('option')[s3].selected = true;
+	$('#skillSelect4').children('option')[s4].selected = true;
+	$('#skillSelect5').children('option')[s5].selected = true;
+	$('#skillSelect6').children('option')[s6].selected = true;
+	$('#skillSelect7').children('option')[s7].selected = true;
+	$('#skillSelect8').children('option')[s8].selected = true;
+	$('#skillSelect9').children('option')[s9].selected = true;
 }
 function updateSkillBackgroundsColor(){
-    updateSkillBackgroundColor(document.getElementById("skillSelect1").value);
-    updateSkillBackgroundColor(document.getElementById("skillSelect2").value);
-    updateSkillBackgroundColor(document.getElementById("skillSelect3").value);
-    updateSkillBackgroundColor(document.getElementById("skillSelect4").value);
-    updateSkillBackgroundColor(document.getElementById("skillSelect5").value);
-    updateSkillBackgroundColor(document.getElementById("skillSelect6").value);
-    updateSkillBackgroundColor(document.getElementById("skillSelect7").value);
-    updateSkillBackgroundColor(document.getElementById("skillSelect8").value);
+    updateSkillBackgroundColor($('#skillSelect1').val());
+    updateSkillBackgroundColor($('#skillSelect2').val());
+    updateSkillBackgroundColor($('#skillSelect3').val());
+    updateSkillBackgroundColor($('#skillSelect4').val());
+    updateSkillBackgroundColor($('#skillSelect5').val());
+    updateSkillBackgroundColor($('#skillSelect6').val());
+    updateSkillBackgroundColor($('#skillSelect7').val());
+    updateSkillBackgroundColor($('#skillSelect8').val());
+    updateSkillBackgroundColor($('#skillSelect9').val());
 }
 
 function updateSkillBackgroundColor(value){
@@ -239,7 +248,7 @@ function clearSkillBackgroundColor(){
     }
 }
 function getExpertTotalValue(){
-    var length = document.getElementsByClassName('skillText expert').length;
+    var length = $('.skillText.expert').length;
     var total = 0;
     for(var i = 0;i < length; i++){
     	var element = document.getElementsByClassName('skillText expert').item(i);
@@ -252,7 +261,7 @@ function getExpertTotalValue(){
     return total;
 }
 function getBeginnerTotalValue(){
-    var length = document.getElementsByClassName('skillText beginner').length;
+    var length = $('.skillText.beginner').length;
     var total = 0;
     for(var i = 0;i < length; i++){
     	var element = document.getElementsByClassName('skillText beginner').item(i);
@@ -265,8 +274,8 @@ function getBeginnerTotalValue(){
     return total;
 }
 function updateSkillPoint(){
-	document.getElementById("expertSetPoint").textContent = getExpertTotalValue();
-	document.getElementById("beginnerSetPoint").textContent = getBeginnerTotalValue();
+	$('#expertSetPoint').text(getExpertTotalValue());
+	$('#beginnerSetPoint').text(getBeginnerTotalValue());
 }
 function updateSkillProgress(){
 	var eMax = parseInt(document.getElementById("expertMaxPoint").textContent);
@@ -307,12 +316,16 @@ $('#edu').keyup(function() {
 	setKnowledge();
 	setExpertMaxPoint();
 	updateSkillProgress();
+	setOwnLanguage();
 });
 $('#con, #siz').keyup(function() {
 	setDurability();
 });
 $('#str, #siz').keyup(function() {
 	setDamageBonus();
+});
+$('#dex').keyup(function() {
+	setDodge();
 });
 $('#abilityRamdom').click(function() {
 	setAbilityRandom();
