@@ -1,0 +1,135 @@
+<html xmlns:th="http://www.thmeleaf.org">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.min.css"
+	integrity="sha256-iK7AZM7Xa42iuURdMdo1sp38ld/JJ3fDtS0523GKqdk="
+	crossorigin="anonymous" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script src="/css/marked/lib/marked.js"></script>
+<style type="text/css">
+</style>
+<head>
+<title>Home</title>
+<style type="text/css">
+.ui.vertical.inverted.sticky.menu {
+	float: left;
+	width : 200px;
+}
+.mainText {
+	float: left;
+	width : calc(100% - 200px);
+}
+.bodyDiv:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+.addButton {
+	float: right;
+}
+.mainDiv {
+	background-color: #dddedf;
+	border-radius: 10px;
+}
+h2 {
+	margin-bottom: 20px;
+}
+</style>
+</head>
+<body>
+	<div class="ui container">
+		<!--ヘッダー項目-->
+		<div>
+			<h1 class="ui header">
+				タイトル表示
+			</h1>
+			サブ項目
+		</div>
+		<div class="bodyDiv">
+			<!--サイドメニュー-->
+			<div class="ui vertical inverted sticky menu">
+				<a class="item">
+					1
+				</a>
+				<a class="item">
+					2
+				</a>
+				<a class="item">
+					3
+				</a>
+				<div class="item">
+					<div class="header">Globals</div>
+					<div class="menu">
+						<a class="item">hoge</a>
+						<a class="item">piyo</a>
+					</div>
+				</div>
+			</div>
+			<!--本体-->
+			<div class="mainText">
+				<!--検索項目-->
+				<div class="mainDiv">
+					<h2 class="ui header">
+						検索
+					</h2>
+					<div class="column">
+						<table class="ui celled table">
+							<tr>
+								<td>検索項目1</td>
+								<td class="ui input">
+									<input class="ui input" type="text" />
+								</td>
+							</tr>
+							<tr>
+								<td>検索項目2</td>
+								<td class="ui input">
+									<input class="ui input" type="text" />
+								</td>
+							</tr>
+						</table>
+						<button class="ui teal button" type="submit">検索</button>
+					</div>
+				</div>
+				<!--一覧画面-->
+				<div class="mainDiv">
+					<h2 class="ui header">
+						一覧
+					</h2>
+					<button class="ui teal button addButton" type="submit">追加</button>
+
+					<table class="ui celled table">
+						<thead>
+						<tr>
+							<th>項目１</th>
+							<th>項目２</th>
+							<th>項目３</th>
+							<th>詳細</th>
+						</tr>
+						</thead>
+						<tr>
+							<td>test</td>
+							<td>test</td>
+							<td>test</td>
+							<td class="ui input">
+								<button class="ui teal button" type="submit">詳細</button>
+							</td>
+						</tr>
+						<tr>
+							<td>test2</td>
+							<td>test2</td>
+							<td>test2</td>
+							<td class="ui input">
+								<button class="ui teal button" type="submit">詳細</button>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+		<!--フッター-->
+		<div>
+			フッター表示
+		</div>
+	</div>
+
+</body>
+</html>
