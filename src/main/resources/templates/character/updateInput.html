@@ -150,10 +150,6 @@
       <div class="ui right input">
         <input type="text" placeholder="職業を入力" /> <select name="job"
           class="ui dropdown label" id="job">
-          <option value="0">-</option>
-          <option value="1">医師</option>
-          <option value="2">エンジニア</option>
-          <option value="3">エンターテイナー</option>
         </select>
       </div>
 
@@ -165,23 +161,24 @@
         class="skillSelect ui dropdown label" id="skillSelect5"></select> <select
         class="skillSelect ui dropdown label" id="skillSelect6"></select> <select
         class="skillSelect ui dropdown label" id="skillSelect7"></select> <select
-        class="skillSelect ui dropdown label" id="skillSelect8"></select>
+        class="skillSelect ui dropdown label" id="skillSelect8"></select> <select
+        class="skillSelect ui dropdown label" id="skillSelect9"></select>
 
 
       <h2 class="ui dividing header">探索者の技能</h2>
       <h3>職業技能ポイント</h3>
-        <div class="ui progress warning" id="expertProgress">
-            <div class="bar" style="width: 30%;">
+        <div class="ui progress warning" id="expertProgressRoot">
+            <div id="expertProgress"  class="bar" >
                 <div class="progress"></div>
             </div>
-            <div class="label">0/10</div>
+            <div class="label"><span id="expertSetPoint">0</span>/<span id="expertMaxPoint">0</span></div>
         </div>
       <h3>個人的な興味による技能ポイント</h3>
-        <div class="ui progress warning" data-value="7" data-max="10" id="beginnerProgress">
-            <div class="bar" data-value="7" data-max="10">
+        <div class="ui progress warning" id="beginnerProgressRoot">
+            <div id="beginnerProgress" class="bar" >
                 <div class="progress"></div>
             </div>
-            <div class="label">0/10</div>
+            <div class="label"><span id="beginnerSetPoint">0</span>/<span id="beginnerMaxPoint">10</span></div>
         </div>
 
       <div class="ui five column doubling stackable grid">
@@ -242,23 +239,23 @@
               <td class="ui input"><input class="skillText beginner"
                 type="text" th:field="*{mechanicalRepair}" /></td>
             </tr>
-            <tr>
+            <tr id="listenTr">
               <td>聞き耳</td>
               <td class="ui input"><input class="skillText beginner"
                 type="text" th:field="*{listen}" /></td>
             </tr>
-            <tr>
+            <tr id="cthulhuMythosTr">
               <td>クトゥルフ神話</td>
               <td class="ui input"><input class="skillText beginner"
                 type="text" th:field="*{cthulhuMythos}"
                 id="cthulhuMythos" /></td>
             </tr>
-            <tr>
+            <tr id="artTr">
               <td>芸術</td>
               <td class="ui input"><input class="skillText beginner"
                 type="text" th:field="*{art}" /></td>
             </tr>
-            <tr>
+            <tr id="accountingTr">
               <td>経理</td>
               <td class="ui input"><input class="skillText beginner"
                 type="text" th:field="*{accounting}" /></td>
@@ -267,77 +264,77 @@
         </div>
         <div class="column">
           <table class="ui celled table">
-            <tr>
+            <tr id="archaeologyTr">
               <td>考古学</td>
               <td class="ui input"><input class="skillText beginner"
                 type="text" th:field="*{archaeology}" /></td>
             </tr>
-            <tr>
+            <tr id="computerTr">
               <td>コンピューター</td>
               <td class="ui input"><input class="skillText beginner"
                 type="text" th:field="*{computer}" /></td>
             </tr>
-            <tr>
+            <tr id="sneakTr">
               <td>忍び歩き</td>
               <td class="ui input"><input class="skillText beginner"
                 type="text" th:field="*{sneak}" /></td>
             </tr>
-            <tr>
+            <tr id="photographyTr">
               <td>写真術</td>
               <td class="ui input"><input class="skillText beginner"
                 type="text" th:field="*{photography}" /></td>
             </tr>
-            <tr>
+            <tr id="operateHvyMachineTr">
               <td>重機械操作</td>
               <td class="ui input"><input class="skillText beginner"
                 type="text" th:field="*{operateHvyMachine}" /></td>
             </tr>
-            <tr>
+            <tr id="rideTr">
               <td>乗馬</td>
               <td class="ui input"><input class="skillText beginner"
                 type="text" th:field="*{ride}" /></td>
             </tr>
-            <tr>
+            <tr id="creditRatingTr">
               <td>信用</td>
               <td class="ui input"><input class="skillText beginner"
                 type="text" th:field="*{creditRating}" /></td>
             </tr>
-            <tr>
+            <tr id="psychologyTr">
               <td>心理学</td>
               <td class="ui input"><input class="skillText beginner"
                 type="text" th:field="*{psychology}" /></td>
             </tr>
-            <tr>
+            <tr id="anthropologyTr">
               <td>人類学</td>
               <td class="ui input"><input class="skillText beginner"
                 type="text" th:field="*{anthropology}" /></td>
             </tr>
-            <tr>
+            <tr id="swimTr">
               <td>水泳</td>
               <td class="ui input"><input class="skillText beginner"
                 type="text" th:field="*{swim}" /></td>
             </tr>
-            <tr>
+            <tr id="production1Tr">
               <td>制作1</td>
               <td class="ui input"><input class="skillText beginner"
                 type="text" th:field="*{production1}" /></td>
             </tr>
-            <tr>
+            <tr id="production2Tr">
               <td>制作2</td>
               <td class="ui input"><input class="skillText beginner"
                 type="text" th:field="*{production2}" /></td>
             </tr>
-            <tr>
+            <tr id="production3Tr">
               <td>制作3</td>
               <td class="ui input"><input class="skillText beginner"
                 type="text" th:field="*{production3}" /></td>
             </tr>
-            <tr>
+            <tr id="psychoanalysisTr">
               <td>精神分析</td>
               <td class="ui input"><input class="skillText beginner"
                 type="text" th:field="*{psychoanalysis}" /></td>
             </tr>
-            <tr>
+            <tr id="biologyTr">
               <td>生物学</td>
               <td class="ui input"><input class="skillText beginner"
                 type="text" th:field="*{biology}" /></td>
@@ -346,77 +343,77 @@
         </div>
         <div class="column">
           <table class="ui celled table">
-            <tr>
+            <tr id="persuadeTr">
               <td>説得</td>
               <td class="ui input"><input class="skillText beginner"
                 type="text" th:field="*{persuade}" /></td>
             </tr>
-            <tr>
+            <tr id="pilot1Tr">
               <td>操縦1</td>
               <td class="ui input"><input class="skillText beginner"
                 type="text" th:field="*{pilot1}" /></td>
             </tr>
-            <tr>
+            <tr id="pilot2Tr">
               <td>操縦2</td>
               <td class="ui input"><input class="skillText beginner"
                 type="text" th:field="*{pilot2}" /></td>
             </tr>
-            <tr>
+            <tr id="pilot3Tr">
               <td>操縦3</td>
               <td class="ui input"><input class="skillText beginner"
                 type="text" th:field="*{pilot3}" /></td>
             </tr>
-            <tr>
+            <tr id="geologyTr">
               <td>地質学</td>
               <td class="ui input"><input class="skillText beginner"
                 type="text" th:field="*{geology}" /></td>
             </tr>
-            <tr>
+            <tr id="jumpTr">
               <td>跳躍</td>
               <td class="ui input"><input class="skillText beginner"
                 type="text" th:field="*{jump}" /></td>
             </tr>
-            <tr>
+            <tr id="pursuitTr">
               <td>追跡</td>
               <td class="ui input"><input class="skillText beginner"
                 type="text" th:field="*{pursuit}" /></td>
             </tr>
-            <tr>
+            <tr id="electricalRepairTr">
               <td>電気修理</td>
               <td class="ui input"><input class="skillText beginner"
                 type="text" th:field="*{electricalRepair}" /></td>
             </tr>
-            <tr>
+            <tr id="electronicsTr">
               <td>電子工学</td>
               <td class="ui input"><input class="skillText beginner"
                 type="text" th:field="*{electronics}" /></td>
             </tr>
-            <tr>
+            <tr id="astronomyTr">
               <td>天文学</td>
               <td class="ui input"><input class="skillText beginner"
                 type="text" th:field="*{astronomy}" /></td>
             </tr>
-            <tr>
+            <tr id="throwSomethingTr">
               <td>投擲</td>
               <td class="ui input"><input class="skillText beginner"
                 type="text" th:field="*{throwSomething}" /></td>
             </tr>
-            <tr>
+            <tr id="climbTr">
               <td>登攀</td>
               <td class="ui input"><input class="skillText beginner"
                 type="text" th:field="*{climb}" /></td>
             </tr>
-            <tr>
+            <tr id="libraryTr">
               <td>図書館</td>
               <td class="ui input"><input class="skillText beginner"
                 type="text" th:field="*{library}" /></td>
             </tr>
-            <tr>
+            <tr id="navigateTr">
               <td>ナビゲート</td>
               <td class="ui input"><input class="skillText beginner"
                 type="text" th:field="*{navigate}" /></td>
             </tr>
-            <tr>
+            <tr id="priceCutTr">
               <td>値切り</td>
               <td class="ui input"><input class="skillText beginner"
                 type="text" th:field="*{priceCut}" /></td>
@@ -425,62 +422,62 @@
         </div>
         <div class="column">
           <table class="ui celled table">
-            <tr>
+            <tr id="naturalHistoryTr">
               <td>博物学</td>
               <td class="ui input"><input class="skillText beginner"
                 type="text" th:field="*{naturalHistory}" /></td>
             </tr>
-            <tr>
+            <tr id="physicsTr">
               <td>物理学</td>
               <td class="ui input"><input class="skillText beginner"
                 type="text" th:field="*{physics}" /></td>
             </tr>
-            <tr>
+            <tr id="disguiseTr">
               <td>変装</td>
               <td class="ui input"><input class="skillText beginner"
                 type="text" th:field="*{disguise}" /></td>
             </tr>
-            <tr>
+            <tr id="lawTr">
               <td>法律</td>
               <td class="ui input"><input class="skillText beginner"
                 type="text" th:field="*{law}" /></td>
             </tr>
-            <tr>
+            <tr id="otherLanguage1Tr">
               <td>他の言語1</td>
               <td class="ui input"><input class="skillText beginner"
                 type="text" th:field="*{otherLanguage1}" /></td>
             </tr>
-            <tr>
+            <tr id="otherLanguage2Tr">
               <td>他の言語2</td>
               <td class="ui input"><input class="skillText beginner"
                 type="text" th:field="*{otherLanguage2}" /></td>
             </tr>
-            <tr>
+            <tr id="ownLanguageTr">
               <td>母国語</td>
               <td class="ui input"><input class="skillText beginner"
                 type="text" th:field="*{ownLanguage}" /></td>
             </tr>
-            <tr>
+            <tr id="martialTr">
               <td>ﾏｰｼｬﾙｱｰﾂ</td>
               <td class="ui input"><input class="skillText beginner"
                 type="text" th:field="*{martial}" /></td>
             </tr>
-            <tr>
+            <tr id="spotHiddenTr">
               <td>目星</td>
               <td class="ui input"><input class="skillText beginner"
                 type="text" th:field="*{spotHidden}" /></td>
             </tr>
-            <tr>
+            <tr id="pharmacyTr">
               <td>薬学</td>
               <td class="ui input"><input class="skillText beginner"
                 type="text" th:field="*{pharmacy}" /></td>
             </tr>
-            <tr>
+            <tr id="history1Tr">
               <td>歴史1</td>
               <td class="ui input"><input class="skillText beginner"
                 type="text" th:field="*{history1}" /></td>
             </tr>
-            <tr>
+            <tr id="history2Tr">
               <td>歴史2</td>
               <td class="ui input"><input class="skillText beginner"
                 type="text" th:field="*{history2}" /></td>
@@ -489,82 +486,82 @@
         </div>
         <div class="column">
           <table class="ui celled table">
-            <tr>
+            <tr id="subMachineGunTr">
               <td>サブマシンガン</td>
               <td class="ui input"><input class="skillText beginner"
                 type="text" th:field="*{subMachineGun}" /></td>
             </tr>
-            <tr>
+            <tr id="shotgunTr">
               <td>ショットガン</td>
               <td class="ui input"><input class="skillText beginner"
                 type="text" th:field="*{shotgun}" /></td>
             </tr>
-            <tr>
+            <tr id="machineGunTr">
               <td>マシンガン</td>
               <td class="ui input"><input class="skillText beginner"
                 type="text" th:field="*{machineGun}" /></td>
             </tr>
-            <tr>
+            <tr id="rifleTr">
               <td>ライフル</td>
               <td class="ui input"><input class="skillText beginner"
                 type="text" th:field="*{rifle}" /></td>
             </tr>
-            <tr>
+            <tr id="kickTr">
               <td>キック</td>
               <td class="ui input"><input class="skillText beginner"
                 type="text" th:field="*{kick}" /></td>
             </tr>
-            <tr>
+            <tr id="assemblyTr">
               <td>組み付き</td>
               <td class="ui input"><input class="skillText beginner"
                 type="text" th:field="*{assembly}" /></td>
             </tr>
-            <tr>
+            <tr id="firstTr">
               <td>こぶし</td>
               <td class="ui input"><input class="skillText beginner"
                 type="text" th:field="*{first}" /></td>
             </tr>
-            <tr>
+            <tr id="headButtTr">
               <td>頭突き</td>
               <td class="ui input"><input class="skillText beginner"
                 type="text" th:field="*{headButt}" /></td>
             </tr>
-            <tr>
+            <tr id="handWeapon1Tr">
               <td>近接戦1</td>
               <td class="ui input"><input class="skillText beginner"
                 type="text" th:field="*{handWeapon1}" /></td>
             </tr>
-            <tr>
+            <tr id="handWeapon2Tr">
               <td>近接戦2</td>
               <td class="ui input"><input class="skillText beginner"
                 type="text" th:field="*{handWeapon2}" /></td>
             </tr>
-            <tr>
+            <tr id="firearm1Tr">
               <td>火器1</td>
               <td class="ui input"><input class="skillText beginner"
                 type="text" th:field="*{firearm1}" /></td>
             </tr>
-            <tr>
+            <tr id="firearm2Tr">
               <td>火器2</td>
               <td class="ui input"><input class="skillText beginner"
                 type="text" th:field="*{firearm2}" /></td>
             </tr>
-            <tr>
+            <tr id="firearm3Tr">
               <td>火器3</td>
               <td class="ui input"><input class="skillText beginner"
                 type="text" th:field="*{firearm3}" /></td>
             </tr>
-            <tr>
+            <tr id="firearm4Tr">
               <td>火器4</td>
               <td class="ui input"><input class="skillText beginner"
                 type="text" th:field="*{firearm4}" /></td>
             </tr>
-            <tr>
+            <tr id="firearm5Tr">
               <td>火器5</td>
               <td class="ui input"><input class="skillText beginner"
                 type="text" th:field="*{firearm5}" /></td>
             </tr>
-            <tr>
+            <tr id="firearm6Tr">
               <td>火器6</td>
               <td class="ui input"><input class="skillText beginner"
                 type="text" th:field="*{firearm6}" /></td>
@@ -593,6 +590,7 @@
   <script type="text/javascript">
 			document.addEventListener('DOMContentLoaded', function() {
 				setRelatedParam();
+				createJobSelect();
 				createSkillSelect();
 			})
 		</script>
