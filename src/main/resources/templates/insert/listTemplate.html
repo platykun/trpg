@@ -1,135 +1,182 @@
-<html xmlns:th="http://www.thmeleaf.org">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.min.css"
-	integrity="sha256-iK7AZM7Xa42iuURdMdo1sp38ld/JJ3fDtS0523GKqdk="
-	crossorigin="anonymous" />
+<link
+  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+  rel="stylesheet"
+  integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+  crossorigin="anonymous">
+<link href=“./bootstrap.css” rel=“stylesheet”>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<script src="/css/marked/lib/marked.js"></script>
 <style type="text/css">
 </style>
 <head>
 <title>Home</title>
 <style type="text/css">
-.ui.vertical.inverted.sticky.menu {
-	float: left;
-	width : 200px;
-}
 .mainText {
 	float: left;
-	width : calc(100% - 200px);
+	width: calc(100% - 200px);
 }
+
+.mainText *:first-child {
+	margin-top: 0px;
+}
+
 .bodyDiv:after {
 	content: "";
 	display: block;
 	clear: both;
 }
-.addButton {
+
+.mainDiv {
+	background-color: #FFFFFF;
+	border-radius: 7px;
+	margin: 5px 5px 5px 5px;
+	padding: 5px 10px 20px 10px;
+	overflow: hidden;
+	border-width: 2px;
+}
+
+h2.ui.header {
+	margin: 10px 10px 10px 10px;
+	border-left: solid 12px rgb(51, 122, 183);
+	padding-left: 5px;
+}
+
+h2.ui.header:first-child {
+	margin-top: 5px;
+}
+
+button.oneLeft {
+	margin: 10px 5px 10px 5%;
+	float: left;
+}
+
+button.oneRight {
+	margin: 10px 5% 10px 5px;
 	float: right;
 }
-.mainDiv {
-	background-color: #dddedf;
-	border-radius: 10px;
+
+table.simple tr td:nth-child(1) {
+	text-align: right;
+	vertical-align: middle;
 }
-h2 {
-	margin-bottom: 20px;
+
+table.simple tr td:nth-child(2) {
+	text-align: left;
+}
+
+body {
+	background: rgb(240, 250, 250);
+	color: #323232
+}
+
+.title.header {
+	background: rgb(51, 122, 183);
+	margin-bottom: 12px;
+}
+
+h1.header {
+	color: white;
+    width: 80%;
+}
+
+.sidebar {
+	float: left;
+	width: 200px;
+	background-color: #CDDC39;
+	color: white;
+	border-radius: 7px;
+}
+
+.list-group-item:first-child {
+	border-top-right-radius: 7px;
+	border-top-left-radius: 7px;
+}
+.list-group-item:last-child {
+  border-bottom-right-radius: 7px;
+  border-bottom-left-radius: 7px;
 }
 </style>
 </head>
 <body>
-	<div class="ui container">
-		<!--ヘッダー項目-->
-		<div>
-			<h1 class="ui header">
-				タイトル表示
-			</h1>
-			サブ項目
-		</div>
-		<div class="bodyDiv">
-			<!--サイドメニュー-->
-			<div class="ui vertical inverted sticky menu">
-				<a class="item">
-					1
-				</a>
-				<a class="item">
-					2
-				</a>
-				<a class="item">
-					3
-				</a>
-				<div class="item">
-					<div class="header">Globals</div>
-					<div class="menu">
-						<a class="item">hoge</a>
-						<a class="item">piyo</a>
-					</div>
-				</div>
-			</div>
-			<!--本体-->
-			<div class="mainText">
-				<!--検索項目-->
-				<div class="mainDiv">
-					<h2 class="ui header">
-						検索
-					</h2>
-					<div class="column">
-						<table class="ui celled table">
-							<tr>
-								<td>検索項目1</td>
-								<td class="ui input">
-									<input class="ui input" type="text" />
-								</td>
-							</tr>
-							<tr>
-								<td>検索項目2</td>
-								<td class="ui input">
-									<input class="ui input" type="text" />
-								</td>
-							</tr>
-						</table>
-						<button class="ui teal button" type="submit">検索</button>
-					</div>
-				</div>
-				<!--一覧画面-->
-				<div class="mainDiv">
-					<h2 class="ui header">
-						一覧
-					</h2>
-					<button class="ui teal button addButton" type="submit">追加</button>
+  <!--ヘッダー項目-->
+  <div class="title header">
+    <div class="container">
+      <h1 class="header">タイトル表示</h1>
+      サブ項目
+    </div>
+  </div>
+  <div class="ui container">
+    <div class="bodyDiv">
+      <!--サイドメニュー-->
+      <div class="list-group sidebar">
+        <button type="button"
+          class="list-group-item list-group-item-action">Dapibus
+          ac facilisis in</button>
+        <button type="button"
+          class="list-group-item list-group-item-action">Morbi
+          leo risus</button>
+        <button type="button"
+          class="list-group-item list-group-item-action">Porta
+          ac consectetur ac</button>
+        <button type="button"
+          class="list-group-item list-group-item-action disabled">Vestibulum
+          at eros</button>
+      </div>
+      <!--本体-->
+      <div class="mainText">
+        <!--検索項目-->
+        <div class="mainDiv">
+          <h2 class="ui header">検索</h2>
+          <div class="column">
+            <table class="ui table simple">
+              <tr>
+                <td>検索項目1:</td>
+                <td><input class="form-control" type="text" /></td>
+              </tr>
+              <tr>
+                <td>検索項目2:</td>
+                <td><input class="form-control" type="text" /></td>
+              </tr>
+            </table>
+          </div>
+          <button class="btn btn-primary oneLeft" type="submit">検索</button>
+        </div>
+        <!--一覧画面-->
+        <div class="mainDiv">
+          <h2 class="ui header">一覧</h2>
+          <button class="btn btn-primary oneRight" type="submit">追加</button>
 
-					<table class="ui celled table">
-						<thead>
-						<tr>
-							<th>項目１</th>
-							<th>項目２</th>
-							<th>項目３</th>
-							<th>詳細</th>
-						</tr>
-						</thead>
-						<tr>
-							<td>test</td>
-							<td>test</td>
-							<td>test</td>
-							<td class="ui input">
-								<button class="ui teal button" type="submit">詳細</button>
-							</td>
-						</tr>
-						<tr>
-							<td>test2</td>
-							<td>test2</td>
-							<td>test2</td>
-							<td class="ui input">
-								<button class="ui teal button" type="submit">詳細</button>
-							</td>
-						</tr>
-					</table>
-				</div>
-			</div>
-		</div>
-		<!--フッター-->
-		<div>
-			フッター表示
-		</div>
-	</div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>項目１</th>
+                <th>項目２</th>
+                <th>項目３</th>
+                <th>詳細</th>
+              </tr>
+            </thead>
+            <tr>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+              <td class="ui input">
+                <button class="btn btn-primary" type="submit">詳細</button>
+              </td>
+            </tr>
+            <tr>
+              <td>test2</td>
+              <td>test2</td>
+              <td>test2</td>
+              <td class="ui input">
+                <button class="btn btn-primary" type="submit">詳細</button>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!--フッター-->
+    <div>フッター表示</div>
+  </div>
 
 </body>
 </html>
