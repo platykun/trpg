@@ -1,63 +1,60 @@
 <html xmlns:th="http://www.thmeleaf.org">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.min.css"
-	integrity="sha256-iK7AZM7Xa42iuURdMdo1sp38ld/JJ3fDtS0523GKqdk="
-	crossorigin="anonymous" />
-
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	  rel="stylesheet"
+	  integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	  crossorigin="anonymous"/>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<script src="/css/marked/lib/marked.js"></script>
-<style type="text/css">
-.ui.container {
-	margin-top: 4em;
-}
-</style>
 <head>
-<title>Home</title>
+	<title>Home</title>
+	<link href="/css/custom.css" rel="stylesheet" type="text/css" media="all" />
 </head>
 <body>
-	<!-- 上部ナビゲーションメニュー -->
-	<div th:include="common/header :: header('キャラクター一覧画面')"></div>
-
-	<div class="ui container">
-		<div class="ui main text container">
-			<P>キャラクター一覧表示画面です</P>
+<!--ヘッダー項目-->
+<div th:include="common/header_remake"></div>
+<div class="container">
+	<div class="bodyDiv">
+		<!--サイドメニュー-->
+		<div th:include="common/sideMenu"></div>
+		<!--本体-->
+		<div class="mainText">
+			<!--検索項目-->
+			<div class="mainDiv">
+				<h2 class="ui header">キャラクター一覧</h2>
+				<div class="column">
+					検索条件入力フォーム実装予定<br/>
+				</div>
+			</div>
+			<div class="mainDiv">
+				<h3 class="header">検索結果</h3>
+				<form th:action="@{/character/add/input}">
+					<button class="btn btn-primary oneRight" type="submit">
+						<i class="add icon"></i> Add
+					</button>
+				</form>
+				<table class="table">
+					<thead>
+					<tr>
+						<th>ID</th>
+						<th>名前</th>
+						<th>正気度</th>
+						<th>詳細</th>
+					</tr>
+					</thead>
+					<tr th:each="character: ${characters}">
+						<td th:text="${character.id}">1</td>
+						<td th:text="${character.name}">name</td>
+						<td th:text="${character.sanityPoint}">10</td>
+						<td>
+							<form th:action="@{/character/detail}" method="post">
+								<input class="btn btn-primary" type="submit" value="詳細" /> <input
+									type="hidden" name="id" th:value="${character.id}" />
+							</form>
+						</td>
+					</tr>
+				</table>
+			</div>
 		</div>
-
-		<form th:action="@{/character/add/input}">
-			<button class="ui teal button" type="submit">
-				<i class="add icon"></i> Add
-			</button>
-		</form>
-
-		<table class="ui celled table">
-			<thead>
-			<tr>
-				<th>ID</th>
-				<th>名前</th>
-				<th>正気度</th>
-				<th>詳細</th>
-			</tr>
-			</thead>
-			<tr th:each="character: ${characters}">
-				<td th:text="${character.id}">1</td>
-				<td th:text="${character.name}">name</td>
-				<td th:text="${character.sanityPoint}">10</td>
-				<td>
-					<form th:action="@{/character/detail}" method="post">
-						<input class="ui button" type="submit" value="詳細" /> <input
-							type="hidden" name="id" th:value="${character.id}" />
-					</form>
-				</td>
-			</tr>
-		</table>
-
-		<form th:action="@{/top}">
-			<button class="ui teal button" type="submit">
-				<i class="left arrow icon"></i> back
-			</button>
-		</form>
 	</div>
-
-
+</div>
 </body>
 </html>

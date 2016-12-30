@@ -12,7 +12,12 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class ScenarioOutlineForm {
+	/** id */
 	private int id;
+
+	/** シナリオタイトル */
 	private String title;
+
+	/** シナリオ概要 */
 	private String outline;
 }

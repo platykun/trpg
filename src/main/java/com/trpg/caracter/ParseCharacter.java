@@ -1,6 +1,5 @@
-package com.trpg.common;
+package com.trpg.caracter;
 
-import com.trpg.caracter.CharacterDetailForm;
 import com.trpg.entity.CharacterInfo;
 
 /**

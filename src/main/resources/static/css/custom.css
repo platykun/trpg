@@ -1,0 +1,95 @@
+.mainText {
+	float: left;
+	width: calc(100% - 200px);
+}
+
+.mainText *:first-child {
+	margin-top: 0px;
+}
+
+.bodyDiv:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+.mainDiv {
+	background-color: #FFFFFF;
+	border-radius: 7px;
+	margin: 5px 5px 5px 5px;
+	padding: 5px 10px 20px 10px;
+	overflow: hidden;
+	border-width: 2px;
+}
+
+h2.ui.header {
+	margin: 10px 10px 10px 10px;
+	border-left: solid 12px rgb(51, 122, 183);
+	padding-left: 5px;
+}
+
+h2.ui.header:first-child {
+	margin-top: 5px;
+}
+
+button.oneLeft {
+	margin: 10px 5px 10px 5%;
+	float: left;
+}
+
+button.oneRight {
+	margin: 10px 5% 10px 5px;
+	float: right;
+}
+
+table.simple tr td:nth-child(1) {
+	text-align: right;
+	vertical-align: middle;
+}
+
+table.simple tr td:nth-child(2) {
+	text-align: left;
+}
+
+body {
+	background: rgb(240, 250, 250);
+	color: #323232
+}
+
+.title.header {
+	background: rgb(51, 122, 183);
+	margin-bottom: 12px;
+}
+
+h1.header {
+	color: white;
+    width: 80%;
+}
+
+.sidebar {
+	float: left;
+	width: 200px;
+	color: white;
+	border-radius: 7px;
+}
+.list-group form button{
+	border-radius: 0px;
+}
+.list-group form:first-child button{
+	border-top-right-radius: 7px;
+	border-top-left-radius: 7px;
+}
+.list-group form:last-child button{
+  border-bottom-right-radius: 7px;
+  border-bottom-left-radius: 7px;
+}
+.list-group-item:first-child{
+	border-radius: 0px;
+}
+.list-group-item:last-child{
+	border-radius: 0px;
+}
+
+form {
+    margin-bottom: 0px;
+}

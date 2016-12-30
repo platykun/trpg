@@ -1,11 +1,6 @@
 package com.trpg.session;
 
-import com.trpg.entity.Scenario;
-import com.trpg.scenario.ScenarioCharacterForm;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-
-import java.util.List;
 
 /**
  * シナリオの詳細を格納する。

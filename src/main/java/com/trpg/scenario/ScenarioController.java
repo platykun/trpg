@@ -32,7 +32,9 @@ public class ScenarioController {
 	@RequestMapping("/top")
 	public String top(Model model){
 		List<ScenarioOutlineForm> scenarios = new ArrayList<ScenarioOutlineForm>();
-		scenarioAction.getScenarioList().stream().forEach(result ->
+		List<Scenario>  scenarioList = scenarioAction.getScenarioList();
+		//取得したシナリオ情報をformへ格納する
+		scenarioList.stream().forEach(result ->
 			scenarios.add(parseScenarioOutline(result)));
 		model.addAttribute("scenarios", scenarios);
 		return "scenario/top";

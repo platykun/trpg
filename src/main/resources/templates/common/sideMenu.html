@@ -1,0 +1,23 @@
+<html xmlns:th="http://www.thmeleaf.org">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<!-- Header -->
+<body>
+	<div class="list-group sidebar">
+		<form th:action="@{/insert/top}" method="post">
+			<button type="submit"  class="list-group-item list-group-item-action">テスト用画面</button>
+		</form>
+		<form th:action="@{/scenario/top}" method="post">
+			<button type="submit"  class="list-group-item list-group-item-action">シナリオ一覧画面</button>
+		</form>
+		<form th:action="@{/session/top}" method="post">
+			<button type="submit"  class="list-group-item list-group-item-action">セッション一覧画面</button>
+		</form>
+		<form th:action="@{/character/top}" method="post">
+			<button type="submit"  class="list-group-item list-group-item-action">キャラクター一覧画面</button>
+		</form>
+		<form th:action="@{/admin/top}" method="post">
+			<button type="submit"  class="list-group-item list-group-item-action">管理者向け画面</button>
+		</form>
+	</div>
+</body>
+</html>
