@@ -75,7 +75,7 @@ body {
 
 h1.header {
 	color: white;
-    width: 80%;
+	width: 80%;
 }
 
 .sidebar {
@@ -90,9 +90,31 @@ h1.header {
 	border-top-right-radius: 7px;
 	border-top-left-radius: 7px;
 }
+
 .list-group-item:last-child {
-  border-bottom-right-radius: 7px;
-  border-bottom-left-radius: 7px;
+	border-bottom-right-radius: 7px;
+	border-bottom-left-radius: 7px;
+}
+
+.detailImg {
+	float: left;
+	width: 23%;
+	margin-right: 2%;
+}
+
+.detailImgTable {
+	float: left;
+	width: 73%;
+	margin-right: 2%
+}
+
+table.someTd tr td:nth-child(odd) {
+	text-align: right;
+	vertical-align: middle;
+}
+
+table.someTd tr td:nth-child(even) {
+	text-align: left;
 }
 </style>
 </head>
@@ -121,58 +143,129 @@ h1.header {
       <div class="mainText">
         <!--検索項目-->
         <div class="mainDiv">
-          <h2 class="ui header">検索</h2>
+          <h2 class="ui header">詳細一列</h2>
           <div class="column">
-            <table class="ui table simple">
+            <table class="table simple">
               <tr>
-                <td>検索項目1:</td>
-                <td><input class="form-control" type="text" /></td>
+                <td>詳細項目1:</td>
+                <td>内容</td>
               </tr>
               <tr>
-                <td>検索項目2:</td>
-                <td><input class="form-control" type="text" /></td>
+                <td>詳細項目2:</td>
+                <td>内容</td>
               </tr>
             </table>
           </div>
-          <button class="btn btn-primary oneRight" type="submit">検索</button>
         </div>
-        <!--一覧画面-->
         <div class="mainDiv">
-          <h2 class="ui header">一覧</h2>
-          <button class="btn btn-primary oneRight" type="submit">追加</button>
-
-          <table class="table">
-            <thead>
-              <tr>
-                <th>項目１</th>
-                <th>項目２</th>
-                <th>項目３</th>
-                <th>詳細</th>
-              </tr>
-            </thead>
-            <tr>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-              <td class="ui input">
-                <button class="btn btn-primary" type="submit">詳細</button>
-              </td>
-            </tr>
-            <tr>
-              <td>test2</td>
-              <td>test2</td>
-              <td>test2</td>
-              <td class="ui input">
-                <button class="btn btn-primary" type="submit">詳細</button>
-              </td>
-            </tr>
-          </table>
+          <div class="column">
+            <h2 class="ui header">詳細画像付き</h2>
+            <div class="column">
+              <img class="detailImg"
+                src="https://placehold.jp/150x150.png" />
+              <table class="table simple detailImgTable">
+                <tr>
+                  <td>詳細項目1:</td>
+                  <td>内容</td>
+                </tr>
+                <tr>
+                  <td>詳細項目2:</td>
+                  <td>内容</td>
+                </tr>
+                <tr>
+                  <td>詳細項目3:</td>
+                  <td>内容</td>
+                </tr>
+                <tr>
+                  <td>詳細項目1:</td>
+                  <td>内容</td>
+                </tr>
+                <tr>
+                  <td>詳細項目2:</td>
+                  <td>内容</td>
+                </tr>
+                <tr>
+                  <td>詳細項目3:</td>
+                  <td>内容</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="mainDiv">
+          <div class="column">
+            <h2 class="ui header">複数列リスト</h2>
+            <div class="column">
+              <table class="table someTd">
+                <tr>
+                  <td>詳細項目1:</td>
+                  <td>内容</td>
+                  <td>詳細項目1:</td>
+                  <td>内容</td>
+                  <td>詳細項目1:</td>
+                  <td>内容</td>
+                </tr>
+                <tr>
+                  <td>詳細項目1:</td>
+                  <td>内容</td>
+                  <td>詳細項目1:</td>
+                  <td>内容</td>
+                  <td>詳細項目1:</td>
+                  <td>内容</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="mainDiv">
+          <div class="column">
+            <h2 class="ui header">大量項目</h2>
+            <div class="column">
+              
+              <button type="button" class="btn btn-default" data-toggle="popover" title="言いくるめ2" data-content="言いくるめについての説明を記載２">言いくるめ: 5</button>
+              <button type="button" class="btn btn-default" data-toggle="popover" title="言いくるめ" data-content="言いくるめについての説明を記載">言いくるめ: 5</button>
+              <button type="button" class="btn btn-default" data-toggle="popover" title="言いくるめ2" data-content="言いくるめについての説明を記載２">言いくるめ: 5</button>
+              <button type="button" class="btn btn-default" data-toggle="popover" title="言いくるめ" data-content="言いくるめについての説明を記載">言いくるめ: 5</button>
+              <button type="button" class="btn btn-default" data-toggle="popover" title="言いくるめ2" data-content="言いくるめについての説明を記載２">言いくるめ: 5</button>
+              <button type="button" class="btn btn-default" data-toggle="popover" title="言いくるめ" data-content="言いくるめについての説明を記載">言いくるめ: 5</button>
+              <button type="button" class="btn btn-default" data-toggle="popover" title="言いくるめ2" data-content="言いくるめについての説明を記載２">言いくるめ: 5</button>
+              <button type="button" class="btn btn-default" data-toggle="popover" title="言いくるめ" data-content="言いくるめについての説明を記載">言いくるめ: 5</button>
+              <button type="button" class="btn btn-default" data-toggle="popover" title="言いくるめ2" data-content="言いくるめについての説明を記載２">言いくるめ: 5</button>
+              <button type="button" class="btn btn-default" data-toggle="popover" title="言いくるめ2" data-content="言いくるめについての説明を記載２">言いくるめ: 5</button>
+              <button type="button" class="btn btn-default" data-toggle="popover" title="言いくるめ" data-content="言いくるめについての説明を記載">言いくるめ: 5</button>
+              <button type="button" class="btn btn-default" data-toggle="popover" title="言いくるめ2" data-content="言いくるめについての説明を記載２">言いくるめ: 5</button>
+              <button type="button" class="btn btn-default" data-toggle="popover" title="言いくるめ" data-content="言いくるめについての説明を記載">言いくるめ: 5</button>
+              <button type="button" class="btn btn-default" data-toggle="popover" title="言いくるめ2" data-content="言いくるめについての説明を記載２">言いくるめ: 5</button>
+              <button type="button" class="btn btn-default" data-toggle="popover" title="言いくるめ" data-content="言いくるめについての説明を記載">言いくるめ: 5</button>
+              <button type="button" class="btn btn-default" data-toggle="popover" title="言いくるめ2" data-content="言いくるめについての説明を記載２">言いくるめ: 5</button>
+              <button type="button" class="btn btn-default" data-toggle="popover" title="言いくるめ" data-content="言いくるめについての説明を記載">言いくるめ: 5</button>
+              <button type="button" class="btn btn-default" data-toggle="popover" title="言いくるめ2" data-content="言いくるめについての説明を記載２">言いくるめ: 5</button>
+              <button type="button" class="btn btn-default" data-toggle="popover" title="言いくるめ2" data-content="言いくるめについての説明を記載２">言いくるめ: 5</button>
+              <button type="button" class="btn btn-default" data-toggle="popover" title="言いくるめ" data-content="言いくるめについての説明を記載">言いくるめ: 5</button>
+              <button type="button" class="btn btn-default" data-toggle="popover" title="言いくるめ2" data-content="言いくるめについての説明を記載２">言いくるめ: 5</button>
+              <button type="button" class="btn btn-default" data-toggle="popover" title="言いくるめ" data-content="言いくるめについての説明を記載">言いくるめ: 5</button>
+              <button type="button" class="btn btn-default" data-toggle="popover" title="言いくるめ2" data-content="言いくるめについての説明を記載２">言いくるめ: 5</button>
+              <button type="button" class="btn btn-default" data-toggle="popover" title="言いくるめ" data-content="言いくるめについての説明を記載">言いくるめ: 5</button>
+              <button type="button" class="btn btn-default" data-toggle="popover" title="言いくるめ2" data-content="言いくるめについての説明を記載２">言いくるめ: 5</button>
+              <button type="button" class="btn btn-default" data-toggle="popover" title="言いくるめ" data-content="言いくるめについての説明を記載">言いくるめ: 5</button>
+              <button type="button" class="btn btn-default" data-toggle="popover" title="言いくるめ2" data-content="言いくるめについての説明を記載２">言いくるめ: 5</button>
+            </div>
+          </div>
         </div>
       </div>
+      <!-- jQuery 読み込み -->
+      <script
+        src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <script>
+      $(function () {
+    	  $('[data-toggle="popover"]').popover({
+    		  trigger: 'hover'
+    	  })
+    	})
+						</script>
+      <!--フッター-->
+      <div>フッター表示</div>
     </div>
-    <!--フッター-->
-    <div>フッター表示</div>
-  </div>
-
 </body>
 </html>
