@@ -1,9 +1,11 @@
+<html xmlns:th="http://www.thmeleaf.org">
 <link
   href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
   rel="stylesheet"
   integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
   crossorigin="anonymous">
 <link href=“./bootstrap.css” rel=“stylesheet”>
+<script src="/css/marked/lib/marked.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <style type="text/css">
 </style>
@@ -238,21 +240,22 @@ table.someTd tr td:nth-child(even) {
               <button type="button" class="btn btn-default" data-toggle="popover" title="言いくるめ2" data-content="言いくるめについての説明を記載２">言いくるめ: 5</button>
               <button type="button" class="btn btn-default" data-toggle="popover" title="言いくるめ" data-content="言いくるめについての説明を記載">言いくるめ: 5</button>
               <button type="button" class="btn btn-default" data-toggle="popover" title="言いくるめ2" data-content="言いくるめについての説明を記載２">言いくるめ: 5</button>
-              <button type="button" class="btn btn-default" data-toggle="popover" title="言いくるめ" data-content="言いくるめについての説明を記載">言いくるめ: 5</button>
-              <button type="button" class="btn btn-default" data-toggle="popover" title="言いくるめ2" data-content="言いくるめについての説明を記載２">言いくるめ: 5</button>
-              <button type="button" class="btn btn-default" data-toggle="popover" title="言いくるめ2" data-content="言いくるめについての説明を記載２">言いくるめ: 5</button>
-              <button type="button" class="btn btn-default" data-toggle="popover" title="言いくるめ" data-content="言いくるめについての説明を記載">言いくるめ: 5</button>
-              <button type="button" class="btn btn-default" data-toggle="popover" title="言いくるめ2" data-content="言いくるめについての説明を記載２">言いくるめ: 5</button>
-              <button type="button" class="btn btn-default" data-toggle="popover" title="言いくるめ" data-content="言いくるめについての説明を記載">言いくるめ: 5</button>
-              <button type="button" class="btn btn-default" data-toggle="popover" title="言いくるめ2" data-content="言いくるめについての説明を記載２">言いくるめ: 5</button>
-              <button type="button" class="btn btn-default" data-toggle="popover" title="言いくるめ" data-content="言いくるめについての説明を記載">言いくるめ: 5</button>
-              <button type="button" class="btn btn-default" data-toggle="popover" title="言いくるめ2" data-content="言いくるめについての説明を記載２">言いくるめ: 5</button>
-              <button type="button" class="btn btn-default" data-toggle="popover" title="言いくるめ" data-content="言いくるめについての説明を記載">言いくるめ: 5</button>
-              <button type="button" class="btn btn-default" data-toggle="popover" title="言いくるめ2" data-content="言いくるめについての説明を記載２">言いくるめ: 5</button>
             </div>
           </div>
         </div>
+        <div class="mainDiv">
+          <div class="column">
+            <h2 class="ui header">md形式</h2>
+            <div id="content">表示はサーバ立ち上げないとできない</div>
+            <script th:inline="javascript">
+			/*<![CDATA[*/
+			document.getElementById('content').innerHTML = marked('# test');
+			/*]]>*/
+		</script>
+          </div>
+        </div>
       </div>
+
       <!-- jQuery 読み込み -->
       <script
         src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -263,9 +266,10 @@ table.someTd tr td:nth-child(even) {
     		  trigger: 'hover'
     	  })
     	})
-						</script>
+	  </script>
       <!--フッター-->
       <div>フッター表示</div>
     </div>
+  </div>
 </body>
 </html>
