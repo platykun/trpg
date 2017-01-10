@@ -89,6 +89,26 @@ h1.header {
 .list-group-item:last-child{
 	border-radius: 0px;
 }
+.detailImg {
+	float: left;
+	width: 23%;
+	margin-right: 2%;
+}
+
+.detailImgTable {
+	float: left;
+	width: 73%;
+	margin-right: 2%
+}
+
+table.someTd tr td:nth-child(odd) {
+	text-align: right;
+	vertical-align: middle;
+}
+
+table.someTd tr td:nth-child(even) {
+	text-align: left;
+}
 
 form {
     margin-bottom: 0px;

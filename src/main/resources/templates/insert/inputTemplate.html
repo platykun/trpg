@@ -1,0 +1,296 @@
+<html xmlns:th="http://www.thmeleaf.org">
+<link
+  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+  rel="stylesheet"
+  integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+  crossorigin="anonymous">
+<link href=“./bootstrap.css” rel=“stylesheet”>
+<script src="/css/marked/lib/marked.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<style type="text/css">
+</style>
+<head>
+<title>Home</title>
+<style type="text/css">
+.mainText {
+	float: left;
+	width: calc(100% - 200px);
+}
+
+.mainText *:first-child {
+	margin-top: 0px;
+}
+
+.bodyDiv:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+.mainDiv {
+	background-color: #FFFFFF;
+	border-radius: 7px;
+	margin: 5px 5px 5px 5px;
+	padding: 5px 10px 20px 10px;
+	overflow: hidden;
+	border-width: 2px;
+}
+
+h2.ui.header {
+	margin: 10px 10px 10px 10px;
+	border-left: solid 12px rgb(51, 122, 183);
+	padding-left: 5px;
+}
+
+h2.ui.header:first-child {
+	margin-top: 5px;
+}
+
+button.oneLeft {
+	margin: 10px 5px 10px 5%;
+	float: left;
+}
+
+button.oneRight {
+	margin: 10px 5% 10px 5px;
+	float: right;
+}
+
+table.simple tr td:nth-child(1) {
+	text-align: right;
+	vertical-align: middle;
+}
+
+table.simple tr td:nth-child(2) {
+	text-align: left;
+}
+
+body {
+	background: rgb(240, 250, 250);
+	color: #323232
+}
+
+.title.header {
+	background: rgb(51, 122, 183);
+	margin-bottom: 12px;
+}
+
+h1.header {
+	color: white;
+	width: 80%;
+}
+
+.sidebar {
+	float: left;
+	width: 200px;
+	background-color: #CDDC39;
+	color: white;
+	border-radius: 7px;
+}
+
+.list-group-item:first-child {
+	border-top-right-radius: 7px;
+	border-top-left-radius: 7px;
+}
+
+.list-group-item:last-child {
+	border-bottom-right-radius: 7px;
+	border-bottom-left-radius: 7px;
+}
+
+.detailImg {
+	float: left;
+	width: 23%;
+	margin-right: 2%;
+}
+
+.detailImgTable {
+	float: left;
+	width: 73%;
+	margin-right: 2%
+}
+
+table.someTd tr td:nth-child(odd) {
+	text-align: right;
+	vertical-align: middle;
+}
+
+table.someTd tr td:nth-child(even) {
+	text-align: left;
+}
+</style>
+</head>
+<body>
+  <!--ヘッダー項目-->
+  <div class="title header">
+    <div class="container">
+      <h1 class="header">タイトル表示</h1>
+      サブ項目
+    </div>
+  </div>
+  <div class="ui container">
+    <div class="bodyDiv">
+      <!--サイドメニュー-->
+      <div class="list-group sidebar">
+        <button type="button"
+          class="list-group-item list-group-item-action">サイドメニュー</button>
+        <button type="button"
+          class="list-group-item list-group-item-action">サイドメニュー</button>
+        <button type="button"
+          class="list-group-item list-group-item-action">サイドメニュー</button>
+        <button type="button"
+          class="list-group-item list-group-item-action disabled">サイドメニュー</button>
+      </div>
+      <!--本体-->
+      <div class="mainText">
+        <!--検索項目-->
+        <div class="mainDiv">
+          <h2 class="ui header">詳細一列</h2>
+          <div class="column">
+            <table class="table simple">
+              <tr>
+                <td>詳細項目1:</td>
+                <td>内容</td>
+              </tr>
+              <tr>
+                <td>詳細項目2:</td>
+                <td>内容</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="mainDiv">
+          <div class="column">
+            <h2 class="ui header">詳細画像付き</h2>
+            <div class="column">
+              <img class="detailImg"
+                src="https://placehold.jp/150x150.png" />
+              <table class="table simple detailImgTable">
+                <tr>
+                  <td>詳細項目1:</td>
+                  <td>内容</td>
+                </tr>
+                <tr>
+                  <td>詳細項目2:</td>
+                  <td>内容</td>
+                </tr>
+                <tr>
+                  <td>詳細項目3:</td>
+                  <td>内容</td>
+                </tr>
+                <tr>
+                  <td>詳細項目1:</td>
+                  <td>内容</td>
+                </tr>
+                <tr>
+                  <td>詳細項目2:</td>
+                  <td>内容</td>
+                </tr>
+                <tr>
+                  <td>詳細項目3:</td>
+                  <td>内容</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="mainDiv">
+          <div class="column">
+            <h2 class="ui header">複数列リスト</h2>
+            <div class="column">
+              <table class="table someTd">
+                <tr>
+                  <td>詳細項目1:</td>
+                  <td>内容</td>
+                  <td>詳細項目1:</td>
+                  <td>内容</td>
+                  <td>詳細項目1:</td>
+                  <td>内容</td>
+                </tr>
+                <tr>
+                  <td>詳細項目1:</td>
+                  <td>内容</td>
+                  <td>詳細項目1:</td>
+                  <td>内容</td>
+                  <td>詳細項目1:</td>
+                  <td>内容</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="mainDiv">
+          <div class="column">
+            <h2 class="ui header">大量項目</h2>
+            <div class="column">
+              
+              <button type="button" class="btn btn-default" data-toggle="popover" title="言いくるめ2" data-content="言いくるめについての説明を記載２">言いくるめ: 5</button>
+              <button type="button" class="btn btn-default" data-toggle="popover" title="言いくるめ" data-content="言いくるめについての説明を記載">言いくるめ: 5</button>
+              <button type="button" class="btn btn-default" data-toggle="popover" title="言いくるめ2" data-content="言いくるめについての説明を記載２">言いくるめ: 5</button>
+              <button type="button" class="btn btn-default" data-toggle="popover" title="言いくるめ" data-content="言いくるめについての説明を記載">言いくるめ: 5</button>
+              <button type="button" class="btn btn-default" data-toggle="popover" title="言いくるめ2" data-content="言いくるめについての説明を記載２">言いくるめ: 5</button>
+              <button type="button" class="btn btn-default" data-toggle="popover" title="言いくるめ" data-content="言いくるめについての説明を記載">言いくるめ: 5</button>
+              <button type="button" class="btn btn-default" data-toggle="popover" title="言いくるめ2" data-content="言いくるめについての説明を記載２">言いくるめ: 5</button>
+              <button type="button" class="btn btn-default" data-toggle="popover" title="言いくるめ" data-content="言いくるめについての説明を記載">言いくるめ: 5</button>
+              <button type="button" class="btn btn-default" data-toggle="popover" title="言いくるめ2" data-content="言いくるめについての説明を記載２">言いくるめ: 5</button>
+              <button type="button" class="btn btn-default" data-toggle="popover" title="言いくるめ2" data-content="言いくるめについての説明を記載２">言いくるめ: 5</button>
+              <button type="button" class="btn btn-default" data-toggle="popover" title="言いくるめ" data-content="言いくるめについての説明を記載">言いくるめ: 5</button>
+              <button type="button" class="btn btn-default" data-toggle="popover" title="言いくるめ2" data-content="言いくるめについての説明を記載２">言いくるめ: 5</button>
+              <button type="button" class="btn btn-default" data-toggle="popover" title="言いくるめ" data-content="言いくるめについての説明を記載">言いくるめ: 5</button>
+              <button type="button" class="btn btn-default" data-toggle="popover" title="言いくるめ2" data-content="言いくるめについての説明を記載２">言いくるめ: 5</button>
+              <button type="button" class="btn btn-default" data-toggle="popover" title="言いくるめ" data-content="言いくるめについての説明を記載">言いくるめ: 5</button>
+              <button type="button" class="btn btn-default" data-toggle="popover" title="言いくるめ2" data-content="言いくるめについての説明を記載２">言いくるめ: 5</button>
+            </div>
+          </div>
+        </div>
+        <div class="mainDiv">
+          <div class="column">
+            <h2 class="ui header">大量項目（ボタン不使用)</h2>
+            <div class="col-lg-2 col-sm-3"><p>言いくるめ：25(5)</p></div>
+            <div class="col-lg-2 col-sm-3"><p>言いくるめ：25(5)</p></div>
+            <div class="col-lg-2 col-sm-3"><p>言いくるめ：25(5)</p></div>
+            <div class="col-lg-2 col-sm-3"><p>言いくるめ：25(5)</p></div>
+            <div class="col-lg-2 col-sm-3"><p>言いくるめ：25(5)</p></div>
+            <div class="col-lg-2 col-sm-3"><p>言いくるめ：25(5)</p></div>
+            <div class="col-lg-2 col-sm-3"><p>言いくるめ：25(5)</p></div>
+            <div class="col-lg-2 col-sm-3"><p>言いくるめ：25(5)</p></div>      
+            <div class="col-lg-2 col-sm-3"><p>言いくるめ：25(5)</p></div>
+            <div class="col-lg-2 col-sm-3"><p>言いくるめ：25(5)</p></div>
+            <div class="col-lg-2 col-sm-3"><p>言いくるめ：25(5)</p></div>
+            <div class="col-lg-2 col-sm-3"><p>言いくるめ：25(5)</p></div>
+            <div class="col-lg-2 col-sm-3"><p>言いくるめ：25(5)</p></div>
+            <div class="col-lg-2 col-sm-3"><p>言いくるめ：25(5)</p></div>
+            <div class="col-lg-2 col-sm-3"><p>言いくるめ：25(5)</p></div>
+            <div class="col-lg-2 col-sm-3"><p>言いくるめ：25(5)</p></div>
+          </div>
+        </div>
+        <div class="mainDiv">
+          <div class="column">
+            <h2 class="ui header">md形式</h2>
+            <div id="content">表示はサーバ立ち上げないとできない</div>
+            <script th:inline="javascript">
+			/*<![CDATA[*/
+			document.getElementById('content').innerHTML = marked('# test');
+			/*]]>*/
+		</script>
+          </div>
+        </div>
+      </div>
+
+      <!-- jQuery 読み込み -->
+      <script
+        src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <script>
+      $(function () {
+    	  $('[data-toggle="popover"]').popover({
+    		  trigger: 'hover'
+    	  })
+    	})
+	  </script>
+      <!--フッター-->
+      <div>フッター表示</div>
+    </div>
+  </div>
+</body>
+</html>
