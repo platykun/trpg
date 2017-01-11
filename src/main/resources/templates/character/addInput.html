@@ -1,67 +1,216 @@
 <html xmlns:th="http://www.thmeleaf.org">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.min.css"
-	integrity="sha256-iK7AZM7Xa42iuURdMdo1sp38ld/JJ3fDtS0523GKqdk="
-	crossorigin="anonymous" />
-
+<link
+  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+  rel="stylesheet"
+  integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+  crossorigin="anonymous" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <script src="/css/marked/lib/marked.js"></script>
-<style type="text/css">
-body {
-	background-color: #FFFFFF;
-}
-
-.main.container {
-	margin-top: 4em;
-}
-</style>
 <head>
 <title>Home</title>
+<link href="/css/custom.css" rel="stylesheet" type="text/css"
+  media="all" />
 </head>
 <body>
-	<!-- 上部ナビゲーションメニュー -->
-	<div th:include="common/header :: header('キャラクター新規追加画面')"></div>
+  <div th:include="common/header_remake"></div>
+  <div class="container">
+    <div class="bodyDiv">
+      <!--サイドメニュー-->
+      <div th:include="common/sideMenu"></div>
+      <!--本体-->
+      <form th:action="@{/character/add/confirm}"
+        th:object="${character}">
+        <div class="mainText">
+          <div class="mainDiv">
+            <h2 class="ui header">キャラクター追加</h2>
+            <div class="column">キャラクター追加画面です。</div>
+          </div>
+          <div class="mainDiv">
+            <h2 class="ui header">基礎ステータス</h2>
+            <div class="column">
+              <img class="detailImg"
+                src="https://placehold.jp/150x150.png" />
+              <table class="table simple detailImgTable">
+                <tr>
+                  <td>キャラクターID</td>
+                  <td><input type="text" class="form-control"
+                    th:field="*{id}" /></td>
+                </tr>
+                <tr>
+                  <td>名前</td>
+                  <td><input type="text" class="form-control"
+                    th:field="*{name}" /></td>
+                </tr>
+                <tr>
+                  <td>学校・学位</td>
+                  <td><input type="text" class="form-control"
+                    th:field="*{school}" /></td>
+                </tr>
+                <tr>
+                  <td>出身</td>
+                  <td><input type="text" class="form-control"
+                    th:field="*{comeFrom}" /></td>
+                </tr>
+                <tr>
+                  <td>精神的な障害</td>
+                  <td><input type="text" class="form-control"
+                    th:field="*{mentalDisorder}" /></td>
+                </tr>
+                <tr>
+                  <td>性別</td>
+                  <td><input type="text" class="form-control"
+                    th:field="*{sex}" /></td>
+                </tr>
+                <tr>
+                  <td>年齢</td>
+                  <td><input type="text" class="form-control"
+                    th:field="*{age}" /></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div class="mainDiv">
+            <h2 class="ui header">能力値および能力ロール</h2>
+            <div class="column">
+              <table class="table someId">
+                <tr>
+                  <td class="col-lg-2">筋力(STR)</td>
+                  <td class="col-lg-1"><input id="str"
+                    class="form-control abilityText" type="text"
+                    th:field="*{str}" placeholder="3D6" /></td>
+                  <td class="col-lg-2">敏捷性(DEX)</td>
+                  <td class="col-lg-1"><input id="dex"
+                    class="form-control abilityText" type="text"
+                    th:field="*{dex}" placeholder="3D6" /></td>
+                  <td class="col-lg-2">知性(INT)</td>
+                  <td class="col-lg-1"><input id="int"
+                    class="form-control abilityText" type="text"
+                    th:field="*{intelligence}" placeholder="2D6＋6" /></td>
+                  <td class="col-lg-2">アイデア</td>
+                  <td class="col-lg-2"><p id="idea">INT*5</p></td>
+                </tr>
+                <tr>
+                  <td class="col-lg-2">体力(CON)</td>
+                  <td class="col-lg-1"><input id="con"
+                    class="form-control abilityText" type="text"
+                    th:field="*{con}" placeholder="3D6" /></td>
+                  <td class="col-lg-2">外見(APP)</td>
+                  <td class="col-lg-1"><input id="app"
+                    class="form-control abilityText" type="text"
+                    th:field="*{app}" placeholder="3D6" /></td>
+                  <td class="col-lg-2">精神力(POW)</td>
+                  <td class="col-lg-1"><input id="pow"
+                    class="form-control abilityText" type="text"
+                    th:field="*{pow}" placeholder="3D6" /></td>
+                  <td class="col-lg-2">幸運</td>
+                  <td class="col-lg-1"><p id="fortune">POW*5</p></td>
+                </tr>
+                <tr>
+                  <td class="col-lg-2">体格(SIZ)</td>
+                  <td class="col-lg-1"><input id="siz"
+                    class="form-control abilityText" type="text"
+                    th:field="*{siz}" placeholder="2D6＋6" /></td>
+                  <td class="col-lg-2">正気度(SAN)</td>
+                  <td class="col-lg-1"><p id="san">POW×5 *</p></td>
+                  <td class="col-lg-2">精神力(EDU)</td>
+                  <td class="col-lg-1"><input id="edu"
+                    class="form-control abilityText" type="text"
+                    th:field="*{edu}" placeholder="3D6+3" /></td>
+                  <td class="col-lg-2">知識</td>
+                  <td class="col-lg-1"><p id="knowledge">EDU*5</p></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div class="mainDiv">
+            <h2 class="ui header">ステータス</h2>
+            <div class="column">
+              <table class="table simple">
+                <tr>
+                  <td class="col-lg-6">正気度</td>
+                  <td class="col-lg-6"><p id="sanity"></p></td>
+                </tr>
+                <tr>
+                  <td>耐久力</td>
+                  <td><p id="durability"></p></td>
+                </tr>
+                <tr>
+                  <td>マジックポイント</td>
+                  <td><p id="mp"></p></td>
+                </tr>
+                <tr>
+                  <td>ダメージボーナス</td>
+                  <td><p id="damageBonus"></p></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div class="mainDiv">
+            <h2 class="ui header">職業</h2>
+            <div class="column">
+              <div class="ui right input">
+                <input type="text" placeholder="職業を入力"
+                  class="form-control" />
+                <div class="dropdown">
 
-	<div class="ui main text container">
-		<P>キャラクター新規追加画面です</P>
-	</div>
+                  <!-- ここが表示されるボタン <a>タグでもOK -->
+                  <button class="btn btn-default dropdown-toggle"
+                    type="button" id="dropdownMenu1"
+                    data-toggle="dropdown">
+                    Dropdown <span class="caret"></span>
+                  </button>
+                  <!-- ボタンここまで -->
 
-	<form th:action="@{/character/add/confirm}" th:object="${character}">
+                  <!-- ここはボタンを押すと表示されるリスト -->
+                  <ul class="dropdown-menu" role="menu"
+                    aria-labelledby="dropdownMenu1">
+                    <li role="presentation"><a role="menuitem"
+                      tabindex="-1" href="#">Action</a></li>
+                    <li role="presentation"><a role="menuitem"
+                      tabindex="-1" href="#">Another action</a></li>
+                    <li role="presentation"><a role="menuitem"
+                      tabindex="-1" href="#">Something else here</a></li>
+                    <li role="presentation" class="divider"></li>
+                    <li role="presentation"><a role="menuitem"
+                      tabindex="-1" href="#">Separated link</a></li>
+                  </ul>
+                  <!-- リストここまで -->
 
-		<table class="ui celled table">
-			<tr>
-				<td>キャラクターID</td>
-				<td><input type="text" th:field="*{id}" /></td>
-			</tr>
-			<tr>
-				<td>名前</td>
-				<td><input type="text" th:field="*{name}" /></td>
-			</tr>
-			<tr>
-				<td>学校・学位</td>
-				<td><input type="text" th:field="*{school}" /></td>
-			</tr>
-			<tr>
-				<td>出身</td>
-				<td><input type="text" th:field="*{comeFrom}" /></td>
-			</tr>
-			<tr>
-				<td>精神的な障害</td>
-				<td><input type="text" th:field="*{mentalDisorder}" /></td>
-			</tr>
-			<tr>
-				<td>性別</td>
-				<td><input type="text" th:field="*{sex}" /></td>
-			</tr>
-			<tr>
-				<td>年齢</td>
-				<td><input type="text" th:field="*{age}" /></td>
-			</tr>
-		</table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mainDiv">
+            <div class="column">
+              <button class="btn btn-primary oneRight" type="submit">
+                作成</button>
+            </div>
+          </div>
+          <div class="mainDiv">
+            <h2 class="ui header">キャラクター追加</h2>
+            <div class="column">キャラクター追加画面です。</div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!-- jQuery 読み込み -->
+  <script
+    src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <!-- bootstrap-dropdown.js 読み込み -->
+  <script
+    src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-
-		<button class="ui teal button" type="submit">作成</button>
-	</form>
+  <!-- JavaScript読み込み -->
+  <script type="text/javascript" src="/js/rollDice.js"></script>
+  <script type="text/javascript" src="/js/characterInput.js"></script>
+  <script type="text/javascript">
+			document.addEventListener('DOMContentLoaded', function() {
+				setRelatedParam();
+				createJobSelect();
+				createSkillSelect();
+			})
+		</script>
 
 </body>
 </html>
