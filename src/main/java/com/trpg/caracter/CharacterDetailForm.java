@@ -18,33 +18,35 @@ public class CharacterDetailForm {
 	 * 引数がない場合はデフォルト値を設定する。
 	 */
 	public CharacterDetailForm() {
+		setDefaultValue();
 	}
+
 	/** キャラクターID */
 	private int id;
 
-	////基礎プロフィール////
+	//// 基礎プロフィール////
 	/** 名前 */
 	private String name;
-	
+
 	/** 学校・学位 */
 	private String school;
-	
+
 	/** 出身 */
 	private String comeFrom;
-	
+
 	/** 精神的な障害 */
 	private String mentalDisorder;
-	
+
 	/** 性別 */
 	private String sex;
-	
+
 	/** 年齢 */
 	private int age;
-	
-	////能力値////
+
+	//// 能力値////
 	/** 筋力 */
 	private int str;
-	/** 知性 ※intがjavaの予約語のためintelligenceとして実装　*/
+	/** 知性 ※intがjavaの予約語のためintelligenceとして実装 */
 	private int intelligence;
 	/** 外見 */
 	private int app;
@@ -59,15 +61,15 @@ public class CharacterDetailForm {
 	/** 教養 */
 	private int edu;
 
-	////ポイント////
+	//// ポイント////
 	/** 正気度ポイント */
 	private int sanityPoint;
 	/** マジック・ポイント */
 	private int magicPoint;
 	/** 耐久力 */
 	private int durability;
-	
-	////技能////
+
+	//// 技能////
 	/** 言いくるめ */
 	private int dictionary;
 	/** 医学 */
@@ -78,7 +80,7 @@ public class CharacterDetailForm {
 	private int firstAid;
 	/** オカルト */
 	private int occult;
-	/**  回避 */
+	/** 回避 */
 	private int dodge;
 	/** 化学 */
 	private int chemistry;
@@ -216,4 +218,81 @@ public class CharacterDetailForm {
 	private int firearm5;
 	/** 火器6 */
 	private int firearm6;
+
+	private void setDefaultValue() {
+		this.dictionary = 5;
+		this.medicine = 5;
+		this.driveCarriage = 20;
+		this.firstAid = 30;
+		this.occult = 5;
+		this.dodge = 0;
+		this.chemistry = 1;
+		this.locksmith = 1;
+		this.conceal = 15;
+		this.hide = 10;
+		this.mechanicalRepair = 20;
+		this.listen = 25;
+		this.cthulhuMythos = 0;
+		this.art = 5;
+		this.accounting = 10;
+		this.archaeology = 1;
+		this.computer = 1;
+		this.sneak = 10;
+		this.photography = 10;
+		this.operateHvyMachine = 1;
+		this.ride = 5;
+		this.creditRating = 15;
+		this.psychology = 5;
+		this.anthropology = 1;
+		this.swim = 25;
+		this.production1 = 5;
+		this.production2 = 5;
+		this.production3 = 5;
+		this.psychoanalysis = 1;
+		this.biology = 1;
+		this.persuade = 15;
+		this.pilot1 = 1;
+		this.pilot2 = 1;
+		this.pilot3 = 1;
+		this.geology = 1;
+		this.jump = 25;
+		this.pursuit = 10;
+		this.electricalRepair = 10;
+		this.electronics = 1;
+		this.astronomy = 1;
+		this.throwSomething = 25;
+		this.climb = 40;
+		this.library = 25;
+		this.navigate = 10;
+		this.priceCut = 5;
+		this.naturalHistory = 10;
+		this.physics = 1;
+		this.disguise = 1;
+		this.law = 5;
+		this.otherLanguage1 = 1;
+		this.otherLanguage2 = 1;
+		this.ownLanguage = 0;
+		this.martial = 1;
+		this.spotHidden = 25;
+		this.pharmacy = 1;
+		this.history1 = 20;
+		this.history2 = 20;
+		this.gun = 20;
+		this.subMachineGun = 15;
+		this.shotgun = 30;
+		this.machineGun = 15;
+		this.rifle = 25;
+		this.kick = 25;
+		this.assembly = 25;
+		this.first = 50;
+		this.headButt = 10;
+		this.handWeapon1 = 0;
+		this.handWeapon2 = 0;
+		this.firearm1 = 0;
+		this.firearm2 = 0;
+		this.firearm3 = 0;
+		this.firearm4 = 0;
+		this.firearm5 = 0;
+		this.firearm6 = 0;
+	}
 }

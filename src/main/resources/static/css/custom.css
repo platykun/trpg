@@ -3,7 +3,7 @@
 	width: calc(100% - 200px);
 }
 
-.mainText *:first-child {
+.mainText div:first-child {
 	margin-top: 0px;
 }
 

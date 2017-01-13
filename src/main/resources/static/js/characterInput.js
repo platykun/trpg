@@ -1,78 +1,78 @@
 var skillList = [
-	{id:'0', name:'-', trId:''},
-	{id:'1', name:'言いくるめ', trId:'dictionaryTr'},
-	{id:'2', name:'医学', trId:'medicineTr'},
-	{id:'3', name:'運転（自動車）', trId:'driveCarriageTr'},
-	{id:'4', name:'応急手当', trId:'firstAidTr'},
-	{id:'5', name:'オカルト', trId:'occultTr'},
-	{id:'6', name:'回避', trId:'dodgeTr'},
-	{id:'7', name:'化学', trId:'chemistryTr'},
-	{id:'8', name:'鍵開け', trId:'locksmithTr'},
-	{id:'9', name:'隠す', trId:'concealTr'},
-	{id:'10', name:'隠れる', trId:'hideTr'},
-	{id:'11', name:'機械修理', trId:'mechanicalRepairTr'},
-	{id:'12', name:'聞き耳', trId:'listenTr'},
-	{id:'13', name:'クトゥルフ神話', trId:'cthulhuMythosTr'},
-	{id:'14', name:'芸術', trId:'artTr'},
-	{id:'15', name:'経理', trId:'accountingTr'},
-	{id:'16', name:'考古学', trId:'archaeologyTr'},
-	{id:'17', name:'コンピューター', trId:'computerTr'},
-	{id:'18', name:'忍び歩き', trId:'sneakTr'},
-	{id:'19', name:'写真術', trId:'photographyTr'},
-	{id:'20', name:'重機械操作', trId:'operateHvyMachineTr'},
-	{id:'21', name:'乗馬', trId:'rideTr'},
-	{id:'22', name:'信用', trId:'creditRatingTr'},
-	{id:'23', name:'心理学', trId:'psychologyTr'},
-	{id:'24', name:'人類学', trId:'anthropologyTr'},
-	{id:'25', name:'水泳', trId:'swimTr'},
-	{id:'26', name:'制作1', trId:'production1Tr'},
-	{id:'27', name:'制作2', trId:'production2Tr'},
-	{id:'28', name:'制作3', trId:'production3Tr'},
-	{id:'29', name:'精神分析', trId:'psychoanalysisTr'},
-	{id:'30', name:'生物学', trId:'biologyTr'},
-	{id:'31', name:'説得', trId:'persuadeTr'},
-	{id:'32', name:'操縦1', trId:'pilot1Tr'},
-	{id:'33', name:'操縦2', trId:'pilot2Tr'},
-	{id:'34', name:'操縦3', trId:'pilot3Tr'},
-	{id:'35', name:'地質学', trId:'geologyTr'},
-	{id:'36', name:'跳躍', trId:'jumpTr'},
-	{id:'37', name:'追跡', trId:'pursuitTr'},
-	{id:'38', name:'電気修理', trId:'electricalRepairTr'},
-	{id:'39', name:'電子工学', trId:'electronicsTr'},
-	{id:'40', name:'天文学', trId:'astronomyTr'},
-	{id:'41', name:'投擲', trId:'throwSomethingTr'},
-	{id:'42', name:'登攀', trId:'climbTr'},
-	{id:'43', name:'図書館', trId:'libraryTr'},
-	{id:'44', name:'ナビゲート', trId:'navigateTr'},
-	{id:'45', name:'値切り', trId:'priceCutTr'},
-	{id:'46', name:'博物学', trId:'naturalHistoryTr'},
-	{id:'47', name:'物理学', trId:'physicsTr'},
-	{id:'48', name:'変装', trId:'disguiseTr'},
-	{id:'49', name:'法律', trId:'lawTr'},
-	{id:'50', name:'他の言語1', trId:'otherLanguage1Tr'},
-	{id:'51', name:'他の言語2', trId:'otherLanguage2Tr'},
-	{id:'52', name:'母国語', trId:'ownLanguageTr'},
-	{id:'53', name:'ﾏｰｼｬﾙｱｰﾂ', trId:'martialTr'},
-	{id:'54', name:'目星', trId:'spotHiddenTr'},
-	{id:'55', name:'薬学', trId:'pharmacyTr'},
-	{id:'56', name:'歴史1', trId:'history1Tr'},
-	{id:'57', name:'歴史2', trId:'history2Tr'},
-	{id:'58', name:'サブマシンガン', trId:'subMachineGunTr'},
-	{id:'59', name:'ショットガン', trId:'shotgunTr'},
-	{id:'60', name:'マシンガン', trId:'machineGunTr'},
-	{id:'61', name:'ライフル', trId:'rifleTr'},
-	{id:'62', name:'キック', trId:'kickTr'},
-	{id:'63', name:'組み付き', trId:'assemblyTr'},
-	{id:'64', name:'こぶし', trId:'firstTr'},
-	{id:'65', name:'頭突き', trId:'headButtTr'},
-	{id:'66', name:'近接戦1', trId:'handWeapon1Tr'},
-	{id:'67', name:'近接戦2', trId:'handWeapon2Tr'},
-	{id:'68', name:'火器1', trId:'firearm1Tr'},
-	{id:'69', name:'火器2', trId:'firearm2Tr'},
-	{id:'70', name:'火器3', trId:'firearm3Tr'},
-	{id:'71', name:'火器4', trId:'firearm4Tr'},
-	{id:'72', name:'火器5', trId:'firearm5Tr'},
-	{id:'73', name:'火器6', trId:'firearm6Tr'}
+	{id:'0', name:'-', id:''},
+	{id:'1', name:'言いくるめ', id:'dictionary'},
+	{id:'2', name:'医学', id:'medicine'},
+	{id:'3', name:'運転（自動車）', id:'driveCarriage'},
+	{id:'4', name:'応急手当', id:'firstAid'},
+	{id:'5', name:'オカルト', id:'occult'},
+	{id:'6', name:'回避', id:'dodge'},
+	{id:'7', name:'化学', id:'chemistry'},
+	{id:'8', name:'鍵開け', id:'locksmith'},
+	{id:'9', name:'隠す', id:'conceal'},
+	{id:'10', name:'隠れる', id:'hide'},
+	{id:'11', name:'機械修理', id:'mechanicalRepair'},
+	{id:'12', name:'聞き耳', id:'listen'},
+	{id:'13', name:'クトゥルフ神話', id:'cthulhuMythos'},
+	{id:'14', name:'芸術', id:'art'},
+	{id:'15', name:'経理', id:'accounting'},
+	{id:'16', name:'考古学', id:'archaeology'},
+	{id:'17', name:'コンピューター', id:'computer'},
+	{id:'18', name:'忍び歩き', id:'sneak'},
+	{id:'19', name:'写真術', id:'photography'},
+	{id:'20', name:'重機械操作', id:'operateHvyMachine'},
+	{id:'21', name:'乗馬', id:'ride'},
+	{id:'22', name:'信用', id:'creditRating'},
+	{id:'23', name:'心理学', id:'psychology'},
+	{id:'24', name:'人類学', id:'anthropology'},
+	{id:'25', name:'水泳', id:'swim'},
+	{id:'26', name:'制作1', id:'production1'},
+	{id:'27', name:'制作2', id:'production2'},
+	{id:'28', name:'制作3', id:'production3'},
+	{id:'29', name:'精神分析', id:'psychoanalysis'},
+	{id:'30', name:'生物学', id:'biology'},
+	{id:'31', name:'説得', id:'persuade'},
+	{id:'32', name:'操縦1', id:'pilot1'},
+	{id:'33', name:'操縦2', id:'pilot2'},
+	{id:'34', name:'操縦3', id:'pilot3'},
+	{id:'35', name:'地質学', id:'geology'},
+	{id:'36', name:'跳躍', id:'jump'},
+	{id:'37', name:'追跡', id:'pursuit'},
+	{id:'38', name:'電気修理', id:'electricalRepair'},
+	{id:'39', name:'電子工学', id:'electronics'},
+	{id:'40', name:'天文学', id:'astronomy'},
+	{id:'41', name:'投擲', id:'throwSomething'},
+	{id:'42', name:'登攀', id:'climb'},
+	{id:'43', name:'図書館', id:'library'},
+	{id:'44', name:'ナビゲート', id:'navigate'},
+	{id:'45', name:'値切り', id:'priceCut'},
+	{id:'46', name:'博物学', id:'naturalHistory'},
+	{id:'47', name:'物理学', id:'physics'},
+	{id:'48', name:'変装', id:'disguise'},
+	{id:'49', name:'法律', id:'law'},
+	{id:'50', name:'他の言語1', id:'otherLanguage1'},
+	{id:'51', name:'他の言語2', id:'otherLanguage2'},
+	{id:'52', name:'母国語', id:'ownLanguage'},
+	{id:'53', name:'ﾏｰｼｬﾙｱｰﾂ', id:'martial'},
+	{id:'54', name:'目星', id:'spotHidden'},
+	{id:'55', name:'薬学', id:'pharmacy'},
+	{id:'56', name:'歴史1', id:'history1'},
+	{id:'57', name:'歴史2', id:'history2'},
+	{id:'58', name:'サブマシンガン', id:'subMachineGun'},
+	{id:'59', name:'ショットガン', id:'shotgun'},
+	{id:'60', name:'マシンガン', id:'machineGun'},
+	{id:'61', name:'ライフル', id:'rifle'},
+	{id:'62', name:'キック', id:'kick'},
+	{id:'63', name:'組み付き', id:'assembly'},
+	{id:'64', name:'こぶし', id:'first'},
+	{id:'65', name:'頭突き', id:'headButt'},
+	{id:'66', name:'近接戦1', id:'handWeapon1'},
+	{id:'67', name:'近接戦2', id:'handWeapon2'},
+	{id:'68', name:'火器1', id:'firearm1'},
+	{id:'69', name:'火器2', id:'firearm2'},
+	{id:'70', name:'火器3', id:'firearm3'},
+	{id:'71', name:'火器4', id:'firearm4'},
+	{id:'72', name:'火器5', id:'firearm5'},
+	{id:'73', name:'火器6', id:'firearm6'}
 ];
 var jobSkillList = [
     {id:0, name:'-',skills:9, s1:0, s2:0, s3:0, s4:0, s5:0, s6:0, s7:0, s8:0,s9:0, comment:''},
@@ -233,17 +233,19 @@ function updateSkillBackgroundColor(value){
     var element;
     for(var i = 0,len = skillList.length;i < len;i++){
     	if(value == skillList[i].name){
-    		element = document.getElementById(skillList[i].trId);
+    		element = document.getElementById(skillList[i].id);
+    		element.parentNode.parentNode.childNodes[1].classList.add('bg-warning');
+    		element.classList.remove('beginner');
+    		element.classList.add('expert');
     	}
     }
-    element.style.backgroundColor='Yellow';
-    element.childNodes.item(3).childNodes.item(0).className = "skillText expert";
 }
 function clearSkillBackgroundColor(){
 	for(var i = 0,len = skillList.length;i < len;i++){
-		if(skillList[i].trId !=''){
-			document.getElementById(skillList[i].trId).style.backgroundColor='';
-			document.getElementById(skillList[i].trId).childNodes.item(3).childNodes.item(0).className = "skillText beginner";			
+		if(skillList[i].id !=''){
+			document.getElementById(skillList[i].id).parentNode.parentNode.childNodes[1].classList.remove('bg-warning');		
+			document.getElementById(skillList[i].id).classList.remove('expert');
+			document.getElementById(skillList[i].id).classList.add('beginner');
 		}
     }
 }
@@ -281,25 +283,25 @@ function updateSkillProgress(){
 	var eMax = parseInt(document.getElementById("expertMaxPoint").textContent);
 	var eSet = parseInt(document.getElementById("expertSetPoint").textContent);
 	var eProgress = parseInt((100 * eSet) / eMax);
-	if(eProgress == 100){
-		document.getElementById("expertProgressRoot").className = "ui progress success"
-	}else if(eProgress > 100){
-		document.getElementById("expertProgressRoot").className = "ui progress error"
-	}else{
-		document.getElementById("expertProgressRoot").className = "ui progress warning"		
-	}
-	document.getElementById("expertProgress").style.width = eProgress + "%";
+//	if(eProgress == 100){
+//		document.getElementById("expertProgressRoot").className = "ui progress success"
+//	}else if(eProgress > 100){
+//		document.getElementById("expertProgressRoot").className = "ui progress error"
+//	}else{
+//		document.getElementById("expertProgressRoot").className = "ui progress warning"		
+//	}
+	document.getElementById("expert-progress-bar").style.width = eProgress + "%";
 	var bMax = parseInt(document.getElementById("beginnerMaxPoint").textContent);
 	var bSet = parseInt(document.getElementById("beginnerSetPoint").textContent);
 	var bProgress = parseInt((100 * bSet) / bMax);
-	if(bProgress == 100){
-		document.getElementById("beginnerProgressRoot").className = "ui progress success"
-	}else if(bProgress > 100){
-		document.getElementById("beginnerProgressRoot").className = "ui progress error"
-	}else{
-		document.getElementById("beginnerProgressRoot").className = "ui progress warning"		
-	}
-	document.getElementById("beginnerProgress").style.width = bProgress + "%";
+//	if(bProgress == 100){
+//		document.getElementById("beginnerProgressRoot").className = "ui progress success"
+//	}else if(bProgress > 100){
+//		document.getElementById("beginnerProgressRoot").className = "ui progress error"
+//	}else{
+//		document.getElementById("beginnerProgressRoot").className = "ui progress warning"		
+//	}
+	document.getElementById("beginner-progress-bar").style.width = bProgress + "%";
 }
 
 
@@ -317,6 +319,7 @@ $('#edu').keyup(function() {
 	setExpertMaxPoint();
 	updateSkillProgress();
 	setOwnLanguage();
+	updateSkillProgress();
 });
 $('#con, #siz').keyup(function() {
 	setDurability();
