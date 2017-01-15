@@ -1,124 +1,136 @@
 <html xmlns:th="http://www.thmeleaf.org">
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-	  rel="stylesheet"
-	  integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-	  crossorigin="anonymous"/>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+  crossorigin="anonymous" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <script src="/css/marked/lib/marked.js"></script>
 <head>
-	<title>Home</title>
-	<link href="/css/custom.css" rel="stylesheet" type="text/css" media="all" />
+<title>Home</title>
+<link href="/css/custom.css" rel="stylesheet" type="text/css" media="all" />
 </head>
 <body>
 
-<div th:include="common/header_remake"></div>
-<div class="container">
-	<div class="bodyDiv">
-		<!--サイドメニュー-->
-		<div th:include="common/sideMenu"></div>
-		<!--本体-->
-		<div class="mainText">
-			<div class="mainDiv">
-			<h2 class="ui header">シナリオ概要</h2>
-			<div class="column" th:object="${detail}">
-				<table class="table simple detailImgTable">
-					<tr>
-						<td>シナリオID</td>
-						<td th:text="*{id}">0</td>
-					</tr>
-					<tr>
-						<td>タイトル</td>
-						<td th:text="*{title}">0</td>
-					</tr>
-					<tr>
-						<td>概要</td>
-						<td th:text="*{outline}">0</td>
-					</tr>
-					<tr>
-						<td>推奨人数</td>
-						<td th:text="*{recommendPlayer}">0</td>
-					</tr>
-					<tr>
-						<td>推定プレイ時間</td>
-						<td th:text="*{time}">0</td>
-					</tr>
-					<tr>
-						<td>内容</td>
-						<td th:text="*{text}">0</td>
-					</tr>
-				</table>
-			</div>
-			</div>
-		<div class="mainDiv">
-			<h2 class="ui header">NPC一覧</h2>
-			<div class="column">
-				<table class="table">
-					<thead>
-					<tr>
-						<th>ID</th>
-						<th>名前</th>
-						<th>正気度</th>
-						<th>詳細</th>
-					</tr>
-					</thead>
-					<tr th:each="character: ${detail.npcs}">
-						<td th:text="${character.id}">1</td>
-						<td th:text="${character.name}">name</td>
-						<td th:text="${character.sanityPoint}">10</td>
-						<td>
-							<form th:action="@{/character/detail}" method="post">
-								<input class="btn btn-primary" type="submit" value="詳細" />
-								<input type="hidden" name="id" th:value="${character.id}" />
-							</form>
-						</td>
-					</tr>
-				</table>
-			</div>
-		</div>
-		<div class="mainDiv">
-			<h2 class="ui header">敵一覧</h2>
-			<div class="column">
-				<table class="table">
-					<thead>
-					<tr>
-						<th>ID</th>
-						<th>名前</th>
-						<th>正気度</th>
-						<th>詳細</th>
-					</tr>
-					</thead>
-					<tr th:each="character: ${detail.enemies}">
-						<td th:text="${character.id}">1</td>
-						<td th:text="${character.name}">name</td>
-						<td th:text="${character.sanityPoint}">10</td>
-						<td>
-							<form th:action="@{/character/detail}" method="post">
-								<input class="btn btn-primary" type="submit" value="詳細" /> <input
-									type="hidden" name="id" th:value="${character.id}" />
-							</form>
-						</td>
-					</tr>
-				</table>
-			</div>
-		</div>
-		<div class="mainDiv" th:each="scene: ${detail.scenes}">
-			<h2 class="ui header">hoge</h2>
-			<div class="column">
-				<a th:text="${scene.title}">title</a>
-				<ul class="list-group">
-					<li class="list-group-item" th:text="${scene.sceneLinkId1}"></li>
-					<li class="list-group-item" th:text="${scene.sceneLinkId2}"></li>
-					<li class="list-group-item" th:text="${scene.sceneLinkId3}"></li>
-					<li class="list-group-item" th:text="${scene.sceneLinkId4}"></li>
-					<li class="list-group-item" th:text="${scene.sceneLinkId5}"></li>
-				</ul>
-				<div class="wall">
-					<a th:text="${scene.text}"></a>
-				</div>
-			</div>
-		</div>
-		</div>
-	</div>
-</div>
+  <div th:include="common/header_remake"></div>
+  <div class="container">
+    <div class="bodyDiv">
+      <!--サイドメニュー-->
+      <div th:include="common/sideMenu"></div>
+      <!--本体-->
+      <div class="mainText">
+        <div class="mainDiv">
+          <h2 class="ui header">シナリオ概要</h2>
+          <div class="column" th:object="${detail}">
+            <table class="table simple detailImgTable">
+              <tr>
+                <td>シナリオID</td>
+                <td th:text="*{id}">0</td>
+              </tr>
+              <tr>
+                <td>タイトル</td>
+                <td th:text="*{title}">0</td>
+              </tr>
+              <tr>
+                <td>概要</td>
+                <td th:text="*{outline}">0</td>
+              </tr>
+              <tr>
+                <td>推奨人数</td>
+                <td th:text="*{recommendPlayer}">0</td>
+              </tr>
+              <tr>
+                <td>推定プレイ時間</td>
+                <td th:text="*{time}">0</td>
+              </tr>
+              <tr>
+                <td>内容</td>
+                <td th:text="*{text}">0</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="mainDiv">
+          <h2 class="ui header">NPC一覧</h2>
+          <div class="column">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>名前</th>
+                  <th>正気度</th>
+                  <th>詳細</th>
+                </tr>
+              </thead>
+              <tr th:each="character: ${detail.npcs}">
+                <td th:text="${character.id}">1</td>
+                <td th:text="${character.name}">name</td>
+                <td th:text="${character.sanityPoint}">10</td>
+                <td>
+                  <form th:action="@{/character/detail}" method="post">
+                    <input class="btn btn-primary" type="submit" value="詳細" /> <input type="hidden" name="id" th:value="${character.id}" />
+                  </form>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="mainDiv">
+          <h2 class="ui header">敵一覧</h2>
+          <div class="column">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>名前</th>
+                  <th>正気度</th>
+                  <th>詳細</th>
+                </tr>
+              </thead>
+              <tr th:each="character: ${detail.enemies}">
+                <td th:text="${character.id}">1</td>
+                <td th:text="${character.name}">name</td>
+                <td th:text="${character.sanityPoint}">10</td>
+                <td>
+                  <form th:action="@{/character/detail}" method="post">
+                    <input class="btn btn-primary" type="submit" value="詳細" /> <input type="hidden" name="id" th:value="${character.id}" />
+                  </form>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="mainDiv" th:each="scene: ${detail.scenes}">
+          <h2 class="ui header">シーン</h2>
+          <div class="column">
+            <h3 class="ui header" th:text="${scene.title}">title</h3>
+
+            <h3 class="ui header">概要</h3>
+            <div class="well">
+              <p th:text="${scene.outline}"></p>
+            </div>
+
+            <h3 class="ui header">登場キャラクター</h3>
+            <ul class="list-group">
+              <li class="list-group-item" th:if="${scene.appearCharacter1}" th:text="${scene.appearCharacter1}"></li>
+              <li class="list-group-item" th:if="${scene.appearCharacter2}" th:text="${scene.appearCharacter2}"></li>
+              <li class="list-group-item" th:if="${scene.appearCharacter3}" th:text="${scene.appearCharacter3}"></li>
+              <li class="list-group-item" th:if="${scene.appearCharacter4}" th:text="${scene.appearCharacter4}"></li>
+              <li class="list-group-item" th:if="${scene.appearCharacter5}" th:text="${scene.appearCharacter5}"></li>
+            </ul>
+            <h3 class="ui header">遷移先シーン</h3>
+            <ul class="list-group">
+              <li class="list-group-item" th:if="${scene.sceneLinkId1}" th:text="${scene.sceneLinkId1}"></li>
+              <li class="list-group-item" th:if="${scene.sceneLinkId2}" th:text="${scene.sceneLinkId2}"></li>
+              <li class="list-group-item" th:if="${scene.sceneLinkId3}" th:text="${scene.sceneLinkId3}"></li>
+              <li class="list-group-item" th:if="${scene.sceneLinkId4}" th:text="${scene.sceneLinkId4}"></li>
+              <li class="list-group-item" th:if="${scene.sceneLinkId5}" th:text="${scene.sceneLinkId5}"></li>
+            </ul>
+            <h3 class="ui header">内容</h3>
+            <div class="well">
+              <p th:text="${scene.text}"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

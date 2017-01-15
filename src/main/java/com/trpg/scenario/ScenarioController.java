@@ -49,11 +49,6 @@ public class ScenarioController {
 	public String detail(Model model, String id){
 		ScenarioDetail result = scenarioAction.getScenarioDetail(Integer.parseInt(id));
 
-        ScenarioDetailForm form = new ScenarioDetailForm();
-        //form.setScenario(result.getScenario());
-        form.setNpcs(parseScenarioCharacterForm(result.getNpcs()));
-        form.setEnemies(parseScenarioCharacterForm(result.getEnemies()));
-
 		model.addAttribute("detail", result);
 		return "scenario/detail";
 	}
