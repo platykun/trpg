@@ -1,4 +1,4 @@
-package com.trpg.session;
+package com.trpg.scenario;
 
 import lombok.Data;
 

@@ -2,6 +2,7 @@ package com.trpg.session;
 
 import java.util.List;
 
+import com.trpg.scenario.SceneForm;
 import lombok.Data;
 
 /**
