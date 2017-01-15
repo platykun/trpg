@@ -20,7 +20,33 @@
 		<div class="mainText">
 			<div class="mainDiv">
 			<h2 class="ui header">シナリオ概要</h2>
-			<div class="column">
+			<div class="column" th:object="${detail}">
+				<table class="table simple detailImgTable">
+					<tr>
+						<td>シナリオID</td>
+						<td th:text="*{id}">0</td>
+					</tr>
+					<tr>
+						<td>タイトル</td>
+						<td th:text="*{title}">0</td>
+					</tr>
+					<tr>
+						<td>概要</td>
+						<td th:text="*{outline}">0</td>
+					</tr>
+					<tr>
+						<td>推奨人数</td>
+						<td th:text="*{recommendPlayer}">0</td>
+					</tr>
+					<tr>
+						<td>推定プレイ時間</td>
+						<td th:text="*{time}">0</td>
+					</tr>
+					<tr>
+						<td>内容</td>
+						<td th:text="*{text}">0</td>
+					</tr>
+				</table>
 			</div>
 			</div>
 		<div class="mainDiv">
@@ -75,14 +101,20 @@
 				</table>
 			</div>
 		</div>
-		<div class="mainDiv">
-			<h2 class="ui header">ストーリー</h2>
+		<div class="mainDiv" th:each="scene: ${detail.scenes}">
+			<h2 class="ui header">hoge</h2>
 			<div class="column">
-				<div class="well" id="content"></div>
-				<script th:inline="javascript">
-			/*<![CDATA[*/
-			/*]]>*/
-		</script>
+				<a th:text="${scene.title}">title</a>
+				<ul class="list-group">
+					<li class="list-group-item" th:text="${scene.sceneLinkId1}"></li>
+					<li class="list-group-item" th:text="${scene.sceneLinkId2}"></li>
+					<li class="list-group-item" th:text="${scene.sceneLinkId3}"></li>
+					<li class="list-group-item" th:text="${scene.sceneLinkId4}"></li>
+					<li class="list-group-item" th:text="${scene.sceneLinkId5}"></li>
+				</ul>
+				<div class="wall">
+					<a th:text="${scene.text}"></a>
+				</div>
 			</div>
 		</div>
 		</div>
