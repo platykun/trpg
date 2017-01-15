@@ -10,27 +10,23 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "scenario")
+@Table(name = "item")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Scenario {
+public class Item {
+	/** ID */
 	@Id
 	@GeneratedValue
 	private int id;
-
-	/** タイトル */
-	private String title;
-	/** 概要 */
-	private String outline;
-
-	/** 推奨人数　*/
-	private String recommendPlayer;
-	
-	/** 推定プレイ時間 */
-	private String time;
-	
+	/** シナリオID */
+	private int scenarioId;
+	/** シーンID */
+	private int sceneId;
+	/** 連番 */
+	private int serialNum;
+	/** 画像URL */
+	private String imgUrl;
 	/** 内容 */
 	private String text;
-	
 }

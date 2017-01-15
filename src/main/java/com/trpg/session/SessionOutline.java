@@ -1,5 +1,7 @@
 package com.trpg.session;
 
+import java.util.List;
+
 import lombok.Data;
 
 /**
@@ -21,4 +23,7 @@ public class SessionOutline {
 
 	/** タイトル */
 	private String title;
+
+	/** シーンリスト */
+	private List<SceneForm> sceneList;
 }
