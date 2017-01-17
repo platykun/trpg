@@ -6,6 +6,11 @@
 <head>
 <title>Home</title>
 <link href="/css/custom.css" rel="stylesheet" type="text/css" media="all" />
+<style type="text/css">
+.scene_panel {
+  display: none;
+}
+</style>
 </head>
 <body>
 
@@ -98,7 +103,7 @@
           </div>
         </div>
         <div id="scenario_tab">
-          <ul class="nav nav-pills">
+          <ul class="nav nav-pills scene_tas">
             <li role="presentation" class="dropdown active"><a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">導入<span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu" th:if="${detail.introductionScenes.size()}">
                 <li role="presentation" th:each="listIntroductionScene: ${detail.introductionScenes}"><a th:href="'#' + ${listIntroductionScene.serialNum}">導入カテゴリのシーンのリスト</a></li>
@@ -109,7 +114,7 @@
               </ul></li>
             <li role="presentation" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">場所<span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu" th:if="${detail.placeScenes.size()}">
-                <li role="presentation" th:each="listPlaceScene: ${detail.placeScenes}"><a href="'#' + ${listPlaceScene.serialNum}" th:text="${listPlaceScene.title}">場所カテゴリのシーンのリスト</a></li>
+                <li role="presentation" th:each="listPlaceScene: ${detail.placeScenes}"><a th:href="'#' + ${listPlaceScene.serialNum}" th:text="${listPlaceScene.title}">場所カテゴリのシーンのリスト</a></li>
               </ul></li>
             <li role="presentation" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">時間<span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu" th:if="${detail.timeScenes.size()}">
@@ -124,39 +129,35 @@
                 <li role="presentation"><a href="#">結末カテゴリのシーンのリスト</a></li>
               </ul></li>
           </ul>
-          <div class="panels">
-            <div class=" mainDiv" th:each="scene: ${detail.allScenes}">
-              <div th:id="${scene.serialNum}">
-                <h2 class="ui header">シーン</h2>
-                <div class="column">
-                  <h3 class="ui header" th:text="${scene.title}">title</h3>
+          <div class=" mainDiv scene_panel" th:each="scene: ${detail.allScenes}" th:id="${scene.serialNum}">
+            <h2 class="ui header">シーン</h2>
+            <div class="column">
+              <h3 class="ui header" th:text="${scene.title}">title</h3>
 
-                  <h3 class="ui header">概要</h3>
-                  <div class="well">
-                    <p th:text="${scene.outline}"></p>
-                  </div>
+              <h3 class="ui header">概要</h3>
+              <div class="well">
+                <p th:text="${scene.outline}"></p>
+              </div>
 
-                  <h3 class="ui header">登場キャラクター</h3>
-                  <ul class="list-group">
-                    <li class="list-group-item" th:if="${scene.appearCharacter1}" th:text="${scene.appearCharacter1}"></li>
-                    <li class="list-group-item" th:if="${scene.appearCharacter2}" th:text="${scene.appearCharacter2}"></li>
-                    <li class="list-group-item" th:if="${scene.appearCharacter3}" th:text="${scene.appearCharacter3}"></li>
-                    <li class="list-group-item" th:if="${scene.appearCharacter4}" th:text="${scene.appearCharacter4}"></li>
-                    <li class="list-group-item" th:if="${scene.appearCharacter5}" th:text="${scene.appearCharacter5}"></li>
-                  </ul>
-                  <h3 class="ui header">遷移先シーン</h3>
-                  <ul class="list-group">
-                    <li class="list-group-item" th:if="${scene.sceneLinkId1}" th:text="${scene.sceneLinkId1}"></li>
-                    <li class="list-group-item" th:if="${scene.sceneLinkId2}" th:text="${scene.sceneLinkId2}"></li>
-                    <li class="list-group-item" th:if="${scene.sceneLinkId3}" th:text="${scene.sceneLinkId3}"></li>
-                    <li class="list-group-item" th:if="${scene.sceneLinkId4}" th:text="${scene.sceneLinkId4}"></li>
-                    <li class="list-group-item" th:if="${scene.sceneLinkId5}" th:text="${scene.sceneLinkId5}"></li>
-                  </ul>
-                  <h3 class="ui header">内容</h3>
-                  <div class="well">
-                    <p th:text="${scene.text}"></p>
-                  </div>
-                </div>
+              <h3 class="ui header">登場キャラクター</h3>
+              <ul class="list-group">
+                <li class="list-group-item" th:if="${scene.appearCharacter1}" th:text="${scene.appearCharacter1}"></li>
+                <li class="list-group-item" th:if="${scene.appearCharacter2}" th:text="${scene.appearCharacter2}"></li>
+                <li class="list-group-item" th:if="${scene.appearCharacter3}" th:text="${scene.appearCharacter3}"></li>
+                <li class="list-group-item" th:if="${scene.appearCharacter4}" th:text="${scene.appearCharacter4}"></li>
+                <li class="list-group-item" th:if="${scene.appearCharacter5}" th:text="${scene.appearCharacter5}"></li>
+              </ul>
+              <h3 class="ui header">遷移先シーン</h3>
+              <ul class="list-group">
+                <li class="list-group-item" th:if="${scene.sceneLinkId1}" th:text="${scene.sceneLinkId1}"></li>
+                <li class="list-group-item" th:if="${scene.sceneLinkId2}" th:text="${scene.sceneLinkId2}"></li>
+                <li class="list-group-item" th:if="${scene.sceneLinkId3}" th:text="${scene.sceneLinkId3}"></li>
+                <li class="list-group-item" th:if="${scene.sceneLinkId4}" th:text="${scene.sceneLinkId4}"></li>
+                <li class="list-group-item" th:if="${scene.sceneLinkId5}" th:text="${scene.sceneLinkId5}"></li>
+              </ul>
+              <h3 class="ui header">内容</h3>
+              <div class="well">
+                <p th:text="${scene.text}"></p>
               </div>
             </div>
           </div>
@@ -169,34 +170,21 @@
   <!-- bootstrap-dropdown.js 読み込み -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script type="text/javascript">
-  $(function () {
-	  //http://qiita.com/mochizukikotaro/items/65fe07ec275eff2541b3
-	  $(".dropdown-menu a").on('click', function(e) {
-	    // 勝手にスクロール位置変わらないように a のclickイベントをキャンセルします。
-	    e.preventDefault();
+			$(function() {
+				$(".dropdown-menu a").on('click', function(e) {
+					// 勝手にスクロール位置変わらないように a のclickイベントをキャンセル
+					e.preventDefault();
+					// パネルの存在判定をしておきます。
+					var target = $(this).attr('href');
+					if (!$(target).length)
+						return false;
+					$(".scene_tas").children().removeClass('active')
+					$(this).closest('.dropdown').addClass('active');
 
-	    // 一応、表示するパネルの存在判定をしておきます。
-	    var target = $(this).attr('href');
-	    if (! $(target).length) return false;
-
-	    // クリックされた要素の属する.tabs以下の.tabすべてからactiveクラスを削除します。
-	    // ちょっとややこしいですが、
-	    // $(this).closest('...') で'...'にマッチする一番近い先祖要素が選択できます。
-	    // また $(A, B) で、Bの子孫要素の中からAにマッチするものだけを選択できます。
-	    // ここではその両者を組み合わせて使っています。
-	    $('.scenario_tab', $(this).closest('.scenario_tab')).removeClass('active');
-
-	    // クリックされた要素の親である.tabにactiveクラスを付与します。
-	    // .show(), hide() ではなく addClass('active'), removeClass('active') を使うことで
-	    // 状態に応じたデザイン変更をCSSでまとめてやりやすかったりします。
-	    // これも好みの問題かもしれません。
-	    $(this).closest('.scenario_tab').addClass('active');
-
-	    // パネルの表示切り替えをします。
-	    // タブの表示切り替えとやっていることは同じです。
-	    $('.panels', $(target).closest('.panels')).removeClass('active');
-	    $(target).addClass('active');
-	  });
+					$('.scene_panel').hide();
+					$(target).show();
+				});
+			});
 		</script>
 </body>
 </html>
