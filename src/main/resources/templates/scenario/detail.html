@@ -102,6 +102,15 @@
             </table>
           </div>
         </div>
+        <div class="mainDiv">
+          <h2 class="ui header">アイテム一覧</h2>
+          <div class="column" >
+            <div class="col-lg-3" th:each="item: ${detail.items}">
+              <h4 th:text="${item.text}"></h4>
+              <img class="img-responsive" th:src="${item.imgUrl}" />
+            </div>
+          </div>
+        </div>
         <div id="scenario_tab">
           <ul class="nav nav-pills scene_tas">
             <li role="presentation" class="dropdown active"><a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">導入<span class="caret"></span></a>
