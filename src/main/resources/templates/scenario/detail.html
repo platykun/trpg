@@ -47,7 +47,7 @@
               </tr>
               <tr>
                 <td>内容</td>
-                <td th:text="*{text}">0</td>
+                <td id="content" th:text="*{text}">0</td>
               </tr>
             </table>
           </div>
@@ -104,7 +104,7 @@
         </div>
         <div class="mainDiv">
           <h2 class="ui header">アイテム一覧</h2>
-          <div class="column" >
+          <div class="column">
             <div class="col-lg-3" th:each="item: ${detail.items}">
               <h4 th:text="${item.text}"></h4>
               <img class="img-responsive" th:src="${item.imgUrl}" />
@@ -166,7 +166,8 @@
               </ul>
               <h3 class="ui header">内容</h3>
               <div class="well">
-                <p th:text="${scene.text}"></p>
+                <span style="display: none;" th:text="${scene.text}"></span>
+                <div class="scene_panel_text" th:id="${scene.serialNum} + '_text'"></div>
               </div>
             </div>
           </div>
@@ -178,7 +179,10 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <!-- bootstrap-dropdown.js 読み込み -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script type="text/javascript">
+  <script type="text/javascript" th:inline="javascript">
+			document.addEventListener('DOMContentLoaded', function() {
+				$("#1").show();
+			})
 			$(function() {
 				$(".dropdown-menu a").on('click', function(e) {
 					// 勝手にスクロール位置変わらないように a のclickイベントをキャンセル
@@ -194,6 +198,10 @@
 					$(target).show();
 				});
 			});
+			/*<![CDATA[*/
+			document.getElementById('content').innerHTML = marked(/*[[ ${detail.text} ]]*/);
+			$(".scene_panel_text").each(function(){ $(this).append(marked($(this).prev().text()));  });
+			/*]]>*/
 		</script>
 </body>
 </html>
