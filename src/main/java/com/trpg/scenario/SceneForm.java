@@ -1,5 +1,7 @@
 package com.trpg.scenario;
 
+import java.util.List;
+
 import lombok.Data;
 
 /**
@@ -24,24 +26,12 @@ public class SceneForm {
 	private String outline;
 	/** 内容 */
 	private String text;
-	/** 登場キャラクターID1 */
-	private int appearCharacter1;
-	/** 登場キャラクターID2 */
-	private int appearCharacter2;
-	/** 登場キャラクターID3 */
-	private int appearCharacter3;
-	/** 登場キャラクターID4 */
-	private int appearCharacter4;
-	/** 登場キャラクターID5 */
-	private int appearCharacter5;
-	/** シーンリンクID1 */
-	private int sceneLinkId1;
-	/** シーンリンクID2 */
-	private int sceneLinkId2;
-	/** シーンリンクID3 */
-	private int sceneLinkId3;
-	/** シーンリンクID4 */
-	private int sceneLinkId4;
-	/** シーンリンクID5 */
-	private int sceneLinkId5;
+	/** 登場キャラクターIDリスト */
+	private List<Integer> appearCharacters;
+	/** 登場キャラクター名リスト */
+	private List<String> appearCharacterNames;
+	/** シーンリンクIDリスト */
+	private List<Integer> sceneLinkIds;
+	/** シーンリンク名リスト */
+	private List<String> sceneLinkNames;
 }

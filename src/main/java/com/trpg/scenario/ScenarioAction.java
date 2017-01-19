@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,19 +65,42 @@ public class ScenarioAction {
 		scene.setTitle(rs.getString("title"));
 		scene.setOutline(rs.getString("outline"));
 		scene.setText(rs.getString("text"));
-		scene.setAppearCharacter1(rs.getInt("appear_character1"));
-		scene.setAppearCharacter2(rs.getInt("appear_character2"));
-		scene.setAppearCharacter3(rs.getInt("appear_character3"));
-		scene.setAppearCharacter4(rs.getInt("appear_character4"));
-		scene.setAppearCharacter5(rs.getInt("appear_character5"));
-		scene.setSceneLinkId1(rs.getInt("scene_link_id1"));
-		scene.setSceneLinkId2(rs.getInt("scene_link_id2"));
-		scene.setSceneLinkId3(rs.getInt("scene_link_id3"));
-		scene.setSceneLinkId4(rs.getInt("scene_link_id4"));
-		scene.setSceneLinkId5(rs.getInt("scene_link_id5"));
+		List<Integer> characterIds = new ArrayList<Integer>();
+		int ap1 = rs.getInt("appear_character1");
+		if (ap1 > 0)
+			characterIds.add(Integer.valueOf(ap1));
+		int ap2 = rs.getInt("appear_character2");
+		if (ap2 > 0)
+			characterIds.add(Integer.valueOf(ap2));
+		int ap3 = rs.getInt("appear_character3");
+		if (ap3 > 0)
+			characterIds.add(Integer.valueOf(ap3));
+		int ap4 = rs.getInt("appear_character4");
+		if (ap4 > 0)
+			characterIds.add(Integer.valueOf(ap4));
+		int ap5 = rs.getInt("appear_character5");
+		if (ap5 > 0)
+			characterIds.add(Integer.valueOf(ap5));
+		scene.setAppearCharacters(characterIds);
+		List<Integer> sceneLinkIds = new ArrayList<Integer>();
+		int sl1 = rs.getInt("scene_link_id1");
+		if (sl1 > 0)
+			sceneLinkIds.add(Integer.valueOf(sl1));
+		int sl2 = rs.getInt("scene_link_id2");
+		if (sl2 > 0)
+			sceneLinkIds.add(Integer.valueOf(sl2));
+		int sl3 = rs.getInt("scene_link_id3");
+		if (sl3 > 0)
+			sceneLinkIds.add(Integer.valueOf(sl3));
+		int sl4 = rs.getInt("scene_link_id4");
+		if (sl4 > 0)
+			sceneLinkIds.add(Integer.valueOf(sl4));
+		int sl5 = rs.getInt("scene_link_id5");
+		if (sl5 > 0)
+			sceneLinkIds.add(Integer.valueOf(sl5));
+		scene.setSceneLinkIds(sceneLinkIds);
 		return scene;
 	};
-
 
 	/**
 	 * シナリオの一覧を取得する。
@@ -90,48 +114,61 @@ public class ScenarioAction {
 	/**
 	 * シナリオの詳細を取得する。
 	 * 
-	 * @param id
-	 *            シナリオID
+	 * @param id シナリオID
 	 * @return シナリオの詳細
 	 */
 	ScenarioDetail getScenarioDetail(int id) {
 
-		//NPCと敵の一覧を取得するためのSQL
+		// NPCと敵の一覧を取得するためのSQL
 		String getCharacterSQL = "SELECT * FROM character_info c WHERE EXISTS"
 				+ "(SELECT character_info_id FROM related_character rc "
 				+ "WHERE rc.scenario_id = :id AND rc.CATEGORY = :category AND c.id = rc.character_info_id)";
 
-		//アイテムをシナリオIDから取得するためのSQL
+		// アイテムをシナリオIDから取得するためのSQL
 		String getItemSQL = "SELECT * FROM item where SCENARIO_ID = :id";
 
-		//シーンをシナリオIDから取得するためのSQL
+		// シーンをシナリオIDから取得するためのSQL
 		String getSceneSQL = "SELECT * FROM scene where SCENARIO_ID = :id";
 
 		Scenario scenario = scenarioRepository.getOne(id);
 		ScenarioDetail detail = new ScenarioDetail(scenario);
 
-		//NPCを検索してformクラスへ格納する。
+		// NPCを検索してformクラスへ格納する。
 		SqlParameterSource npcParam = new MapSqlParameterSource().addValue("id", id).addValue("category",
 				RC_CATEGORY_NPC);
 		List<CharacterInfo> npcs = jdbcTemplate.query(getCharacterSQL, npcParam, characterInfoRowMapper);
 		detail.setNpcs(npcs);
-		//ENEMYを検索してformクラスへ格納する。
+		// ENEMYを検索してformクラスへ格納する。
 		SqlParameterSource enemyParam = new MapSqlParameterSource().addValue("id", id).addValue("category",
 				RC_CATEGORY_ENEMY);
 		List<CharacterInfo> enemies = jdbcTemplate.query(getCharacterSQL, enemyParam, characterInfoRowMapper);
 		detail.setEnemies(enemies);
 
-		//itemを取得してformクラスへ格納する。
+		// itemを取得してformクラスへ格納する。
 		SqlParameterSource itemParam = new MapSqlParameterSource().addValue("id", id);
 		List<ItemForm> items = jdbcTemplate.query(getItemSQL, itemParam, itemFormRowMapper);
 		detail.setItems(items);
 
-		//sceneを取得してformクラスへ格納する。
+		// sceneを取得してformクラスへ格納する。
 		SqlParameterSource sceneParam = new MapSqlParameterSource().addValue("id", id);
 		List<SceneForm> scenes = jdbcTemplate.query(getSceneSQL, sceneParam, sceneFormRowMapper);
+
+		// テーブルから取得したシーンIDをもとにシーン名を格納する。
+		// TODO: やりかたはもうちょっとちゃんと考える
+		for (SceneForm scene : scenes) {
+			List<String> characterNameList = new ArrayList<String>();
+			for (Integer characterId : scene.getAppearCharacters()) {
+				if (characterId.equals(0))
+					break;
+				String name = scenes.stream().filter(s -> s.getId() == characterId.intValue()).findFirst().get()
+						.getTitle();
+				characterNameList.add(name);
+			}
+			scene.setAppearCharacterNames(characterNameList);
+		}
+
 		detail.setScenes(scenes);
 
 		return detail;
 	}
-
 }
