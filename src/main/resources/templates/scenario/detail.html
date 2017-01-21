@@ -141,7 +141,7 @@
           <div class=" mainDiv scene_panel" th:each="scene: ${detail.allScenes}" th:id="${scene.serialNum}">
             <h2 class="ui header">シーン</h2>
             <div class="column">
-              <h3 class="ui header" th:text="${scene.title}">title</h3>
+              <h3 class="ui header" th:id="'title' + ${scene.id}" th:text="${scene.title}">title</h3>
 
               <h3 class="ui header">概要</h3>
               <div class="well">
@@ -154,7 +154,7 @@
               </ul>
               <h3 class="ui header">遷移先シーン</h3>
               <ul class="list-group">
-                <li class="list-group-item" th:each="sceneLinkId : ${scene.sceneLinkIds}" th:text="${sceneLinkId}"></li>
+                <li class="list-group-item sceneLink" th:each="sceneLinkId : ${scene.sceneLinkIds}" th:text="${sceneLinkId}"></li>
               </ul>
               <h3 class="ui header">内容</h3>
               <div class="well">
@@ -196,6 +196,13 @@
 				$(this).append(marked($(this).prev().text()));
 			});
 			/*]]>*/
+			//遷移先シーンにシーン名を格納する。
+			$(".sceneLink").each(function() {
+	            var text = $(this).text();
+	            if($.isNumeric(text)){
+	                $(this).text($("#title" + text).text());
+	            }
+            });
 		</script>
 </body>
 </html>
