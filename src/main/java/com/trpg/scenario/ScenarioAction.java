@@ -51,6 +51,7 @@ public class ScenarioAction {
 		item.setScenarioId(rs.getInt("scenario_id"));
 		item.setSceneId(rs.getInt("scene_id"));
 		item.setSerialNum(rs.getInt("serial_num"));
+		item.setName(rs.getString("name"));
 		item.setImgUrl(rs.getString("img_url"));
 		item.setText(rs.getString("text"));
 		return item;

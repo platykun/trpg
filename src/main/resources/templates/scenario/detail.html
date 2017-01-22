@@ -106,7 +106,7 @@
           <h2 class="ui header">アイテム一覧</h2>
           <div class="column">
             <div class="col-lg-3" th:each="item: ${detail.items}">
-              <h4 th:text="${item.text}"></h4>
+              <h4 th:text="${item.name}"></h4>
               <img class="img-responsive" th:src="${item.imgUrl}" />
             </div>
           </div>
@@ -150,11 +150,11 @@
 
               <h3 class="ui header">登場キャラクター</h3>
               <ul class="list-group">
-                <li class="list-group-item" th:each="characterId : ${scene.appearCharacters}" th:text="${characterId}"></li>
+                <li class="list-group-item" th:each="characterId : ${scene.appearCharacters}" th:text="${detail.getCharacterNameFromId(characterId)}"></li>
               </ul>
               <h3 class="ui header">遷移先シーン</h3>
               <ul class="list-group">
-                <li class="list-group-item sceneLink" th:each="sceneLinkId : ${scene.sceneLinkIds}" th:text="${sceneLinkId}"></li>
+                <li class="list-group-item sceneLink" th:each="sceneLinkId : ${scene.sceneLinkIds}" th:text="${detail.getSceneTitleFromId(sceneLinkId)}"></li>
               </ul>
               <h3 class="ui header">内容</h3>
               <div class="well">
@@ -196,13 +196,6 @@
 				$(this).append(marked($(this).prev().text()));
 			});
 			/*]]>*/
-			//遷移先シーンにシーン名を格納する。
-			$(".sceneLink").each(function() {
-	            var text = $(this).text();
-	            if($.isNumeric(text)){
-	                $(this).text($("#title" + text).text());
-	            }
-            });
 		</script>
 </body>
 </html>

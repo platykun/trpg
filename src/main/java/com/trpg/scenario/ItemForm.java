@@ -18,6 +18,8 @@ public class ItemForm {
 	private int sceneId;
 	/** 連番 */
 	private int serialNum;
+	/** 名前 */
+	private String name;
 	/** 画像URL */
 	private String imgUrl;
 	/** 内容 */

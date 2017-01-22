@@ -1,0 +1,148 @@
+<html xmlns:th="http://www.thmeleaf.org">
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+  crossorigin="anonymous" />
+<script src="/css/marked/lib/marked.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<head>
+<title>Home</title>
+<link href="/css/custom.css" rel="stylesheet" type="text/css" media="all" />
+<style type="text/css">
+.scene_panel {
+  display: none;
+}
+</style>
+</head>
+<body>
+
+  <div th:include="common/header_remake"></div>
+  <div class="container">
+    <div class="bodyDiv">
+      <!--サイドメニュー-->
+      <div th:include="common/sideMenu"></div>
+      <!--本体-->
+      <form th:action="@{/scenario/create/confirm}" th:object="${scenario}">
+        <div class="mainText">
+          <div class="mainDiv">
+            <h2 class="ui header">シナリオ作成</h2>
+            <div class="column">
+              <table class="table">
+                <tr>
+                  <td class="col-lg-3">シナリオID</td>
+                  <td class="col-lg-9" th:text="${id}">0</td>
+                </tr>
+                <tr>
+                  <td>タイトル</td>
+                  <td><input type="text" class="form-control" th:field="*{id}" /></td>
+                </tr>
+                <tr>
+                  <td>概要</td>
+                  <td><input type="text" class="form-control" th:field="*{outline}" /></td>
+                </tr>
+                <tr>
+                  <td>推奨人数</td>
+                  <td><input type="text" class="form-control" th:field="*{recommendPlayer}" /></td>
+                </tr>
+                <tr>
+                  <td>推定プレイ時間</td>
+                  <td><input type="text" class="form-control" th:field="*{time}" /></td>
+                </tr>
+                <tr>
+                  <td>内容</td>
+                  <td><input type="text" class="form-control" th:field="*{text}" /></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div class="mainDiv">
+            <h2 class="ui header">NPC</h2>
+            <div class="column">NPCの一覧表</div>
+          </div>
+          <div class="mainDiv">
+            <h2 class="ui header">敵</h2>
+            <div class="column">敵の一覧表</div>
+          </div>
+          <div class="mainDiv">
+            <h2 class="ui header">アイテム</h2>
+            <div class="column">
+              <button type="button" class="btn btn-primary oneRight" data-toggle="modal" data-target="#itemModal">
+                <i class="addicon"></i> 追加
+              </button>
+
+
+              <!-- アイテム追加モーダル開始 -->
+              <div class="modal fade" id="itemModal" tabindex="-1" role="dialog" aria-labelledby="itemModalLabel">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                    </div>
+                    <div class="modal-body">
+                      <table class="table">
+                        <tr>
+                          <td>名前</td>
+                          <td><input type="text" class="form-control" /></td>
+                        </tr>
+                        <tr>
+                          <td>画像URL</td>
+                          <td><input type="text" class="form-control" /></td>
+                        </tr>
+                        <tr>
+                          <td>内容</td>
+                          <td><input type="text" class="form-control" /></td>
+                        </tr>
+                      </table>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      <button id="saveItemModal" type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- アイテム追加モーダル終了 -->
+
+
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>名前</th>
+                    <th>詳細</th>
+                  </tr>
+                </thead>
+                <tr th:each="item: ${scenario.items}">
+                  <td><input type="text" class="form-control" th:field="${item.id}" /></td>
+                  <td><input type="text" class="form-control" th:field="${item.name}" /></td>
+                  <td>詳細ボタン</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div class="mainDiv">
+            <h2 class="ui header">シーン</h2>
+            <div class="column">シーンの一覧表</div>
+          </div>
+          <div class="mainDiv">
+            <div class="column">
+              <button class="btn btn-primary oneRight" type="submit">作成</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!-- jQuery 読み込み -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <!-- bootstrap-dropdown.js 読み込み -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+			/*<![CDATA[*/
+			// アイテム追加ボタン押下するとテーブルに一行追加する。
+			$("#saveItemModal").click(function() {
+				console.log("hoge");
+				/*[[ ${detail.addItem("aa","aa","a")} ]]*/
+			});
+			/*]]>*/
+		</script>
+</body>
+</html>
