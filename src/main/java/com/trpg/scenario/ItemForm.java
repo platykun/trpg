@@ -1,6 +1,12 @@
 package com.trpg.scenario;
 
+import java.util.List;
+
+import com.trpg.entity.CharacterInfo;
+
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * アイテムの詳細を格納する。
@@ -8,6 +14,8 @@ import lombok.Data;
  * @author platykun
  *
  */
+@NoArgsConstructor
+@AllArgsConstructor
 @Data
 public class ItemForm {
 	/** アイテムID */

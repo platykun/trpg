@@ -57,7 +57,11 @@ public class ScenarioController {
 	@RequestMapping("/create")
 	public String create(Model model) {
 		ScenarioCreateForm scenario = new ScenarioCreateForm();
+		ScenarioDetail result = scenarioAction.getScenarioDetail(1);
+		scenario.setItems(result.getItems());
+
 		model.addAttribute("scenario", scenario);
+
 		return "scenario/create";
 	}
 

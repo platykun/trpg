@@ -80,29 +80,27 @@
                       <table class="table">
                         <tr>
                           <td>名前</td>
-                          <td><input type="text" class="form-control" /></td>
+                          <td><input id="itemModalName" type="text" class="form-control" /></td>
                         </tr>
                         <tr>
                           <td>画像URL</td>
-                          <td><input type="text" class="form-control" /></td>
+                          <td><input id="itemModalImgUrl" type="text" class="form-control" /></td>
                         </tr>
                         <tr>
                           <td>内容</td>
-                          <td><input type="text" class="form-control" /></td>
+                          <td><input id="itemModalText" type="text" class="form-control" /></td>
                         </tr>
                       </table>
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                      <button id="saveItemModal" type="button" class="btn btn-primary">Save changes</button>
+                      <button id="saveItemModal" type="button" class="btn btn-primary" data-dismiss="modal">Add item</button>
                     </div>
                   </div>
                 </div>
               </div>
               <!-- アイテム追加モーダル終了 -->
-
-
-              <table class="table">
+              <table id="itemTable" class="table">
                 <thead>
                   <tr>
                     <th>ID</th>
@@ -110,10 +108,15 @@
                     <th>詳細</th>
                   </tr>
                 </thead>
-                <tr th:each="item: ${scenario.items}">
-                  <td><input type="text" class="form-control" th:field="${item.id}" /></td>
-                  <td><input type="text" class="form-control" th:field="${item.name}" /></td>
-                  <td>詳細ボタン</td>
+                <tr th:each="item, stat: ${scenario.items}">
+                  <td><input type="text" class="form-control" th:value="${item.id}" th:name="|items[${stat.index}].id|" /></td>
+                  <td><input type="text" class="form-control" th:value="${item.name}" th:name="|items[${stat.index}].name|" /></td>
+                  <td>詳細ボタン 
+                  <input type="hidden" th:value="${item.sceneId}" th:name="|items[${stat.index}].sceneId|" />
+                  <input type="hidden" th:value="${item.serialNum}" th:name="|items[${stat.index}].serialNum|" />
+                  <input type="hidden" th:value="${item.imgUrl}" th:name="|items[${stat.index}].imgUrl|" />
+                  <input type="hidden" th:value="${item.text}" th:name="|items[${stat.index}].text|" />
+                  </td>
                 </tr>
               </table>
             </div>
@@ -139,8 +142,13 @@
 			/*<![CDATA[*/
 			// アイテム追加ボタン押下するとテーブルに一行追加する。
 			$("#saveItemModal").click(function() {
-				console.log("hoge");
-				/*[[ ${detail.addItem("aa","aa","a")} ]]*/
+				var nextNum = $("#itemTable > tbody").children().length + 1;
+				var nextId = 'itemTable' + nextNum;
+				$("#itemTable").append('<tr id="itemTable' + nextNum + '"></tr>');
+				$("#" + nextId).append('<td>a</td>');
+				$("#" + nextId).append('<td>a</td>');
+				$("#" + nextId).append('<td>a</td>');
+				//TODO: モーダル内を空にする処理を記述
 			});
 			/*]]>*/
 		</script>
