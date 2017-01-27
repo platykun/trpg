@@ -55,7 +55,23 @@
           </div>
           <div class="mainDiv">
             <h2 class="ui header">NPC</h2>
-            <div class="column">NPCの一覧表</div>
+            <div class="column">
+              <button type="button" class="btn btn-primary oneRight" data-toggle="modal" data-target="#npcModal">
+                <i class="addicon"></i> 追加
+              </button>
+              <table id="npcTable" class="table">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr th:each="npc, stat: ${scenario.npcs}">
+                    <td><input type="text" class="form-control" th:value="${npc.id}" th:name="|npcs[${stat.index}].name|" /></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
           <div class="mainDiv">
             <h2 class="ui header">敵</h2>
@@ -67,39 +83,6 @@
               <button type="button" class="btn btn-primary oneRight" data-toggle="modal" data-target="#itemModal">
                 <i class="addicon"></i> 追加
               </button>
-
-
-              <!-- アイテム追加モーダル開始 -->
-              <div class="modal fade" id="itemModal" tabindex="-1" role="dialog" aria-labelledby="itemModalLabel">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-                    </div>
-                    <div class="modal-body">
-                      <table class="table">
-                        <tr>
-                          <td>名前</td>
-                          <td><input id="itemModalName" type="text" class="form-control" /></td>
-                        </tr>
-                        <tr>
-                          <td>画像URL</td>
-                          <td><input id="itemModalImgUrl" type="text" class="form-control" /></td>
-                        </tr>
-                        <tr>
-                          <td>内容</td>
-                          <td><input id="itemModalText" type="text" class="form-control" /></td>
-                        </tr>
-                      </table>
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                      <button id="saveItemModal" type="button" class="btn btn-primary" data-dismiss="modal">Add item</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- アイテム追加モーダル終了 -->
               <table id="itemTable" class="table">
                 <thead>
                   <tr>
@@ -108,16 +91,15 @@
                     <th>詳細</th>
                   </tr>
                 </thead>
-                <tr th:each="item, stat: ${scenario.items}">
-                  <td><input type="text" class="form-control" th:value="${item.id}" th:name="|items[${stat.index}].id|" /></td>
-                  <td><input type="text" class="form-control" th:value="${item.name}" th:name="|items[${stat.index}].name|" /></td>
-                  <td>詳細ボタン 
-                  <input type="hidden" th:value="${item.sceneId}" th:name="|items[${stat.index}].sceneId|" />
-                  <input type="hidden" th:value="${item.serialNum}" th:name="|items[${stat.index}].serialNum|" />
-                  <input type="hidden" th:value="${item.imgUrl}" th:name="|items[${stat.index}].imgUrl|" />
-                  <input type="hidden" th:value="${item.text}" th:name="|items[${stat.index}].text|" />
-                  </td>
-                </tr>
+                <tbody>
+                  <tr th:each="item, stat: ${scenario.items}">
+                    <td><input type="text" class="form-control" th:value="${item.serialNum}" th:name="|items[${stat.index}].serialNum|" /></td>
+                    <td><input type="text" class="form-control" th:value="${item.name}" th:name="|items[${stat.index}].name|" /></td>
+                    <td>詳細ボタン <input type="hidden" th:value="${item.imgUrl}" th:name="|items[${stat.index}].imgUrl|" /> <input type="hidden" th:value="${item.text}"
+                      th:name="|items[${stat.index}].text|" />
+                    </td>
+                  </tr>
+                </tbody>
               </table>
             </div>
           </div>
@@ -132,6 +114,8 @@
           </div>
         </div>
       </form>
+      <!-- モーダル -->
+      <div th:include="scenario/createModal"></div>
     </div>
   </div>
   <!-- jQuery 読み込み -->
@@ -141,15 +125,76 @@
   <script type="text/javascript">
 			/*<![CDATA[*/
 			// アイテム追加ボタン押下するとテーブルに一行追加する。
-			$("#saveItemModal").click(function() {
-				var nextNum = $("#itemTable > tbody").children().length + 1;
-				var nextId = 'itemTable' + nextNum;
-				$("#itemTable").append('<tr id="itemTable' + nextNum + '"></tr>');
-				$("#" + nextId).append('<td>a</td>');
-				$("#" + nextId).append('<td>a</td>');
-				$("#" + nextId).append('<td>a</td>');
-				//TODO: モーダル内を空にする処理を記述
+			$("#saveItemModal")
+					.click(
+							function() {
+								var nextNum = $("#itemTable > tbody")
+										.children().length + 1;
+								var nextNumMinus = nextNum - 1;
+								var nextId = 'itemTable' + nextNum;
+								$("#itemTable")
+										.append(
+												'<tr id="itemTable' + nextNum + '"></tr>');
+								$("#" + nextId)
+										.append(
+												'<td><input type="text" class="form-control" value="' + nextNum + '" name="items[' + nextNumMinus + '].serialNum" /></td>');
+								$("#" + nextId).append(
+										'<td><input type="text" class="form-control" value="'
+												+ $("#itemModalName").val()
+												+ '" name="items['
+												+ nextNumMinus
+												+ '].name" /></td>');
+								$("#" + nextId)
+										.append(
+												'<td>詳細ボタン<input type="hidden" value="'
+														+ $("#itemModalImgUrl")
+																.val()
+														+ '" name="items['
+														+ nextNumMinus
+														+ '].imgUrl" />'
+														+ '<input type="hidden" value="'
+														+ $("#itemModalText")
+																.val()
+														+ '" name="items['
+														+ nextNumMinus
+														+ '].text" /></td>');
+								//モーダル内を空にする
+								$("#itemModalName").val('');
+								$("#itemModalImgUrl").val('');
+								$("#itemModalText").val('');
+							});
+			$("#itemModalText").keyup(function() {
+				$("#itemModalPreView").html(marked($("#itemModalText").val()));
 			});
+
+			$("#closeItemModal").click(function() {
+				//モーダル内を空にする
+				$("#itemModalName").val('');
+				$("#itemModalImgUrl").val('');
+				$("#itemModalText").val('');
+			})
+			$("#saveNpcModal")
+					.click(
+							function() {
+								var nextNum = $("#npcTable > tbody").children().length + 1;
+								var nextNumMinus = nextNum - 1;
+								var nextId = 'npcTable' + nextNum;
+								$("#npcTable")
+										.append(
+												'<tr id="npcTable' + nextNum + '"></tr>');
+								$("#" + nextId).append(
+										'<td><input type="text" class="form-control" value="'
+												+ $("#npcModalid").val()
+												+ '" name="items['
+												+ nextNumMinus
+												+ '].id" /></td>');
+								//モーダル内を空にする
+								$("#npcModalId").val('');
+							})
+			$("#closeItemModal").click(function() {
+				$("#npcModalId").val('');
+			})
+
 			/*]]>*/
 		</script>
 </body>

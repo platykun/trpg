@@ -1,0 +1,59 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<!-- アイテム追加モーダル開始 -->
+<div class="modal fade" id="itemModal" tabindex="-1" role="dialog" aria-labelledby="itemModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">アイテム追加</h4>
+      </div>
+      <div class="modal-body">
+        <table class="table">
+          <tr>
+            <td>名前</td>
+            <td><input id="itemModalName" type="text" class="form-control" /></td>
+          </tr>
+          <tr>
+            <td>画像URL</td>
+            <td><input id="itemModalImgUrl" type="text" class="form-control" /></td>
+          </tr>
+          <tr>
+            <td>内容</td>
+            <td><textarea id="itemModalText" class="form-control"></textarea></td>
+          </tr>
+          <tr>
+            <td>プレビュー</td>
+            <td>
+              <div id="itemModalPreView"></div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button id="closeItemModal" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button id="saveItemModal" type="button" class="btn btn-primary" data-dismiss="modal">Add item</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="npcModal" tabindex="-1" role="dialog" aria-labelledby="npcModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">NPC追加</h4>
+      </div>
+      <div class="modal-body">
+        <table class="table">
+          <tr>
+            <td>ID</td>
+            <td><input id="npcModalid" type="text" class="form-control" /></td>
+          </tr>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button id="closeNpcModal" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button id="saveNpcModal" type="button" class="btn btn-primary" data-dismiss="modal">Add item</button>
+      </div>
+    </div>
+  </div>
+</div>
