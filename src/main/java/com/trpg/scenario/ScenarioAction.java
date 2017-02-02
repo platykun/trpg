@@ -17,9 +17,13 @@ import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Controller;
 
 import com.trpg.entity.CharacterInfo;
+import com.trpg.entity.Item;
+import com.trpg.entity.ItemRepository;
 import com.trpg.entity.RelatedCharacterRepository;
 import com.trpg.entity.Scenario;
 import com.trpg.entity.ScenarioRepository;
+import com.trpg.entity.Scene;
+import com.trpg.entity.SceneRepository;
 
 @Controller
 public class ScenarioAction {
@@ -37,6 +41,10 @@ public class ScenarioAction {
 	NamedParameterJdbcTemplate jdbcTemplate;
 	@Autowired
 	ResourceLoader resourceLoader;
+	@Autowired
+	ItemRepository itemRepository;
+	@Autowired
+	SceneRepository sceneRepository;
 
 	private static final RowMapper<CharacterInfo> characterInfoRowMapper = (rs, i) -> {
 		CharacterInfo characterInfo = new CharacterInfo();
@@ -171,5 +179,69 @@ public class ScenarioAction {
 		detail.setScenes(scenes);
 
 		return detail;
+	}
+
+	/**
+	 * formに格納された値をもとにデータを登録する。
+	 * 
+	 * @param form
+	 */
+	public void registScenario(ScenarioCreateForm form) {
+
+		// シナリオをDBに登録する。
+		Scenario createdScenario = scenarioRepository.save(convertToScenario(form));
+
+		// 将来的にキャラクターの作成処理を行う。
+
+		// itemをDBに登録する。
+		List<ItemForm> items = form.getItems();
+
+		if (items != null) {
+			// アイテムのIDを設定する。
+			int i = 1;
+			for (ItemForm item : items) {
+				item.setScenarioId(createdScenario.getId());
+				item.setSerialNum(i);
+				i++;
+			}
+
+			items.stream().forEach(item -> itemRepository.save(convertToItem(item)));
+		}
+		// シーンを登録する。
+		List<SceneForm> scenes = form.getScenes();
+		if (scenes != null) {
+			scenes.stream().forEach(s -> sceneRepository.save(convertToScene(s)));
+		}
+	}
+
+	/**
+	 * アイテムフォームからアイテムエンティティオブジェクトへ変換する。
+	 * 
+	 * @param form アイテムフォーム
+	 * @return アイテムエンティティ
+	 */
+	private Item convertToItem(ItemForm form) {
+		Item item = new Item();
+		item.setScenarioId(form.getScenarioId());
+		item.setSceneId(form.getSceneId());
+		item.setSerialNum(form.getSerialNum());
+		item.setImgUrl(form.getImgUrl());
+		item.setText(form.getText());
+		return item;
+	}
+
+	private Scenario convertToScenario(ScenarioCreateForm form) {
+		Scenario scenario = new Scenario();
+		scenario.setTitle(form.getTitle());
+		scenario.setOutline(form.getOutline());
+		scenario.setRecommendPlayer(form.getRecommendPlayer());
+		scenario.setTime(form.getTime());
+		scenario.setText(form.getText());
+		return scenario;
+	}
+
+	private Scene convertToScene(SceneForm form) {
+		// formからsceneへ変換させる
+		return null;
 	}
 }

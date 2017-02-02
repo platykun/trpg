@@ -57,9 +57,6 @@ public class ScenarioController {
 	@RequestMapping("/create")
 	public String create(Model model) {
 		ScenarioCreateForm scenario = new ScenarioCreateForm();
-		ScenarioDetail result = scenarioAction.getScenarioDetail(1);
-		scenario.setItems(result.getItems());
-
 		model.addAttribute("scenario", scenario);
 
 		return "scenario/create";
@@ -67,8 +64,9 @@ public class ScenarioController {
 
 	@RequestMapping("/create/confirm")
 	public String createConfirm(Model model, ScenarioCreateForm scenario) {
-		// scenarioを登録する。
-		return "scenario/top";
+		scenarioAction.registScenario(scenario);
+		
+		return "redirect:/scenario/top";
 	}
 
 	private ScenarioOutlineForm parseScenarioOutline(Scenario scenario) {
