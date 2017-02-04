@@ -205,7 +205,7 @@ public class ScenarioAction {
 				i++;
 			}
 
-			items.stream().forEach(item -> itemRepository.save(convertToItem(item)));
+			items.stream().forEach(item -> itemRepository.save(item.convertItem()));
 		}
 		// シーンを登録する。
 		List<SceneForm> scenes = form.getScenes();

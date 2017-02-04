@@ -67,4 +67,20 @@ public class ScenarioCreateForm {
 		newItem.setText(text);
 		items.add(newItem);
 	}
+
+	/**
+	 * シナリオエンティティを返却する。
+	 *
+	 * @return シナリオエンティティ
+	 */
+	public Scenario convertScenario(){
+		Scenario scenario = new Scenario();
+		scenario.setId(id);
+		scenario.setTitle(title);
+		scenario.setOutline(outline);
+		scenario.setRecommendPlayer(recommendPlayer);
+		scenario.setTime(time);
+		scenario.setText(text);
+		return scenario;
+	}
 }
