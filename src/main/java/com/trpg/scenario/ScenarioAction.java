@@ -7,6 +7,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.trpg.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
@@ -15,15 +16,6 @@ import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Controller;
-
-import com.trpg.entity.CharacterInfo;
-import com.trpg.entity.Item;
-import com.trpg.entity.ItemRepository;
-import com.trpg.entity.RelatedCharacterRepository;
-import com.trpg.entity.Scenario;
-import com.trpg.entity.ScenarioRepository;
-import com.trpg.entity.Scene;
-import com.trpg.entity.SceneRepository;
 
 @Controller
 public class ScenarioAction {
@@ -190,45 +182,35 @@ public class ScenarioAction {
 
 		// シナリオをDBに登録する。
 		Scenario createdScenario = scenarioRepository.save(convertToScenario(form));
+		int scenarioId = createdScenario.getId();
 
-		// 将来的にキャラクターの作成処理を行う。
+        //キャラクターIDをもとにキャラクター関連テーブルへ登録を行う
+        List<CharacterInfo> npcs = form.getNpcs();
+        if(npcs != null){
+            npcs.stream().forEach(n -> insertRelatedCharacter(scenarioId, n.getId(), RC_CATEGORY_NPC));
+        }
+        List<CharacterInfo> enemies = form.getEnemies();
+        if(enemies != null){
+            enemies.stream().forEach(e -> insertRelatedCharacter(scenarioId, e.getId(), RC_CATEGORY_ENEMY));
+        }
+
+
+		//アイテムの連番を振り直す
+		form.resetItemSerialNums();
 
 		// itemをDBに登録する。
 		List<ItemForm> items = form.getItems();
-
 		if (items != null) {
-			// アイテムのIDを設定する。
-			int i = 1;
-			for (ItemForm item : items) {
-				item.setScenarioId(createdScenario.getId());
-				item.setSerialNum(i);
-				i++;
-			}
-
 			items.stream().forEach(item -> itemRepository.save(item.convertItem()));
 		}
+
 		// シーンを登録する。
 		List<SceneForm> scenes = form.getScenes();
 		if (scenes != null) {
-			scenes.stream().forEach(s -> sceneRepository.save(convertToScene(s)));
+			scenes.stream().forEach(s -> sceneRepository.save(s.convertScene()));
 		}
 	}
 
-	/**
-	 * アイテムフォームからアイテムエンティティオブジェクトへ変換する。
-	 * 
-	 * @param form アイテムフォーム
-	 * @return アイテムエンティティ
-	 */
-	private Item convertToItem(ItemForm form) {
-		Item item = new Item();
-		item.setScenarioId(form.getScenarioId());
-		item.setSceneId(form.getSceneId());
-		item.setSerialNum(form.getSerialNum());
-		item.setImgUrl(form.getImgUrl());
-		item.setText(form.getText());
-		return item;
-	}
 
 	private Scenario convertToScenario(ScenarioCreateForm form) {
 		Scenario scenario = new Scenario();
@@ -240,8 +222,11 @@ public class ScenarioAction {
 		return scenario;
 	}
 
-	private Scene convertToScene(SceneForm form) {
-		// formからsceneへ変換させる
-		return null;
-	}
+	private void insertRelatedCharacter(int scenarioId, int characterInfoId, int category){
+        RelatedCharacter relatedCharacter = new RelatedCharacter();
+        relatedCharacter.setScenarioId(scenarioId);
+        relatedCharacter.setCharacterInfoId(characterInfoId);
+        relatedCharacter.setCategory(category);
+        relatedCharacterRepository.save(relatedCharacter);
+    }
 }

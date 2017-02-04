@@ -75,7 +75,23 @@
           </div>
           <div class="mainDiv">
             <h2 class="ui header">敵</h2>
-            <div class="column">敵の一覧表</div>
+            <div class="column">
+              <button type="button" class="btn btn-primary oneRight" data-toggle="modal" data-target="#enemyModal">
+                  <i class="addicon"></i> 追加
+                </button>
+                <table id="enemyTable" class="table">
+                  <thead>
+                  <tr>
+                    <th>ID</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr th:each="enemy, stat: ${scenario.enemies}">
+                    <td><input type="text" class="form-control" th:value="${enemy.id}" th:name="|enemies[${stat.index}].name|" /></td>
+                  </tr>
+                  </tbody>
+                </table>
+            </div>
           </div>
           <div class="mainDiv">
             <h2 class="ui header">アイテム</h2>
@@ -184,15 +200,36 @@
 												'<tr id="npcTable' + nextNum + '"></tr>');
 								$("#" + nextId).append(
 										'<td><input type="text" class="form-control" value="'
-												+ $("#npcModalid").val()
-												+ '" name="items['
+												+ $("#npcModalId").val()
+												+ '" name="npcs['
 												+ nextNumMinus
 												+ '].id" /></td>');
 								//モーダル内を空にする
 								$("#npcModalId").val('');
 							})
-			$("#closeItemModal").click(function() {
+			$("#closeNpcModal").click(function() {
 				$("#npcModalId").val('');
+			})
+			$("#saveEnemyModal")
+					.click(
+							function() {
+								var nextNum = $("#enemyTable > tbody").children().length + 1;
+								var nextNumMinus = nextNum - 1;
+								var nextId = 'enemyTable' + nextNum;
+								$("#enemyTable")
+										.append(
+												'<tr id="enemyTable' + nextNum + '"></tr>');
+								$("#" + nextId).append(
+										'<td><input type="text" class="form-control" value="'
+												+ $("#enemyModalId").val()
+												+ '" name="enemies['
+												+ nextNumMinus
+												+ '].id" /></td>');
+								//モーダル内を空にする
+								$("#enemyModalId").val('');
+							})
+			$("#closeEnemyModal").click(function() {
+				$("#enemyModalId").val('');
 			})
 
 			/*]]>*/

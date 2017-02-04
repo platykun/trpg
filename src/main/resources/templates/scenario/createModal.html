@@ -1,3 +1,4 @@
+<!--create.htmlだと行数が膨大になるため、modal部分を切り出す。-->
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <!-- アイテム追加モーダル開始 -->
 <div class="modal fade" id="itemModal" tabindex="-1" role="dialog" aria-labelledby="itemModalLabel">
@@ -36,6 +37,7 @@
   </div>
 </div>
 
+<!--NPC追加モーダル-->
 <div class="modal fade" id="npcModal" tabindex="-1" role="dialog" aria-labelledby="npcModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -46,13 +48,36 @@
         <table class="table">
           <tr>
             <td>ID</td>
-            <td><input id="npcModalid" type="text" class="form-control" /></td>
+            <td><input id="npcModalId" type="text" class="form-control" /></td>
           </tr>
         </table>
       </div>
       <div class="modal-footer">
         <button id="closeNpcModal" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button id="saveNpcModal" type="button" class="btn btn-primary" data-dismiss="modal">Add item</button>
+        <button id="saveNpcModal" type="button" class="btn btn-primary" data-dismiss="modal">Add NPC</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Enemy追加モーダル-->
+<div class="modal fade" id="enemyModal" tabindex="-1" role="dialog" aria-labelledby="enemyModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="enemyModalLabel">敵追加</h4>
+      </div>
+      <div class="modal-body">
+        <table class="table">
+          <tr>
+            <td>ID</td>
+            <td><input id="enemyModalId" type="text" class="form-control" /></td>
+          </tr>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button id="closeEnemyModal" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button id="saveEnemyModal" type="button" class="btn btn-primary" data-dismiss="modal">Add Enemy</button>
       </div>
     </div>
   </div>

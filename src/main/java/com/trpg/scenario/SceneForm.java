@@ -2,6 +2,7 @@ package com.trpg.scenario;
 
 import java.util.List;
 
+import com.trpg.entity.Scene;
 import lombok.Data;
 
 /**
@@ -34,4 +35,37 @@ public class SceneForm {
 	private List<Integer> sceneLinkIds;
 	/** シーンリンク名リスト */
 	private List<String> sceneLinkNames;
+
+
+	public Scene convertScene(){
+		Scene scene = new Scene();
+		scene.setId(id);
+		scene.setScenarioId(scenarioId);
+		scene.setSerialNum(serialNum);
+		scene.setSceneGroup(sceneGroup);
+		scene.setTitle(title);
+		scene.setOutline(outline);
+		scene.setText(text);
+		if(appearCharacters != null){
+			switch(appearCharacters.size()){
+				case 5 : scene.setAppearCharacter5(appearCharacters.get(4));
+				case 4 : scene.setAppearCharacter4(appearCharacters.get(3));
+				case 3 : scene.setAppearCharacter3(appearCharacters.get(2));
+				case 2 : scene.setAppearCharacter2(appearCharacters.get(1));
+				case 1 : scene.setAppearCharacter1(appearCharacters.get(0));
+				default : break;
+			}
+		}
+		if(sceneLinkIds != null){
+			switch(sceneLinkIds.size()){
+				case 5 : scene.setSceneLinkId5(sceneLinkIds.get(4));
+				case 4 : scene.setSceneLinkId4(sceneLinkIds.get(3));
+				case 3 : scene.setSceneLinkId3(sceneLinkIds.get(2));
+				case 2 : scene.setSceneLinkId2(sceneLinkIds.get(1));
+				case 1 : scene.setSceneLinkId1(sceneLinkIds.get(0));
+				default : break;
+			}
+		}
+		return scene;
+	}
 }

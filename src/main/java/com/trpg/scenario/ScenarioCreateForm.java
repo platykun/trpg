@@ -69,6 +69,22 @@ public class ScenarioCreateForm {
 	}
 
 	/**
+	 * アイテムの連番を振り直す
+	 */
+	public void resetItemSerialNums(){
+		if(items == null){
+			return;
+		}
+
+		int i = 1;
+		for(ItemForm item : items){
+			item.setSerialNum(i);
+			i++;
+		}
+		return;
+	}
+
+	/**
 	 * シナリオエンティティを返却する。
 	 *
 	 * @return シナリオエンティティ
