@@ -121,7 +121,21 @@
           </div>
           <div class="mainDiv">
             <h2 class="ui header">シーン</h2>
-            <div class="column">シーンの一覧表</div>
+            <div class="column">
+                <button type="button" class="btn btn-primary oneRight" data-toggle="modal" data-target="#sceneModal">
+                    <i class="addicon"></i> 追加
+                </button>
+                <table id="sceneTable" class="table">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>シーン種別</th>
+                        <th>タイトル</th>
+                        <th>編集</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div>
           </div>
           <div class="mainDiv">
             <div class="column">
@@ -189,6 +203,8 @@
 				$("#itemModalImgUrl").val('');
 				$("#itemModalText").val('');
 			})
+
+			// NPC追加ボタン押下時の動作
 			$("#saveNpcModal")
 					.click(
 							function() {
@@ -210,6 +226,8 @@
 			$("#closeNpcModal").click(function() {
 				$("#npcModalId").val('');
 			})
+
+			// 敵追加ボタン押下時の動作
 			$("#saveEnemyModal")
 					.click(
 							function() {
@@ -232,6 +250,21 @@
 				$("#enemyModalId").val('');
 			})
 
+			// シーン追加ボタン押下時の動作
+			$("#saveSceneModal")
+					.click(
+							function() {
+								var nextNum = $("#sceneTable > tbody").children().length + 1;
+								var nextNumMinus = nextNum - 1;
+								var nextId = 'sceneTable' + nextNum;
+								$("#sceneTable")
+										.append(
+												'<tr id="sceneTable' + nextNum + '"></tr>');
+								//TOOD: モーダル内を空にする処理を記述
+							})
+			$("#closeEnemyModal").click(function() {
+				$("#enemyModalId").val('');
+			})
 			/*]]>*/
 		</script>
 </body>
