@@ -1,6 +1,7 @@
 <html xmlns:th="http://www.thmeleaf.org">
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
   crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css" />
 <script src="/css/marked/lib/marked.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <head>
@@ -77,20 +78,20 @@
             <h2 class="ui header">敵</h2>
             <div class="column">
               <button type="button" class="btn btn-primary oneRight" data-toggle="modal" data-target="#enemyModal">
-                  <i class="addicon"></i> 追加
-                </button>
-                <table id="enemyTable" class="table">
-                  <thead>
+                <i class="addicon"></i> 追加
+              </button>
+              <table id="enemyTable" class="table">
+                <thead>
                   <tr>
                     <th>ID</th>
                   </tr>
-                  </thead>
-                  <tbody>
+                </thead>
+                <tbody>
                   <tr th:each="enemy, stat: ${scenario.enemies}">
                     <td><input type="text" class="form-control" th:value="${enemy.id}" th:name="|enemies[${stat.index}].name|" /></td>
                   </tr>
-                  </tbody>
-                </table>
+                </tbody>
+              </table>
             </div>
           </div>
           <div class="mainDiv">
@@ -122,40 +123,35 @@
           <div class="mainDiv">
             <h2 class="ui header">シーン</h2>
             <div class="column">
-                <button type="button" class="btn btn-primary oneRight" data-toggle="modal" data-target="#sceneModal">
-                    <i class="addicon"></i> 追加
-                </button>
-                <table id="sceneTable" class="table">
-                    <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>シーン種別</th>
-                        <th>タイトル</th>
-                        <th>編集</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr th:each="scene, stat: ${scenario.scenes}">
-                        <td><input type="text" class="form-control" th:value="${scene.serialNum}" th:name="|scenes[${stat.index}].serialNum" /></td>
-                        <td><input type="text" class="form-control" th:value="${scene.sceneGroup}" th:name="|scenes[${stat.index}].sceneGroup" /></td>
-                        <td><input type="text" class="form-control" th:value="${scene.title}" th:name="|scenes[${stat.index}].title" /></td>
-                        <td>詳細ボタン
-                            <input type="hidden" th:value="${scene.outline}" th:name="|scenes[${stat.index}].outline|" />
-                            <input type="hidden" th:value="${scene.text}" th:name="|scenes[${stat.index}].text|" />
-                            <input type="hidden" th:value="${scene.appearCharacter1}" th:name="|scenes[${stat.index}].appearCharacter1|" />
-                            <input type="hidden" th:value="${scene.appearCharacter2}" th:name="|scenes[${stat.index}].appearCharacter2|" />
-                            <input type="hidden" th:value="${scene.appearCharacter3}" th:name="|scenes[${stat.index}].appearCharacter3|" />
-                            <input type="hidden" th:value="${scene.appearCharacter4}" th:name="|scenes[${stat.index}].appearCharacter4|" />
-                            <input type="hidden" th:value="${scene.appearCharacter5}" th:name="|scenes[${stat.index}].appearCharacter5|" />
-                            <input type="hidden" th:value="${scene.sceneLinkId1}" th:name="|scenes[${stat.index}].sceneLinkId1|" />
-                            <input type="hidden" th:value="${scene.sceneLinkId2}" th:name="|scenes[${stat.index}].sceneLinkId2|" />
-                            <input type="hidden" th:value="${scene.sceneLinkId3}" th:name="|scenes[${stat.index}].sceneLinkId3|" />
-                            <input type="hidden" th:value="${scene.sceneLinkId4}" th:name="|scenes[${stat.index}].sceneLinkId4|" />
-                            <input type="hidden" th:value="${scene.sceneLinkId5}" th:name="|scenes[${stat.index}].sceneLinkId5|" />
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
+              <button type="button" class="btn btn-primary oneRight" data-toggle="modal" data-target="#sceneModal">
+                <i class="addicon"></i> 追加
+              </button>
+              <table id="sceneTable" class="table">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>シーン種別</th>
+                    <th>タイトル</th>
+                    <th>編集</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr th:each="scene, stat: ${scenario.scenes}">
+                    <td><input type="text" class="form-control" th:value="${scene.serialNum}" th:name="|scenes[${stat.index}].serialNum" /></td>
+                    <td><input type="text" class="form-control" th:value="${scene.sceneGroup}" th:name="|scenes[${stat.index}].sceneGroup" /></td>
+                    <td><input type="text" class="form-control" th:value="${scene.title}" th:name="|scenes[${stat.index}].title" /></td>
+                    <td>詳細ボタン <input type="hidden" th:value="${scene.outline}" th:name="|scenes[${stat.index}].outline|" /> <input type="hidden" th:value="${scene.text}"
+                      th:name="|scenes[${stat.index}].text|" /> <input type="hidden" th:value="${scene.appearCharacter1}" th:name="|scenes[${stat.index}].appearCharacter1|" /> <input type="hidden"
+                      th:value="${scene.appearCharacter2}" th:name="|scenes[${stat.index}].appearCharacter2|" /> <input type="hidden" th:value="${scene.appearCharacter3}"
+                      th:name="|scenes[${stat.index}].appearCharacter3|" /> <input type="hidden" th:value="${scene.appearCharacter4}" th:name="|scenes[${stat.index}].appearCharacter4|" /> <input
+                      type="hidden" th:value="${scene.appearCharacter5}" th:name="|scenes[${stat.index}].appearCharacter5|" /> <input type="hidden" th:value="${scene.sceneLinkId1}"
+                      th:name="|scenes[${stat.index}].sceneLinkId1|" /> <input type="hidden" th:value="${scene.sceneLinkId2}" th:name="|scenes[${stat.index}].sceneLinkId2|" /> <input type="hidden"
+                      th:value="${scene.sceneLinkId3}" th:name="|scenes[${stat.index}].sceneLinkId3|" /> <input type="hidden" th:value="${scene.sceneLinkId4}"
+                      th:name="|scenes[${stat.index}].sceneLinkId4|" /> <input type="hidden" th:value="${scene.sceneLinkId5}" th:name="|scenes[${stat.index}].sceneLinkId5|" />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
           <div class="mainDiv">
@@ -171,195 +167,152 @@
   </div>
   <!-- jQuery 読み込み -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <!-- bootstrapセレクトボックス表示用のjs読み込み -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
   <!-- bootstrap-dropdown.js 読み込み -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script type="text/javascript">
-			/*<![CDATA[*/
-			// アイテム追加ボタン押下するとテーブルに一行追加する。
-			$("#saveItemModal")
-					.click(
-							function() {
-								var nextNum = $("#itemTable > tbody")
-										.children().length + 1;
-								var nextNumMinus = nextNum - 1;
-								var nextId = 'itemTable' + nextNum;
-								$("#itemTable")
-										.append(
-												'<tr id="itemTable' + nextNum + '"></tr>');
-								$("#" + nextId)
-										.append(
-												'<td><input type="text" class="form-control" value="' + nextNum + '" name="items[' + nextNumMinus + '].serialNum" /></td>');
-								$("#" + nextId).append(
-										'<td><input type="text" class="form-control" value="'
-												+ $("#itemModalName").val()
-												+ '" name="items['
-												+ nextNumMinus
-												+ '].name" /></td>');
-								$("#" + nextId)
-										.append(
-												'<td>詳細ボタン<input type="hidden" value="'
-														+ $("#itemModalImgUrl")
-																.val()
-														+ '" name="items['
-														+ nextNumMinus
-														+ '].imgUrl" />'
-														+ '<input type="hidden" value="'
-														+ $("#itemModalText")
-																.val()
-														+ '" name="items['
-														+ nextNumMinus
-														+ '].text" /></td>');
-								//モーダル内を空にする
-								$("#itemModalName").val('');
-								$("#itemModalImgUrl").val('');
-								$("#itemModalText").val('');
-							});
-			$("#itemModalText").keyup(function() {
-				$("#itemModalPreView").html(marked($("#itemModalText").val()));
-			});
+      /*<![CDATA[*/
+      // アイテム追加ボタン押下するとテーブルに一行追加する。
+      $("#saveItemModal")
+          .click(
+              function() {
+                var nextNum = $("#itemTable > tbody").children().length + 1;
+                var nextNumMinus = nextNum - 1;
+                var nextId = 'itemTable' + nextNum;
+                $("#itemTable").append('<tr id="itemTable' + nextNum + '"></tr>');
+                $("#" + nextId)
+                    .append(
+                        '<td><input type="text" class="form-control" value="' + nextNum + '" name="items[' + nextNumMinus + '].serialNum" /></td>');
+                $("#" + nextId).append(
+                    '<td><input type="text" class="form-control" value="'
+                        + $("#itemModalName").val() + '" name="items[' + nextNumMinus
+                        + '].name" /></td>');
+                $("#" + nextId).append(
+                    '<td>詳細ボタン<input type="hidden" value="' + $("#itemModalImgUrl").val()
+                        + '" name="items[' + nextNumMinus + '].imgUrl" />'
+                        + '<input type="hidden" value="' + $("#itemModalText").val()
+                        + '" name="items[' + nextNumMinus + '].text" /></td>');
+                //モーダル内を空にする
+                $("#itemModalName").val('');
+                $("#itemModalImgUrl").val('');
+                $("#itemModalText").val('');
+              });
+      $("#itemModalText").keyup(function() {
+        $("#itemModalPreView").html(marked($("#itemModalText").val()));
+      });
 
-			$("#closeItemModal").click(function() {
-				//モーダル内を空にする
-				$("#itemModalName").val('');
-				$("#itemModalImgUrl").val('');
-				$("#itemModalText").val('');
-			})
+      $("#closeItemModal").click(function() {
+        //モーダル内を空にする
+        $("#itemModalName").val('');
+        $("#itemModalImgUrl").val('');
+        $("#itemModalText").val('');
+      })
 
-			// NPC追加ボタン押下時の動作
-			$("#saveNpcModal")
-					.click(
-							function() {
-								var nextNum = $("#npcTable > tbody").children().length + 1;
-								var nextNumMinus = nextNum - 1;
-								var nextId = 'npcTable' + nextNum;
-								$("#npcTable")
-										.append(
-												'<tr id="npcTable' + nextNum + '"></tr>');
-								$("#" + nextId).append(
-										'<td><input type="text" class="form-control" value="'
-												+ $("#npcModalId").val()
-												+ '" name="npcs['
-												+ nextNumMinus
-												+ '].id" /></td>');
-								//モーダル内を空にする
-								$("#npcModalId").val('');
-							})
-			$("#closeNpcModal").click(function() {
-				$("#npcModalId").val('');
-			})
+      // NPC追加ボタン押下時の動作
+      $("#saveNpcModal").click(
+          function() {
+            var nextNum = $("#npcTable > tbody").children().length + 1;
+            var nextNumMinus = nextNum - 1;
+            var nextId = 'npcTable' + nextNum;
+            $("#npcTable").append('<tr id="npcTable' + nextNum + '"></tr>');
+            $("#" + nextId).append(
+                '<td><input type="text" class="form-control" value="' + $("#npcModalId").val()
+                    + '" name="npcs[' + nextNumMinus + '].id" /></td>');
+            //モーダル内を空にする
+            $("#npcModalId").val('');
+          })
+      $("#closeNpcModal").click(function() {
+        $("#npcModalId").val('');
+      })
 
-			// 敵追加ボタン押下時の動作
-			$("#saveEnemyModal")
-					.click(
-							function() {
-								var nextNum = $("#enemyTable > tbody").children().length + 1;
-								var nextNumMinus = nextNum - 1;
-								var nextId = 'enemyTable' + nextNum;
-								$("#enemyTable")
-										.append(
-												'<tr id="enemyTable' + nextNum + '"></tr>');
-								$("#" + nextId).append(
-										'<td><input type="text" class="form-control" value="'
-												+ $("#enemyModalId").val()
-												+ '" name="enemies['
-												+ nextNumMinus
-												+ '].id" /></td>');
-								//モーダル内を空にする
-								$("#enemyModalId").val('');
-							})
-			$("#closeEnemyModal").click(function() {
-				$("#enemyModalId").val('');
-			})
+      // 敵追加ボタン押下時の動作
+      $("#saveEnemyModal").click(
+          function() {
+            var nextNum = $("#enemyTable > tbody").children().length + 1;
+            var nextNumMinus = nextNum - 1;
+            var nextId = 'enemyTable' + nextNum;
+            $("#enemyTable").append('<tr id="enemyTable' + nextNum + '"></tr>');
+            $("#" + nextId).append(
+                '<td><input type="text" class="form-control" value="' + $("#enemyModalId").val()
+                    + '" name="enemies[' + nextNumMinus + '].id" /></td>');
+            //モーダル内を空にする
+            $("#enemyModalId").val('');
+          })
+      $("#closeEnemyModal").click(function() {
+        $("#enemyModalId").val('');
+      })
 
-			// シーン追加ボタン押下時の動作
-			$("#saveSceneModal")
-					.click(
-							function() {
-								var nextNum = $("#sceneTable > tbody").children().length + 1;
-								var nextNumMinus = nextNum - 1;
-								var nextId = 'sceneTable' + nextNum;
-								$("#sceneTable")
-										.append(
-												'<tr id="sceneTable' + nextNum + '"></tr>');
-								$("#" + nextId)
-										.append(
-												'<td><input type="text" class="form-control" value="' + nextNum + '" name="scenes[' + nextNumMinus + '].serialNum" /></td>');
-								$("#" + nextId).append(
-										'<td><input type="text" class="form-control" value="'
-												+ $('#sceneModalGroup').val()
-												+ '" name="scenes['
-												+ nextNumMinus
-												+ '].sceneGroup" /></td>');
-								$("#" + nextId).append(
-										'<td><input type="text" class="form-control" value="'
-												+ $('#sceneModalTitle').val()
-												+ '" name="scenes['
-												+ nextNumMinus
-												+ '].title" /></td>');
-								$("#" + nextId)
-										.append(
-												'<td>詳細ボタン <input type="hidden" value="'
-														+ $("#sceneModalOutline").val()
-														+ '" name="scenes[' + nextNumMinus + '].outline" />'
-														+ '<input type="hidden" value="'
-														+ $("#sceneModalText").val()
-														+ '" name="scenes[' + nextNumMinus + '].text" />'
-												        + '<input type="hidden" value="'
-														+ $("#sceneModalCharacter1").val()
-														+ '" name="scenes[' + nextNumMinus + '].appearCharacters[0]" />'
-										                + '<input type="hidden" value="'
-														+ $("#sceneModalCharacter2").val()
-														+ '" name="scenes[' + nextNumMinus + '].appearCharacters[1]" />'
-										                + '<input type="hidden" value="'
-														+ $("#sceneModalCharacter3").val()
-														+ '" name="scenes[' + nextNumMinus + '].appearCharacters[2]" />'
-										                + '<input type="hidden" value="'
-														+ $("#sceneModalCharacter4").val()
-														+ '" name="scenes[' + nextNumMinus + '].appearCharacters[3]" />'
-										                + '<input type="hidden" value="'
-														+ $("#sceneModalCharacter5").val()
-														+ '" name="scenes[' + nextNumMinus + '].appearCharacters[4]" />'
-										                + '<input type="hidden" value="'
-														+ $("#sceneModalSceneLink1").val()
-														+ '" name="scenes[' + nextNumMinus + '].sceneLinkIds[0]" />'
-										                + '<input type="hidden" value="'
-														+ $("#sceneModalSceneLink2").val()
-														+ '" name="scenes[' + nextNumMinus + '].sceneLinkIds[1]" />'
-										                + '<input type="hidden" value="'
-														+ $("#sceneModalSceneLink3").val()
-														+ '" name="scenes[' + nextNumMinus + '].sceneLinkIds[2]" />'
-										                + '<input type="hidden" value="'
-														+ $("#sceneModalSceneLink4").val()
-														+ '" name="scenes[' + nextNumMinus + '].sceneLinkIds[3]" />'
-										                + '<input type="hidden" value="'
-														+ $("#sceneModalSceneLink5").val()
-														+ '" name="scenes[' + nextNumMinus + '].sceneLinkIds[4]" />'
-												+ '</td>');
-								//TOOD: モーダル内を空にする
-								$("#sceneModalTitle").val('');
-								$("#sceneModalOutline").val('');
-								$("#sceneModalText").val('');
-								$("#sceneModalCharacter1").val('');
-								$("#sceneModalCharacter2").val('');
-								$("#sceneModalCharacter3").val('');
-								$("#sceneModalCharacter4").val('');
-								$("#sceneModalCharacter5").val('');
-								$("#sceneModalSceneLink1").val('');
-								$("#sceneModalSceneLink2").val('');
-								$("#sceneModalSceneLink3").val('');
-								$("#sceneModalSceneLink4").val('');
-								$("#sceneModalSceneLink5").val('');
-							})
-			$("#sceneModalOutline").keyup(function() {
-				$("#sceneModalOutlinePreView").html(marked($("#sceneModalOutline").val()));
-			});
-			$("#sceneModalText").keyup(function() {
-				$("#sceneModalTextPreView").html(marked($("#sceneModalText").val()));
-			});
-			$("#closeEnemyModal").click(function() {
-				$("#enemyModalId").val('');
-			})
-			/*]]>*/
-		</script>
+      // シーン追加ボタン押下時の動作
+      $("#saveSceneModal")
+          .click(
+              function() {
+                var nextNum = $("#sceneTable > tbody").children().length + 1;
+                var nextNumMinus = nextNum - 1;
+                var nextId = 'sceneTable' + nextNum;
+                $("#sceneTable").append('<tr id="sceneTable' + nextNum + '"></tr>');
+                $("#" + nextId)
+                    .append(
+                        '<td><input type="text" class="form-control" value="' + nextNum + '" name="scenes[' + nextNumMinus + '].serialNum" /></td>');
+                $("#" + nextId).append(
+                    '<td>'
+                        + $("#sceneModalGroup option:selected").text()
+                        + '<input type="hidden" value="' + $("#sceneModalGroup").val()
+                        + '" name="scenes[' + nextNumMinus + '].sceneGroup"</td>');
+                $("#" + nextId).append(
+                    '<td><input type="text" class="form-control" value="'
+                        + $('#sceneModalTitle').val() + '" name="scenes[' + nextNumMinus
+                        + '].title" /></td>');
+                $("#" + nextId).append(
+                    '<td>詳細ボタン <input type="hidden" value="' + $("#sceneModalOutline").val()
+                        + '" name="scenes[' + nextNumMinus + '].outline" />'
+                        + '<input type="hidden" value="' + $("#sceneModalText").val()
+                        + '" name="scenes[' + nextNumMinus + '].text" />'
+                        + '<input type="hidden" value="' + $("#sceneModalCharacter1").val()
+                        + '" name="scenes[' + nextNumMinus + '].appearCharacters[0]" />'
+                        + '<input type="hidden" value="' + $("#sceneModalCharacter2").val()
+                        + '" name="scenes[' + nextNumMinus + '].appearCharacters[1]" />'
+                        + '<input type="hidden" value="' + $("#sceneModalCharacter3").val()
+                        + '" name="scenes[' + nextNumMinus + '].appearCharacters[2]" />'
+                        + '<input type="hidden" value="' + $("#sceneModalCharacter4").val()
+                        + '" name="scenes[' + nextNumMinus + '].appearCharacters[3]" />'
+                        + '<input type="hidden" value="' + $("#sceneModalCharacter5").val()
+                        + '" name="scenes[' + nextNumMinus + '].appearCharacters[4]" />'
+                        + '<input type="hidden" value="' + $("#sceneModalSceneLink1").val()
+                        + '" name="scenes[' + nextNumMinus + '].sceneLinkIds[0]" />'
+                        + '<input type="hidden" value="' + $("#sceneModalSceneLink2").val()
+                        + '" name="scenes[' + nextNumMinus + '].sceneLinkIds[1]" />'
+                        + '<input type="hidden" value="' + $("#sceneModalSceneLink3").val()
+                        + '" name="scenes[' + nextNumMinus + '].sceneLinkIds[2]" />'
+                        + '<input type="hidden" value="' + $("#sceneModalSceneLink4").val()
+                        + '" name="scenes[' + nextNumMinus + '].sceneLinkIds[3]" />'
+                        + '<input type="hidden" value="' + $("#sceneModalSceneLink5").val()
+                        + '" name="scenes[' + nextNumMinus + '].sceneLinkIds[4]" />' + '</td>');
+                //TOOD: モーダル内を空にする
+                $("#sceneModalTitle").val('');
+                $("#sceneModalOutline").val('');
+                $("#sceneModalText").val('');
+                $("#sceneModalCharacter1").val('');
+                $("#sceneModalCharacter2").val('');
+                $("#sceneModalCharacter3").val('');
+                $("#sceneModalCharacter4").val('');
+                $("#sceneModalCharacter5").val('');
+                $("#sceneModalSceneLink1").val('');
+                $("#sceneModalSceneLink2").val('');
+                $("#sceneModalSceneLink3").val('');
+                $("#sceneModalSceneLink4").val('');
+                $("#sceneModalSceneLink5").val('');
+              })
+      $("#sceneModalOutline").keyup(function() {
+        $("#sceneModalOutlinePreView").html(marked($("#sceneModalOutline").val()));
+      });
+      $("#sceneModalText").keyup(function() {
+        $("#sceneModalTextPreView").html(marked($("#sceneModalText").val()));
+      });
+      $("#closeEnemyModal").click(function() {
+        $("#enemyModalId").val('');
+      })
+      /*]]>*/
+    </script>
 </body>
 </html>

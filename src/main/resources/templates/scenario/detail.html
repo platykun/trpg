@@ -172,30 +172,30 @@
   <!-- bootstrap-dropdown.js 読み込み -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script type="text/javascript" th:inline="javascript">
-			document.addEventListener('DOMContentLoaded', function() {
-				$("#1").show();
-			})
-			$(function() {
-				$(".dropdown-menu a").on('click', function(e) {
-					// 勝手にスクロール位置変わらないように a のclickイベントをキャンセル
-					e.preventDefault();
-					// パネルの存在判定をしておきます。
-					var target = $(this).attr('href');
-					if (!$(target).length)
-						return false;
-					$(".scene_tas").children().removeClass('active')
-					$(this).closest('.dropdown').addClass('active');
+      document.addEventListener('DOMContentLoaded', function() {
+        $("#1").show();
+      })
+      $(function() {
+        $(".dropdown-menu a").on('click', function(e) {
+          // 勝手にスクロール位置変わらないように a のclickイベントをキャンセル
+          e.preventDefault();
+          // パネルの存在判定をしておきます。
+          var target = $(this).attr('href');
+          if (!$(target).length)
+            return false;
+          $(".scene_tas").children().removeClass('active')
+          $(this).closest('.dropdown').addClass('active');
 
-					$('.scene_panel').hide();
-					$(target).show();
-				});
-			});
-			/*<![CDATA[*/
-			document.getElementById('content').innerHTML = marked(/*[[ ${detail.text} ]]*/);
-			$(".scene_panel_text").each(function() {
-				$(this).append(marked($(this).prev().text()));
-			});
-			/*]]>*/
-		</script>
+          $('.scene_panel').hide();
+          $(target).show();
+        });
+      });
+      /*<![CDATA[*/
+      document.getElementById('content').innerHTML = marked(/*[[ ${detail.text} ]]*/);
+      $(".scene_panel_text").each(function() {
+        $(this).append(marked($(this).prev().text()));
+      });
+      /*]]>*/
+    </script>
 </body>
 </html>

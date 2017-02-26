@@ -84,7 +84,7 @@ public class ScenarioDetail {
 		this.placeScenes = scenes.stream().filter(s -> s.getSceneGroup() == 30).collect(Collectors.toList());
 		this.timeScenes = scenes.stream().filter(s -> s.getSceneGroup() == 40).collect(Collectors.toList());
 		this.combatScenes = scenes.stream().filter(s -> s.getSceneGroup() == 50).collect(Collectors.toList());
-		this.endingScenes = scenes.stream().filter(s -> s.getSceneGroup() == 50).collect(Collectors.toList());
+		this.endingScenes = scenes.stream().filter(s -> s.getSceneGroup() == 60).collect(Collectors.toList());
 		this.allScenes = scenes;
 	}
 
