@@ -1,5 +1,6 @@
 package com.trpg.scenario;
 
+import java.util.Collections;
 import java.util.List;
 
 import com.trpg.entity.Scene;
@@ -38,6 +39,13 @@ public class SceneForm {
 
 
 	public Scene convertScene(){
+
+		//TODO: 本来精査処理として行うべきだが、精査処理を実装していないためここで処理を行う。
+		//あとで処理を行う場所を移動させる。
+		//Listのうち、nullが格納された場合に除外させる。
+		appearCharacters.removeAll(Collections.singleton(null));
+		sceneLinkIds.removeAll(Collections.singleton(null));
+
 		Scene scene = new Scene();
 		scene.setId(id);
 		scene.setScenarioId(scenarioId);
@@ -46,6 +54,7 @@ public class SceneForm {
 		scene.setTitle(title);
 		scene.setOutline(outline);
 		scene.setText(text);
+
 		if(appearCharacters != null){
 			switch(appearCharacters.size()){
 				case 5 : scene.setAppearCharacter5(appearCharacters.get(4));

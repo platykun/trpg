@@ -134,6 +134,27 @@
                         <th>編集</th>
                     </tr>
                     </thead>
+                    <tbody>
+                    <tr th:each="scene, stat: ${scenario.scenes}">
+                        <td><input type="text" class="form-control" th:value="${scene.serialNum}" th:name="|scenes[${stat.index}].serialNum" /></td>
+                        <td><input type="text" class="form-control" th:value="${scene.sceneGroup}" th:name="|scenes[${stat.index}].sceneGroup" /></td>
+                        <td><input type="text" class="form-control" th:value="${scene.title}" th:name="|scenes[${stat.index}].title" /></td>
+                        <td>詳細ボタン
+                            <input type="hidden" th:value="${scene.outline}" th:name="|scenes[${stat.index}].outline|" />
+                            <input type="hidden" th:value="${scene.text}" th:name="|scenes[${stat.index}].text|" />
+                            <input type="hidden" th:value="${scene.appearCharacter1}" th:name="|scenes[${stat.index}].appearCharacter1|" />
+                            <input type="hidden" th:value="${scene.appearCharacter2}" th:name="|scenes[${stat.index}].appearCharacter2|" />
+                            <input type="hidden" th:value="${scene.appearCharacter3}" th:name="|scenes[${stat.index}].appearCharacter3|" />
+                            <input type="hidden" th:value="${scene.appearCharacter4}" th:name="|scenes[${stat.index}].appearCharacter4|" />
+                            <input type="hidden" th:value="${scene.appearCharacter5}" th:name="|scenes[${stat.index}].appearCharacter5|" />
+                            <input type="hidden" th:value="${scene.sceneLinkId1}" th:name="|scenes[${stat.index}].sceneLinkId1|" />
+                            <input type="hidden" th:value="${scene.sceneLinkId2}" th:name="|scenes[${stat.index}].sceneLinkId2|" />
+                            <input type="hidden" th:value="${scene.sceneLinkId3}" th:name="|scenes[${stat.index}].sceneLinkId3|" />
+                            <input type="hidden" th:value="${scene.sceneLinkId4}" th:name="|scenes[${stat.index}].sceneLinkId4|" />
+                            <input type="hidden" th:value="${scene.sceneLinkId5}" th:name="|scenes[${stat.index}].sceneLinkId5|" />
+                        </td>
+                    </tr>
+                    </tbody>
                 </table>
             </div>
           </div>
@@ -260,8 +281,81 @@
 								$("#sceneTable")
 										.append(
 												'<tr id="sceneTable' + nextNum + '"></tr>');
-								//TOOD: モーダル内を空にする処理を記述
+								$("#" + nextId)
+										.append(
+												'<td><input type="text" class="form-control" value="' + nextNum + '" name="scenes[' + nextNumMinus + '].serialNum" /></td>');
+								$("#" + nextId).append(
+										'<td><input type="text" class="form-control" value="'
+												+ $('#sceneModalGroup').val()
+												+ '" name="scenes['
+												+ nextNumMinus
+												+ '].sceneGroup" /></td>');
+								$("#" + nextId).append(
+										'<td><input type="text" class="form-control" value="'
+												+ $('#sceneModalTitle').val()
+												+ '" name="scenes['
+												+ nextNumMinus
+												+ '].title" /></td>');
+								$("#" + nextId)
+										.append(
+												'<td>詳細ボタン <input type="hidden" value="'
+														+ $("#sceneModalOutline").val()
+														+ '" name="scenes[' + nextNumMinus + '].outline" />'
+														+ '<input type="hidden" value="'
+														+ $("#sceneModalText").val()
+														+ '" name="scenes[' + nextNumMinus + '].text" />'
+												        + '<input type="hidden" value="'
+														+ $("#sceneModalCharacter1").val()
+														+ '" name="scenes[' + nextNumMinus + '].appearCharacters[0]" />'
+										                + '<input type="hidden" value="'
+														+ $("#sceneModalCharacter2").val()
+														+ '" name="scenes[' + nextNumMinus + '].appearCharacters[1]" />'
+										                + '<input type="hidden" value="'
+														+ $("#sceneModalCharacter3").val()
+														+ '" name="scenes[' + nextNumMinus + '].appearCharacters[2]" />'
+										                + '<input type="hidden" value="'
+														+ $("#sceneModalCharacter4").val()
+														+ '" name="scenes[' + nextNumMinus + '].appearCharacters[3]" />'
+										                + '<input type="hidden" value="'
+														+ $("#sceneModalCharacter5").val()
+														+ '" name="scenes[' + nextNumMinus + '].appearCharacters[4]" />'
+										                + '<input type="hidden" value="'
+														+ $("#sceneModalSceneLink1").val()
+														+ '" name="scenes[' + nextNumMinus + '].sceneLinkIds[0]" />'
+										                + '<input type="hidden" value="'
+														+ $("#sceneModalSceneLink2").val()
+														+ '" name="scenes[' + nextNumMinus + '].sceneLinkIds[1]" />'
+										                + '<input type="hidden" value="'
+														+ $("#sceneModalSceneLink3").val()
+														+ '" name="scenes[' + nextNumMinus + '].sceneLinkIds[2]" />'
+										                + '<input type="hidden" value="'
+														+ $("#sceneModalSceneLink4").val()
+														+ '" name="scenes[' + nextNumMinus + '].sceneLinkIds[3]" />'
+										                + '<input type="hidden" value="'
+														+ $("#sceneModalSceneLink5").val()
+														+ '" name="scenes[' + nextNumMinus + '].sceneLinkIds[4]" />'
+												+ '</td>');
+								//TOOD: モーダル内を空にする
+								$("#sceneModalTitle").val('');
+								$("#sceneModalOutline").val('');
+								$("#sceneModalText").val('');
+								$("#sceneModalCharacter1").val('');
+								$("#sceneModalCharacter2").val('');
+								$("#sceneModalCharacter3").val('');
+								$("#sceneModalCharacter4").val('');
+								$("#sceneModalCharacter5").val('');
+								$("#sceneModalSceneLink1").val('');
+								$("#sceneModalSceneLink2").val('');
+								$("#sceneModalSceneLink3").val('');
+								$("#sceneModalSceneLink4").val('');
+								$("#sceneModalSceneLink5").val('');
 							})
+			$("#sceneModalOutline").keyup(function() {
+				$("#sceneModalOutlinePreView").html(marked($("#sceneModalOutline").val()));
+			});
+			$("#sceneModalText").keyup(function() {
+				$("#sceneModalTextPreView").html(marked($("#sceneModalText").val()));
+			});
 			$("#closeEnemyModal").click(function() {
 				$("#enemyModalId").val('');
 			})

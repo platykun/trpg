@@ -83,6 +83,20 @@ public class ScenarioCreateForm {
 		}
 		return;
 	}
+	/**
+	 * シーンの連番を振り直す
+	 */
+	public void resetSceneSerialNums(){
+		if(scenes == null){
+			return;
+		}
+
+		int i = 1;
+		for(SceneForm scene : scenes){
+			scene.setSerialNum(i);
+			i++;
+		}
+	}
 
 	/**
 	 * シナリオエンティティを返却する。

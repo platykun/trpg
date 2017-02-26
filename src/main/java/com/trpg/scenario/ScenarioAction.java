@@ -145,6 +145,7 @@ public class ScenarioAction {
 		List<CharacterInfo> enemies = jdbcTemplate.query(getCharacterSQL, enemyParam, characterInfoRowMapper);
 		detail.setEnemies(enemies);
 
+
 		// itemを取得してformクラスへ格納する。
 		SqlParameterSource itemParam = new MapSqlParameterSource().addValue("id", id);
 		List<ItemForm> items = jdbcTemplate.query(getItemSQL, itemParam, itemFormRowMapper);
@@ -154,18 +155,33 @@ public class ScenarioAction {
 		SqlParameterSource sceneParam = new MapSqlParameterSource().addValue("id", id);
 		List<SceneForm> scenes = jdbcTemplate.query(getSceneSQL, sceneParam, sceneFormRowMapper);
 
-		// テーブルから取得したシーンIDをもとにシーン名を格納する。
+		//シナリオに登場するキャラクター一覧
+		List<CharacterInfo> appearCharacters = npcs;
+		appearCharacters.addAll(enemies);
+
+		// シーン名,キャラクター名を格納する。
 		// TODO: やりかたはもうちょっとちゃんと考える
 		for (SceneForm scene : scenes) {
+			//キャラクター名を格納する。
 			List<String> characterNameList = new ArrayList<String>();
-			for (Integer characterId : scene.getAppearCharacters()) {
-				if (characterId.equals(0))
+			for(Integer characterId : scene.getAppearCharacters()){
+				if(characterId.equals(0))
 					break;
-				String name = scenes.stream().filter(s -> s.getId() == characterId.intValue()).findFirst().get()
-						.getTitle();
-				characterNameList.add(name);
+				String characterName = appearCharacters.stream().filter(a -> a.getId() == characterId).findFirst().get().getName();
+				characterNameList.add(characterName);
 			}
 			scene.setAppearCharacterNames(characterNameList);
+
+			//シーン名を格納する
+			List<String> sceneLinkNameList = new ArrayList<String>();
+			for (Integer sceneLinkId : scene.getSceneLinkIds()) {
+				if (sceneLinkId.equals(0))
+					break;
+				String sceneName = scenes.stream().filter(s -> s.getId() == sceneLinkId.intValue()).findFirst().get()
+						.getTitle();
+				sceneLinkNameList.add(sceneName);
+			}
+			scene.setAppearCharacterNames(sceneLinkNameList);
 		}
 
 		detail.setScenes(scenes);
@@ -201,13 +217,16 @@ public class ScenarioAction {
 		// itemをDBに登録する。
 		List<ItemForm> items = form.getItems();
 		if (items != null) {
-			items.stream().forEach(item -> itemRepository.save(item.convertItem()));
+			items.stream().forEach(item -> insertItems(scenarioId, item));
 		}
+
+		//シーンの連番を振り直す
+		form.resetSceneSerialNums();
 
 		// シーンを登録する。
 		List<SceneForm> scenes = form.getScenes();
 		if (scenes != null) {
-			scenes.stream().forEach(s -> sceneRepository.save(s.convertScene()));
+			scenes.stream().forEach(s -> insertScene(scenarioId, s));
 		}
 	}
 
@@ -229,4 +248,21 @@ public class ScenarioAction {
         relatedCharacter.setCategory(category);
         relatedCharacterRepository.save(relatedCharacter);
     }
+
+    private void insertItems(int scenarioId, ItemForm itemForm){
+		Item item = new Item();
+		item.setScenarioId(scenarioId);
+		item.setSceneId(itemForm.getSceneId());
+		item.setSerialNum(itemForm.getSerialNum());
+		item.setImgUrl(itemForm.getImgUrl());
+		item.setText(itemForm.getText());
+		itemRepository.save(item);
+	}
+
+	private void insertScene(int scenarioId, SceneForm sceneForm){
+		Scene scene = sceneForm.convertScene();
+		scene.setScenarioId(scenarioId);
+		sceneRepository.save(scene);
+	}
+
 }
