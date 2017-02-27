@@ -177,7 +177,7 @@ public class ScenarioAction {
 			for (Integer sceneLinkId : scene.getSceneLinkIds()) {
 				if (sceneLinkId.equals(0))
 					break;
-				String sceneName = scenes.stream().filter(s -> s.getId() == sceneLinkId.intValue()).findFirst().get()
+				String sceneName = scenes.stream().filter(s -> s.getSerialNum() == sceneLinkId.intValue()).findFirst().get()
 						.getTitle();
 				sceneLinkNameList.add(sceneName);
 			}

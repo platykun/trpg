@@ -44,7 +44,9 @@ public class SceneForm {
 		//あとで処理を行う場所を移動させる。
 		//Listのうち、nullが格納された場合に除外させる。
 		appearCharacters.removeAll(Collections.singleton(null));
+	    appearCharacters.removeAll(Collections.singleton(0));
 		sceneLinkIds.removeAll(Collections.singleton(null));
+		sceneLinkIds.removeAll(Collections.singleton(0));
 
 		Scene scene = new Scene();
 		scene.setId(id);

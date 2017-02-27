@@ -255,12 +255,11 @@
                     .append(
                         '<td><input type="text" class="form-control" value="' + nextNum + '" name="scenes[' + nextNumMinus + '].serialNum" /></td>');
                 $("#" + nextId).append(
-                    '<td>'
-                        + $("#sceneModalGroup option:selected").text()
+                    '<td>' + $("#sceneModalGroup option:selected").text()
                         + '<input type="hidden" value="' + $("#sceneModalGroup").val()
                         + '" name="scenes[' + nextNumMinus + '].sceneGroup"</td>');
                 $("#" + nextId).append(
-                    '<td><input type="text" class="form-control" value="'
+                    '<td><input type="text" class="form-control sceneTitle" value="'
                         + $('#sceneModalTitle').val() + '" name="scenes[' + nextNumMinus
                         + '].title" /></td>');
                 $("#" + nextId).append(
@@ -302,6 +301,38 @@
                 $("#sceneModalSceneLink3").val('');
                 $("#sceneModalSceneLink4").val('');
                 $("#sceneModalSceneLink5").val('');
+
+                //シーンリンクモーダルを更新する。
+                $("#sceneModalSceneLink1").empty();
+                $("#sceneModalSceneLink2").empty();
+                $("#sceneModalSceneLink3").empty();
+                $("#sceneModalSceneLink4").empty();
+                $("#sceneModalSceneLink5").empty();
+                $("#sceneModalSceneLink1").append('<option value="0">選択なし</option>');
+                $("#sceneModalSceneLink2").append('<option value="0">選択なし</option>');
+                $("#sceneModalSceneLink3").append('<option value="0">選択なし</option>');
+                $("#sceneModalSceneLink4").append('<option value="0">選択なし</option>');
+                $("#sceneModalSceneLink5").append('<option value="0">選択なし</option>');
+                $(".sceneTitle").each(
+                    function(i) {
+                      var title = $(this).val();
+                      $("#sceneModalSceneLink1").append(
+                          '<option value="' + (i + 1) + '">' + title + '</option>');
+                      $("#sceneModalSceneLink2").append(
+                          '<option value="' + (i + 1) + '">' + title + '</option>');
+                      $("#sceneModalSceneLink3").append(
+                          '<option value="' + (i + 1) + '">' + title + '</option>');
+                      $("#sceneModalSceneLink4").append(
+                          '<option value="' + (i + 1) + '">' + title + '</option>');
+                      $("#sceneModalSceneLink5").append(
+                          '<option value="' + (i + 1) + '">' + title + '</option>');
+                    });
+                $("#sceneModalSceneLink1").selectpicker('refresh');
+                $("#sceneModalSceneLink2").selectpicker('refresh');
+                $("#sceneModalSceneLink3").selectpicker('refresh');
+                $("#sceneModalSceneLink4").selectpicker('refresh');
+                $("#sceneModalSceneLink5").selectpicker('refresh');
+
               })
       $("#sceneModalOutline").keyup(function() {
         $("#sceneModalOutlinePreView").html(marked($("#sceneModalOutline").val()));
