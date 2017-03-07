@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.google.gson.Gson;
 import com.trpg.caracter.CharacterAction;
 import com.trpg.entity.Scenario;
 
@@ -68,6 +70,15 @@ public class ScenarioController {
 
         return "redirect:/scenario/top";
     }
+    
+//    @RequestMapping("/create/getCharacter")
+//    @ResponseBody
+//    public String getCharacter(){
+//        Gson gson = new Gson();
+//        List<String> strList = new ArrayList<String>();
+//        strList.add("test1");
+//        return gson.toJson(strList);
+//    }
 
     private ScenarioOutlineForm parseScenarioOutline(Scenario scenario) {
         return new ScenarioOutlineForm(scenario.getId(), scenario.getTitle(), scenario.getOutline());
