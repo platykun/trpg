@@ -1,19 +1,19 @@
-package com.trpg.domain.model.character;
+package com.trpg.domain.model.character.belonging;
 
 /**
- * 所持品
+ * TODO:builderパターンを使用して実装する。
  * 
  * @author Platykun
  *
  */
-public class Belonging {
+public class Sercher {
     BelongingType type;
     
     String name;
     
     String description;
     
-    Belonging(BelongingType type, String name, String description){
+    Sercher(BelongingType type, String name, String description){
         this.type = type;
         this.name = name;
         this.description = description;

@@ -1,4 +1,4 @@
-package com.trpg.domain.model.character;
+package com.trpg.domain.model.character.belonging;
 
 /**
  * 所持品種別
