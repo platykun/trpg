@@ -24,7 +24,7 @@ public class BelongingFactory {
         BelongingType type = BelongingType.valueOf(map.get("belongingType"));
         String name = map.get("name");
         String description = map.get("description");
-        Belonging belonging = new Belonging(new BelongingDefaultImpl(type, name, description));
+        Belonging belonging = new Belonging(type, name, description);
         return belonging;
     }
     
@@ -36,7 +36,7 @@ public class BelongingFactory {
         int damage = Integer.parseInt(map.get("damage"));
         int range = Integer.parseInt(map.get("range"));
         String remarks = map.get("remarks");
-        Belonging belonging = new Belonging(new WeaponImpl(type, name, description, accuracy, damage, range, remarks));
+        Belonging belonging = new Weapon(type, name, description, accuracy, damage, range, remarks);
         return belonging;
     }
 }

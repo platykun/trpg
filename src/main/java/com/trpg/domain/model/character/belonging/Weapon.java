@@ -8,7 +8,7 @@ import java.util.Map;
  * @author Platykun
  *
  */
-public class WeaponImpl extends BelongingDefaultImpl{
+public class Weapon extends Belonging{
     
     /** 命中率 */
     private int accuracy;
@@ -18,9 +18,10 @@ public class WeaponImpl extends BelongingDefaultImpl{
     private int range;
     /** 備考 */
     private String remarks;
-    
-    WeaponImpl(BelongingType type, String name, String description, int accuracy, int damage, int range, String remarks){
-        super(BelongingType.WEAPONS, name, description);
+
+    Weapon(BelongingType type, String name, String description, int accuracy, int damage, int range, String remarks) {
+        super(type, name, description);
+        // TODO Auto-generated constructor stub
         if(!BelongingType.WEAPONS.equals(type)){
             //WEAPONS以外の場合エラー
         }
@@ -29,6 +30,8 @@ public class WeaponImpl extends BelongingDefaultImpl{
         this.range = range;
         this.remarks = remarks;
     }
+
+    
     
     public Map<String, String> paramMap(){
         Map<String, String> map = super.paramMap();

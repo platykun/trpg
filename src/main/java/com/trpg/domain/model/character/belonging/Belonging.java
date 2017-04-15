@@ -1,21 +1,24 @@
 package com.trpg.domain.model.character.belonging;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 所持品の抽象クラス。
- * 所持品のうち、特定種別の所持品のみ機能追加したい場合、
- * 本クラスを継承して機能クラスを作成する。
+ * 所持品のデフォルトの実装クラス
  * 
  * @author Platykun
  *
  */
-public class Belonging {
-
-    private BelongingImpl impl;
+public class Belonging{
     
-    Belonging(BelongingImpl impl){
-        this.impl = impl;
+    BelongingType type;
+    String name;
+    String description;
+    
+    Belonging(BelongingType type, String name, String description){
+        this.type = type;
+        this.name = name;
+        this.description = description;
     }
     
     /**
@@ -23,6 +26,11 @@ public class Belonging {
      * @return パラメータのマップ
      */
     public Map<String, String> paramMap(){
-        return impl.paramMap();
+        HashMap<String, String> map = new HashMap<String, String>();
+        map.put("belongingType", type.toString());
+        map.put("name", name);
+        map.put("description", description);
+        
+        return map;
     }
 }
