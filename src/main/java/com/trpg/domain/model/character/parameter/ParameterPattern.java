@@ -11,14 +11,12 @@ import org.codehaus.groovy.util.StringUtil;
  * @author Platykun
  *
  */
-public class ParameterCode {
+public class ParameterPattern {
     private ParameterType parameterType;
-    
-    private int parameterCode;
-    
+
     private int defaultValue;
     
-    ParameterCode(ParameterType type, int defaultValue){
+    ParameterPattern(ParameterType type, int defaultValue){
         this.parameterType = type;
         this.defaultValue = defaultValue;
     }
