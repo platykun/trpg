@@ -25,10 +25,10 @@ public class BelongingList {
         belongings.add(belonging);
     }
     
-    public ArrayList<Map<String, String>> pramMaps(){
-        ArrayList<Map<String, String>> paramMaps =new ArrayList<Map<String, String>>();
-        belongings.stream().forEach(b -> paramMaps.add(b.paramMap()));
-        return paramMaps;
-    }
+//    public ArrayList<Map<String, String>> pramMaps(){
+//        ArrayList<Map<String, String>> paramMaps =new ArrayList<Map<String, String>>();
+//        belongings.stream().forEach(b -> paramMaps.add(b.paramMap()));
+//        return paramMaps;
+//    }
     
 }

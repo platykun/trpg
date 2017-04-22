@@ -10,8 +10,8 @@ public enum BelongingType {
     SPELL(1), //呪文
     ARTIFACT(2),  //アーティファクト
     MAGICAL_BOOK(3), //魔導書
-    ITEM(4); //持ち物
-    
+    ITEM(4), //持ち物
+    SUPERNATURAL(5); //遭遇した超自然の存在
     private final int id;
     
     private BelongingType(final int id){

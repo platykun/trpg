@@ -10,11 +10,8 @@ import java.util.Map;
  *
  */
 public class BelongingListFactory {
-    BelongingList create(ArrayList<Map<String, String>> paramMaps) {
+    BelongingList create(){
         BelongingList belongingList = new BelongingList();
-        BelongingFactory factory = new BelongingFactory();
-        paramMaps.stream().forEach(p -> belongingList.add(factory.create(p)));
-
         return belongingList;
     }
 }

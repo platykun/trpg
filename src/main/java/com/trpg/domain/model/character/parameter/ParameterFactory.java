@@ -8,21 +8,14 @@ import java.util.Map;
  * @author Platykun
  *
  */
-public class ParameterFactory {
-
-    private ParameterPatternFactory parameterPatternFactory = new ParameterPatternFactory();
-
-    public DefaultParameter createDefaultParameter(Map<String, String> paramMap) {
-        ParameterPattern pattern = parameterPatternFactory.create(paramMap);
-        String param = paramMap.get("parameter");
-        DefaultParameter defaultParameter = new DefaultParameter(pattern, Integer.parseInt(param));
+public class ParameterFactory {    
+    public DefaultParameter createDefaultParameter(ParameterPattern parameterPattern, int param){
+        DefaultParameter defaultParameter = new DefaultParameter(parameterPattern, param);
         return defaultParameter;
     }
-
-    public DiceValueParameter createDiceValueParameter(Map<String, String> paramMap){
-        ParameterPattern pattern = parameterPatternFactory.create(paramMap);
-        String param = paramMap.get("parameter");
-        DiceValueParameter diceValueParameter = new DiceValueParameter(pattern, param);
+    
+    public DiceValueParameter createDiceValueParameter(ParameterPattern parameterPattern, String diceValue){
+        DiceValueParameter diceValueParameter = new DiceValueParameter(parameterPattern, diceValue);
         return diceValueParameter;
     }
 }
