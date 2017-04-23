@@ -2,7 +2,6 @@ drop table scenario;
 drop table scene;
 drop table item;
 drop table related_character;
-drop table character_info;
 drop table session_info;
 
 create table if not exists scenario (
@@ -160,117 +159,6 @@ insert into related_character(
   CATEGORY
 ) values(1, 3, 2);
 
-insert into character_info (
-  NAME, 
-  SCHOOL, 
-  COME_FROM, 
-  MENTAL_DISORDER, 
-  SEX, 
-  AGE, 
-  STR, 
-  INTELLIGENCE, 
-  APP, 
-  SIZ, 
-  DEX, 
-  CON, 
-  POW, 
-  EDU, 
-  SANITY_POINT, 
-  MAGIC_POINT, 
-  DURABILITY
-) values(
-  'testCharacter', 
-  'test', 
-  'test', 
-  'test', 
-  'test', 
-  1, 
-  1, 
-  1, 
-  1, 
-  1, 
-  1, 
-  1, 
-  1, 
-  1, 
-  1, 
-  1, 
-  1
-);
-
-insert into character_info (
-  NAME, 
-  SCHOOL, 
-  COME_FROM, 
-  MENTAL_DISORDER, 
-  SEX, 
-  AGE, 
-  STR, 
-  INTELLIGENCE, 
-  APP, 
-  SIZ, 
-  DEX, 
-  CON, 
-  POW, 
-  EDU, 
-  SANITY_POINT, 
-  MAGIC_POINT, 
-  DURABILITY
-) values(
-  'enemy', 
-  'test', 
-  'test', 
-  'test', 
-  'test', 
-  1, 
-  1, 
-  1, 
-  1, 
-  1, 
-  1, 
-  1, 
-  1, 
-  1, 
-  1, 
-  1, 
-  1);
-insert into character_info (
-  NAME, 
-  SCHOOL, 
-  COME_FROM, 
-  MENTAL_DISORDER, 
-  SEX, 
-  AGE, 
-  STR, 
-  INTELLIGENCE, 
-  APP, 
-  SIZ, 
-  DEX, 
-  CON, 
-  POW, 
-  EDU, 
-  SANITY_POINT, 
-  MAGIC_POINT, 
-  DURABILITY
-) values(
-  'enemy2', 
-  'hoge', 
-  'hoge', 
-  'hoge', 
-  'hoge', 
-  2, 
-  2, 
-  2, 
-  2, 
-  2, 
-  2, 
-  2, 
-  2, 
-  2, 
-  2, 
-  2, 
-  2
-);
 
 insert into session_info (
   SCENARIO_ID, 
@@ -411,4 +299,80 @@ insert into Item (
   'アイテム名：ツイッターアイコン画像', 
   'https://pbs.twimg.com/profile_images/550187312638738432/8qLchkDs.png', 
   'ツイッターのアイコン画像'
+);
+
+
+
+DROP TABLE CHARACTER_INFO;
+DROP TABLE HUMAN;
+DROP TABLE MONSTER;
+DROP TABLE DETAIL;
+DROP TABLE JOB;
+DROP TABLE JOB_TO_PARAMETER;
+DROP TABLE BELONGING;
+DROP TABLE WEAPON;
+DROP TABLE PARAMETER;
+
+CREATE TABLE IF NOT EXISTS CHARACTER_INFO (
+  ID INT NOT NULL AUTO_INCREMENT,
+  NAME VARCHAR(20)
+);
+
+CREATE TABLE IF NOT EXISTS HUMAN (
+  ID INT NOT NULL AUTO_INCREMENT,
+  CHARACTER_ID INT NOT NULL,
+  JOB_ID INT,
+  SCHOOL  VARCHAR(20), 
+  COME_FROM  VARCHAR(20), 
+  MENTAL_DISORDER  VARCHAR(20), 
+  SEX  VARCHAR(20), 
+  AGE INT, 
+);
+
+CREATE TABLE IF NOT EXISTS MONSTER (
+  ID INT NOT NULL AUTO_INCREMENT,
+  CHARACTER_ID INT NOT NULL,
+  ARMOR INT,
+  LACK_OF_SANITY VARCHAR(20),
+  REMARKS VARCHAR(200)
+);
+
+CREATE TABLE IF NOT EXISTS  DETAIL(
+  ID INT NOT NULL AUTO_INCREMENT,
+  CHARACTER_ID INT,
+  DETAIL_TYPE INT,
+  DETAIL VARCHAR(200)
+);
+
+CREATE TABLE IF NOT EXISTS JOB (
+  ID INT NOT NULL AUTO_INCREMENT,
+  NAME VARCHAR(20)
+);
+CREATE TABLE IF NOT EXISTS JOB_DETAIL (
+  JOB_ID INT NOT NULL,
+  INVESTIGATE_TYPE INT 
+);
+CREATE TABLE IF NOT EXISTS BELONGING(
+  ID INT NOT NULL AUTO_INCREMENT,
+  CHARACTER_ID INT,
+  BELONGING_TYPE INT,
+  NAME VARCHAR(20),
+  DESCRIPTION VARCHAR(200)
+);
+CREATE TABLE IF NOT EXISTS WEAPON (
+  ID INT NOT NULL AUTO_INCREMENT,
+  BELONGING_ID INT,
+  ACCURACY INT,
+  DAMAGE INT,
+  RANGE INT,
+  REMARKS INT
+);
+CREATE TABLE IF NOT EXISTS PARAMETER (
+  ID INT NOT NULL AUTO_INCREMENT,
+  CHARACTER_ID INT,
+  PARAMETER INT,
+  DICE_VALUE VARCHAR(20),
+  PARAMETER_TYPE INT,
+  DEFAULT_VALUE INT,
+  SUB_PARAMETER_TYPE INT
 );
