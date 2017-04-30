@@ -21,4 +21,14 @@ public enum InvestigatorSkillType {
     public int getId(){
         return id;
     }
+
+    public static InvestigatorSkillType getType(final int id){
+        InvestigatorSkillType[] types = InvestigatorSkillType.values();
+        for(InvestigatorSkillType type : types){
+            if(type.getId() ==  id){
+                return type;
+            }
+        }
+        return null;
+    }
 }

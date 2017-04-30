@@ -22,4 +22,12 @@ public enum DetailType {
     public int getId(){
         return id;
     }
+
+    public static DetailType getType(final int id){
+        DetailType[] types = DetailType.values();
+        for(DetailType type : types){
+            return type;
+        }
+        return null;
+    }
 }

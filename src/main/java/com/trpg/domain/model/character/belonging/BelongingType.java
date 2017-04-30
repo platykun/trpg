@@ -21,4 +21,14 @@ public enum BelongingType {
     public int getId(){
         return id;
     }
+
+    public static BelongingType getType(final int id){
+        BelongingType[] types = BelongingType.values();
+        for(BelongingType type : types){
+            if(type.getId() ==  id){
+                return type;
+            }
+        }
+        return null;
+    }
 }

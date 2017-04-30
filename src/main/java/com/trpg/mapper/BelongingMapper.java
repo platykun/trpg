@@ -1,5 +1,8 @@
 package com.trpg.mapper;
 
+import com.trpg.domain.model.character.belonging.BelongingFactory;
+import com.trpg.domain.model.character.belonging.BelongingType;
+import com.trpg.domain.model.character.belonging.WeaponFactory;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,17 +21,17 @@ import com.trpg.entity.BelongingEntity;
 
 public class BelongingMapper {
 
-    Belonging toDomain(BelongingEntity belongingEntity) {
-        return null;
+    BelongingFactory belongingFactory;
+
+    WeaponFactory weaponFactory;
+
+    BelongingMapper(){
+        belongingFactory = new BelongingFactory();
     }
 
-    @Id
-    @GeneratedValue
-    private int id;
-
-    private int characterId;
-
-    private int belongingType;
-
-    private String name;
+    public Belonging toDomain(BelongingEntity belongingEntity) {
+        BelongingType belongingType = BelongingType.getType(belongingEntity.getBelongingType());
+        Belonging belonging = belongingFactory.createBelonging(belongingType, belongingEntity.getName(), belongingEntity.getDescription());
+        return belonging;
+    }
 }

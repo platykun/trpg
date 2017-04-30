@@ -21,4 +21,8 @@ public class HumanList {
     public void add(Human human) {
         humans.add(human);
     }
+
+    public ArrayList<Human> getHumans(){
+        return humans;
+    }
 }

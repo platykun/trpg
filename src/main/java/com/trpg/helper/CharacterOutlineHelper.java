@@ -15,8 +15,11 @@ import com.trpg.form.character.CharacterOutlineListForm;
 public class CharacterOutlineHelper {
     public CharacterOutlineListForm convertToCharacterOutlineForm(HumanList humanList) {
         List<CharacterOutlineForm> outlineFormList = new ArrayList<CharacterOutlineForm>();
-        CharacterOutlineForm outlineForm = new CharacterOutlineForm(1, "2", 3);//TODO:get from humans
-        outlineFormList.add(outlineForm);
+
+        for(Human human : humanList.getHumans()){
+            CharacterOutlineForm characterOutlineForm = new CharacterOutlineForm(0, human.getName(), 0);
+            outlineFormList.add(characterOutlineForm);
+        }
         CharacterOutlineListForm form = new CharacterOutlineListForm(outlineFormList);
         return form;
     }

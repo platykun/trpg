@@ -32,4 +32,6 @@ public class HumanEntity {
     private String sex;
 
     private int age;
+
+    private int humanType;
 }

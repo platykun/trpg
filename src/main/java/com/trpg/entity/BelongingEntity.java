@@ -28,4 +28,6 @@ public class BelongingEntity {
     private int belongingType;
 
     private String name;
+
+    private String description;
 }

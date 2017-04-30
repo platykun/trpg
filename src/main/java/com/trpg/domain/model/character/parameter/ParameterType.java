@@ -23,4 +23,14 @@ public enum ParameterType {
     public int getId(){
         return id;
     }
+
+    public static ParameterType getType(final int id){
+        ParameterType[] types = ParameterType.values();
+        for(ParameterType type : types){
+            if(type.getId() ==  id){
+                return type;
+            }
+        }
+        return null;
+    }
 }

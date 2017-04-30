@@ -18,4 +18,14 @@ public enum HumanType {
     public int getId(){
         return id;
     }
+
+    public static HumanType getType(final int id){
+        HumanType[] types = HumanType.values();
+        for(HumanType type : types){
+            if(type.getId() == id){
+                return type;
+            }
+        }
+        return null;
+    }
 }

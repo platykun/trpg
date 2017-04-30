@@ -26,4 +26,14 @@ public enum CharactristicsType {
     public int getId(){
         return id;
     }
+
+    public static CharactristicsType getType(final int id){
+        CharactristicsType[] types = CharactristicsType.values();
+        for(CharactristicsType type : types){
+            if(type.getId() == id){
+                return type;
+            }
+        }
+        return null;
+    }
 }
