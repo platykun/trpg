@@ -3,6 +3,7 @@ package com.trpg.helper;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.trpg.domain.model.character.character.HumanList;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 
@@ -12,7 +13,7 @@ import com.trpg.form.character.CharacterOutlineListForm;
 
 @Controller
 public class CharacterOutlineHelper {
-    public CharacterOutlineListForm convertToCharacterOutlineForm(Page<Human> humans) {
+    public CharacterOutlineListForm convertToCharacterOutlineForm(HumanList humanList) {
         List<CharacterOutlineForm> outlineFormList = new ArrayList<CharacterOutlineForm>();
         CharacterOutlineForm outlineForm = new CharacterOutlineForm(1, "2", 3);//TODO:get from humans
         outlineFormList.add(outlineForm);

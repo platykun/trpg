@@ -3,6 +3,7 @@ package com.trpg.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.trpg.domain.model.character.character.HumanList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -39,7 +40,7 @@ public class CharacterController {
      */
     @RequestMapping("/top")
     public String top(Model model) {
-        Page<Human> allOutline = characterService.findAllOutline();
+        HumanList allOutline = characterService.findAllOutline();
         CharacterOutlineListForm form = characterOutlineHelper.convertToCharacterOutlineForm(allOutline);
         model.addAttribute("characters", form);
         // List<CharacterInfo> results = characterAction.getCharacterList();

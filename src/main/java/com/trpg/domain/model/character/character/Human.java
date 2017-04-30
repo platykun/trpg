@@ -15,14 +15,14 @@ public class Human extends Character {
     /** 性別 */
     private String sex;
     /** 年齢 */
-    private String age;
+    private int age;
     /** 種別 */
     private HumanType type;
     /** 詳細 */
     private DetailList detailList;
 
     Human(String name, ParameterList parameterList, BelongingList belongingList, Job job, String school,
-            String comeFrom, String mentalDisorder, String sex, String age, HumanType type, DetailList detailList) {
+            String comeFrom, String mentalDisorder, String sex, int age, HumanType type, DetailList detailList) {
         super(name, parameterList, belongingList);
         this.job = job;
         this.school = school;
