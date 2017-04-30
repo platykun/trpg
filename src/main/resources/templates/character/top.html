@@ -40,7 +40,7 @@
 						<th>詳細</th>
 					</tr>
 					</thead>
-					<tr th:each="character: ${characters}">
+					<tr th:each="character: ${characters.outlineList}">
 						<td th:text="${character.id}">1</td>
 						<td th:text="${character.name}">name</td>
 						<td th:text="${character.sanityPoint}">10</td>
