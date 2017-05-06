@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import groovyjarjarantlr.collections.List;
+import lombok.Getter;
 
 /**
  * 所持品の抽象クラス。
@@ -14,7 +15,7 @@ import groovyjarjarantlr.collections.List;
  *
  */
 public class BelongingList {
-
+    @Getter
     private ArrayList<Belonging> belongings;
     
     BelongingList(){

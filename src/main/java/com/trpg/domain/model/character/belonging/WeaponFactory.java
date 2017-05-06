@@ -9,8 +9,8 @@ import java.util.Map;
  *
  */
 public class WeaponFactory {
-    public Weapon create(BelongingType type, String name, String description, int accuracy, int damage, int range, String remarks){
-        Weapon weapon = new Weapon(type, name, description, accuracy, damage, range, remarks);
+    public Weapon create(int weaponId, int belongingId, BelongingType type, String name, String description, int accuracy, int damage, int range, String remarks){
+        Weapon weapon = new Weapon(weaponId, belongingId, type, name, description, accuracy, damage, range, remarks);
         return weapon;
     }
 }

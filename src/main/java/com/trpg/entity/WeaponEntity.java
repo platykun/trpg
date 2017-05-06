@@ -23,7 +23,7 @@ public class WeaponEntity {
     @GeneratedValue
     private int id;
 
-    private int belongingId;
+    private String name;
 
     private int accuracy;
 

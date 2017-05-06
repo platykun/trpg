@@ -1,5 +1,7 @@
 package com.trpg.domain.model.character.parameter;
 
+import lombok.Getter;
+
 /**
  * パラメータ種別
  * 
@@ -17,6 +19,7 @@ public enum CharactristicsType {
     POW(6), // 精神力
     EDU(7);// 教養
 
+    @Getter
     private final int id;
 
     private CharactristicsType(final int id){

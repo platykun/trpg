@@ -1,8 +1,6 @@
 package com.trpg.mapper;
 
-import com.trpg.domain.model.character.belonging.BelongingFactory;
-import com.trpg.domain.model.character.belonging.BelongingType;
-import com.trpg.domain.model.character.belonging.WeaponFactory;
+import com.trpg.domain.model.character.belonging.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,8 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.trpg.domain.model.character.belonging.Belonging;
 import com.trpg.entity.BelongingEntity;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * Belongingテーブルのマッピングクラス
@@ -21,17 +19,24 @@ import com.trpg.entity.BelongingEntity;
 
 public class BelongingMapper {
 
-    BelongingFactory belongingFactory;
+    private static BelongingFactory belongingFactory;
 
-    WeaponFactory weaponFactory;
+    private static WeaponFactory weaponFactory;
 
     BelongingMapper(){
         belongingFactory = new BelongingFactory();
+        weaponFactory = new WeaponFactory();
     }
 
-    public Belonging toDomain(BelongingEntity belongingEntity) {
+    public static  Belonging toDomain(BelongingEntity belongingEntity) {
         BelongingType belongingType = BelongingType.getType(belongingEntity.getBelongingType());
-        Belonging belonging = belongingFactory.createBelonging(belongingType, belongingEntity.getName(), belongingEntity.getDescription());
+        Belonging belonging = belongingFactory.createBelonging(belongingEntity.getId(), belongingType, belongingEntity.getName(), belongingEntity.getDescription());
         return belonging;
+    }
+
+    public static BelongingEntity toEntity(Belonging belonging){
+        BelongingEntity entity = new BelongingEntity();
+
+        return null;
     }
 }

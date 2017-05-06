@@ -5,6 +5,9 @@ import com.trpg.domain.model.character.parameter.ParameterList;
 import lombok.Getter;
 
 public class Human extends Character {
+    @Getter
+    private int humanId;
+
     /** 職業 */
     @Getter
     private Job job;
@@ -30,9 +33,10 @@ public class Human extends Character {
     @Getter
     private DetailList detailList;
 
-    Human(String name, ParameterList parameterList, BelongingList belongingList, Job job, String school,
+    Human(int humanId,int characterId, String name, ParameterList parameterList, BelongingList belongingList, Job job, String school,
             String comeFrom, String mentalDisorder, String sex, int age, HumanType type, DetailList detailList) {
-        super(name, parameterList, belongingList);
+        super(characterId, name, parameterList, belongingList);
+        this.humanId = humanId;
         this.job = job;
         this.school = school;
         this.comeFrom = comeFrom;

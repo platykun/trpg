@@ -6,9 +6,9 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class HumanFactory {
-    public Human create(String name, ParameterList parameterList, BelongingList belongingList, Job job, String school,
+    public Human create(int humanId, int characterId, String name, ParameterList parameterList, BelongingList belongingList, Job job, String school,
             String comeFrom, String mentalDisorder, String sex, int age, HumanType type, DetailList detailList) {
-        Human human = new Human(name, parameterList, belongingList, job, school, comeFrom, mentalDisorder, sex, age, type, detailList);
+        Human human = new Human(humanId, characterId, name, parameterList, belongingList, job, school, comeFrom, mentalDisorder, sex, age, type, detailList);
         return human;
     }
 }

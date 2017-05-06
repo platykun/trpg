@@ -1,5 +1,7 @@
 package com.trpg.domain.model.character.parameter;
 
+import lombok.Getter;
+
 /**
  * パラメータ種別
  * 
@@ -13,7 +15,7 @@ public enum ParameterType {
     HIT_POINTS(3), //耐久力
     INVESTIGATOR_SKILLS(4), //技能
     WEAPONS(5); //武器
-    
+    @Getter
     private final int id;
     
     private ParameterType(final int id){

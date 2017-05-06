@@ -10,12 +10,13 @@ import java.util.Map;
  *
  */
 public class Belonging{
-    
+    int id;
     BelongingType type;
     String name;
     String description;
     
-    Belonging(BelongingType type, String name, String description){
+    Belonging(int id, BelongingType type, String name, String description){
+        this.id = id;
         this.type = type;
         this.name = name;
         this.description = description;

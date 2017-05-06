@@ -1,5 +1,7 @@
 package com.trpg.domain.model.character.character;
 
+import lombok.Getter;
+
 public enum DetailType {
     ADDRESS(0), //住所
     DEPICTION(1), //描写
@@ -12,7 +14,9 @@ public enum DetailType {
     CASH_IN_HAND(8), //手持ち現金
     DEPOSIT(9), //預金
     PERSONAL_ASSETS(10), //個人資産
-    REAL_ESTATE(11); //不動産 
+    REAL_ESTATE(11); //不動産
+
+    @Getter
     private final int id;
     
     private DetailType(final int id){

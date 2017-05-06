@@ -9,13 +9,13 @@ import java.util.Map;
  *
  */
 public class ParameterFactory {    
-    public DefaultParameter createDefaultParameter(ParameterPattern parameterPattern, int param){
-        DefaultParameter defaultParameter = new DefaultParameter(parameterPattern, param);
+    public Parameter createDefaultParameter(int id, ParameterPattern parameterPattern, int param){
+        Parameter defaultParameter = new Parameter(id, param, parameterPattern);
         return defaultParameter;
     }
     
-    public DiceValueParameter createDiceValueParameter(ParameterPattern parameterPattern, String diceValue){
-        DiceValueParameter diceValueParameter = new DiceValueParameter(parameterPattern, diceValue);
+    public Parameter createDiceValueParameter(int id, ParameterPattern parameterPattern, String diceValue){
+        Parameter diceValueParameter = new Parameter(id, diceValue, parameterPattern);
         return diceValueParameter;
     }
 }

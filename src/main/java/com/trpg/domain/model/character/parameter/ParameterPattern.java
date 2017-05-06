@@ -3,6 +3,7 @@ package com.trpg.domain.model.character.parameter;
 import java.util.HashMap;
 import java.util.Map;
 
+import lombok.Getter;
 import org.codehaus.groovy.util.StringUtil;
 
 /**
@@ -12,8 +13,9 @@ import org.codehaus.groovy.util.StringUtil;
  *
  */
 public class ParameterPattern {
+    @Getter
     private ParameterType parameterType;
-
+    @Getter
     private int defaultValue;
     
     ParameterPattern(ParameterType type, int defaultValue){
@@ -26,5 +28,9 @@ public class ParameterPattern {
         map.put("parameterType", parameterType.toString());
         map.put("defaultValue",Integer.toString(defaultValue));
         return map;
+    }
+
+    public int getSubParameterTypeValue(){
+        return 0;
     }
 }

@@ -1,5 +1,7 @@
 package com.trpg.domain.model.character.parameter;
 
+import lombok.Getter;
+
 import java.util.ArrayList;
 
 /**
@@ -8,6 +10,7 @@ import java.util.ArrayList;
  * @author Platykun
  */
 public abstract class ParameterList {
+    @Getter
     private ArrayList<Parameter> parameterList;
 
     ParameterList(){

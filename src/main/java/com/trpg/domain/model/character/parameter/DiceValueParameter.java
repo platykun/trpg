@@ -8,8 +8,8 @@ package com.trpg.domain.model.character.parameter;
 public class DiceValueParameter extends Parameter{
     private String diceValue;
 
-    DiceValueParameter(ParameterPattern parameterPattern, String diceValue){
-        super(parameterPattern);
+    DiceValueParameter(int id ,ParameterPattern parameterPattern, String diceValue){
+        super(id, parameterPattern);
         this.diceValue = diceValue;
     }
 }
