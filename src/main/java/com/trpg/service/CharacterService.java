@@ -35,6 +35,9 @@ public class CharacterService {
     BelongingRepository belongingRepository;
 
     @Autowired
+    ParameterRepository parameterRepository;
+
+    @Autowired
     HumanFactory humanFactory;
 
     public HumanList findAllOutline(){
@@ -82,7 +85,9 @@ public class CharacterService {
         //Parameterテーブルへ登録
         ParameterList parameterList = human.getParameterList();
         for(Parameter parameter : parameterList.getParameterList()){
-            ParameterEntity parameterEntity = ParameterMapper.toEntity(0, characterId, parameter);
+
+            ParameterEntity parameterEntity = ParameterMapper.toEntity(parameter.getId(), characterId, parameter);
+            parameterRepository.save(parameterEntity);
         }
 
     }
