@@ -1,6 +1,7 @@
 package com.trpg.service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.trpg.domain.model.character.belonging.Belonging;
 import com.trpg.domain.model.character.belonging.BelongingList;
@@ -32,6 +33,9 @@ public class CharacterService {
     JobRepository jobRepository;
 
     @Autowired
+    JobDetailRepository jobDetailRepository;
+
+    @Autowired
     BelongingRepository belongingRepository;
 
     @Autowired
@@ -55,6 +59,21 @@ public class CharacterService {
 
     public Human getInitialValueHuman(){
         return null;
+    }
+
+    public JobList getAllJob(){
+        List<JobEntity> jobEntityList = jobRepository.findAll();
+        List<JobDetailEntity> jobDetailRepositoryList = jobDetailRepository.findAll();
+
+        JobList jobList = new JobList();
+
+        for(JobEntity jobEntity : jobEntityList){
+            List<JobDetailEntity> filteredDetail = jobDetailRepositoryList.stream().filter(j -> j.getId() == jobEntity.getId()).collect(Collectors.toList());
+            Job job = JobMapper.toDomain(jobEntity, filteredDetail);
+            jobList.add(job);
+        }
+
+        return jobList;
     }
 
     public void insertHuman(Human human, List<Detail> detailList){
