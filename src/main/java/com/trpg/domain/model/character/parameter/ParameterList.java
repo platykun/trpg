@@ -9,11 +9,11 @@ import java.util.ArrayList;
  *
  * @author Platykun
  */
-public abstract class ParameterList {
+public class ParameterList {
     @Getter
     private ArrayList<Parameter> parameterList;
 
-    ParameterList(){
+    public ParameterList(){
         parameterList = new ArrayList<Parameter>();
     }
     

@@ -7,8 +7,7 @@ import com.trpg.domain.model.character.belonging.Belonging;
 import com.trpg.domain.model.character.belonging.BelongingList;
 import com.trpg.domain.model.character.character.*;
 import com.trpg.domain.model.character.character.Character;
-import com.trpg.domain.model.character.parameter.Parameter;
-import com.trpg.domain.model.character.parameter.ParameterList;
+import com.trpg.domain.model.character.parameter.*;
 import com.trpg.domain.repository.character.*;
 import com.trpg.entity.*;
 import com.trpg.mapper.*;
@@ -44,6 +43,12 @@ public class CharacterService {
     @Autowired
     HumanFactory humanFactory;
 
+    @Autowired
+    ParameterFactory parameterfactory;
+
+    @Autowired
+    ParameterPatternFactory parameterPatternFactory;
+
     public HumanList findAllOutline(){
         Page<HumanEntity> humanEntityPage = humanRepository.findAll(new PageRequest(0, 20));
         List<HumanEntity> humanEntityList = humanEntityPage.getContent();
@@ -57,10 +62,27 @@ public class CharacterService {
         return humanList;
     }
 
+    // 初期設定のHumanドメインオブジェクトを取得する。
     public Human getInitialValueHuman(){
+
         return null;
     }
 
+    // 初期設定のパラメータリストを作成する。
+    public ParameterList getInitialValueParameterList(){
+        ParameterList parameterList = new ParameterList();
+
+        SanityPointsParameter sanityPointsParameter = parameterPatternFactory.createSanityPoints(0);
+        parameterfactory.createDefaultParameter(0, sanityPointsParameter, 0);
+
+        //STRなどのパラメータ設定
+        CharactristicsParameter strParam = parameterPatternFactory.createCharacteristics(0, CharactristicsType.STR);
+        parameterfactory.createDefaultParameter(0, strParam, 0);
+
+        return null;
+    }
+
+    // 職業一覧を取得する
     public JobList getAllJob(){
         List<JobEntity> jobEntityList = jobRepository.findAll();
         List<JobDetailEntity> jobDetailRepositoryList = jobDetailRepository.findAll();
