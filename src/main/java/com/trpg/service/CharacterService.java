@@ -68,19 +68,12 @@ public class CharacterService {
         return null;
     }
 
-    // 初期設定のパラメータリストを作成する。
-    public ParameterList getInitialValueParameterList(){
-        ParameterList parameterList = new ParameterList();
-
-        SanityPointsParameter sanityPointsParameter = parameterPatternFactory.createSanityPoints(0);
-        parameterfactory.createDefaultParameter(0, sanityPointsParameter, 0);
-
-        //STRなどのパラメータ設定
-        CharactristicsParameter strParam = parameterPatternFactory.createCharacteristics(0, CharactristicsType.STR);
-        parameterfactory.createDefaultParameter(0, strParam, 0);
-
-        return null;
-    }
+    // 初期設定のパラメータリストを作成する。parameterListFactoryへ処理を移行。
+//    public ParameterList getInitialValueParameterList(){
+//
+//
+//        return null;
+//    }
 
     // 職業一覧を取得する
     public JobList getAllJob(){

@@ -10,24 +10,26 @@ import lombok.Getter;
  */
 public enum CharactristicsType {
 
-    STR(0), // 筋力
-    INTELLIGENCE(1), // 知性
-    APP(2), // 外見
-    SIZ(3), // 体格
-    DEX(4), // 敏捷性
-    CON(5), // 体力
-    POW(6), // 精神力
-    EDU(7);// 教養
+    STR(0, "筋力", 0),
+    INTELLIGENCE(1, "知性", 0),
+    APP(2, "外見", 0),
+    SIZ(3, "体格", 0),
+    DEX(4, "敏捷性", 0),
+    CON(5, "体力", 0),
+    POW(6, "精神力", 0),
+    EDU(7, "教養", 0);
 
     @Getter
     private final int id;
+    @Getter
+    private final String name;
+    @Getter
+    private final int initValue;
 
-    private CharactristicsType(final int id){
+    private CharactristicsType(final int id, final String name, final int initValue){
         this.id = id;
-    }
-    
-    public int getId(){
-        return id;
+        this.name = name;
+        this.initValue = initValue;
     }
 
     public static CharactristicsType getType(final int id){
