@@ -1,5 +1,6 @@
 package com.trpg.domain.model.character.parameter;
 
+import com.trpg.domain.model.character.belonging.WeaponType;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
@@ -11,15 +12,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class ParameterListFactory {
 
     @Autowired
-    ParameterFactory parameterFactory;
+    private ParameterFactory parameterFactory;
 
     @Autowired
-    ParameterPatternFactory parameterPatternFactory;
+    private ParameterPatternFactory parameterPatternFactory;
 
 
 
     //新規作成時初期値を設定する
-    ParameterList createInitialParameter(){
+    public ParameterList createInitialParameter(){
         final int ID = 0;
 
         ParameterList parameterList = new ParameterList();
@@ -75,8 +76,11 @@ public class ParameterListFactory {
         }
 
         //武器技能設定
-        parameterPatternFactory.createWeapons();
-
+        for(WeaponType weaponType : WeaponType.values()){
+            int initValue = weaponType.getInitValue();
+            WeaponParameter weaponParameter = parameterPatternFactory.createWeapons(initValue,weaponType);
+            parameterList.add(parameterFactory.createDefaultParameter(0, weaponParameter, initValue));
+        }
 
         return parameterList;
     }

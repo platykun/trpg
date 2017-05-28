@@ -9,17 +9,23 @@ import lombok.Getter;
  *
  */
 public enum ParameterType {
-    CHARACTERISTICS(0), //能力値
-    SANITY_POINTS(1), //正気度
-    MAGIC_POINTS(2),  //マジックポイント
-    HIT_POINTS(3), //耐久力
-    INVESTIGATOR_SKILLS(4), //技能
-    WEAPONS(5); //武器
+    CHARACTERISTICS(0,"能力値", 0),
+    SANITY_POINTS(1,"正気度", 0),
+    MAGIC_POINTS(2,"マジックポイント", 0),
+    HIT_POINTS(3,"耐久力", 0),
+    INVESTIGATOR_SKILLS(4,"技能", 0),
+    WEAPONS(5,"武器", 0);
     @Getter
     private final int id;
+    @Getter
+    private final String name;
+    @Getter
+    private final int initValue;
     
-    private ParameterType(final int id){
+    private ParameterType(final int id, final String name, final int initValue){
         this.id = id;
+        this.name = name;
+        this.initValue = initValue;
     }
     
     public int getId(){

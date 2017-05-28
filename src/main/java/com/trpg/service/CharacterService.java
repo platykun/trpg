@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import com.trpg.domain.model.character.belonging.Belonging;
 import com.trpg.domain.model.character.belonging.BelongingList;
+import com.trpg.domain.model.character.belonging.BelongingListFactory;
 import com.trpg.domain.model.character.character.*;
 import com.trpg.domain.model.character.character.Character;
 import com.trpg.domain.model.character.parameter.*;
@@ -49,6 +50,12 @@ public class CharacterService {
     @Autowired
     ParameterPatternFactory parameterPatternFactory;
 
+    @Autowired
+    ParameterListFactory parameterListFactory;
+
+    @Autowired
+    BelongingListFactory belongingListFactory;
+
     public HumanList findAllOutline(){
         Page<HumanEntity> humanEntityPage = humanRepository.findAll(new PageRequest(0, 20));
         List<HumanEntity> humanEntityList = humanEntityPage.getContent();
@@ -61,19 +68,6 @@ public class CharacterService {
         }
         return humanList;
     }
-
-    // 初期設定のHumanドメインオブジェクトを取得する。
-    public Human getInitialValueHuman(){
-
-        return null;
-    }
-
-    // 初期設定のパラメータリストを作成する。parameterListFactoryへ処理を移行。
-//    public ParameterList getInitialValueParameterList(){
-//
-//
-//        return null;
-//    }
 
     // 職業一覧を取得する
     public JobList getAllJob(){
@@ -89,6 +83,12 @@ public class CharacterService {
         }
 
         return jobList;
+    }
+
+    // 初期値のHumanを返却する。
+    public Human getInitialHuman(){
+        Human human = humanFactory.createInit();
+        return human;
     }
 
     public void insertHuman(Human human, List<Detail> detailList){

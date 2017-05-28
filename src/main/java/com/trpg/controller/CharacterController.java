@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.trpg.domain.model.character.character.HumanList;
+import com.trpg.domain.model.character.character.JobList;
+import com.trpg.form.character.CreateForm;
+import com.trpg.helper.CharacterCreateHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -32,6 +35,9 @@ public class CharacterController {
     @Autowired
     CharacterOutlineHelper characterOutlineHelper;
 
+    @Autowired
+    CharacterCreateHelper characterCreateHelper;
+
     /**
      * キャラクター一覧画面を表示する。
      * 
@@ -57,6 +63,25 @@ public class CharacterController {
         return "character/top";
     }
 
+     /**
+     * キャラクター新規追加画面を表示する。
+     *
+     * @param model モデル
+     * @return トップ画面
+     */
+     @RequestMapping("/add/input")
+     public String addInput(Model model) {
+         JobList jobList = characterService.getAllJob();
+         Human initHuman = characterService.getInitialHuman();
+
+         CreateForm form = characterCreateHelper.convertToCreateForm(initHuman, jobList);
+         model.addAttribute("character", form);
+         return "character/addInput";
+
+//     model.addAttribute("character", new CharacterDetailForm());
+//     return "character/addInput";
+     }
+
     // /**
     // * キャラクター詳細画面を表示する。
     // *
@@ -73,17 +98,6 @@ public class CharacterController {
     // return "character/detail";
     // }
     //
-    // /**
-    // * キャラクター新規追加画面を表示する。
-    // *
-    // * @param model モデル
-    // * @return トップ画面
-    // */
-    // @RequestMapping("/add/input")
-    // public String addInput(Model model) {
-    // model.addAttribute("character", new CharacterDetailForm());
-    // return "character/addInput";
-    // }
     //
     // /**
     // * キャラクター新規追加画面を表示する。

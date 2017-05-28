@@ -2,6 +2,7 @@ package com.trpg.domain.model.character.parameter;
 
 import com.trpg.domain.model.character.belonging.Weapon;
 import com.trpg.domain.model.character.belonging.WeaponFactory;
+import com.trpg.domain.model.character.belonging.WeaponType;
 
 import java.util.Map;
 
@@ -39,8 +40,8 @@ public class ParameterPatternFactory {
         return investigatorSkill;
     }
     
-    public WeaponParameter createWeapons(int defaultValue, Weapon weapon){
-        WeaponParameter parameter = new WeaponParameter(WEAPONS, defaultValue, weapon);
+    public WeaponParameter createWeapons(int defaultValue, WeaponType weaponType){
+        WeaponParameter parameter = new WeaponParameter(defaultValue, weaponType);
         return parameter;
     }
 }

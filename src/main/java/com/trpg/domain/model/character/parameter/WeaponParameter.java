@@ -1,6 +1,7 @@
 package com.trpg.domain.model.character.parameter;
 
 import com.trpg.domain.model.character.belonging.Weapon;
+import com.trpg.domain.model.character.belonging.WeaponType;
 
 import java.util.Map;
 
@@ -12,11 +13,11 @@ import java.util.Map;
  */
 public class WeaponParameter extends ParameterPattern {
 
-    Weapon weapon;
+    WeaponType weaponType;
 
-    WeaponParameter(ParameterType type, int defaultValue, Weapon weapon){
-        super(type, defaultValue);
-        this.weapon = weapon;
+    WeaponParameter(int defaultValue, WeaponType weaponType){
+        super(ParameterType.WEAPONS, defaultValue);
+        this.weaponType = weaponType;
     }
     
     public Map<String, String> paramMap(){
