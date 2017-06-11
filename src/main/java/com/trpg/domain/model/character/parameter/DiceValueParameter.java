@@ -9,7 +9,7 @@ public class DiceValueParameter extends Parameter{
     private String diceValue;
 
     DiceValueParameter(int id ,ParameterPattern parameterPattern, String diceValue){
-        super(id, parameterPattern);
+        super(id, diceValue, parameterPattern);
         this.diceValue = diceValue;
     }
 }

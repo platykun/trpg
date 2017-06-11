@@ -2,8 +2,6 @@ package com.trpg.mapper;
 
 import com.trpg.domain.model.character.character.Detail;
 import com.trpg.domain.model.character.character.DetailList;
-import com.trpg.entity.CharacterInfo;
-import com.trpg.entity.CharacterInfoEntity;
 import com.trpg.entity.DetailEntity;
 
 import java.util.List;

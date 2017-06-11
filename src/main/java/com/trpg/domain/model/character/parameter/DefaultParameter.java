@@ -11,8 +11,8 @@ public class DefaultParameter extends Parameter{
     @Getter
     private int param;
 
-    DefaultParameter(int id, ParameterPattern parameterPattern, int param){
-        super(id, parameterPattern);
+    DefaultParameter(int id, int param, ParameterPattern parameterPattern){
+        super(id, param, parameterPattern);
         this.param = param;
     }
 }
