@@ -33,4 +33,12 @@ public class ParameterPattern {
     public int getSubParameterTypeValue(){
         return 0;
     }
+
+    public String getName(){
+        return parameterType.getName();
+    }
+
+    public int getInitValue(){
+        return parameterType.getInitValue();
+    }
 }

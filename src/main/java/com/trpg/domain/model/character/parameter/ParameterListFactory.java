@@ -2,6 +2,7 @@ package com.trpg.domain.model.character.parameter;
 
 import com.trpg.domain.model.character.belonging.WeaponType;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 /**
  * パラメータオブジェクトのリストを作成する
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @author Platykun
  *
  */
+@Component
 public class ParameterListFactory {
 
     @Autowired

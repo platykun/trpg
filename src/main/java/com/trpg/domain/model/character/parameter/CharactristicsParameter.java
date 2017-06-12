@@ -23,4 +23,14 @@ public class CharactristicsParameter extends ParameterPattern {
         //TODO: 追加のパラメータを付与
         return map;
     }
+
+    @Override
+    public String getName(){
+        return charactristicsType.getName();
+    }
+
+    @Override
+    public int getInitValue(){
+        return charactristicsType.getInitValue();
+    }
 }

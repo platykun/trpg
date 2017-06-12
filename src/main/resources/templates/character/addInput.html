@@ -59,6 +59,18 @@
           <div class="mainDiv">
             <h2 class="ui header">能力値および能力ロール</h2>
             <div class="column">
+              <div th:each="avility: *{avilityList}">
+                <p class="col-lg-2 col-sm-3 text-right" th:text="${avility.name}"></p>
+                <div class="col-lg-1 col-sm-1">
+                  <input class="skillText beginner form-control" type="text" th:value="${avility.initValue}" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--
+          <div class="mainDiv">
+            <h2 class="ui header">能力値および能力ロール</h2>
+            <div class="column">
               <table class="table someId">
                 <tr>
                   <td class="col-lg-2">筋力(STR)</td>
@@ -93,7 +105,6 @@
               </table>
             </div>
           </div>
-          <!--
           <div class="mainDiv">
             <h2 class="ui header">ステータス</h2>
             <div class="column">

@@ -1,6 +1,7 @@
 package com.trpg.domain.model.character.belonging;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -11,6 +12,7 @@ import java.util.Map;
  * @author Platykun
  *
  */
+@Component
 public class BelongingListFactory {
 
     @Autowired

@@ -3,6 +3,7 @@ package com.trpg.domain.model.character.parameter;
 import com.trpg.domain.model.character.belonging.Weapon;
 import com.trpg.domain.model.character.belonging.WeaponFactory;
 import com.trpg.domain.model.character.belonging.WeaponType;
+import org.springframework.stereotype.Component;
 
 import java.util.Map;
 
@@ -14,6 +15,7 @@ import static com.trpg.domain.model.character.parameter.ParameterType.*;
  * @author Platykun
  *
  */
+@Component
 public class ParameterPatternFactory {
     public CharactristicsParameter createCharacteristics(int defaultValue, CharactristicsType charactristicsType){
         CharactristicsParameter charactristicsParameter = new CharactristicsParameter(CHARACTERISTICS, defaultValue, charactristicsType);

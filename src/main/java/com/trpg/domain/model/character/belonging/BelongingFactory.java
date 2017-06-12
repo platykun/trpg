@@ -1,5 +1,7 @@
 package com.trpg.domain.model.character.belonging;
 
+import org.springframework.stereotype.Component;
+
 import java.util.Map;
 
 /**
@@ -8,6 +10,7 @@ import java.util.Map;
  * @author Platykun
  *
  */
+@Component
 public class BelongingFactory {
     public Belonging createBelonging(int belongingId, BelongingType belongingType, String name, String description){
         Belonging belonging = new Belonging(belongingId, belongingType, name, description);

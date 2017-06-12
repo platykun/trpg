@@ -63,8 +63,8 @@ public class CharacterCreateHelper {
         valueForm.setParamSubId(parameterPattern.getSubParameterTypeValue());
         valueForm.setValue(parameter.getParameter());
         valueForm.setStringValue(parameter.getDiceParameter());
-        valueForm.setName(parameterType.getName());
-        valueForm.setInitValue(parameterType.getInitValue());
+        valueForm.setName(parameterPattern.getName());
+        valueForm.setInitValue(parameterPattern.getInitValue());
 
         return valueForm;
     }
