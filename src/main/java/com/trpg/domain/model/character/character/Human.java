@@ -4,6 +4,9 @@ import com.trpg.domain.model.character.belonging.BelongingList;
 import com.trpg.domain.model.character.parameter.ParameterList;
 import lombok.Getter;
 
+/**
+ * 人間ドメインオブジェクト。探索者、NPCを含む。
+ */
 public class Human extends Character {
     @Getter
     private int humanId;

@@ -6,13 +6,13 @@ import lombok.Getter;
 
 public class Character {
     @Getter
-    int characterId;
+    private int characterId;
     @Getter
-    String name;
+    private String name;
     @Getter
-    ParameterList parameterList;
+    private ParameterList parameterList;
     @Getter
-    BelongingList belongingList;
+    private BelongingList belongingList;
     
     Character(int characterId, String name, ParameterList parameterList, BelongingList belongingList){
         this.characterId = characterId;

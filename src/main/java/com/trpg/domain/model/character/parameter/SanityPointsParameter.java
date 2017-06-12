@@ -14,7 +14,8 @@ public class SanityPointsParameter extends ParameterPattern {
     SanityPointsParameter(ParameterType type, int defaultValue){
         super(type, defaultValue);
     }
-    
+
+    @Override
     public Map<String, String> paramMap(){
         Map<String, String> map = super.paramMap();
         //TODO: 追加のパラメータを付与
