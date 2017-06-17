@@ -1,0 +1,69 @@
+@startuml
+
+package domain.model.character.belonging {
+  class Belonging {
+      - int id
+      - BelongingType type
+      - String name
+      - String description
+      + Map<String, String> paramMap()
+  }
+
+  class BelongingList {
+    - ArrayList<Belonging> belongings
+    + void add(Belonging belonging)
+  }
+
+  enum BelongingType {
+    - int id
+    + int getId()
+    + getType(final int id)
+  }
+
+  class Weapon {
+    - int weaponId
+    - int accuracy
+    - int damage
+    - int range
+    - String remarks
+    + Map<String, String> paramMap()
+  }
+
+  enum WeaponType {
+    - int id
+    - String name
+    - int initValue
+    + int getId()
+    + WeaponType getType(final int id)
+  }
+
+  Belonging <-- Weapon
+  Belonging <.. BelongingType
+  BelongingList <.. Belonging
+}
+
+package Factory {
+  class BelongingFactory {
+    + Belonging createBelonging(int belongingId, BelongingType belongingType, String name, String description)
+    + Weapon createWeapon(int weaponId, int belongingId, String name, String description, int accuracy, int damage, int range, String remarks)
+  }
+
+  class BelongingListFactory {
+    - BelongingFactory belongingFactory
+    + BelongingList create()
+    + BelongingList createInitialBelonging()
+  }
+
+  class WeaponFactory {
+    + Weapon create(int weaponId, int belongingId, BelongingType type, String name, String description, int accuracy, int damage, int range, String remarks)
+  }
+
+  BelongingListFactory <.. BelongingFactory
+}
+
+BelongingFactory <.. Belonging
+BelongingFactory ..> Weapon
+BelongingListFactory ..> BelongingList
+
+
+@enduml
