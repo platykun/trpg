@@ -1,0 +1,23 @@
+@startuml
+
+class Character {
+    - int characterId
+    - String name
+    - ParameterList parameterList
+    - BelongingList belongingList
+}
+
+class Human {
+    - Job job
+    - String school
+    - String comeFrom
+    - String mentalDisorder
+    - String sex
+    - int age
+    - HumanType type
+    - DetailList detailList
+}
+Character <-- Human
+
+
+@enduml
