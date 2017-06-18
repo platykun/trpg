@@ -22,13 +22,6 @@ public class ParameterPattern {
         this.parameterType = type;
         this.defaultValue = defaultValue;
     }
-    
-    public Map<String, String> paramMap(){
-        Map<String, String> map = new HashMap<String, String>();
-        map.put("parameterType", parameterType.toString());
-        map.put("defaultValue",Integer.toString(defaultValue));
-        return map;
-    }
 
     public int getSubParameterTypeValue(){
         return 0;

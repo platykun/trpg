@@ -21,11 +21,8 @@ public class BelongingMapper {
 
     private static BelongingFactory belongingFactory;
 
-    private static WeaponFactory weaponFactory;
-
     BelongingMapper(){
         belongingFactory = new BelongingFactory();
-        weaponFactory = new WeaponFactory();
     }
 
     public static  Belonging toDomain(BelongingEntity belongingEntity) {

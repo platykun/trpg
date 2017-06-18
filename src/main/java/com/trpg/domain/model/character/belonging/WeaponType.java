@@ -3,7 +3,7 @@ package com.trpg.domain.model.character.belonging;
 import lombok.Getter;
 
 /**
- * 武器種別
+ * 武器種別。
  * 
  * @author platykun
  */
@@ -26,10 +26,13 @@ public enum WeaponType {
 //    FIREARM5(15), // 火器5
 //    FIREARM6(16); // 火器6
 
+    /** 武器種別 */
     @Getter
     private final int id;
+    /** 武器名 */
     @Getter
     private final String name;
+    /** 初期値 */
     @Getter
     private final int initValue;
 
@@ -38,11 +41,15 @@ public enum WeaponType {
         this.name = name;
         this.initValue = initValue;
     }
-    
-    public int getId(){
-        return id;
-    }
 
+    /**
+     * 引数のIDに合致した武器種別オブジェクトを返却する。<br>
+     * IDが存在：種別を返却。<br>
+     * IDが存在しない：nullを返却。
+     *
+     * @param id 武器ID
+     * @return 武器種別
+     */
     public static WeaponType getType(final int id){
         WeaponType[] types = WeaponType.values();
         for(WeaponType type : types){

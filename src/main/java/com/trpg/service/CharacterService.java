@@ -3,12 +3,8 @@ package com.trpg.service;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.trpg.domain.model.character.belonging.Belonging;
-import com.trpg.domain.model.character.belonging.BelongingList;
-import com.trpg.domain.model.character.belonging.BelongingListFactory;
 import com.trpg.domain.model.character.character.*;
 import com.trpg.domain.model.character.character.Character;
-import com.trpg.domain.model.character.parameter.*;
 import com.trpg.domain.repository.character.*;
 import com.trpg.entity.*;
 import com.trpg.mapper.*;
@@ -36,13 +32,13 @@ public class CharacterService {
     JobDetailRepository jobDetailRepository;
 
     @Autowired
-    BelongingRepository belongingRepository;
-
-    @Autowired
-    ParameterRepository parameterRepository;
-
-    @Autowired
     HumanFactory humanFactory;
+
+    @Autowired
+    BelongingService belongingService;
+
+    @Autowired
+    ParameterService parameterService;
 
     public HumanList findAllOutline(){
         Page<HumanEntity> humanEntityPage = humanRepository.findAll(new PageRequest(0, 20));
@@ -102,17 +98,10 @@ public class CharacterService {
         jobRepository.save(jobEntity);
 
         //Belongingテーブルへ登録
-        BelongingList belongingList = human.getBelongingList();
-        for(Belonging belonging : belongingList.getBelongings()){
-            BelongingEntity belongingEntity = BelongingMapper.toEntity(belonging);
-            belongingRepository.save(belongingEntity);
-        }
+        belongingService.insertBelongings(human.getBelongingList());
 
         //Parameterテーブルへ登録
-        ParameterList parameterList = human.getParameterList();
-        for(Parameter parameter : parameterList.getParameterList()){
-            ParameterEntity parameterEntity = ParameterMapper.toEntity(parameter.getId(), characterId, parameter);
-            parameterRepository.save(parameterEntity);
-        }
+        parameterService.insertParameter(human.getParameterList(), characterId);
+
     }
 }

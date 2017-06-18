@@ -2,19 +2,17 @@ package com.trpg.domain.model.character.belonging;
 
 import lombok.Getter;
 
-import java.util.Map;
-
 /**
- * 武器の抽象クラス
+ * 武器ドメインオブジェクト。
  * 
  * @author Platykun
  *
  */
 public class Weapon extends Belonging{
 
+    /** 武器ID */
     @Getter
     private int weaponId;
-    
     /** 命中率 */
     @Getter
     private int accuracy;
@@ -30,23 +28,17 @@ public class Weapon extends Belonging{
 
     Weapon(int weaponId, int belongingId, BelongingType type, String name, String description, int accuracy, int damage, int range, String remarks) {
         super(belongingId, type, name, description);
-        // TODO Auto-generated constructor stub
+
+        //BelongingTypeが武器であることの精査処理。
         if(!BelongingType.WEAPONS.equals(type)){
-            //WEAPONS以外の場合エラー
+            //TODO: throw句を追加
+            // throw new IllegalAccessException("武器種別以外の種別が選択されました。");
         }
+
         this.weaponId = weaponId;
         this.accuracy = accuracy;
         this.damage = damage;
         this.range = range;
         this.remarks = remarks;
-    }
-    
-    public Map<String, String> paramMap(){
-        Map<String, String> map = super.paramMap();
-        map.put("accuracy", String.valueOf(accuracy));
-        map.put("damage", String.valueOf(damage));
-        map.put("range", String.valueOf(range));
-        map.put("remarks", remarks);
-        return map;
     }
 }

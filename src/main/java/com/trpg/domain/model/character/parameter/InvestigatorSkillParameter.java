@@ -16,10 +16,4 @@ public class InvestigatorSkillParameter extends ParameterPattern {
         super(type, defaultValue);
         this.investigatorSkillType = investigatorSkillType;
     }
-    
-    public Map<String, String> paramMap(){
-        Map<String, String> map = super.paramMap();
-        //TODO: 追加のパラメータを付与
-        return map;
-    }
 }

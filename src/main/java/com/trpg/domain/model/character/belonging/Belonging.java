@@ -1,19 +1,30 @@
 package com.trpg.domain.model.character.belonging;
 
-import java.util.HashMap;
-import java.util.Map;
+import lombok.Getter;
 
 /**
- * 所持品のデフォルトの実装クラス
+ * 所持品ドメインオブジェクト。
  * 
  * @author Platykun
  *
  */
 public class Belonging{
-    int id;
-    BelongingType type;
-    String name;
-    String description;
+
+    /** 所持品ID */
+    @Getter
+    private int id;
+
+    /** 所持品種別 */
+    @Getter
+    private BelongingType type;
+
+    /** 名前 */
+    @Getter
+    private String name;
+
+    /** 説明 */
+    @Getter
+    private String description;
     
     Belonging(int id, BelongingType type, String name, String description){
         this.id = id;
@@ -21,17 +32,5 @@ public class Belonging{
         this.name = name;
         this.description = description;
     }
-    
-    /**
-     * パラメータをmapとして設定する。
-     * @return パラメータのマップ
-     */
-    public Map<String, String> paramMap(){
-        HashMap<String, String> map = new HashMap<String, String>();
-        map.put("belongingType", type.toString());
-        map.put("name", name);
-        map.put("description", description);
-        
-        return map;
-    }
+
 }

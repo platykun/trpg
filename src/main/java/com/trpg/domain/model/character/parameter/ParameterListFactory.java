@@ -16,72 +16,58 @@ public class ParameterListFactory {
     @Autowired
     private ParameterFactory parameterFactory;
 
-    @Autowired
-    private ParameterPatternFactory parameterPatternFactory;
-
-
-
     //新規作成時初期値を設定する
     public ParameterList createInitialParameter(){
         final int ID = 0;
 
         ParameterList parameterList = new ParameterList();
 
-        SanityPointsParameter sanityPointsParameter = parameterPatternFactory.createSanityPoints(0);
-        parameterList.add(parameterFactory.createDefaultParameter(ID, sanityPointsParameter, 0));
+        Parameter sanityPointsParameter = parameterFactory.createSanityPoints(ID, 0, 0);
+        parameterList.add(sanityPointsParameter);
 
-        MagicPointsParameter magicPointsParameter = parameterPatternFactory.createMagicPoints(0);
-        parameterList.add(parameterFactory.createDefaultParameter(ID, magicPointsParameter, 0));
+        Parameter magicPointsParameter = parameterFactory.createMagicPoints(ID, 0, 0);
+        parameterList.add(magicPointsParameter);
 
-        HitPointsParameter hitPointsParameter = parameterPatternFactory.createHitPoints(0);
-        parameterList.add(parameterFactory.createDefaultParameter(ID, hitPointsParameter, 0));
+        Parameter hitPointsParameter = parameterFactory.createHitPoints(ID, 0, 0);
+        parameterList.add(hitPointsParameter);
 
 
         //能力値パラメータ設定
-        int strInitValue = CharactristicsType.STR.getInitValue();
-        CharactristicsParameter strParam = parameterPatternFactory.createCharacteristics(strInitValue, CharactristicsType.STR);
-        parameterList.add(parameterFactory.createDefaultParameter(ID, strParam, strInitValue));
+        Parameter strParameter = parameterFactory.createCharacteristics(ID, 0, 0, CharactristicsType.STR);
+        parameterList.add(strParameter);
 
-        int intInitValue = CharactristicsType.INTELLIGENCE.getInitValue();
-        CharactristicsParameter intParam = parameterPatternFactory.createCharacteristics(intInitValue, CharactristicsType.INTELLIGENCE);
-        parameterList.add(parameterFactory.createDefaultParameter(ID, intParam, intInitValue));
+        Parameter intParameter = parameterFactory.createCharacteristics(ID, 0, 0, CharactristicsType.INTELLIGENCE);
+        parameterList.add(intParameter);
 
-        int appInitValue = CharactristicsType.APP.getInitValue();
-        CharactristicsParameter appParam = parameterPatternFactory.createCharacteristics(appInitValue, CharactristicsType.APP);
-        parameterList.add(parameterFactory.createDefaultParameter(ID, appParam, appInitValue));
+        Parameter appParameter = parameterFactory.createCharacteristics(ID, 0, 0, CharactristicsType.APP);
+        parameterList.add(appParameter);
 
-        int sizInitValue = CharactristicsType.SIZ.getInitValue();
-        CharactristicsParameter sizParam = parameterPatternFactory.createCharacteristics(sizInitValue, CharactristicsType.SIZ);
-        parameterList.add(parameterFactory.createDefaultParameter(0, sizParam, sizInitValue));
+        Parameter sizParameter = parameterFactory.createCharacteristics(ID, 0, 0, CharactristicsType.SIZ);
+        parameterList.add(sizParameter);
 
-        int dexInitValue = CharactristicsType.DEX.getInitValue();
-        CharactristicsParameter dexParam = parameterPatternFactory.createCharacteristics(dexInitValue, CharactristicsType.DEX);
-        parameterList.add(parameterFactory.createDefaultParameter(0, dexParam, dexInitValue));
+        Parameter dexParameter = parameterFactory.createCharacteristics(ID, 0, 0, CharactristicsType.DEX);
+        parameterList.add(dexParameter);
 
-        int conInitValue = CharactristicsType.CON.getInitValue();
-        CharactristicsParameter conParam = parameterPatternFactory.createCharacteristics(conInitValue, CharactristicsType.CON);
-        parameterList.add(parameterFactory.createDefaultParameter(0, conParam, conInitValue));
 
-        int powInitValue = CharactristicsType.POW.getInitValue();
-        CharactristicsParameter powParam = parameterPatternFactory.createCharacteristics(powInitValue, CharactristicsType.POW);
-        parameterList.add(parameterFactory.createDefaultParameter(0, powParam, powInitValue));
+        Parameter conParameter = parameterFactory.createCharacteristics(ID, 0, 0, CharactristicsType.CON);
+        parameterList.add(conParameter);
 
-        int eduInitValue = CharactristicsType.EDU.getInitValue();
-        CharactristicsParameter eduParam = parameterPatternFactory.createCharacteristics(eduInitValue, CharactristicsType.EDU);
-        parameterList.add(parameterFactory.createDefaultParameter(0, eduParam, eduInitValue));
+        Parameter powParameter = parameterFactory.createCharacteristics(ID, 0, 0, CharactristicsType.POW);
+        parameterList.add(powParameter);
+
+        Parameter eduParameter = parameterFactory.createCharacteristics(ID, 0, 0, CharactristicsType.EDU);
+        parameterList.add(eduParameter);
 
         //技能種別設定
         for(InvestigatorSkillType skillType : InvestigatorSkillType.values()){
-            int initValue = skillType.getInitValue();
-            InvestigatorSkillParameter investigatorSkillParameter = parameterPatternFactory.createInvestigatorSkill(initValue, skillType);
-            parameterList.add(parameterFactory.createDefaultParameter(ID, investigatorSkillParameter, initValue));
+            Parameter investigatorParameter = parameterFactory.createInvestigatorSkill(ID, 0, 0, skillType);
+            parameterList.add(investigatorParameter);
         }
 
         //武器技能設定
         for(WeaponType weaponType : WeaponType.values()){
-            int initValue = weaponType.getInitValue();
-            WeaponParameter weaponParameter = parameterPatternFactory.createWeapons(initValue,weaponType);
-            parameterList.add(parameterFactory.createDefaultParameter(0, weaponParameter, initValue));
+            Parameter weaponParameter = parameterFactory.createWeapons(ID, 0, 0, weaponType);
+            parameterList.add(weaponParameter);
         }
 
         return parameterList;

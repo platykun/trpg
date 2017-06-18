@@ -10,7 +10,7 @@ import lombok.Getter;
 public class Parameter {
     @Getter
     private int id;
-    @Getter
+
     private ParameterPattern parameterPattern;
     @Getter
     private int parameter;
@@ -28,5 +28,21 @@ public class Parameter {
         this.parameter = -1;
         diceParameter = diceParameter;
         this.parameterPattern = parameterPattern;
+    }
+
+    public ParameterType getParameterType() {
+        return parameterPattern.getParameterType();
+    }
+
+    public String getParameterPatternName() {
+      return parameterPattern.getName();
+    }
+
+    public int getSubParameterTypeValue() {
+        return parameterPattern.getSubParameterTypeValue();
+    }
+
+    public int getDefaultValue() {
+        return parameterPattern.getDefaultValue();
     }
 }

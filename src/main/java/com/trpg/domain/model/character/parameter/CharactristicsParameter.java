@@ -17,12 +17,6 @@ public class CharactristicsParameter extends ParameterPattern {
         super(type, defaultValue);
         this.charactristicsType = charactristicsType;
     }
-    
-    public Map<String, String> paramMap(){
-        Map<String, String> map = super.paramMap();
-        //TODO: 追加のパラメータを付与
-        return map;
-    }
 
     @Override
     public String getName(){

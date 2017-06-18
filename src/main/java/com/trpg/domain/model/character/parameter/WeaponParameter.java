@@ -19,10 +19,4 @@ public class WeaponParameter extends ParameterPattern {
         super(ParameterType.WEAPONS, defaultValue);
         this.weaponType = weaponType;
     }
-    
-    public Map<String, String> paramMap(){
-        Map<String, String> map = super.paramMap();
-        //TODO: 追加のパラメータを付与
-        return map;
-    }
 }

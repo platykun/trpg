@@ -20,8 +20,8 @@ public class ParameterMapper {
     }
 
     public static ParameterEntity toEntity(int id, int characterId, Parameter parameter){
-        ParameterPattern parameterPattern = parameter.getParameterPattern();
-        ParameterEntity entity = new ParameterEntity(id, characterId,parameter.getParameter(), parameter.getDiceParameter() ,parameterPattern.getParameterType().getId(), parameterPattern.getDefaultValue(), parameterPattern.getSubParameterTypeValue());
+
+        ParameterEntity entity = new ParameterEntity(id, characterId,parameter.getParameter(), parameter.getDiceParameter() ,parameter.getParameterType().getId(), parameter.getDefaultValue(), parameter.getSubParameterTypeValue());
         return entity;
     }
 }

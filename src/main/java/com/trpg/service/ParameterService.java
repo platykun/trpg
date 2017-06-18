@@ -1,21 +1,11 @@
 package com.trpg.service;
 
-import com.trpg.domain.model.character.belonging.Belonging;
-import com.trpg.domain.model.character.belonging.BelongingList;
-import com.trpg.domain.model.character.character.Character;
-import com.trpg.domain.model.character.character.*;
 import com.trpg.domain.model.character.parameter.*;
 import com.trpg.domain.repository.character.*;
-import com.trpg.domain.repository.character.CharacterInfoRepository;
 import com.trpg.entity.*;
 import com.trpg.mapper.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Controller
 public class ParameterService {
@@ -24,29 +14,37 @@ public class ParameterService {
     ParameterFactory parameterfactory;
 
     @Autowired
-    ParameterPatternFactory parameterPatternFactory;
+    ParameterRepository parameterRepository;
 
     // 初期設定のパラメータリストを作成する。
     public ParameterList getInitialValueParameterList(){
         ParameterList parameterList = new ParameterList();
 
-        SanityPointsParameter sanityPointsParameter = parameterPatternFactory.createSanityPoints(0);
-        parameterList.add(parameterfactory.createDefaultParameter(0, sanityPointsParameter, 0));
+        Parameter sanityPointsParameter = parameterfactory.createSanityPoints(0, 0, 0);
+        parameterList.add(sanityPointsParameter);
 
-        MagicPointsParameter magicPointsParameter = parameterPatternFactory.createMagicPoints(0);
-        parameterList.add(parameterfactory.createDefaultParameter(0, magicPointsParameter, 0));
+        Parameter magicPointsParameter = parameterfactory.createMagicPoints(0, 0, 0);
+        parameterList.add(magicPointsParameter);
 
-        HitPointsParameter hitPointsParameter = parameterPatternFactory.createHitPoints(0);
-        parameterList.add(parameterfactory.createDefaultParameter(0, hitPointsParameter, 0));
+        Parameter hitPointsParameter = parameterfactory.createHitPoints(0, 0, 0);
+        parameterList.add(hitPointsParameter);
 
         //STRなどのパラメータ設定
-        CharactristicsParameter strParam = parameterPatternFactory.createCharacteristics(0, CharactristicsType.STR);
-        parameterList.add(parameterfactory.createDefaultParameter(0, strParam, 0));
-        CharactristicsParameter intParam = parameterPatternFactory.createCharacteristics(0, CharactristicsType.INTELLIGENCE);
-        parameterList.add(parameterfactory.createDefaultParameter(0, intParam, 0));
+        Parameter strParam = parameterfactory.createCharacteristics(0, 0, 0, CharactristicsType.STR);
+        parameterList.add(strParam);
 
+        Parameter intParam = parameterfactory.createCharacteristics(0, 0, 0, CharactristicsType.INTELLIGENCE);
+        parameterList.add(intParam);
 
         return parameterList;
+    }
+
+    public void insertParameter(ParameterList parameterList, int characterId){
+
+        for(Parameter parameter : parameterList.getParameterList()){
+            ParameterEntity parameterEntity = ParameterMapper.toEntity(parameter.getId(), characterId, parameter);
+            parameterRepository.save(parameterEntity);
+        }
     }
 
 }

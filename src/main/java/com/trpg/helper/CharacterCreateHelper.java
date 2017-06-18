@@ -56,15 +56,14 @@ public class CharacterCreateHelper {
 
     private ValueForm convertParameterToValueForm(Parameter parameter){
         ValueForm valueForm = new ValueForm();
-        ParameterPattern parameterPattern = parameter.getParameterPattern();
-        ParameterType parameterType = parameterPattern.getParameterType();
+        ParameterType parameterType = parameter.getParameterType();
 
         valueForm.setParamId(parameterType.getId());
-        valueForm.setParamSubId(parameterPattern.getSubParameterTypeValue());
+        valueForm.setParamSubId(parameter.getSubParameterTypeValue());
         valueForm.setValue(parameter.getParameter());
         valueForm.setStringValue(parameter.getDiceParameter());
-        valueForm.setName(parameterPattern.getName());
-        valueForm.setInitValue(parameterPattern.getInitValue());
+        valueForm.setName(parameter.getParameterPatternName());
+        valueForm.setInitValue(parameterType.getInitValue());
 
         return valueForm;
     }
