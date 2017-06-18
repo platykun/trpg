@@ -44,18 +44,6 @@ public class CharacterService {
     @Autowired
     HumanFactory humanFactory;
 
-    @Autowired
-    ParameterFactory parameterfactory;
-
-    @Autowired
-    ParameterPatternFactory parameterPatternFactory;
-
-    @Autowired
-    ParameterListFactory parameterListFactory;
-
-    @Autowired
-    BelongingListFactory belongingListFactory;
-
     public HumanList findAllOutline(){
         Page<HumanEntity> humanEntityPage = humanRepository.findAll(new PageRequest(0, 20));
         List<HumanEntity> humanEntityList = humanEntityPage.getContent();

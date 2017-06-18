@@ -1,0 +1,65 @@
+@startuml
+
+package service {
+  class CharacterService {
+    - HumanRepository humanRepository
+    - CharacterInfoRepository characterInfoRepository
+    - DetailRepository detailRepository
+    - JobRepository jobRepository
+    - JobDetailRepository jobDetailRepository
+    - BelongingRepository belongingRepository
+    - ParameterRepository parameterRepository
+    - HumanFactory humanFactory
+    - ParameterFactory parameterfactory
+    - ParameterPatternFactory parameterPatternFactory
+    - ParameterListFactory parameterListFactory
+    - BelongingListFactory belongingListFactory
+
+    + HumanList findAllOutline()
+    + JobList getAllJob()
+    + Human getInitialHuman()
+    + void insertHuman(Human human, List<Detail> detailList)
+  }
+
+  class ParameterService {
+    - ParameterFactory parameterfactory
+    - ParameterPatternFactory parameterPatternFactory
+
+    + ParameterList getInitialValueParameterList()
+  }
+}
+
+package factory {
+  class HumanFactory {
+  }
+
+  class ParameterFactory {
+  }
+  class ParameterPatternFactory {
+  }
+  class ParameterListFactory {
+  }
+  class BelongingListFactory {
+  }
+}
+
+package repository {
+  class HumanRepository {
+  }
+  class CharacterInfoRepository {
+  }
+  class DetailRepository {
+  }
+  class JobRepository {
+  }
+  class JobDetailRepository {
+  }
+  class BelongingRepository {
+  }
+  class ParameterRepository {
+  }
+}
+
+
+
+@enduml
