@@ -1,7 +1,7 @@
 @startuml
 
 package domain.model.character.parameter {
-class ParameterList {
+  class ParameterList {
     - ArrayList<Parameter> parameterList
     + add(Parameter parameter)
     + ArrayList<Parameter> get()
@@ -9,97 +9,90 @@ class ParameterList {
     + List<Parameter> getStatusList()
     + List<Parameter> getInvestigatorSkillList()
     + List<Parameter> getWeaponSkillList()
-}
-
-
-class Parameter {
+  }
+  class Parameter {
     - int id;
     - ParameterPattern parameterPattern;
     - int parameter;
     - String diceParameter;
-}
-class DefaultParameter {
+  }
+  class DefaultParameter {
     - int param
-}
-
-class DiceValueParameter {
+  }
+  class DiceValueParameter {
     - String diceValue
-}
-
-class ParameterPattern {
+  }
+  class ParameterPattern {
     - ParameterType parameterType;
     - int defaultValue;
     + int getSubParameterTypeValue()
     + String getName()
     + int getInitValue()
-}
-enum ParameterType {
+  }
+  enum ParameterType {
     - int id
     - String name
     - int initValue
     + int getId()
     + ParameterType getType(final int id)
-}
-
-class CharactristicsParameter {
+  }
+  class CharactristicsParameter {
     - CharactristicsType charactristicsType
-}
-enum CharactristicsType {
+  }
+  enum CharactristicsType {
     - int id
     - String name
     - int initValue
     + int getId()
     + ParameterType getType(final int id)
-}
-class SanityPointsParameter {
-}
-class MagicPointsParameter {
-}
-class HitPointsParameter {
-}
-class InvestigatorSkillParameter {
+  }
+  class SanityPointsParameter {
+  }
+  class MagicPointsParameter {
+  }
+  class HitPointsParameter {
+  }
+  class InvestigatorSkillParameter {
     - InvestigatorSkillType investigatorSkillType
-}
-enum InvestigatorSkillType {
+  }
+  enum InvestigatorSkillType {
     - int id
     - String name
     - int initValue
     + int getId()
     + InvestigatorSkillType getType(final int id)
-}
-class WeaponParameter {
+  }
+  class WeaponParameter {
     - WeaponType weaponType
-}
-enum WeaponType {
+  }
+  enum WeaponType {
     - int id
     - String name
     - int initValue
     + int getId()
     + WeaponType getType(final int id)
-}
+  }
 
-ParameterList <.. Parameter
+  ParameterList o-- Parameter
 
-Parameter <.. ParameterPattern
-Parameter <-- DefaultParameter
-Parameter <-- DiceValueParameter
-ParameterPattern <.. ParameterType
+  Parameter o-- ParameterPattern
+  Parameter <-- DefaultParameter
+  Parameter <-- DiceValueParameter
+  ParameterPattern o-- ParameterType
 
-ParameterPattern <-- CharactristicsParameter
-CharactristicsParameter <.. CharactristicsType
+  ParameterPattern <-- CharactristicsParameter
+  CharactristicsParameter o-- CharactristicsType
 
-ParameterPattern <-- SanityPointsParameter
-ParameterPattern <-- MagicPointsParameter
-ParameterPattern <-- HitPointsParameter
-ParameterPattern <-- InvestigatorSkillParameter
-InvestigatorSkillParameter <.. InvestigatorSkillType
-ParameterPattern <-- WeaponParameter
-WeaponParameter <.. WeaponType
-
+  ParameterPattern <-- SanityPointsParameter
+  ParameterPattern <-- MagicPointsParameter
+  ParameterPattern <-- HitPointsParameter
+  ParameterPattern <-- InvestigatorSkillParameter
+  InvestigatorSkillParameter o-- InvestigatorSkillType
+  ParameterPattern <-- WeaponParameter
+  WeaponParameter o-- WeaponType
 }
 
 package service {
-
   class ParameterFactory {
     + Parameter createDefaultParameter(int id, ParameterPattern parameterPattern, int param)
     + Parameter createDiceValueParameter(int id, ParameterPattern parameterPattern, String diceValue)
@@ -118,11 +111,8 @@ package service {
     - ParameterList createInitialParameter()
   }
 
-  ParameterListFactory <.. ParameterFactory
-  ParameterListFactory <.. ParameterPatternFactory
+  ParameterListFactory o-- ParameterFactory
+  ParameterListFactory o-- ParameterPatternFactory
 }
-
-ParameterListFactory <.. ParameterList
-ParameterFactory <.. Parameter
 
 @enduml

@@ -38,8 +38,8 @@ package domain.model.character.belonging {
   }
 
   Belonging <-- Weapon
-  Belonging <.. BelongingType
-  BelongingList <.. Belonging
+  Belonging o-- BelongingType
+  BelongingList o-- Belonging
 }
 
 package Factory {

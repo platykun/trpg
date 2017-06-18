@@ -19,6 +19,18 @@ package domain.model.character.character {
     - DetailList detailList
   }
 
+  class HumanList {
+    - ArrayList<Human> humans
+    + void add(Human human)
+    + ArrayList<Human> getHumans()
+  }
+
+  enum HumanType {
+    - int id
+    + int getId()
+    + HumanType getType(final int id)
+  }
+
   class Detail {
     int id
     DetailType type
@@ -36,8 +48,42 @@ package domain.model.character.character {
     + DetailType getType(final int id)
   }
 
+  class Job {
+      - int id
+      - String name
+      + List<InvestigatorSkillType> skillList
+      + Job(int id, String name, List<InvestigatorSkillType> skillList)
+  }
+
+  class JobList {
+    - ArrayList<Job> jobList
+    + JobList()
+    + void add(Job job)
+  }
+
+  class Monster {
+    - int mosterId;
+    - int armor; // 装甲
+    - String lackOfSanity; // 正気度喪失
+    - String remarks; // 備考
+  }
+
+
   Character <-- Human
+  Character <-- Monster
+
+  HumanList o-- Human
+
+  JobList o-- Job
+
+  Detail o-- DetailType
+  DetailList o-- Detail
+
+  Human o-- Job
+  Human o-- HumanType
+  Human o-- DetailList
 }
+
 
 package Factory {
   class HumanFactory {
@@ -46,6 +92,11 @@ package Factory {
     + Human create(int humanId, int characterId, String name, ParameterList parameterList, BelongingList belongingList, Job job, String school, String comeFrom, String mentalDisorder, String sex, int age, HumanType type, DetailList detailList)
     + Human createInit()
   }
+  class MonsterFactory{
+    + Monster create(int monsterId, int characterId, String name, ParameterList parameterList, BelongingList belongingList, int armor,
+      String lackOfSanity, String remarks)
+  }
+
 }
 
 @enduml
