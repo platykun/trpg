@@ -62,7 +62,40 @@
               <div th:each="avility: *{avilityList}">
                 <p class="col-lg-2 col-sm-3 text-right" th:text="${avility.name}"></p>
                 <div class="col-lg-1 col-sm-1">
-                  <input class="skillText beginner form-control" type="text" th:value="${avility.initValue}" />
+                  <input class="beginner form-control" type="text" th:value="${avility.initValue}" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mainDiv">
+            <h2 class="ui header">ステータス</h2>
+            <div class="column">
+              <div th:each="status: *{statusList}">
+                <p class="col-lg-1 col-sm-2 text-right" th:text="${status.name}"></p>
+                <div class="col-lg-1 col-sm-1">
+                  <input class="form-control" type="text" th:value="${status.initValue}" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mainDiv">
+            <h2 class="ui header">探索者技能</h2>
+            <div class="column">
+              <div th:each="skill: *{skillList}">
+                <p class="col-lg-1 col-sm-2 text-right" th:text="${skill.name}"></p>
+                <div class="col-lg-1 col-sm-1">
+                  <input class="form-control" type="text" th:value="${skill.initValue}" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mainDiv">
+            <h2 class="ui header">所持品</h2>
+            <div class="column">
+              <div th:each="belonging: *{belongingList}">
+                <p class="col-lg-1 col-sm-2 text-right" th:text="${belonging.name}"></p>
+                <div class="col-lg-1 col-sm-1">
+                  <input class="form-control" type="text" th:value="${belonging.initValue}" />
                 </div>
               </div>
             </div>
