@@ -3,11 +3,13 @@ package com.trpg.domain.model.character.parameter;
 import lombok.Getter;
 
 /**
- * デフォルトのパラメータ
+ * デフォルトのパラメータ<br>
+ * 数字パラメータを持つ。
  *
  * @author Platykun
  */
 public class DefaultParameter extends Parameter{
+    /** パラメータ */
     @Getter
     private int param;
 

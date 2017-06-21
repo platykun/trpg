@@ -1,8 +1,5 @@
 package com.trpg.domain.model.character.parameter;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * 能力値パラメータ
  * 

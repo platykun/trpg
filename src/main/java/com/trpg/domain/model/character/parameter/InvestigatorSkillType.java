@@ -92,12 +92,18 @@ public enum InvestigatorSkillType {
     @Getter
     private final int initValue;
 
-    private InvestigatorSkillType(final int id, final String name, final int initValue){
+    InvestigatorSkillType(final int id, final String name, final int initValue){
         this.id = id;
         this.name = name;
         this.initValue = initValue;
     }
 
+    /**
+     * 技能種別を取得する。
+     *
+     * @param id 技能ID
+     * @return 技能種別
+     */
     public static InvestigatorSkillType getType(final int id){
         InvestigatorSkillType[] types = InvestigatorSkillType.values();
         for(InvestigatorSkillType type : types){
