@@ -8,9 +8,9 @@ import lombok.Getter;
  * 人間ドメインオブジェクト。探索者、NPCを含む。
  */
 public class Human extends Character {
+    /** 人間ID */
     @Getter
     private int humanId;
-
     /** 職業 */
     @Getter
     private Job job;

@@ -11,6 +11,7 @@ import java.util.Map;
  */
 public class CharactristicsParameter extends ParameterPattern {
 
+    /** パラメータ種別 */
     CharactristicsType charactristicsType;
 
     CharactristicsParameter(ParameterType type, int defaultValue, CharactristicsType charactristicsType){
@@ -18,11 +19,13 @@ public class CharactristicsParameter extends ParameterPattern {
         this.charactristicsType = charactristicsType;
     }
 
+    /** 名前を取得する。 */
     @Override
     public String getName(){
         return charactristicsType.getName();
     }
 
+    /** 初期値を取得する。 */
     @Override
     public int getInitValue(){
         return charactristicsType.getInitValue();

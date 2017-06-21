@@ -4,13 +4,21 @@ import com.trpg.domain.model.character.belonging.BelongingList;
 import com.trpg.domain.model.character.parameter.ParameterList;
 import lombok.Getter;
 
+/**
+ * キャラクタードメインオブジェクト。
+ */
 public class Character {
+
+    /** キャラクタID */
     @Getter
     private int characterId;
+    /** キャラクタ名 */
     @Getter
     private String name;
+    /** パラメータリスト */
     @Getter
     private ParameterList parameterList;
+    /** 所持品リスト */
     @Getter
     private BelongingList belongingList;
     

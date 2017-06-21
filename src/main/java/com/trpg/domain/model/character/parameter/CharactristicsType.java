@@ -19,19 +19,29 @@ public enum CharactristicsType {
     POW(6, "精神力", 0),
     EDU(7, "教養", 0);
 
+    /** パラメータ種別ID */
     @Getter
     private final int id;
+    /** パラメータ名 */
     @Getter
     private final String name;
     @Getter
     private final int initValue;
 
-    private CharactristicsType(final int id, final String name, final int initValue){
+    CharactristicsType(final int id, final String name, final int initValue){
         this.id = id;
         this.name = name;
         this.initValue = initValue;
     }
 
+    /**
+     * 引数のIDに合致したパラメータ種別オブジェクトを返却する。<br>
+     * IDが存在：種別を返却。<br>
+     * IDが存在しない：nullを返却。
+     *
+     * @param id パラメータ種別ID
+     * @return パラメータ種別
+     */
     public static CharactristicsType getType(final int id){
         CharactristicsType[] types = CharactristicsType.values();
         for(CharactristicsType type : types){
