@@ -70,4 +70,15 @@ public class Parameter {
     public int getDefaultValue() {
         return parameterPattern.getDefaultValue();
     }
+
+    /**
+     * パラメータタイプが一致しているかどうかを判定する。
+     *
+     * @param parameterType 判定するパラメータタイプ
+     * @return 一致:true 不一致:false
+     */
+    public boolean isEqualsToParameterType(ParameterType parameterType) {
+        return this.getParameterType().equals(parameterType);
+    }
+
 }

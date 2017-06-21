@@ -6,13 +6,14 @@ import com.trpg.domain.model.character.belonging.WeaponType;
 import java.util.Map;
 
 /**
- *  技能パラメータ
+ *  武器パラメータ
  * 
  * @author Platykun
  *
  */
 public class WeaponParameter extends ParameterPattern {
 
+    /** 武器種別 */
     WeaponType weaponType;
 
     WeaponParameter(int defaultValue, WeaponType weaponType){

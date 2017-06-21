@@ -7,7 +7,7 @@ import lombok.Getter;
 import org.codehaus.groovy.util.StringUtil;
 
 /**
- * パラメータコード
+ * パラメータ
  * 
  * @author Platykun
  *

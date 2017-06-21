@@ -13,10 +13,15 @@ import org.springframework.stereotype.Component;
 @Component
 public class ParameterListFactory {
 
+    /** パラメータファクトリ */
     @Autowired
     private ParameterFactory parameterFactory;
 
-    //新規作成時初期値を設定する
+    /**
+     * 新規作成時初期値を設定する
+     *
+     * @return 新規作成時初期値パラメータリスト
+     */
     public ParameterList createInitialParameter(){
         final int ID = 0;
 

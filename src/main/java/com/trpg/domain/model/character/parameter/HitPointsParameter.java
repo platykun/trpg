@@ -1,6 +1,5 @@
 package com.trpg.domain.model.character.parameter;
 
-import java.util.Map;
 
 /**
  *  体力パラメータ

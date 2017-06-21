@@ -11,48 +11,68 @@ import java.util.List;
  * @author Platykun
  */
 public class ParameterList {
+
+    /** パラメータリスト */
     @Getter
     private ArrayList<Parameter> parameterList;
 
     public ParameterList(){
         parameterList = new ArrayList<Parameter>();
     }
-    
+
+    /**
+     * パラメータリストにパラメータを追加する。
+     *
+     * @param parameter 追加するパラメータ
+     */
     public void add(Parameter parameter){
         parameterList.add(parameter);
     }
-    
-    public ArrayList<Parameter> get(){
-        return parameterList;
-    }
 
-    /** 能力値のリストを返却する。 */
+    /**
+     * 能力値のリストを返却する。
+     *
+     * @return 能力値パラメータリスト
+     */
     public List<Parameter> getCharactristicsParameterList(){
         List<Parameter> charactristicsParameterList = new ArrayList<Parameter>();
-        parameterList.stream().filter(p -> p.getParameterType().equals(ParameterType.CHARACTERISTICS)).forEach(e -> charactristicsParameterList.add(e));
+        parameterList.stream().filter(p -> p.isEqualsToParameterType(ParameterType.CHARACTERISTICS)).forEach(e -> charactristicsParameterList.add(e));
         return charactristicsParameterList;
     }
 
-    /** ステータスのリストを返却する。 */
+    /**
+     * ステータスのリストを返却する。
+     *
+     * @return ステータスパラメータリスト
+     */
     public List<Parameter> getStatusList(){
         List<Parameter> statusList = new ArrayList<Parameter>();
-        // ParameterList内のパラメータの持たせ方に問題がある
-        parameterList.stream().filter(p -> p.getParameterType().equals(ParameterType.SANITY_POINTS)).forEach(e -> statusList.add(e));
-        parameterList.stream().filter(p -> p.getParameterType().equals(ParameterType.MAGIC_POINTS)).forEach(e -> statusList.add(e));
-        parameterList.stream().filter(p -> p.getParameterType().equals(ParameterType.HIT_POINTS)).forEach(e -> statusList.add(e));
+
+        parameterList.stream().filter(p -> p.isEqualsToParameterType(ParameterType.SANITY_POINTS)).forEach(e -> statusList.add(e));
+        parameterList.stream().filter(p -> p.isEqualsToParameterType(ParameterType.MAGIC_POINTS)).forEach(e -> statusList.add(e));
+        parameterList.stream().filter(p -> p.isEqualsToParameterType(ParameterType.HIT_POINTS)).forEach(e -> statusList.add(e));
         return statusList;
     }
 
-    /** 技能のリストを返却する。 */
+    /**
+     * 技能のリストを返却する。
+     *
+     * @return 技能パラメータリスト
+     */
     public List<Parameter> getInvestigatorSkillList(){
         List<Parameter> investigatorList = new ArrayList<Parameter>();
-        parameterList.stream().filter(p -> p.getParameterType().equals(ParameterType.INVESTIGATOR_SKILLS)).forEach(e -> investigatorList.add(e));
+        parameterList.stream().filter(p -> p.isEqualsToParameterType(ParameterType.INVESTIGATOR_SKILLS)).forEach(e -> investigatorList.add(e));
         return investigatorList;
     }
-    /** 武器を返却する。 */
+
+    /**
+     * 武器を返却する。
+     *
+     * @return 武器パラメータリスト
+     */
     public List<Parameter> getWeaponSkillList(){
         List<Parameter> weaponSkillList = new ArrayList<Parameter>();
-        parameterList.stream().filter(p -> p.getParameterType().equals(ParameterType.WEAPONS)).forEach(e -> weaponSkillList.add(e));
+        parameterList.stream().filter(p -> p.isEqualsToParameterType(ParameterType.WEAPONS)).forEach(e -> weaponSkillList.add(e));
         return weaponSkillList;
     }
 }
