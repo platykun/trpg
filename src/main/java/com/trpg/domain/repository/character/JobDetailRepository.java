@@ -14,8 +14,8 @@ public interface JobDetailRepository extends JpaRepository<JobDetailEntity, Inte
     /**
      * 職業詳細を取得する。
      *
-     * @param jobID 職業ID
+     * @param id 職業ID
      * @return 職業詳細リスト
      */
-    List<JobDetailEntity> findByJobId(int jobID);
+    List<JobDetailEntity> findById(int id);
 }

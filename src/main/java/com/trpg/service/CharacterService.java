@@ -136,7 +136,7 @@ public class CharacterService {
 
         // 職業情報を取得する。
         JobEntity jobEntity = jobRepository.findOne(humanEntity.getJobId());
-        List<JobDetailEntity> jobDetailEntities = jobDetailRepository.findByJobId(humanEntity.getJobId());
+        List<JobDetailEntity> jobDetailEntities = jobDetailRepository.findById(humanEntity.getJobId());
         Job job = JobMapper.toDomain(jobEntity, jobDetailEntities);
 
         // 探索者オブジェクトを作成する。
