@@ -7,16 +7,29 @@ import com.trpg.mapper.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+import java.util.List;
+
+/**
+ * パラメータサービス。
+ */
 @Controller
 public class ParameterService {
-
+    /** パラメータファクトリ */
     @Autowired
     ParameterFactory parameterfactory;
 
+    /** パラメータリストファクトリ */
+    @Autowired
+    ParameterListFactory parameterListFactory;
+
+    /** パラメータリポジトリ */
     @Autowired
     ParameterRepository parameterRepository;
 
-    // 初期設定のパラメータリストを作成する。
+    /**
+     * 初期値パラメータリストを作成する。
+     * @return 初期値パラメータリスト。
+     */
     public ParameterList getInitialValueParameterList(){
         ParameterList parameterList = new ParameterList();
 
@@ -46,5 +59,21 @@ public class ParameterService {
             parameterRepository.save(parameterEntity);
         }
     }
+
+    /**
+     * キャラクターIDをもとにパラメータを取得する。
+     *
+     * @param characterId キャラクタID
+     * @return パラメータ
+     */
+    public ParameterList findByCharacterId(int characterId){
+        List<ParameterEntity> parameterEntityList = parameterRepository.findByCharacterId(characterId);
+        ParameterList parameterList = parameterListFactory.create();
+
+        parameterEntityList.stream().forEach(p -> parameterList.add(ParameterMapper.toDomain(p)));
+
+        return parameterList;
+    }
+
 
 }

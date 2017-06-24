@@ -82,6 +82,14 @@ public class CharacterController {
 //     return "character/addInput";
      }
 
+     @RequestMapping("/detal")
+    public String detail(Model model, int characterId){
+
+         Human human = characterService.findHumanByCharacterId(characterId);
+         //TODO: formへ格納する
+         return "character/detail";
+     }
+
     // /**
     // * キャラクター詳細画面を表示する。
     // *

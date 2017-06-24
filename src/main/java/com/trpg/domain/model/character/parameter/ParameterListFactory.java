@@ -77,4 +77,15 @@ public class ParameterListFactory {
 
         return parameterList;
     }
+
+    /**
+     * 空のパラメータリストを作成する。
+     *
+     * @return パラメータリスト
+     */
+    public ParameterList create(){
+        ParameterList parameterList = new ParameterList();
+        return parameterList;
+    }
+
 }

@@ -16,7 +16,7 @@ public class Detail {
     @Getter
     String detail;
     
-    Detail(int id, DetailType type, String detail){
+    public Detail(int id, DetailType type, String detail){
         this.id = id;
         this.type = type;
         this.detail = detail;

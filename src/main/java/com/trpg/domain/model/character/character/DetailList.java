@@ -12,7 +12,7 @@ public class DetailList {
     @Getter
     private ArrayList<Detail> detailList;
     
-    DetailList(){
+    public DetailList(){
         detailList = new ArrayList<Detail>();
     }
 

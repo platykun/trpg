@@ -3,7 +3,7 @@ package com.trpg.domain.model.character.parameter;
 import lombok.Getter;
 
 /**
- * パラメータ種別
+ * 能力値パラメータ種別
  * 
  * @author Platykun
  *
@@ -39,8 +39,8 @@ public enum CharactristicsType {
      * IDが存在：種別を返却。<br>
      * IDが存在しない：nullを返却。
      *
-     * @param id パラメータ種別ID
-     * @return パラメータ種別
+     * @param id 能力値パラメータ種別ID
+     * @return 能力値パラメータ種別
      */
     public static CharactristicsType getType(final int id){
         CharactristicsType[] types = CharactristicsType.values();

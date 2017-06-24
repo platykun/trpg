@@ -21,17 +21,21 @@ public enum ParameterType {
     private final String name;
     @Getter
     private final int initValue;
-    
-    private ParameterType(final int id, final String name, final int initValue){
+
+    ParameterType(final int id, final String name, final int initValue){
         this.id = id;
         this.name = name;
         this.initValue = initValue;
     }
-    
-    public int getId(){
-        return id;
-    }
 
+    /**
+     * 引数のIDに合致したパラメータ種別オブジェクトを返却する。<br>
+     * IDが存在：種別を返却。<br>
+     * IDが存在しない：nullを返却。
+     *
+     * @param id パラメータ種別ID
+     * @return パラメータ種別
+     */
     public static ParameterType getType(final int id){
         ParameterType[] types = ParameterType.values();
         for(ParameterType type : types){

@@ -11,24 +11,52 @@ import com.trpg.mapper.BelongingMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+import java.util.List;
+
+/**
+ * 所持品サービスクラス
+ */
 @Controller
 public class BelongingService {
 
+    /** 所持品リポジトリ */
     @Autowired
     BelongingRepository belongingRepository;
 
+    /** 所持品ファクトリ */
     @Autowired
     BelongingFactory belongingFactory;
 
+    /** 所持品リストファクトリ */
     @Autowired
     BelongingListFactory belongingListFactory;
 
+    /**
+     * 所持品リストをDBへ登録する。
+     *
+     * @param belongingList 所持品リスト。
+     */
     public void insertBelongings(BelongingList belongingList){
         //Belongingテーブルへ登録
         for(Belonging belonging : belongingList.getBelongings()) {
             BelongingEntity belongingEntity = BelongingMapper.toEntity(belonging);
             belongingRepository.save(belongingEntity);
         }
+    }
+
+    /**
+     * 所持品を取得する
+     *
+     * @param id 所持品
+     * @return 所持品リスト
+     */
+    public BelongingList findByCharacterId(int id){
+        List<BelongingEntity> belongingEntityList = belongingRepository.findByCharacterId(id);
+
+        BelongingList belongingList = belongingListFactory.create();
+        belongingEntityList.stream().forEach(b -> belongingList.add(BelongingMapper.toDomain(b)));
+
+        return belongingList;
     }
 
 }

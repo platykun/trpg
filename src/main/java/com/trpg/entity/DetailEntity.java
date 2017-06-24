@@ -23,7 +23,7 @@ public class DetailEntity {
     @GeneratedValue
     private int id;
 
-    private int characterId;
+    private int humanId;
 
     private int detailType;
 
