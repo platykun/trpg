@@ -54,8 +54,10 @@ public class CreateForm {
     /** 探索者の技能 */
     private List<ValueForm> skillList;
 
+    /** 所持品 */
     private List<ValueForm> belongingList;
 
+    /** 詳細情報 */
     private List<ValueForm> detailList;
 
 }

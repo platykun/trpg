@@ -49,16 +49,6 @@ public class CharacterController {
         HumanList allOutline = characterService.findAllOutline();
         CharacterOutlineListForm form = characterOutlineHelper.convertToCharacterOutlineForm(allOutline);
         model.addAttribute("characters", form);
-        // List<CharacterInfo> results = characterAction.getCharacterList();
-        // List<CharacterOutlineForm> characters = new
-        // ArrayList<CharacterOutlineForm>();
-        // results.stream().forEach(result -> characters.add(
-        // new CharacterOutlineForm(
-        // result.getId(),
-        // result.getName(),
-        // result.getSanityPoint()))
-        // );
-        // model.addAttribute("characters", characters);
 
         return "character/top";
     }
@@ -76,11 +66,18 @@ public class CharacterController {
 
          CreateForm form = characterCreateHelper.convertToCreateForm(initHuman, jobList);
          model.addAttribute("character", form);
-         return "character/addInput";
 
-//     model.addAttribute("character", new CharacterDetailForm());
-//     return "character/addInput";
+         return "character/addInput";
      }
+
+     @RequestMapping("/add/confirm")
+     public String addConfirm(Model model, CreateForm createForm){
+         //TODO: 登録処理を行う。
+         return "character/detail";
+     }
+
+
+
 
      @RequestMapping("/detal")
     public String detail(Model model, int characterId){
