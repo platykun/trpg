@@ -85,13 +85,37 @@ public class CharacterCreateHelper {
         return form;
     }
 
+    /**
+     * CreateFormから探索者オブジェクトを作成する。
+     *
+     * @param createForm createForm
+     * @return 探索者オブジェクト
+     */
     public Human convertToHuman(CreateForm createForm){
         // 所持品オブジェクトを作成する。
         BelongingList belongingList = belongingListFactory.create();
         List<ValueForm> belongingListForm = createForm.getBelongingList();
         belongingListForm.stream().forEach(b -> belongingList.add(convertValueFormToBelonging(b)));
 
-        //
+        // 詳細オブジェクトを作成する
+        DetailList detailList = new DetailList();
+        List<ValueForm> detailValueList = createForm.getDetailList();
+        detailValueList.stream().forEach(d -> detailList.add(convertToDetail(d)));
+
+        //パラメータオブジェクトを作成する
+        ParameterList parameterList = parameterListFactory.create();
+        List<ValueForm> parameterValueList = new ArrayList<>();
+        //能力値のパラメータオブジェクトを作成。
+        parameterValueList.addAll(createForm.getAvilityList());
+        //ステータスのパラメータオブジェクトを作成。
+        parameterValueList.addAll(createForm.getStatusList());
+        //技能のパラメータオブジェクトを作成。
+        parameterValueList.addAll(createForm.getSkillList());
+        parameterValueList.stream().forEach(p -> parameterList.add(convertToParameter(p)));
+
+        //基礎ステータスを取得する
+
+        //探索者オブジェクトを作成する。
 
         return null;
     }
@@ -144,4 +168,15 @@ public class CharacterCreateHelper {
         }
         return parameter;
     }
+
+    private Detail convertToDetail(ValueForm valueForm){
+        int id = valueForm.getParamId();
+        DetailType type = DetailType.getType(valueForm.getParamSubId());
+        String detail = valueForm.getStringValue();
+        Detail detailObj = new Detail(id, type, detail);
+        return detailObj;
+    }
+
+
+
 }

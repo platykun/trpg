@@ -70,16 +70,22 @@ public class CharacterController {
          return "character/addInput";
      }
 
+    /**
+     * キャラクターを登録する。
+     *
+     * @param model モデル
+     * @param createForm 入力値
+     * @return キャラクター詳細画面
+     */
      @RequestMapping("/add/confirm")
      public String addConfirm(Model model, CreateForm createForm){
          //TODO: 登録処理を行う。
+         Human human = characterCreateHelper.convertToHuman(createForm);
+         characterService.insertHuman(human);
          return "character/detail";
      }
 
-
-
-
-     @RequestMapping("/detal")
+     @RequestMapping("/detail")
     public String detail(Model model, int characterId){
 
          Human human = characterService.findHumanByCharacterId(characterId);

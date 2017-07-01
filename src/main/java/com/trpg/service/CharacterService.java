@@ -42,6 +42,11 @@ public class CharacterService {
     @Autowired
     ParameterService parameterService;
 
+    /**
+     * 探索者の概要を取得する。
+     *
+     * @return 探索者リスト
+     */
     public HumanList findAllOutline(){
         Page<HumanEntity> humanEntityPage = humanRepository.findAll(new PageRequest(0, 20));
         List<HumanEntity> humanEntityList = humanEntityPage.getContent();
@@ -55,7 +60,10 @@ public class CharacterService {
         return humanList;
     }
 
-    // 職業一覧を取得する
+    /**
+     * 職業一覧を取得する
+     * @return 職業一覧
+     */
     public JobList getAllJob(){
         List<JobEntity> jobEntityList = jobRepository.findAll();
         List<JobDetailEntity> jobDetailRepositoryList = jobDetailRepository.findAll();
@@ -77,7 +85,7 @@ public class CharacterService {
         return human;
     }
 
-    public void insertHuman(Human human, List<Detail> detailList){
+    public void insertHuman(Human human){
 
         // characterInfoテーブルへ登録
         CharacterInfoEntity characterInfoEntity = CharacterInfoMapper.toEntity((Character)human);
@@ -90,7 +98,8 @@ public class CharacterService {
         HumanEntity afterHumanEntity = humanRepository.save(humanEntity);
 
         //Detailテーブルへ登録
-        for(Detail detail : detailList){
+        DetailList detailList = human.getDetailList();
+        for(Detail detail : detailList.getDetailList()){
             DetailEntity detailEntity = DetailMapper.toEntity(characterId, detail);
             detailRepository.save(detailEntity);
         }
