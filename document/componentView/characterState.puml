@@ -1,22 +1,27 @@
 @startuml
-scale 350 width
-[*] --> NotShooting
 
-state NotShooting {
-  [*] --> Idle
-  Idle --> Configuring : EvConfig
-  Configuring --> Idle : EvConfig
+[*] --> top
+
+
+state 探索者登録 {
+  top --> character_top
+  character_top -> character_detail : 詳細
+
+  character_top -> character_top : 検索/ページング
+
+
+  state 探索者追加 {
+    character_top -> character_add : 新規追加
+    character_add -> character_detail : 登録
+  }
+
+  state 探索者修正 {
+    character_detail -> character_confirm : 修正
+    character_confirm -> character_detail : 登録
+  }
+
 }
 
-state Configuring {
-  [*] --> NewValueSelection
-  NewValueSelection --> NewValuePreview : EvNewValue
-  NewValuePreview --> NewValueSelection : EvNewValueRejected
-  NewValuePreview --> NewValueSelection : EvNewValueSaved
-
-  state NewValuePreview {
-     State1 -> State2
-  }
 
 }
 @enduml

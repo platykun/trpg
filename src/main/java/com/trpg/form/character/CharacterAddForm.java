@@ -1,5 +1,6 @@
 package com.trpg.form.character;
 
+import com.trpg.form.character.common.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,12 +16,11 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CreateForm {
+public class CharacterAddForm {
 
     /** キャラクターID */
     private int id;
 
-    //// 基礎プロフィール////
     /** 名前 */
     private String name;
 
@@ -43,21 +43,21 @@ public class CreateForm {
     private int humanType;
 
     /** 能力値及び能力ロール */
-    private List<ValueForm> avilityList;
+    private List<ParameterForm> avilityList;
 
     /** ステータス */
-    private List<ValueForm> statusList;
+    private List<ParameterForm> statusList;
 
     /** 職業 */
     private List<JobForm> jobList;
 
     /** 探索者の技能 */
-    private List<ValueForm> skillList;
+    private List<ParameterForm> skillList;
 
     /** 所持品 */
-    private List<ValueForm> belongingList;
+    private List<BelongingForm> belongingList;
 
     /** 詳細情報 */
-    private List<ValueForm> detailList;
+    private List<DetailForm> detailList;
 
 }

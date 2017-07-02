@@ -4,11 +4,13 @@ import com.trpg.domain.model.character.belonging.*;
 import com.trpg.domain.model.character.character.*;
 import com.trpg.domain.model.character.parameter.*;
 import com.trpg.form.character.*;
-import com.trpg.service.BelongingService;
+import com.trpg.form.character.common.BelongingForm;
+import com.trpg.form.character.common.DetailForm;
+import com.trpg.form.character.common.JobForm;
+import com.trpg.form.character.common.ParameterForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,8 +43,8 @@ public class CharacterCreateHelper {
      * @param jobList
      * @return
      */
-    public CreateForm convertToCreateForm(Human human, JobList jobList) {
-        CreateForm form = new CreateForm();
+    public CharacterAddForm convertToCreateForm(Human human, JobList jobList) {
+        CharacterAddForm form = new CharacterAddForm();
         form.setId(human.getCharacterId());
         form.setName(human.getName());
         form.setComeFrom(human.getComeFrom());
@@ -55,25 +57,25 @@ public class CharacterCreateHelper {
 
         //能力値のパラメータを設定。
         List<Parameter> avilityList = parameterList.getCharactristicsParameterList();
-        List<ValueForm> avilityListForm = new ArrayList<ValueForm>();
-        avilityList.stream().forEach(e -> avilityListForm.add(convertParameterToValueForm(e)));
+        List<ParameterForm> avilityListForm = new ArrayList<>();
+        avilityList.stream().forEach(e -> avilityListForm.add(convertToParameterForm(e)));
         form.setAvilityList(avilityListForm);
 
         //ステータスのパラメータを設定
         List<Parameter> statusList = parameterList.getStatusList();
-        List<ValueForm> statusListForm = new ArrayList<ValueForm>();
-        statusList.stream().forEach(e -> statusListForm.add(convertParameterToValueForm(e)));
+        List<ParameterForm> statusListForm = new ArrayList<>();
+        statusList.stream().forEach(e -> statusListForm.add(convertToParameterForm(e)));
         form.setStatusList(statusListForm);
 
         //技能のパラメータを設定。
         List<Parameter> skillList = parameterList.getInvestigatorSkillList();
-        List<ValueForm> skillListForm = new ArrayList<ValueForm>();
-        skillList.stream().forEach(e -> skillListForm.add(convertParameterToValueForm(e)));
+        List<ParameterForm> skillListForm = new ArrayList<>();
+        skillList.stream().forEach(e -> skillListForm.add(convertToParameterForm(e)));
         form.setSkillList(skillListForm);
 
         //JobList
         List<JobForm> jobFormList = new ArrayList<JobForm>();
-        jobList.getJobList().stream().forEach(j -> jobFormList.add(convertJobToJobForm(j)));
+        jobList.getJobList().stream().forEach(j -> jobFormList.add(convertToJobForm(j)));
         form.setJobList(jobFormList);
 
 
@@ -88,29 +90,29 @@ public class CharacterCreateHelper {
     /**
      * CreateFormから探索者オブジェクトを作成する。
      *
-     * @param createForm createForm
+     * @param characterAddForm characterAddForm
      * @return 探索者オブジェクト
      */
-    public Human convertToHuman(CreateForm createForm){
+    public Human convertToHuman(CharacterAddForm characterAddForm){
         // 所持品オブジェクトを作成する。
         BelongingList belongingList = belongingListFactory.create();
-        List<ValueForm> belongingListForm = createForm.getBelongingList();
-        belongingListForm.stream().forEach(b -> belongingList.add(convertValueFormToBelonging(b)));
+        List<BelongingForm> belongingListForm = characterAddForm.getBelongingList();
+        belongingListForm.stream().forEach(b -> belongingList.add(convertFormToBelonging(b)));
 
         // 詳細オブジェクトを作成する
         DetailList detailList = new DetailList();
-        List<ValueForm> detailValueList = createForm.getDetailList();
+        List<DetailForm> detailValueList = characterAddForm.getDetailList();
         detailValueList.stream().forEach(d -> detailList.add(convertToDetail(d)));
 
         //パラメータオブジェクトを作成する
         ParameterList parameterList = parameterListFactory.create();
-        List<ValueForm> parameterValueList = new ArrayList<>();
+        List<ParameterForm> parameterValueList = new ArrayList<>();
         //能力値のパラメータオブジェクトを作成。
-        parameterValueList.addAll(createForm.getAvilityList());
+        parameterValueList.addAll(characterAddForm.getAvilityList());
         //ステータスのパラメータオブジェクトを作成。
-        parameterValueList.addAll(createForm.getStatusList());
+        parameterValueList.addAll(characterAddForm.getStatusList());
         //技能のパラメータオブジェクトを作成。
-        parameterValueList.addAll(createForm.getSkillList());
+        parameterValueList.addAll(characterAddForm.getSkillList());
         parameterValueList.stream().forEach(p -> parameterList.add(convertToParameter(p)));
 
         //基礎ステータスを取得する
@@ -120,21 +122,33 @@ public class CharacterCreateHelper {
         return null;
     }
 
-    private ValueForm convertParameterToValueForm(Parameter parameter){
-        ValueForm valueForm = new ValueForm();
+    /**
+     * パラメータオブジェクトからパラメータフォームへ変換する。
+     *
+     * @param parameter パラメータオブジェクト
+     * @return パラメータ
+     */
+    private ParameterForm convertToParameterForm(Parameter parameter){
+        ParameterForm parameterForm = new ParameterForm();
         ParameterType parameterType = parameter.getParameterType();
 
-        valueForm.setParamId(parameterType.getId());
-        valueForm.setParamSubId(parameter.getSubParameterTypeValue());
-        valueForm.setValue(parameter.getParameter());
-        valueForm.setStringValue(parameter.getDiceParameter());
-        valueForm.setName(parameter.getParameterPatternName());
-        valueForm.setInitValue(parameterType.getInitValue());
+        parameterForm.setParamId(parameterType.getId());
+        parameterForm.setParamSubId(parameter.getSubParameterTypeValue());
+        parameterForm.setValue(parameter.getParameter());
+        parameterForm.setStringValue(parameter.getDiceParameter());
+        parameterForm.setName(parameter.getParameterPatternName());
+        parameterForm.setInitValue(parameterType.getInitValue());
 
-        return valueForm;
+        return parameterForm;
     }
 
-    private JobForm convertJobToJobForm(Job job){
+    /**
+     * ジョブオブジェクトからJobFormへ変換する。
+     *
+     * @param job 職業オブジェクト
+     * @return JobForm
+     */
+    private JobForm convertToJobForm(Job job){
         JobForm jobForm = new JobForm();
         jobForm.setId(job.getId());
         jobForm.setName(job.getName());
@@ -146,33 +160,60 @@ public class CharacterCreateHelper {
         return jobForm;
     }
 
-    private Belonging convertValueFormToBelonging(ValueForm valueForm){
-        BelongingType belongingType = BelongingType.getType(valueForm.getParamId());
-        String name = valueForm.getName();
+    /**
+     * 所持品フォームから所持品オブジェクトを作成する。
+     *
+     * @param belongingForm 所持品フォーム
+     * @return 所持品オブジェクト
+     */
+    private Belonging convertFormToBelonging(BelongingForm belongingForm){
+        BelongingType belongingType = BelongingType.getType(belongingForm.getTypeId());
+        String name = belongingForm.getName();
         Belonging belonging = belongigFactory.createBelonging(0, belongingType, name, "");
         return belonging;
     }
 
-    private Parameter convertToParameter(ValueForm valueForm){
-        ParameterType parameterType = ParameterType.getType(valueForm.getParamId());
-        int param = valueForm.getValue();
-        int defaultValue = valueForm.getInitValue();
-        int subId = valueForm.getParamSubId();
+    /**
+     * パラメータオブジェクトを作成する。
+     *
+     * @param parameterForm パラメータフォーム
+     * @return パラメータオブジェクト
+     */
+    private Parameter convertToParameter(ParameterForm parameterForm){
+        ParameterType parameterType = ParameterType.getType(parameterForm.getParamId());
+        int param = parameterForm.getValue();
+        int defaultValue = parameterForm.getInitValue();
+        int subId = parameterForm.getParamSubId();
 
         Parameter parameter = null;
         switch(parameterType){
             case CHARACTERISTICS:
                 CharactristicsType charactristicsType = CharactristicsType.getType(subId);
                 parameter = parameterFactory.createCharacteristics(0, param, defaultValue, charactristicsType);
-            // TODO: 残りも作り込んでいく。
+                break;
+            case SANITY_POINTS:
+                break;
+            case MAGIC_POINTS:
+                break;
+            case HIT_POINTS:
+                break;
+            case INVESTIGATOR_SKILLS:
+                break;
+                // TODO: 残りも作り込んでいく。
         }
         return parameter;
     }
 
-    private Detail convertToDetail(ValueForm valueForm){
-        int id = valueForm.getParamId();
-        DetailType type = DetailType.getType(valueForm.getParamSubId());
-        String detail = valueForm.getStringValue();
+    /**
+     * 詳細オブジェクトを作成する。
+     *
+     * @param detailForm 詳細フォーム
+     * @return 詳細オブジェクト
+     */
+    private Detail convertToDetail(DetailForm detailForm){
+        int id = detailForm.getParamId();
+        DetailType type = DetailType.getType(detailForm.getParamSubId());
+        String detail = detailForm.getStringValue();
         Detail detailObj = new Detail(id, type, detail);
         return detailObj;
     }

@@ -1,19 +1,16 @@
-package com.trpg.form.character;
+package com.trpg.form.character.common;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * キャラクター一覧画面に表示するためのキャラクター概要を格納する。
- * 
- * @author platykun
- *
+ * パラメータ情報を格納するFormクラス。
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ValueForm {
+public class ParameterForm {
 
     /** パラメータID */
     private int paramId;
@@ -32,5 +29,8 @@ public class ValueForm {
 
     /** 初期値 */
     private int initValue;
+
+    /** リネーム可能かどうかのフラグ */
+    //private boolean canRename;
 
 }

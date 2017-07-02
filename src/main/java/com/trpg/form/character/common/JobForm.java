@@ -1,9 +1,10 @@
-package com.trpg.form.character;
-
-import java.util.List;
+package com.trpg.form.character.common;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 /**
  * キャラクター一覧画面に表示するためのキャラクター概要を格納する。
@@ -13,15 +14,16 @@ import lombok.Data;
  */
 @Data
 @AllArgsConstructor
-public class CharacterOutlineForm {
+@NoArgsConstructor
+public class JobForm {
 
-    /** id */
+    /** 職業ID */
     private int id;
 
-    /** 名前 */
+    /** 職業名 */
     private String name;
 
-    /** 正気度 */
-    private int sanityPoint;
+    /** 技能リスト */
+    private List<Integer> skillList;
 
 }

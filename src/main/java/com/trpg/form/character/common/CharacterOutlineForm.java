@@ -1,4 +1,4 @@
-package com.trpg.form.character;
+package com.trpg.form.character.common;
 
 import java.util.List;
 
@@ -13,7 +13,15 @@ import lombok.Data;
  */
 @Data
 @AllArgsConstructor
-public class CharacterOutlineListForm {
+public class CharacterOutlineForm {
 
-    List<CharacterOutlineForm> outlineList;
+    /** id */
+    private int id;
+
+    /** 名前 */
+    private String name;
+
+    /** 正気度 */
+    private int sanityPoint;
+
 }

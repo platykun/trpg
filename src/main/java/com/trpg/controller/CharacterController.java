@@ -1,21 +1,16 @@
 package com.trpg.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.trpg.domain.model.character.character.HumanList;
 import com.trpg.domain.model.character.character.JobList;
-import com.trpg.form.character.CreateForm;
+import com.trpg.form.character.CharacterAddForm;
 import com.trpg.helper.CharacterCreateHelper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.trpg.domain.model.character.character.Human;
-import com.trpg.form.character.CharacterOutlineForm;
-import com.trpg.form.character.CharacterOutlineListForm;
+import com.trpg.form.character.CharacterTopForm;
 import com.trpg.helper.CharacterOutlineHelper;
 import com.trpg.service.CharacterService;
 
@@ -47,7 +42,7 @@ public class CharacterController {
     @RequestMapping("/top")
     public String top(Model model) {
         HumanList allOutline = characterService.findAllOutline();
-        CharacterOutlineListForm form = characterOutlineHelper.convertToCharacterOutlineForm(allOutline);
+        CharacterTopForm form = characterOutlineHelper.convertToCharacterOutlineForm(allOutline);
         model.addAttribute("characters", form);
 
         return "character/top";
@@ -64,7 +59,7 @@ public class CharacterController {
          JobList jobList = characterService.getAllJob();
          Human initHuman = characterService.getInitialHuman();
 
-         CreateForm form = characterCreateHelper.convertToCreateForm(initHuman, jobList);
+         CharacterAddForm form = characterCreateHelper.convertToCreateForm(initHuman, jobList);
          model.addAttribute("character", form);
 
          return "character/addInput";
@@ -74,13 +69,13 @@ public class CharacterController {
      * キャラクターを登録する。
      *
      * @param model モデル
-     * @param createForm 入力値
+     * @param characterAddForm 入力値
      * @return キャラクター詳細画面
      */
      @RequestMapping("/add/confirm")
-     public String addConfirm(Model model, CreateForm createForm){
+     public String addConfirm(Model model, CharacterAddForm characterAddForm){
          //TODO: 登録処理を行う。
-         Human human = characterCreateHelper.convertToHuman(createForm);
+         Human human = characterCreateHelper.convertToHuman(characterAddForm);
          characterService.insertHuman(human);
          return "character/detail";
      }
