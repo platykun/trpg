@@ -15,6 +15,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 
+/**
+ * 探索者管理画面向けのサービスクラス。
+ */
 @Controller
 public class CharacterService {
     
@@ -139,7 +142,7 @@ public class CharacterService {
         }
 
         //詳細情報を取得する。
-        List<DetailEntity> detailEntityList = detailRepository.findByHumanId(humanEntity.getId());
+        List<DetailEntity> detailEntityList = detailRepository.findByCharacterId(humanEntity.getCharacterId());
         DetailList detailList = new DetailList();
         detailEntityList.stream().forEach(d -> detailList.add(DetailMapper.toDomain(d)));
 

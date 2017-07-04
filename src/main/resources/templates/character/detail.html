@@ -12,12 +12,14 @@
   media="all" />
 </head>
 <body>
+<!--
   <div th:include="common/header_remake"></div>
   <div class="container">
     <div class="bodyDiv">
-      <!--サイドメニュー-->
+      <!--サイドメニュー
       <div th:include="common/sideMenu"></div>
-      <!--本体-->
+      <!--本体
+
       <div class="mainText" th:object="${character}">
         <div class="mainDiv">
           <h2 class="ui header">キャラクター詳細</h2>
@@ -38,7 +40,7 @@
             <table class="table simple detailImgTable">
               <tr>
                 <td>キャラクターID</td>
-                <td th:text="*{id}">0</td>
+                <td th:text="*{characterId}">0</td>
               </tr>
               <tr>
                 <td>名前</td>
@@ -67,6 +69,7 @@
             </table>
           </div>
         </div>
+
         <div class="mainDiv">
           <h2 class="ui header">能力値および能力ロール</h2>
           <div class="column">
@@ -401,8 +404,9 @@
             </div>
           </div>
         </div>
+    -->
       </div>
-    </div>
-  </div>
+      </div>
+      </div>
 </body>
 </html>

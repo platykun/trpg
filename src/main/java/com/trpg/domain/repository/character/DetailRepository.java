@@ -14,8 +14,8 @@ import java.util.List;
 public interface DetailRepository extends JpaRepository<DetailEntity, Integer> {
     /**
      * 探索者IDをもとに探索者詳細を取得する。
-     * @param humanId 探索者ID
+     * @param characterId 探索者ID
      * @return 探索者詳細リスト
      */
-    List<DetailEntity> findByHumanId(int humanId);
+    List<DetailEntity> findByCharacterId(int characterId);
 }

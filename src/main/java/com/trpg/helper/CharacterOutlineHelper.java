@@ -16,7 +16,8 @@ public class CharacterOutlineHelper {
         List<CharacterOutlineForm> outlineFormList = new ArrayList<CharacterOutlineForm>();
 
         for(Human human : humanList.getHumans()){
-            CharacterOutlineForm characterOutlineForm = new CharacterOutlineForm(0, human.getName(), 0);
+            // TODO: 一覧画面に表示させる内容を確定させる必要がある。
+            CharacterOutlineForm characterOutlineForm = new CharacterOutlineForm(human.getCharacterId(), human.getName(), 0);
             outlineFormList.add(characterOutlineForm);
         }
         CharacterTopForm form = new CharacterTopForm(outlineFormList);

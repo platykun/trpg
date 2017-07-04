@@ -19,15 +19,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public class BelongingMapper {
 
-    private static BelongingFactory belongingFactory;
+
+    private static BelongingFactory belongingFactory = new BelongingFactory();
 
     BelongingMapper(){
-        belongingFactory = new BelongingFactory();
+        //belongingFactory = new BelongingFactory();
     }
 
     public static  Belonging toDomain(BelongingEntity belongingEntity) {
         BelongingType belongingType = BelongingType.getType(belongingEntity.getBelongingType());
-        Belonging belonging = belongingFactory.createBelonging(belongingEntity.getId(), belongingType, belongingEntity.getName(), belongingEntity.getDescription());
+        int id = belongingEntity.getId();
+        String name = belongingEntity.getName();
+        String description = belongingEntity.getDescription();
+        Belonging belonging = belongingFactory.createBelonging(id, belongingType, name, description);
         return belonging;
     }
 
