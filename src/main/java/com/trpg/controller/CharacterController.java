@@ -3,7 +3,9 @@ package com.trpg.controller;
 import com.trpg.domain.model.character.character.HumanList;
 import com.trpg.domain.model.character.character.JobList;
 import com.trpg.form.character.CharacterAddForm;
+import com.trpg.form.character.CharacterDetailForm;
 import com.trpg.helper.CharacterCreateHelper;
+import com.trpg.helper.CharacterDetailHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,6 +34,9 @@ public class CharacterController {
 
     @Autowired
     CharacterCreateHelper characterCreateHelper;
+
+    @Autowired
+    CharacterDetailHelper characterDetailHelper;
 
     /**
      * キャラクター一覧画面を表示する。
@@ -84,7 +89,11 @@ public class CharacterController {
     public String detail(Model model, int characterId){
 
          Human human = characterService.findHumanByCharacterId(characterId);
-         //TODO: formへ格納する
+         JobList jobList = characterService.getAllJob();
+         CharacterDetailForm characterDetailForm = characterDetailHelper.convertToDetailForm(human, jobList);
+
+         model.addAttribute("character", characterDetailForm);
+
          return "character/detail";
      }
 

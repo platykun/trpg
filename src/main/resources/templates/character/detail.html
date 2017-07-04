@@ -1,25 +1,24 @@
 <html xmlns:th="http://www.thmeleaf.org">
 <link
-  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-  rel="stylesheet"
-  integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-  crossorigin="anonymous" />
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <script src="/css/marked/lib/marked.js"></script>
 <head>
-<title>Home</title>
-<link href="/css/custom.css" rel="stylesheet" type="text/css"
-  media="all" />
+  <title>Home</title>
+  <link href="/css/custom.css" rel="stylesheet" type="text/css"
+        media="all"/>
 </head>
 <body>
-<!--
+
   <div th:include="common/header_remake"></div>
   <div class="container">
     <div class="bodyDiv">
-      <!--サイドメニュー
+      <!--サイドメニュー -->
       <div th:include="common/sideMenu"></div>
-      <!--本体
-
+      <!--本体 -->
       <div class="mainText" th:object="${character}">
         <div class="mainDiv">
           <h2 class="ui header">キャラクター詳細</h2>
@@ -40,7 +39,7 @@
             <table class="table simple detailImgTable">
               <tr>
                 <td>キャラクターID</td>
-                <td th:text="*{characterId}">0</td>
+                <td th:text="*{id}">0</td>
               </tr>
               <tr>
                 <td>名前</td>
@@ -73,340 +72,60 @@
         <div class="mainDiv">
           <h2 class="ui header">能力値および能力ロール</h2>
           <div class="column">
-            <table class="table someTd">
-              <tr>
-                <td>筋力(STR)</td>
-                <td th:text="*{str}">0</td>
-                <td>敏捷性(DEX)</td>
-                <td th:text="*{dex}">0</td>
-                <td>知性(INT)</td>
-                <td th:text="*{intelligence}">0</td>
-                <td>アイデア</td>
-                <td>0</td>
-              </tr>
-              <tr>
-                <td>体力(CON)</td>
-                <td th:text="*{con}">0</td>
-                <td>外見(APP)</td>
-                <td th:text="*{app}">0</td>
-                <td>精神力(POW)</td>
-                <td th:text="*{pow}">0</td>
-                <td>幸運</td>
-                <td>0</td>
-              </tr>
-              <tr>
-                <td>体格(SIZ)</td>
-                <td th:text="*{siz}">0</td>
-                <td>正気度(SAN)</td>
-                <td>pow*5</td>
-                <td>精神力(EDU)</td>
-                <td th:text="*{edu}">0</td>
-                <td>知識</td>
-                <td>0</td>
-              </tr>
-            </table>
+            <div th:each="avility: *{avilityList}">
+              <p class="col-lg-2 col-sm-3 text-right" th:text="${avility.name}"></p>
+              <div class="col-lg-1 col-sm-1">
+                <p  th:text="${avility.value}" />
+              </div>
+            </div>
           </div>
         </div>
         <div class="mainDiv">
-          <h2 class="ui header">探索者の技能</h2>
+          <h2 class="ui header">ステータス</h2>
           <div class="column">
-            <div class="col-lg-2 col-sm-3">
-              言いくるめ
-              <p th:text="*{dictionary}">0</p>
-            </div>
-            <div class="col-lg-2 col-sm-3">
-              医学
-              <p th:text="*{medicine}">0</p>
-            </div>
-            <div class="col-lg-2 col-sm-3">
-              運転（自動車）
-              <p th:text="*{driveCarriage}">0</p>
-            </div>
-            <div class="col-lg-2 col-sm-3">
-              応急手当
-              <p th:text="*{firstAid}">0</p>
-            </div>
-            <div class="col-lg-2 col-sm-3">
-              オカルト
-              <p th:text="*{occult}">0</p>
-            </div>
-            <div class="col-lg-2 col-sm-3">
-              回避
-              <p th:text="*{dodge}">0</p>
-            </div>
-            <div class="col-lg-2 col-sm-3">
-              化学
-              <p th:text="*{chemistry}">0</p>
-            </div>
-            <div class="col-lg-2 col-sm-3">
-              鍵開け
-              <p th:text="*{locksmith}">0</p>
-            </div>
-            <div class="col-lg-2 col-sm-3">
-              隠す
-              <p th:text="*{conceal}">0</p>
-            </div>
-            <div class="col-lg-2 col-sm-3">
-              隠れる
-              <p th:text="*{hide}">0</p>
-            </div>
-            <div class="col-lg-2 col-sm-3">
-              機械修理
-              <p th:text="*{mechanicalRepair}">0</p>
-            </div>
-            <div class="col-lg-2 col-sm-3">
-              聞き耳
-              <p th:text="*{listen}">0</p>
-            </div>
-            <div class="col-lg-2 col-sm-3">
-              クトゥルフ神話
-              <p th:text="*{cthulhuMythos}">0</p>
-            </div>
-            <div class="col-lg-2 col-sm-3">
-              芸術
-              <p th:text="*{art}">0</p>
-            </div>
-            <div class="col-lg-2 col-sm-3">
-              経理
-              <p th:text="*{accounting}">0</p>
-            </div>
-            <div class="col-lg-2 col-sm-3">
-              考古学
-              <p th:text="*{archaeology}">0</p>
-            </div>
-            <div class="col-lg-2 col-sm-3">
-              コンピューター
-              <p th:text="*{computer}">0</p>
-            </div>
-            <div class="col-lg-2 col-sm-3">
-              忍び歩き
-              <p th:text="*{sneak}">0</p>
-            </div>
-            <div class="col-lg-2 col-sm-3">
-              写真術
-              <p th:text="*{photography}">0</p>
-            </div>
-            <div class="col-lg-2 col-sm-3">
-              重機械操作
-              <p th:text="*{operateHvyMachine}">0</p>
-            </div>
-            <div class="col-lg-2 col-sm-3">
-              乗馬
-              <p th:text="*{ride}">0</p>
-            </div>
-            <div class="col-lg-2 col-sm-3">
-              信用
-              <p th:text="*{creditRating}">0</p>
-            </div>
-            <div class="col-lg-2 col-sm-3">
-              心理学
-              <p th:text="*{psychology}">0</p>
-            </div>
-            <div class="col-lg-2 col-sm-3">
-              人類学
-              <p th:text="*{anthropology}">0</p>
-            </div>
-            <div class="col-lg-2 col-sm-3">
-              水泳
-              <p th:text="*{swim}">0</p>
-            </div>
-            <div class="col-lg-2 col-sm-3">
-              制作1
-              <p th:text="*{production1}">0</p>
-            </div>
-            <div class="col-lg-2 col-sm-3">
-              制作2
-              <p th:text="*{production2}">0</p>
-            </div>
-            <div class="col-lg-2 col-sm-3">
-              制作3
-              <p th:text="*{production3}">0</p>
-            </div>
-            <div class="col-lg-2 col-sm-3">
-              精神分析
-              <p th:text="*{psychoanalysis}">0</p>
-            </div>
-            <div class="col-lg-2 col-sm-3">
-              生物学
-              <p th:text="*{biology}">0</p>
-            </div>
-            <div class="col-lg-2 col-sm-3">
-              説得
-              <p th:text="*{persuade}">0</p>
-            </div>
-            <div class="col-lg-2 col-sm-3">
-              操縦1
-              <p th:text="*{pilot1}">0</p>
-            </div>
-            <div class="col-lg-2 col-sm-3">
-              操縦2
-              <p th:text="*{pilot2}">0</p>
-            </div>
-            <div class="col-lg-2 col-sm-3">
-              操縦3
-              <p th:text="*{pilot3}">0</p>
-            </div>
-            <div class="col-lg-2 col-sm-3">
-              地質学
-              <p th:text="*{geology}">0</p>
-            </div>
-            <div class="col-lg-2 col-sm-3">
-              跳躍
-              <p th:text="*{jump}">0</p>
-            </div>
-            <div class="col-lg-2 col-sm-3">
-              追跡
-              <p th:text="*{pursuit}">0</p>
-            </div>
-            <div class="col-lg-2 col-sm-3">
-              電気修理
-              <p th:text="*{electricalRepair}">0</p>
-            </div>
-            <div class="col-lg-2 col-sm-3">
-              電子工学
-              <p th:text="*{electronics}">0</p>
-            </div>
-            <div class="col-lg-2 col-sm-3">
-              天文学
-              <p th:text="*{astronomy}">0</p>
-            </div>
-            <div class="col-lg-2 col-sm-3">
-              投擲
-              <p th:text="*{throwSomething}">0</p>
-            </div>
-            <div class="col-lg-2 col-sm-3">
-              登攀
-              <p th:text="*{climb}">0</p>
-            </div>
-            <div class="col-lg-2 col-sm-3">
-              図書館
-              <p th:text="*{library}">0</p>
-            </div>
-            <div class="col-lg-2 col-sm-3">
-              ナビゲート
-              <p th:text="*{navigate}">0</p>
-            </div>
-            <div class="col-lg-2 col-sm-3">
-              値切り
-              <p th:text="*{priceCut}">0</p>
-            </div>
-            <div class="col-lg-2 col-sm-3">
-              博物学
-              <p th:text="*{naturalHistory}">0</p>
-            </div>
-            <div class="col-lg-2 col-sm-3">
-              物理学
-              <p th:text="*{physics}">0</p>
-            </div>
-            <div class="col-lg-2 col-sm-3">
-              変装
-              <p th:text="*{disguise}">0</p>
-            </div>
-            <div class="col-lg-2 col-sm-3">
-              法律
-              <p th:text="*{law}">0</p>
-            </div>
-            <div class="col-lg-2 col-sm-3">
-              他の言語1
-              <p th:text="*{otherLanguage1}">0</p>
-            </div>
-            <div class="col-lg-2 col-sm-3">
-              他の言語2
-              <p th:text="*{otherLanguage2}">0</p>
-            </div>
-            <div class="col-lg-2 col-sm-3">
-              母国語
-              <p th:text="*{ownLanguage}">0</p>
-            </div>
-            <div class="col-lg-2 col-sm-3">
-              ﾏｰｼｬﾙｱｰﾂ
-              <p th:text="*{martial}">0</p>
-            </div>
-            <div class="col-lg-2 col-sm-3">
-              目星
-              <p th:text="*{spotHidden}">0</p>
-            </div>
-            <div class="col-lg-2 col-sm-3">
-              薬学
-              <p th:text="*{pharmacy}">0</p>
-            </div>
-            <div class="col-lg-2 col-sm-3">
-              歴史1
-              <p th:text="*{history1}">0</p>
-            </div>
-            <div class="col-lg-2 col-sm-3">
-              歴史2
-              <p th:text="*{history2}">0</p>
-            </div>
-            <div class="col-lg-2 col-sm-3">
-              サブマシンガン
-              <p th:text="*{subMachineGun}">0</p>
-            </div>
-            <div class="col-lg-2 col-sm-3">
-              ショットガン
-              <p th:text="*{shotgun}">0</p>
-            </div>
-            <div class="col-lg-2 col-sm-3">
-              マシンガン
-              <p th:text="*{machineGun}">0</p>
-            </div>
-            <div class="col-lg-2 col-sm-3">
-              ライフル
-              <p th:text="*{rifle}">0</p>
-            </div>
-            <div class="col-lg-2 col-sm-3">
-              キック
-              <p th:text="*{kick}">0</p>
-            </div>
-            <div class="col-lg-2 col-sm-3">
-              組み付き
-              <p th:text="*{assembly}">0</p>
-            </div>
-            <div class="col-lg-2 col-sm-3">
-              こぶし
-              <p th:text="*{first}">0</p>
-            </div>
-            <div class="col-lg-2 col-sm-3">
-              頭突き
-              <p th:text="*{headButt}">0</p>
-            </div>
-            <div class="col-lg-2 col-sm-3">
-              近接戦1
-              <p th:text="*{handWeapon1}">0</p>
-            </div>
-            <div class="col-lg-2 col-sm-3">
-              近接戦2
-              <p th:text="*{handWeapon2}">0</p>
-            </div>
-            <div class="col-lg-2 col-sm-3">
-              火器1
-              <p th:text="*{firearm1}">0</p>
-            </div>
-            <div class="col-lg-2 col-sm-3">
-              火器2
-              <p th:text="*{firearm2}">0</p>
-            </div>
-            <div class="col-lg-2 col-sm-3">
-              火器3
-              <p th:text="*{firearm3}">0</p>
-            </div>
-            <div class="col-lg-2 col-sm-3">
-              火器4
-              <p th:text="*{firearm4}">0</p>
-            </div>
-            <div class="col-lg-2 col-sm-3">
-              火器5
-              <p th:text="*{firearm5}">0</p>
-            </div>
-            <div class="col-lg-2 col-sm-3">
-              火器6
-              <p th:text="*{firearm6}">0</p>
+            <div th:each="status: *{statusList}">
+              <p class="col-lg-2 col-sm-3 text-right" th:text="${status.name}"></p>
+              <div class="col-lg-1 col-sm-1">
+                <p th:text="${status.value}" />
+              </div>
             </div>
           </div>
         </div>
-    -->
+        <div class="mainDiv">
+          <h2 class="ui header">探索者技能</h2>
+          <div class="column">
+            <div th:each="skill: *{skillList}">
+              <p class="col-lg-2 col-sm-3 text-right" th:text="${skill.name}"></p>
+              <div class="col-lg-1 col-sm-1">
+                <p th:text="${skill.value}" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mainDiv">
+          <h2 class="ui header">所持品</h2>
+          <div class="column">
+            <div th:each="belonging: *{belongingList}">
+              <p class="col-lg-2 col-sm-3 text-right" th:text="${belonging.name}"></p>
+              <div class="col-lg-1 col-sm-1">
+                <p th:text="${belonging.value}" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mainDiv">
+          <h2 class="ui header">詳細</h2>
+          <div class="column">
+            <div th:each="detail: *{detailList}">
+              <p class="col-lg-2 col-sm-3 text-right" th:text="${detail.name}"></p>
+              <div class="col-lg-1 col-sm-1">
+                <p th:text="${detail.value}" />
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      </div>
-      </div>
+    </div>
+  </div>
 </body>
 </html>
