@@ -108,7 +108,7 @@
             <div th:each="belonging: *{belongingList}">
               <p class="col-lg-2 col-sm-3 text-right" th:text="${belonging.name}"></p>
               <div class="col-lg-1 col-sm-1">
-                <p th:text="${belonging.value}" />
+                <p th:text="${belonging.description}" />
               </div>
             </div>
           </div>

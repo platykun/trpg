@@ -77,7 +77,10 @@ public class CharacterDetailHelper {
 
 
         //BelongingList
-
+        BelongingList belongings = human.getBelongingList();
+        List<BelongingForm> belongingFormList = new ArrayList<>();
+        belongings.getBelongings().stream().forEach(b -> belongingFormList.add(convertToBelongingForm(b)));
+        form.setBelongingList(belongingFormList);
 
         //DetailList
 
@@ -171,6 +174,20 @@ public class CharacterDetailHelper {
     }
 
     /**
+     * 所持品オブジェクトから所持品フォームを作成する。
+     *
+     * @param belonging 所持品オブジェクト
+     * @return 所持品フォーム
+     */
+    private BelongingForm convertToBelongingForm(Belonging belonging){
+        int typeId = belonging.getType().getId();
+        String name = belonging.getName();
+        String description = belonging.getDescription();
+        BelongingForm belongingForm = new BelongingForm(typeId, name, description);
+        return belongingForm;
+    }
+
+    /**
      * パラメータオブジェクトを作成する。
      *
      * @param parameterForm パラメータフォーム
@@ -178,6 +195,8 @@ public class CharacterDetailHelper {
      */
     private Parameter convertToParameter(ParameterForm parameterForm){
         ParameterType parameterType = ParameterType.getType(parameterForm.getParamId());
+
+        int id = parameterForm.getParamId();
         int param = parameterForm.getValue();
         int defaultValue = parameterForm.getInitValue();
         int subId = parameterForm.getParamSubId();
@@ -186,17 +205,25 @@ public class CharacterDetailHelper {
         switch(parameterType){
             case CHARACTERISTICS:
                 CharactristicsType charactristicsType = CharactristicsType.getType(subId);
-                parameter = parameterFactory.createCharacteristics(0, param, defaultValue, charactristicsType);
+                parameter = parameterFactory.createCharacteristics(id, param, defaultValue, charactristicsType);
                 break;
             case SANITY_POINTS:
+                parameter = parameterFactory.createSanityPoints(id, param, defaultValue);
                 break;
             case MAGIC_POINTS:
+                parameter = parameterFactory.createMagicPoints(id, param, defaultValue);
                 break;
             case HIT_POINTS:
+                parameter = parameterFactory.createHitPoints(id, param, defaultValue);
                 break;
             case INVESTIGATOR_SKILLS:
+                InvestigatorSkillType investigatorSkillType = InvestigatorSkillType.getType(subId);
+                parameter = parameterFactory.createInvestigatorSkill(id, param, defaultValue, investigatorSkillType);
                 break;
-                // TODO: 残りも作り込んでいく。
+            case WEAPONS:
+                WeaponType weaponType = WeaponType.getType(subId);
+                parameter = parameterFactory.createWeapons(id, param, defaultValue, weaponType);
+                break;
         }
         return parameter;
     }
