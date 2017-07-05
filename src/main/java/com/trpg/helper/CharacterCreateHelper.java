@@ -97,29 +97,54 @@ public class CharacterCreateHelper {
         // 所持品オブジェクトを作成する。
         BelongingList belongingList = belongingListFactory.create();
         List<BelongingForm> belongingListForm = characterAddForm.getBelongingList();
-        belongingListForm.stream().forEach(b -> belongingList.add(convertFormToBelonging(b)));
+        if(belongingListForm != null) {
+            belongingListForm.stream().forEach(b -> belongingList.add(convertFormToBelonging(b)));
+        }
 
         // 詳細オブジェクトを作成する
         DetailList detailList = new DetailList();
         List<DetailForm> detailValueList = characterAddForm.getDetailList();
-        detailValueList.stream().forEach(d -> detailList.add(convertToDetail(d)));
+        if(detailValueList != null) {
+            detailValueList.stream().forEach(d -> detailList.add(convertToDetail(d)));
+        }
 
         //パラメータオブジェクトを作成する
         ParameterList parameterList = parameterListFactory.create();
         List<ParameterForm> parameterValueList = new ArrayList<>();
         //能力値のパラメータオブジェクトを作成。
-        parameterValueList.addAll(characterAddForm.getAvilityList());
+        List<ParameterForm> avilityList = characterAddForm.getAvilityList();
+        if(avilityList != null){
+            parameterValueList.addAll(avilityList);
+        }
         //ステータスのパラメータオブジェクトを作成。
-        parameterValueList.addAll(characterAddForm.getStatusList());
+        List<ParameterForm> statusList = characterAddForm.getStatusList();
+        if(statusList != null){
+            parameterValueList.addAll(statusList);
+        }
         //技能のパラメータオブジェクトを作成。
-        parameterValueList.addAll(characterAddForm.getSkillList());
+        List<ParameterForm> skillList = characterAddForm.getSkillList();
+        if(skillList != null){
+            parameterValueList.addAll(characterAddForm.getSkillList());
+        }
         parameterValueList.stream().forEach(p -> parameterList.add(convertToParameter(p)));
 
         //基礎ステータスを取得する
 
         //探索者オブジェクトを作成する。
 
-        return null;
+        int humanId = 0; //TODO: humanIDもformで渡すべき
+        int characterId = characterAddForm.getId();
+        String name = characterAddForm.getName();
+        Job job = null;//TODO: jobを作成する。
+        String school = characterAddForm.getSchool();
+        String comeFrom = characterAddForm.getComeFrom();
+        String mentalDisorder = characterAddForm.getMentalDisorder();
+        String sex = characterAddForm.getSex();
+        int age = characterAddForm.getAge();
+        HumanType humanType = HumanType.getType(characterAddForm.getHumanType());
+        Human human = humanFactory.create(humanId, characterId, name, parameterList, belongingList, job, school, comeFrom, mentalDisorder, sex, age, humanType, detailList);
+
+        return human;
     }
 
     /**

@@ -88,7 +88,13 @@ public class CharacterService {
         return human;
     }
 
-    public void insertHuman(Human human){
+    /**
+     * Human情報を登録する。
+     *
+     * @param human Humanドメイン
+     * @return characterId
+     */
+    public int insertHuman(Human human){
 
         // characterInfoテーブルへ登録
         CharacterInfoEntity characterInfoEntity = CharacterInfoMapper.toEntity((Character)human);
@@ -108,8 +114,8 @@ public class CharacterService {
         }
 
         //Jobテーブルへ登録
-        JobEntity jobEntity = JobMapper.toEntity(human.getJob());
-        jobRepository.save(jobEntity);
+//        JobEntity jobEntity = JobMapper.toEntity(human.getJob());
+//        jobRepository.save(jobEntity);
 
         //Belongingテーブルへ登録
         belongingService.insertBelongings(human.getBelongingList());
@@ -117,6 +123,7 @@ public class CharacterService {
         //Parameterテーブルへ登録
         parameterService.insertParameter(human.getParameterList(), characterId);
 
+        return characterId;
     }
 
     /**

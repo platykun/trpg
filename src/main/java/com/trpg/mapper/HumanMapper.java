@@ -42,8 +42,26 @@ public class HumanMapper {
         return human;
     }
 
+    /**
+     * HumanオブジェクトからHumanEntityを作成する。
+     *
+     * @param human Humanオブジェクト
+     * @return Humanエンティティ
+     */
     public static HumanEntity toEntity(Human human){
 
-        return null;
+        int id = human.getHumanId();
+        int characterId = human.getHumanId();
+        int jobId = 1;//human.getJob().getId();
+        String school = human.getSchool();
+        String comeFrom = human.getComeFrom();
+        String mentalDisorder = human.getMentalDisorder();
+        String sex = human.getSex();
+        int age = human.getAge();
+        int humanType = human.getType().getId();
+
+        HumanEntity humanEntity = new HumanEntity(id, characterId, jobId, school, comeFrom , mentalDisorder, sex, age, humanType);
+
+        return humanEntity;
     }
 }

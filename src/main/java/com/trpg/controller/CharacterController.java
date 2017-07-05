@@ -15,6 +15,7 @@ import com.trpg.domain.model.character.character.Human;
 import com.trpg.form.character.CharacterTopForm;
 import com.trpg.helper.CharacterOutlineHelper;
 import com.trpg.service.CharacterService;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
  * キャラクター管理を行う画面のコントローラクラス
@@ -73,20 +74,24 @@ public class CharacterController {
     /**
      * キャラクターを登録する。
      *
-     * @param model モデル
+     * @param redirectAttributes redirectAttributes
      * @param characterAddForm 入力値
      * @return キャラクター詳細画面
      */
-     @RequestMapping("/add/confirm")
-     public String addConfirm(Model model, CharacterAddForm characterAddForm){
-         //TODO: 登録処理を行う。
-         Human human = characterCreateHelper.convertToHuman(characterAddForm);
-         characterService.insertHuman(human);
-         return "character/detail";
-     }
+    @RequestMapping("/add/confirm")
+    public String addConfirm(RedirectAttributes redirectAttributes, CharacterAddForm characterAddForm){
+        //TODO: 登録処理を行う。
+        Human human = characterCreateHelper.convertToHuman(characterAddForm);
+
+        // 詳細画面へリダイレクトするためのパラメータを設定する。
+        int characterId = characterService.insertHuman(human);
+        redirectAttributes.addAttribute("characterId", Integer.valueOf(characterId));
+
+        return "redirect:/character/detail";
+    }
 
      @RequestMapping("/detail")
-    public String detail(Model model, int characterId){
+    public String detail(Model model, Integer characterId){
 
          Human human = characterService.findHumanByCharacterId(characterId);
          JobList jobList = characterService.getAllJob();
