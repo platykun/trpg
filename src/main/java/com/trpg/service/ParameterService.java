@@ -26,6 +26,9 @@ public class ParameterService {
     @Autowired
     ParameterRepository parameterRepository;
 
+    @Autowired
+    ParameterMapper parameterMapper;
+
     /**
      * 初期値パラメータリストを作成する。
      * @return 初期値パラメータリスト。
@@ -70,7 +73,7 @@ public class ParameterService {
         List<ParameterEntity> parameterEntityList = parameterRepository.findByCharacterId(characterId);
         ParameterList parameterList = parameterListFactory.create();
 
-        parameterEntityList.stream().forEach(p -> parameterList.add(ParameterMapper.toDomain(p)));
+        parameterEntityList.stream().forEach(p -> parameterList.add(parameterMapper.toDomain(p)));
 
         return parameterList;
     }

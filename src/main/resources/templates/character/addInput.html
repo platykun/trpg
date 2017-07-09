@@ -59,10 +59,10 @@
           <div class="mainDiv">
             <h2 class="ui header">能力値および能力ロール</h2>
             <div class="column">
-              <div th:each="avility: *{avilityList}">
-                <p class="col-lg-2 col-sm-3 text-right" th:text="${avility.name}"></p>
+              <div th:each="avility, stat: ${character.avilityList}">
+                <p class="col-lg-2 col-sm-3 text-right" th:name="|avilityList[${stat.index}].name|" th:text="${avility.name}" th:value="${avility.name}"></p>
                 <div class="col-lg-1 col-sm-1">
-                  <input class="beginner form-control" type="text" th:value="${avility.initValue}" />
+                  <input class="beginner form-control" type="text" th:name="|avilityList[${stat.index}].initValue|" th:value="${avility.initValue}" />
                 </div>
               </div>
             </div>
@@ -70,10 +70,10 @@
           <div class="mainDiv">
             <h2 class="ui header">ステータス</h2>
             <div class="column">
-              <div th:each="status: *{statusList}">
-                <p class="col-lg-2 col-sm-3 text-right" th:text="${status.name}"></p>
+              <div th:each="status, stat: ${character.statusList}">
+                <p class="col-lg-2 col-sm-3 text-right" th:name="|statusList[${stat.index}].name|" th:text="${status.name}"></p>
                 <div class="col-lg-1 col-sm-1">
-                  <input class="form-control" type="text" th:value="${status.initValue}" />
+                  <input class="form-control" type="text" th:name="|statusList[${stat.index}].initValue|" th:value="${status.initValue}" />
                 </div>
               </div>
             </div>

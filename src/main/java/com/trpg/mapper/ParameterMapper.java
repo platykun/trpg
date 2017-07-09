@@ -1,22 +1,56 @@
 package com.trpg.mapper;
 
-import com.trpg.domain.model.character.character.Job;
-import com.trpg.domain.model.character.parameter.DefaultParameter;
-import com.trpg.domain.model.character.parameter.Parameter;
-import com.trpg.domain.model.character.parameter.ParameterPattern;
-import com.trpg.entity.JobDetailEntity;
-import com.trpg.entity.JobEntity;
+import com.trpg.domain.model.character.belonging.WeaponType;
+import com.trpg.domain.model.character.parameter.*;
 import com.trpg.entity.ParameterEntity;
-
-import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 
 /**
  * Parameterテーブルのマッピングクラス
  */
-
+@Controller
 public class ParameterMapper {
-    public static Parameter toDomain(ParameterEntity parameterEntity) {
-        return null;
+
+    @Autowired
+    ParameterFactory parameterFactory;
+
+    public Parameter toDomain(ParameterEntity parameterEntity) {
+
+        ParameterType parameterType = ParameterType.getType(parameterEntity.getParameterType());
+
+        int id = parameterEntity.getId();
+        int param = parameterEntity.getParameter();
+        int defaultValue = parameterEntity.getDefaultValue();
+        int subId = parameterEntity.getSubParameterType();
+
+        Parameter parameter = null;
+
+        switch(parameterType){
+            case CHARACTERISTICS:
+                CharactristicsType charactristicsType = CharactristicsType.getType(subId);
+                parameter = parameterFactory.createCharacteristics(id, param, defaultValue, charactristicsType);
+                break;
+            case SANITY_POINTS:
+                parameter = parameterFactory.createSanityPoints(id, param, defaultValue);
+                break;
+            case MAGIC_POINTS:
+                parameter = parameterFactory.createMagicPoints(id, param, defaultValue);
+                break;
+            case HIT_POINTS:
+                parameter = parameterFactory.createHitPoints(id, param, defaultValue);
+                break;
+            case INVESTIGATOR_SKILLS:
+                InvestigatorSkillType investigatorSkillType = InvestigatorSkillType.getType(subId);
+                parameter = parameterFactory.createInvestigatorSkill(id, param, defaultValue, investigatorSkillType);
+                break;
+            case WEAPONS:
+                WeaponType weaponType = WeaponType.getType(subId);
+                parameter = parameterFactory.createWeapons(id, param, defaultValue, weaponType);
+                break;
+        }
+
+        return parameter;
     }
 
     public static ParameterEntity toEntity(int id, int characterId, Parameter parameter){
