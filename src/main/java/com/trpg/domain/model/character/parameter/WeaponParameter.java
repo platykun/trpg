@@ -19,6 +19,15 @@ public class WeaponParameter extends ParameterPattern {
         this.weaponType = weaponType;
     }
 
+    /**
+     * サブパラメータ種別IDを取得する。
+     * @return サブパラメータ種別ID
+     */
+    @Override
+    public int getSubParameterTypeValue(){
+        return weaponType.getId();
+    }
+
     /** 名前を取得する。 */
     @Override
     public String getName(){

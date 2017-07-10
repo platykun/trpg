@@ -16,6 +16,16 @@ public class CharactristicsParameter extends ParameterPattern {
         this.charactristicsType = charactristicsType;
     }
 
+    /**
+     * サブパラメータ種別IDを取得する。
+     * @return サブパラメータ種別ID
+     */
+    @Override
+    public int getSubParameterTypeValue(){
+        return charactristicsType.getId();
+    }
+
+
     /** 名前を取得する。 */
     @Override
     public String getName(){
@@ -27,4 +37,5 @@ public class CharactristicsParameter extends ParameterPattern {
     public int getInitValue(){
         return charactristicsType.getInitValue();
     }
+
 }

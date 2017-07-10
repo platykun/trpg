@@ -236,7 +236,9 @@ public class CharacterCreateHelper {
         //TODO: CharacterDetailHelperと重複コードになってるため修正する
         ParameterType parameterType = ParameterType.getType(parameterForm.getParamId());
 
-        int id = parameterForm.getParamId();
+        //int id = parameterForm.getParamId();
+        //TODO: idを引数で渡すようにするか別の方法を検討する。
+        int id = 0;
         int param = parameterForm.getValue();
         int defaultValue = parameterForm.getInitValue();
         int subId = parameterForm.getParamSubId();

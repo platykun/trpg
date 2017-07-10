@@ -18,6 +18,15 @@ public class InvestigatorSkillParameter extends ParameterPattern {
         this.investigatorSkillType = investigatorSkillType;
     }
 
+    /**
+     * サブパラメータ種別IDを取得する。
+     * @return サブパラメータ種別ID
+     */
+    @Override
+    public int getSubParameterTypeValue(){
+        return investigatorSkillType.getId();
+    }
+
     /** 名前を取得する。 */
     @Override
     public String getName() {
