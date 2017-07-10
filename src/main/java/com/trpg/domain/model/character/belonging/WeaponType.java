@@ -12,19 +12,19 @@ public enum WeaponType {
     SUBMACHINEGUN(1,"サブマシンガン",15),
     SHOTGUN(2,"ショットガン",30),
     MACHINEGUN(3,"マシンガン",15),
-    RIFLE(4,"ライフル",25);
-//    KICK(5), // キック
-//    ASSEMBLY(6), // 組み付き
-//    FIRST(7), // こぶし
-//    HEADBUTT(8), // 頭突き
-//    HANDWEAPON1(9), // 近接戦1
-//    HANDWEAPON2(10), // 近接戦2
-//    FIREARM1(11), // 火器1
-//    FIREARM2(12), // 火器2
-//    FIREARM3(13), // 火器3
-//    FIREARM4(14), // 火器4
-//    FIREARM5(15), // 火器5
-//    FIREARM6(16); // 火器6
+    RIFLE(4,"ライフル",25),
+    KICK(5, "キック", 25),
+    ASSEMBLY(6, "組み付き", 25),
+    FIRST(7, "こぶし", 50),
+    HEADBUTT(8, "頭突き", 10),
+    HANDWEAPON1(9, "近接戦1", 0),
+    HANDWEAPON2(10, "近接戦1", 0),
+    FIREARM1(11, "火器1", 0),
+    FIREARM2(12, "火器2", 0),
+    FIREARM3(13, "火器3", 0),
+    FIREARM4(14, "火器4", 0),
+    FIREARM5(15, "火器5", 0),
+    FIREARM6(16, "火器6", 0);
 
     /** 武器種別 */
     @Getter

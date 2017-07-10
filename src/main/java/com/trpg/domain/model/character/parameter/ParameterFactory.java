@@ -124,7 +124,7 @@ public class ParameterFactory {
     public Parameter createInitMagicPoints(int id){
         int param = MAGIC_POINTS.getInitValue();
         int initValue = MAGIC_POINTS.getInitValue();
-        return createSanityPoints(id, param, initValue);
+        return createMagicPoints(id, param, initValue);
     }
 
     /**
@@ -151,7 +151,7 @@ public class ParameterFactory {
     public Parameter createInitHitPoints(int id){
         int param = HIT_POINTS.getInitValue();
         int initValue = HIT_POINTS.getInitValue();
-        return createSanityPoints(id, param, initValue);
+        return createHitPoints(id, param, initValue);
     }
 
     /**

@@ -18,4 +18,16 @@ public class WeaponParameter extends ParameterPattern {
         super(ParameterType.WEAPONS, defaultValue);
         this.weaponType = weaponType;
     }
+
+    /** 名前を取得する。 */
+    @Override
+    public String getName(){
+        return weaponType.getName();
+    }
+
+    /** 初期値を取得する。 */
+    @Override
+    public int getInitValue(){
+        return weaponType.getInitValue();
+    }
 }

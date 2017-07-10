@@ -71,6 +71,11 @@ public class CharacterCreateHelper {
         List<Parameter> skillList = parameterList.getInvestigatorSkillList();
         List<ParameterForm> skillListForm = new ArrayList<>();
         skillList.stream().forEach(e -> skillListForm.add(convertToParameterForm(e)));
+        //武器のパラメータを設定
+        List<Parameter> weaponSkillList = parameterList.getWeaponSkillList();
+        //List<ParameterForm> weaponSkillListForm = new ArrayList<>();
+        weaponSkillList.stream().forEach(e -> skillListForm.add(convertToParameterForm(e)));
+
         form.setSkillList(skillListForm);
 
         //JobList
@@ -86,6 +91,11 @@ public class CharacterCreateHelper {
         form.setBelongingList(belongingFormList);
 
         //DetailList
+        DetailList detailList = human.getDetailList();
+        List<DetailForm> detailFormList = new ArrayList<>();
+        detailList.getDetailList().stream().forEach(d -> detailFormList.add(convertToDetailForm(d)));
+        form.setDetailList(detailFormList);
+
 
         return form;
     }
@@ -129,6 +139,7 @@ public class CharacterCreateHelper {
         if(skillList != null){
             parameterValueList.addAll(characterAddForm.getSkillList());
         }
+
         parameterValueList.stream().forEach(p -> parameterList.add(convertToParameter(p)));
 
         //基礎ステータスを取得する
@@ -271,6 +282,18 @@ public class CharacterCreateHelper {
         return detailObj;
     }
 
+
+    private DetailForm convertToDetailForm(Detail detail){
+        int paramId = detail.getId();
+        int paramSubId = 0;//不要論
+        int value = 0;
+        String stringValue = "";
+        String name = detail.getDetail();
+        int initValue = 0;
+
+        DetailForm detailForm = new DetailForm(paramId, paramSubId, value, stringValue, name, initValue);
+        return detailForm;
+    }
 
 
 }
