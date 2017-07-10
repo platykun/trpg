@@ -10,9 +10,9 @@ import lombok.Getter;
  */
 public enum ParameterType {
     CHARACTERISTICS(0,"能力値", 0),
-    SANITY_POINTS(1,"正気度", 0),
-    MAGIC_POINTS(2,"マジックポイント", 0),
-    HIT_POINTS(3,"耐久力", 0),
+    SANITY_POINTS(1,"正気度", 50),
+    MAGIC_POINTS(2,"マジックポイント", 50),
+    HIT_POINTS(3,"耐久力", 50),
     INVESTIGATOR_SKILLS(4,"技能", 0),
     WEAPONS(5,"武器", 0);
     @Getter

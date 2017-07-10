@@ -23,55 +23,56 @@ public class ParameterListFactory {
      * @return 新規作成時初期値パラメータリスト
      */
     public ParameterList createInitialParameter(){
-        final int ID = 0;
+        //登録用キャラクタなのでIDは0が採番される。
+        final int ID;
+        ID = 0;
 
         ParameterList parameterList = new ParameterList();
 
-        Parameter sanityPointsParameter = parameterFactory.createSanityPoints(ID, 0, 0);
+        Parameter sanityPointsParameter = parameterFactory.createInitSanityPoints(ID);
         parameterList.add(sanityPointsParameter);
 
-        Parameter magicPointsParameter = parameterFactory.createMagicPoints(ID, 0, 0);
+        Parameter magicPointsParameter = parameterFactory.createInitMagicPoints(ID);
         parameterList.add(magicPointsParameter);
 
-        Parameter hitPointsParameter = parameterFactory.createHitPoints(ID, 0, 0);
+        Parameter hitPointsParameter = parameterFactory.createInitHitPoints(ID);
         parameterList.add(hitPointsParameter);
 
 
         //能力値パラメータ設定
-        Parameter strParameter = parameterFactory.createCharacteristics(ID, 0, 0, CharactristicsType.STR);
+        Parameter strParameter = parameterFactory.createInitCharacteristics(ID, CharactristicsType.STR);
         parameterList.add(strParameter);
 
-        Parameter intParameter = parameterFactory.createCharacteristics(ID, 0, 0, CharactristicsType.INTELLIGENCE);
+        Parameter intParameter = parameterFactory.createInitCharacteristics(ID, CharactristicsType.INTELLIGENCE);
         parameterList.add(intParameter);
 
-        Parameter appParameter = parameterFactory.createCharacteristics(ID, 0, 0, CharactristicsType.APP);
+        Parameter appParameter = parameterFactory.createInitCharacteristics(ID, CharactristicsType.APP);
         parameterList.add(appParameter);
 
-        Parameter sizParameter = parameterFactory.createCharacteristics(ID, 0, 0, CharactristicsType.SIZ);
+        Parameter sizParameter = parameterFactory.createInitCharacteristics(ID, CharactristicsType.SIZ);
         parameterList.add(sizParameter);
 
-        Parameter dexParameter = parameterFactory.createCharacteristics(ID, 0, 0, CharactristicsType.DEX);
+        Parameter dexParameter = parameterFactory.createInitCharacteristics(ID, CharactristicsType.DEX);
         parameterList.add(dexParameter);
 
-
-        Parameter conParameter = parameterFactory.createCharacteristics(ID, 0, 0, CharactristicsType.CON);
+        Parameter conParameter = parameterFactory.createInitCharacteristics(ID, CharactristicsType.CON);
         parameterList.add(conParameter);
 
-        Parameter powParameter = parameterFactory.createCharacteristics(ID, 0, 0, CharactristicsType.POW);
+        Parameter powParameter = parameterFactory.createInitCharacteristics(ID, CharactristicsType.POW);
         parameterList.add(powParameter);
 
-        Parameter eduParameter = parameterFactory.createCharacteristics(ID, 0, 0, CharactristicsType.EDU);
+        Parameter eduParameter = parameterFactory.createInitCharacteristics(ID, CharactristicsType.EDU);
         parameterList.add(eduParameter);
 
         //技能種別設定
         for(InvestigatorSkillType skillType : InvestigatorSkillType.values()){
-            Parameter investigatorParameter = parameterFactory.createInvestigatorSkill(ID, 0, 0, skillType);
+            Parameter investigatorParameter = parameterFactory.createInitInvestigatorSkill(ID, skillType);
             parameterList.add(investigatorParameter);
         }
 
         //武器技能設定
         for(WeaponType weaponType : WeaponType.values()){
-            Parameter weaponParameter = parameterFactory.createWeapons(ID, 0, 0, weaponType);
+            Parameter weaponParameter = parameterFactory.createInitWeaponSkill(ID, weaponType);
             parameterList.add(weaponParameter);
         }
 

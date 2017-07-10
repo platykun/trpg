@@ -251,7 +251,7 @@ public class CharacterCreateHelper {
                 break;
             case WEAPONS:
                 WeaponType weaponType = WeaponType.getType(subId);
-                parameter = parameterFactory.createWeapons(id, param, defaultValue, weaponType);
+                parameter = parameterFactory.createWeapon(id, param, defaultValue, weaponType);
                 break;
         }
         return parameter;

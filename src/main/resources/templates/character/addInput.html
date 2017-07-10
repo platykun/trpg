@@ -59,15 +59,15 @@
           <div class="mainDiv">
             <h2 class="ui header">能力値および能力ロール</h2>
             <div class="column">
-              <div th:each="avility, stat: ${character.avilityList}">
-                <p class="col-lg-2 col-sm-3 text-right" th:text="${avility.name}"></p>
+              <div th:each="ability, stat: *{avilityList}">
+                <p class="col-lg-2 col-sm-3 text-right" th:text="${ability.name}"></p>
                 <div class="col-lg-1 col-sm-1">
-                  <input class="beginner form-control" type="text" th:name="|avilityList[${stat.index}].value|" th:value="${avility.value}" />
-                  <input type="hidden" th:name="|avilityList[${stat.index}].paramId|" th:value="${avility.paramId}" />
-                  <input type="hidden" th:name="|avilityList[${stat.index}].paramSubId|" th:value="${avility.paramSubId}" />
-                  <input type="hidden" th:name="|avilityList[${stat.index}].initValue|" th:value="${avility.initValue}" />
-                  <input type="hidden" th:name="|avilityList[${stat.index}].stringValue|" th:value="${avility.stringValue}" />
-                  <input type="hidden" th:name="|avilityList[${stat.index}].name|" th:value="${avility.name}" />
+                  <input class="beginner form-control" type="text" th:name="|abilityList[${stat.index}].value|" th:value="${ability.value}" />
+                  <input type="hidden" th:name="|abilityList[${stat.index}].paramId|" th:value="${ability.paramId}" />
+                  <input type="hidden" th:name="|abilityList[${stat.index}].paramSubId|" th:value="${ability.paramSubId}" />
+                  <input type="hidden" th:name="|abilityList[${stat.index}].initValue|" th:value="${ability.initValue}" />
+                  <input type="hidden" th:name="|abilityList[${stat.index}].stringValue|" th:value="${ability.stringValue}" />
+                  <input type="hidden" th:name="|abilityList[${stat.index}].name|" th:value="${ability.name}" />
                 </div>
               </div>
             </div>
@@ -75,10 +75,15 @@
           <div class="mainDiv">
             <h2 class="ui header">ステータス</h2>
             <div class="column">
-              <div th:each="status, stat: ${character.statusList}">
+              <div th:each="status, stat: *{statusList}">
                 <p class="col-lg-2 col-sm-3 text-right" th:name="|statusList[${stat.index}].name|" th:text="${status.name}"></p>
                 <div class="col-lg-1 col-sm-1">
-                  <input class="form-control" type="text" th:name="|statusList[${stat.index}].initValue|" th:value="${status.initValue}" />
+                  <input class="form-control" type="text" th:name="|statusList[${stat.index}].value|" th:value="${status.value}" />
+                  <input type="hidden" th:name="|statusList[${stat.index}].paramId|" th:value="${status.paramId}" />
+                  <input type="hidden" th:name="|statusList[${stat.index}].paramSubId|" th:value="${status.paramSubId}" />
+                  <input type="hidden" th:name="|statusList[${stat.index}].initValue|" th:value="${status.initValue}" />
+                  <input type="hidden" th:name="|statusList[${stat.index}].stringValue|" th:value="${status.stringValue}" />
+                  <input type="hidden" th:name="|statusList[${stat.index}].name|" th:value="${status.name}" />
                 </div>
               </div>
             </div>
@@ -86,10 +91,15 @@
           <div class="mainDiv">
             <h2 class="ui header">探索者技能</h2>
             <div class="column">
-              <div th:each="skill: *{skillList}">
-                <p class="col-lg-2 col-sm-3 text-right" th:text="${skill.name}"></p>
+              <div th:each="skill, stat: *{skillList}">
+                <p class="col-lg-2 col-sm-3 text-right" th:name="|skillList[${stat.index}].name|" th:text="${skill.name}"></p>
                 <div class="col-lg-1 col-sm-1">
-                  <input class="skillText beginner form-control" type="text" th:value="${skill.initValue}" />
+                  <input class="skillText beginner form-control" type="text" th:name="|skillList[${stat.index}].value|" th:value="${skill.value}" />
+                  <input type="hidden" th:name="|skillList[${stat.index}].paramId|" th:value="${skill.paramId}" />
+                  <input type="hidden" th:name="|skillList[${stat.index}].paramSubId|" th:value="${skill.paramSubId}" />
+                  <input type="hidden" th:name="|skillList[${stat.index}].initValue|" th:value="${skill.initValue}" />
+                  <input type="hidden" th:name="|skillList[${stat.index}].stringValue|" th:value="${skill.stringValue}" />
+                  <input type="hidden" th:name="|skillList[${stat.index}].name|" th:value="${skill.name}" />
                 </div>
               </div>
             </div>
