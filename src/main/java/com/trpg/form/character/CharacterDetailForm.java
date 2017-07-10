@@ -46,7 +46,7 @@ public class CharacterDetailForm {
     private int humanType;
 
     /** 能力値及び能力ロール */
-    private List<ParameterForm> avilityList;
+    private List<ParameterForm> abilityList;
 
     /** ステータス */
     private List<ParameterForm> statusList;

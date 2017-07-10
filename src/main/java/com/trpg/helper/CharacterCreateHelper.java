@@ -59,7 +59,7 @@ public class CharacterCreateHelper {
         List<Parameter> avilityList = parameterList.getCharactristicsParameterList();
         List<ParameterForm> avilityListForm = new ArrayList<>();
         avilityList.stream().forEach(e -> avilityListForm.add(convertToParameterForm(e)));
-        form.setAvilityList(avilityListForm);
+        form.setAbilityList(avilityListForm);
 
         //ステータスのパラメータを設定
         List<Parameter> statusList = parameterList.getStatusList();
@@ -125,7 +125,7 @@ public class CharacterCreateHelper {
         ParameterList parameterList = parameterListFactory.create();
         List<ParameterForm> parameterValueList = new ArrayList<>();
         //能力値のパラメータオブジェクトを作成。
-        List<ParameterForm> avilityList = characterAddForm.getAvilityList();
+        List<ParameterForm> avilityList = characterAddForm.getAbilityList();
         if(avilityList != null){
             parameterValueList.addAll(avilityList);
         }
