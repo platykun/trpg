@@ -89,6 +89,53 @@
             </div>
           </div>
           <div class="mainDiv">
+            <h2 class="ui header">職業</h2>
+            <div class="column">
+              <div class="col-lg-3">
+                <input class="form-control" type="text" placeholder="職業を入力" th:field = "*{jobName}" />
+              </div>
+              <div class="col-lg-4">
+                <select name="jobId" class="form-control" id="jobId">
+                  <option th:each="job: *{jobList}"  th:text="${job.name}">a</option>
+                </select>
+              </div>
+              <br/>
+              <h3>専門技能</h3>
+              <div>
+                <select class="col-lg-2">
+                  <option th:each="jobSkill : *{skillList}" th:text="${jobSkill.name}">-</option>
+                </select>
+                <select class="col-lg-2">
+                  <option th:each="jobSkill : *{skillList}" th:text="${jobSkill.name}">-</option>
+                </select>
+                <select class="col-lg-2">
+                  <option th:each="jobSkill : *{skillList}" th:text="${jobSkill.name}">-</option>
+                </select>
+                <select class="col-lg-2">
+                  <option th:each="jobSkill : *{skillList}" th:text="${jobSkill.name}">-</option>
+                </select>
+                <select class="col-lg-2">
+                  <option th:each="jobSkill : *{skillList}" th:text="${jobSkill.name}">-</option>
+                </select>
+                <select class="col-lg-2">
+                  <option th:each="jobSkill : *{skillList}" th:text="${jobSkill.name}">-</option>
+                </select>
+                <select class="col-lg-2">
+                  <option th:each="jobSkill : *{skillList}" th:text="${jobSkill.name}">-</option>
+                </select>
+                <select class="col-lg-2">
+                  <option th:each="jobSkill : *{skillList}" th:text="${jobSkill.name}">-</option>
+                </select>
+                <select class="col-lg-2">
+                  <option th:each="jobSkill : *{skillList}" th:text="${jobSkill.name}">-</option>
+                </select>
+                <select class="col-lg-2">
+                  <option th:each="jobSkill : *{skillList}" th:text="${jobSkill.name}">-</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="mainDiv">
             <h2 class="ui header">探索者技能</h2>
             <div class="column">
               <div th:each="skill, stat: *{skillList}">

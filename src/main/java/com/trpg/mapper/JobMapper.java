@@ -33,7 +33,7 @@ public class JobMapper {
         List<InvestigatorSkillType> investigatorSkillTypeList = new ArrayList<>();
         for(JobDetailEntity jobDetailEnttiy : jobDetailEntityList){
             InvestigatorSkillType investigatorSkillType = InvestigatorSkillType.getType(jobDetailEnttiy.getInvestigateType());
-            investigatorSkillTypeList.add(jobDetailEnttiy.getId(), investigatorSkillType);
+            investigatorSkillTypeList.add(investigatorSkillType);
         }
         Job job = new Job(jobEntity.getId(), jobEntity.getName(), investigatorSkillTypeList);
         return job;

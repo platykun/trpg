@@ -48,6 +48,12 @@ public class CharacterAddForm {
     /** ステータス */
     private List<ParameterForm> statusList;
 
+    /** 所属職業ID */
+    private int jobId;
+
+    /** 所属職業名 */
+    private String jobName;
+
     /** 職業 */
     private List<JobForm> jobList;
 

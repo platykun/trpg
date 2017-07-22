@@ -74,7 +74,7 @@ public class CharacterService {
         JobList jobList = new JobList();
 
         for(JobEntity jobEntity : jobEntityList){
-            List<JobDetailEntity> filteredDetail = jobDetailRepositoryList.stream().filter(j -> j.getId() == jobEntity.getId()).collect(Collectors.toList());
+            List<JobDetailEntity> filteredDetail = jobDetailRepositoryList.stream().filter(j -> j.getJobId() == jobEntity.getId()).collect(Collectors.toList());
             Job job = JobMapper.toDomain(jobEntity, filteredDetail);
             jobList.add(job);
         }
@@ -155,7 +155,7 @@ public class CharacterService {
 
         // 職業情報を取得する。
         JobEntity jobEntity = jobRepository.findOne(humanEntity.getJobId());
-        List<JobDetailEntity> jobDetailEntities = jobDetailRepository.findById(humanEntity.getJobId());
+        List<JobDetailEntity> jobDetailEntities = jobDetailRepository.findByJobId(humanEntity.getJobId());
         Job job = JobMapper.toDomain(jobEntity, jobDetailEntities);
 
         // 探索者オブジェクトを作成する。

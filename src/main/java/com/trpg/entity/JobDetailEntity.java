@@ -23,5 +23,7 @@ public class JobDetailEntity {
     @GeneratedValue
     private int id;
 
+    private int jobId;
+
     private int investigateType;
 }

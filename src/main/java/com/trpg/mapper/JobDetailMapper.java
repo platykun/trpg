@@ -21,7 +21,7 @@ public class JobDetailMapper {
 
         List<InvestigatorSkillType> skillList = job.getSkillList();
         for(InvestigatorSkillType skill : skillList){
-            JobDetailEntity entity = new JobDetailEntity(jobId, skill.getId());
+            JobDetailEntity entity = new JobDetailEntity(0, jobId, skill.getId());
             entityList.add(entity);
         }
         return entityList;
