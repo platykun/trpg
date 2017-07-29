@@ -39,6 +39,12 @@ public class JobMapper {
         return job;
     }
 
+    /**
+     * JobドメインをもとにJobEntityを作成する。
+     *
+     * @param job Job
+     * @return JobEntity
+     */
     public static JobEntity toEntity(Job job){
         JobEntity jobEntity = new JobEntity(job.getId(), job.getName());
         return jobEntity;

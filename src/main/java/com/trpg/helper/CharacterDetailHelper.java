@@ -37,10 +37,9 @@ public class CharacterDetailHelper {
      * HumanドメインからCreateDetailFormを作成する。
      *
      * @param human Humanドメイン
-     * @param jobList 職業リスト
      * @return CreateDetailForm
      */
-    public CharacterDetailForm convertToDetailForm(Human human, JobList jobList) {
+    public CharacterDetailForm convertToDetailForm(Human human) {
         CharacterDetailForm form = new CharacterDetailForm();
         form.setId(human.getCharacterId());
         form.setName(human.getName());
@@ -70,11 +69,10 @@ public class CharacterDetailHelper {
         skillList.stream().forEach(e -> skillListForm.add(convertToParameterForm(e)));
         form.setSkillList(skillListForm);
 
-        //JobList
-        List<JobForm> jobFormList = new ArrayList<JobForm>();
-        jobList.getJobList().stream().forEach(j -> jobFormList.add(convertToJobForm(j)));
-        form.setJobList(jobFormList);
-
+        // characterの職業情報を格納する。
+        Job job = human.getJob();
+        form.setJobId(job.getId());
+        form.setJobName(job.getName());
 
         //BelongingList
         BelongingList belongings = human.getBelongingList();

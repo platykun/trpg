@@ -103,6 +103,14 @@
           </div>
         </div>
         <div class="mainDiv">
+          <h2 class="ui header">職業</h2>
+          <div class="column">
+            <div class="col-lg-3">
+              <td th:text="*{jobName}">0</td>
+            </div>
+          </div>
+        </div>
+        <div class="mainDiv">
           <h2 class="ui header">所持品</h2>
           <div class="column">
             <div th:each="belonging: *{belongingList}">

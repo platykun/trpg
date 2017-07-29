@@ -161,6 +161,18 @@ public class CharacterCreateHelper {
         return human;
     }
 
+    public Job convertToJob(CharacterAddForm characterAddForm){
+        int id = characterAddForm.getJobId();
+        String name = characterAddForm.getJobName();
+        List<JobForm> jobFormList = characterAddForm.getJobList();
+
+        List<InvestigatorSkillType> skillList = new ArrayList<>();
+        jobFormList.stream().forEach(j -> skillList.add(InvestigatorSkillType.getType(j.getId())));
+
+        Job job = new Job(id, name, skillList);
+        return job;
+    }
+
     /**
      * パラメータオブジェクトからパラメータフォームへ変換する。
      *

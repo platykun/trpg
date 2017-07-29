@@ -1,6 +1,7 @@
 package com.trpg.controller;
 
 import com.trpg.domain.model.character.character.HumanList;
+import com.trpg.domain.model.character.character.Job;
 import com.trpg.domain.model.character.character.JobList;
 import com.trpg.form.character.CharacterAddForm;
 import com.trpg.form.character.CharacterDetailForm;
@@ -80,11 +81,11 @@ public class CharacterController {
      */
     @RequestMapping("/add/confirm")
     public String addConfirm(RedirectAttributes redirectAttributes, CharacterAddForm characterAddForm){
-        //TODO: 登録処理を行う。
         Human human = characterCreateHelper.convertToHuman(characterAddForm);
 
         // 詳細画面へリダイレクトするためのパラメータを設定する。
         int characterId = characterService.insertHuman(human);
+
         redirectAttributes.addAttribute("characterId", Integer.valueOf(characterId));
 
         return "redirect:/character/detail";
@@ -94,8 +95,8 @@ public class CharacterController {
     public String detail(Model model, Integer characterId){
 
          Human human = characterService.findHumanByCharacterId(characterId);
-         JobList jobList = characterService.getAllJob();
-         CharacterDetailForm characterDetailForm = characterDetailHelper.convertToDetailForm(human, jobList);
+
+         CharacterDetailForm characterDetailForm = characterDetailHelper.convertToDetailForm(human);
 
          model.addAttribute("character", characterDetailForm);
 

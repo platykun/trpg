@@ -82,6 +82,29 @@ public class CharacterService {
         return jobList;
     }
 
+    public Job getJobByJobId(int jobId){
+        JobEntity jobEntity = jobRepository.findById(jobId);
+        List<JobDetailEntity> jobDetailEntityList = jobDetailRepository.findByJobId(jobEntity.getId());
+        Job job = JobMapper.toDomain(jobEntity, jobDetailEntityList);
+        return job;
+    }
+
+    /**
+     * Jobを登録する。
+     *
+     * @param job Jobドメイン
+     * @return 登録されたJobId
+     */
+    public int insertJob(Job job){
+        JobEntity jobEntity = JobMapper.toEntity(job);
+        JobEntity result = jobRepository.save(jobEntity);
+
+        List<JobDetailEntity> jobDetailEntityList = JobDetailMapper.toEntity(job);
+        jobDetailRepository.save(jobDetailEntityList);
+
+        return result.getId();
+    }
+
     // 初期値のHumanを返却する。
     public Human getInitialHuman(){
         Human human = humanFactory.createInit();

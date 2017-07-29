@@ -51,8 +51,11 @@ public class CharacterDetailForm {
     /** ステータス */
     private List<ParameterForm> statusList;
 
-    /** 職業 */
-    private List<JobForm> jobList;
+    /** 所属職業ID */
+    private int jobId;
+
+    /** 所属職業名 */
+    private String jobName;
 
     /** 探索者の技能 */
     private List<ParameterForm> skillList;
