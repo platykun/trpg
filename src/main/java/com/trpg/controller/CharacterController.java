@@ -5,8 +5,10 @@ import com.trpg.domain.model.character.character.Job;
 import com.trpg.domain.model.character.character.JobList;
 import com.trpg.form.character.CharacterAddForm;
 import com.trpg.form.character.CharacterDetailForm;
+import com.trpg.form.character.CharacterUpdateForm;
 import com.trpg.helper.CharacterCreateHelper;
 import com.trpg.helper.CharacterDetailHelper;
+import com.trpg.helper.CharacterUpdateHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -39,6 +41,9 @@ public class CharacterController {
 
     @Autowired
     CharacterDetailHelper characterDetailHelper;
+
+    @Autowired
+    CharacterUpdateHelper characterupdateHelper;
 
     /**
      * キャラクター一覧画面を表示する。
@@ -103,64 +108,40 @@ public class CharacterController {
          return "character/detail";
      }
 
-    // /**
-    // * キャラクター詳細画面を表示する。
-    // *
-    // * @param model モデル
-    // * @return トップ画面
-    // */
-    // @RequestMapping("/detail")
-    // public String detail(Model model, String id) {
-    // CharacterInfo result =
-    // characterAction.getCharacter(Integer.parseInt(id));
-    // model.addAttribute("character",
-    // ParseCharacter.parseCharacterDetail(result));
-    //
-    // return "character/detail";
-    // }
-    //
-    //
-    // /**
-    // * キャラクター新規追加画面を表示する。
-    // *
-    // * @param model モデル
-    // * @return トップ画面
-    // */
-    // @RequestMapping("/add/confirm")
-    // public String addConfirm(Model model, CharacterDetailForm character) {
-    // CharacterInfo createdCharacter =
-    // characterAction.setCharacter(ParseCharacter.parseCharacterInfo(character));
-    // model.addAttribute("character", createdCharacter);
-    // return "character/detail";
-    // }
-    //
-    // /**
-    // * キャラクター編集画面を初期表示させる。
-    // *
-    // * @param model モデル
-    // * @return キャラクター編集画面
-    // */
-    // @RequestMapping("/update/input")
-    // public String updateInput(Model model, int id){
-    // //TODO: formで返却する。
-    // model.addAttribute("character", characterAction.getCharacter(id));
-    // return "character/updateInput";
-    // }
-    //
-    // /**
-    // * キャラクターの修正を反映させる。
-    // * @param model モデル
-    // * @param character 修正後のキャラクター情報
-    // * @return 画面
-    // */
-    // @RequestMapping("/update/confirm")
-    // public String updateConfirm(Model model, CharacterDetailForm character){
-    // //TODO: formで返却する。
-    // CharacterInfo updatedCharacter =
-    // characterAction.updateCharacter(ParseCharacter.parseCharacterInfo(character),
-    // character.getId());
-    // model.addAttribute("character", updatedCharacter);
-    // return "character/detail";
-    // }
+    /**
+     * キャラクター編集画面を表示する。
+     *
+     * @param model モデル
+     * @param characterId キャラクタID
+     * @return トップ画面
+     */
+    @RequestMapping("/update/input")
+    public String updateInput(Model model, Integer characterId) {
+        JobList jobList = characterService.getAllJob();
+        Human human = characterService.findHumanByCharacterId(characterId);
 
+        CharacterUpdateForm form = characterupdateHelper.convertToUpdateForm(human, jobList);
+        model.addAttribute("character", form);
+
+        return "character/updateInput";
+    }
+
+    /**
+     * キャラクターの編集登録する。
+     *
+     * @param redirectAttributes redirectAttributes
+     * @param characterUpdateForm 入力値
+     * @return キャラクター詳細画面
+     */
+    @RequestMapping("/update/confirm")
+    public String updateConfirm(RedirectAttributes redirectAttributes, CharacterUpdateForm characterUpdateForm){
+        Human human = characterupdateHelper.convertToHuman(characterUpdateForm);
+        // 詳細画面へリダイレクトするためのパラメータを設定する。
+        characterService.updateHuman(human);
+
+        int characterId = characterUpdateForm.getCharacterId();
+        redirectAttributes.addAttribute("characterId", Integer.valueOf(characterId));
+
+        return "redirect:/character/detail";
+    }
 }

@@ -52,7 +52,7 @@ public class HumanMapper {
 
         int id = human.getHumanId();
         int characterId = human.getHumanId();
-        int jobId = 1;//human.getJob().getId();
+        int jobId = human.getJobId();
         String school = human.getSchool();
         String comeFrom = human.getComeFrom();
         String mentalDisorder = human.getMentalDisorder();

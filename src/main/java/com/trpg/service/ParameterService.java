@@ -63,6 +63,15 @@ public class ParameterService {
         }
     }
 
+    public void updateParameter(ParameterList parameterList, int characterId){
+
+        for(Parameter parameter : parameterList.getParameterList()){
+            ParameterEntity parameterEntity = ParameterMapper.toEntity(parameter.getId(), characterId, parameter);
+            parameterRepository.save(parameterEntity);
+        }
+    }
+
+
     /**
      * キャラクターIDをもとにパラメータを取得する。
      *

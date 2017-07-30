@@ -3,7 +3,7 @@ package com.trpg.helper;
 import com.trpg.domain.model.character.belonging.*;
 import com.trpg.domain.model.character.character.*;
 import com.trpg.domain.model.character.parameter.*;
-import com.trpg.form.character.*;
+import com.trpg.form.character.CharacterUpdateForm;
 import com.trpg.form.character.common.BelongingForm;
 import com.trpg.form.character.common.DetailForm;
 import com.trpg.form.character.common.JobForm;
@@ -18,7 +18,7 @@ import java.util.List;
  * キャラクタのFormとDomainを変換する。
  */
 @Controller
-public class CharacterCreateHelper {
+public class CharacterUpdateHelper {
 
     @Autowired
     HumanFactory humanFactory;
@@ -37,15 +37,16 @@ public class CharacterCreateHelper {
 
 
     /**
-     * HumanドメインからCreateFormを作成する。
+     * HumanドメインからCharacterEditFormを作成する。
      *
-     * @param human
-     * @param jobList
-     * @return
+     * @param human Humanドメイン
+     * @param jobList 職業リスト
+     * @return CharacterUpdateForm
      */
-    public CharacterAddForm convertToCreateForm(Human human, JobList jobList) {
-        CharacterAddForm form = new CharacterAddForm();
-        form.setId(human.getCharacterId());
+    public CharacterUpdateForm convertToUpdateForm(Human human, JobList jobList) {
+        CharacterUpdateForm form = new CharacterUpdateForm();
+        form.setCharacterId(human.getCharacterId());
+        form.setHumanId(human.getHumanId());
         form.setName(human.getName());
         form.setComeFrom(human.getComeFrom());
         form.setMentalDisorder(human.getMentalDisorder());
@@ -58,44 +59,43 @@ public class CharacterCreateHelper {
         //能力値のパラメータを設定。
         List<Parameter> avilityList = parameterList.getCharactristicsParameterList();
         List<ParameterForm> avilityListForm = new ArrayList<>();
-        avilityList.stream().forEach(e -> avilityListForm.add(convertToParameterForm(e)));
+        avilityList.forEach(e -> avilityListForm.add(convertToParameterForm(e)));
         form.setAbilityList(avilityListForm);
 
         //ステータスのパラメータを設定
         List<Parameter> statusList = parameterList.getStatusList();
         List<ParameterForm> statusListForm = new ArrayList<>();
-        statusList.stream().forEach(e -> statusListForm.add(convertToParameterForm(e)));
+        statusList.forEach(e -> statusListForm.add(convertToParameterForm(e)));
         form.setStatusList(statusListForm);
 
         //技能のパラメータを設定。
         List<Parameter> skillList = parameterList.getInvestigatorSkillList();
         List<ParameterForm> skillListForm = new ArrayList<>();
-        skillList.stream().forEach(e -> skillListForm.add(convertToParameterForm(e)));
+        skillList.forEach(e -> skillListForm.add(convertToParameterForm(e)));
         //武器のパラメータを設定
         List<Parameter> weaponSkillList = parameterList.getWeaponSkillList();
         //List<ParameterForm> weaponSkillListForm = new ArrayList<>();
-        weaponSkillList.stream().forEach(e -> skillListForm.add(convertToParameterForm(e)));
+        weaponSkillList.forEach(e -> skillListForm.add(convertToParameterForm(e)));
 
         form.setSkillList(skillListForm);
 
         //JobList
         List<JobForm> jobFormList = new ArrayList<JobForm>();
-        jobList.getJobList().stream().forEach(j -> jobFormList.add(convertToJobForm(j)));
+        jobList.getJobList().forEach(j -> jobFormList.add(convertToJobForm(j)));
         form.setJobList(jobFormList);
 
 
         //BelongingList
         BelongingList belongingList = human.getBelongingList();
         List<BelongingForm> belongingFormList = new ArrayList<>();
-        belongingList.getBelongings().stream().forEach(b -> belongingFormList.add(convertToBelongingForm(b)));
+        belongingList.getBelongings().forEach(b -> belongingFormList.add(convertToBelongingForm(b)));
         form.setBelongingList(belongingFormList);
 
         //DetailList
         DetailList detailList = human.getDetailList();
         List<DetailForm> detailFormList = new ArrayList<>();
-        detailList.getDetailList().stream().forEach(d -> detailFormList.add(convertToDetailForm(d)));
+        detailList.getDetailList().forEach(d -> detailFormList.add(convertToDetailForm(d)));
         form.setDetailList(detailFormList);
-
 
         return form;
     }
@@ -104,77 +104,77 @@ public class CharacterCreateHelper {
      * CreateFormから探索者オブジェクトを作成する。</br>
      * JobDetailは作成しない。必要な場合はDBから取得すること。
      *
-     * @param characterAddForm characterAddForm
+     * @param characterUpdateForm characterUpdateForm
      * @return 探索者オブジェクト
      */
-    public Human convertToHuman(CharacterAddForm characterAddForm){
+    public Human convertToHuman(CharacterUpdateForm characterUpdateForm){
         // 所持品オブジェクトを作成する。
         BelongingList belongingList = belongingListFactory.create();
-        List<BelongingForm> belongingListForm = characterAddForm.getBelongingList();
+        List<BelongingForm> belongingListForm = characterUpdateForm.getBelongingList();
         if(belongingListForm != null) {
-            belongingListForm.stream().forEach(b -> belongingList.add(convertFormToBelonging(b)));
+            belongingListForm.forEach(b -> belongingList.add(convertFormToBelonging(b)));
         }
 
         // 詳細オブジェクトを作成する
         DetailList detailList = new DetailList();
-        List<DetailForm> detailValueList = characterAddForm.getDetailList();
+        List<DetailForm> detailValueList = characterUpdateForm.getDetailList();
         if(detailValueList != null) {
-            detailValueList.stream().forEach(d -> detailList.add(convertToDetail(d)));
+            detailValueList.forEach(d -> detailList.add(convertToDetail(d)));
         }
 
         //パラメータオブジェクトを作成する
         ParameterList parameterList = parameterListFactory.create();
         List<ParameterForm> parameterValueList = new ArrayList<>();
         //能力値のパラメータオブジェクトを作成。
-        List<ParameterForm> avilityList = characterAddForm.getAbilityList();
+        List<ParameterForm> avilityList = characterUpdateForm.getAbilityList();
         if(avilityList != null){
             parameterValueList.addAll(avilityList);
         }
         //ステータスのパラメータオブジェクトを作成。
-        List<ParameterForm> statusList = characterAddForm.getStatusList();
+        List<ParameterForm> statusList = characterUpdateForm.getStatusList();
         if(statusList != null){
             parameterValueList.addAll(statusList);
         }
         //技能のパラメータオブジェクトを作成。
-        List<ParameterForm> skillList = characterAddForm.getSkillList();
+        List<ParameterForm> skillList = characterUpdateForm.getSkillList();
         if(skillList != null){
-            parameterValueList.addAll(characterAddForm.getSkillList());
+            parameterValueList.addAll(characterUpdateForm.getSkillList());
         }
 
-        parameterValueList.stream().forEach(p -> parameterList.add(convertToParameter(p)));
+        parameterValueList.forEach(p -> parameterList.add(convertToParameter(p)));
 
         //基礎ステータスを取得する
 
         //探索者オブジェクトを作成する。
 
-        int humanId = 0; //TODO: humanIDもformで渡すべき
-        int characterId = characterAddForm.getId();
-        String name = characterAddForm.getName();
+        int humanId = characterUpdateForm.getHumanId();
+        int characterId = characterUpdateForm.getCharacterId();
+        String name = characterUpdateForm.getName();
 
-        int jobId = characterAddForm.getJobId();
-        String jobName = characterAddForm.getJobName();
+        int jobId = characterUpdateForm.getJobId();
+        String jobName = characterUpdateForm.getJobName();
         //ジョブ詳細は作成していない。必要な場合はDBから取得する。
         List<InvestigatorSkillType> jobSkillList = null;
         Job job = new Job(jobId, jobName, jobSkillList);
 
-        String school = characterAddForm.getSchool();
-        String comeFrom = characterAddForm.getComeFrom();
-        String mentalDisorder = characterAddForm.getMentalDisorder();
-        String sex = characterAddForm.getSex();
-        int age = characterAddForm.getAge();
-        HumanType humanType = HumanType.getType(characterAddForm.getHumanType());
+        String school = characterUpdateForm.getSchool();
+        String comeFrom = characterUpdateForm.getComeFrom();
+        String mentalDisorder = characterUpdateForm.getMentalDisorder();
+        String sex = characterUpdateForm.getSex();
+        int age = characterUpdateForm.getAge();
+        HumanType humanType = HumanType.getType(characterUpdateForm.getHumanType());
         Human human = humanFactory.create(humanId, characterId, name, parameterList, belongingList, job, school, comeFrom, mentalDisorder, sex, age, humanType, detailList);
 
         return human;
     }
 
-    public Job convertToJob(CharacterAddForm characterAddForm){
-        int id = characterAddForm.getJobId();
-        String name = characterAddForm.getJobName();
-        List<JobForm> jobFormList = characterAddForm.getJobList();
+    public Job convertToJob(CharacterUpdateForm characterUpdateForm){
+        int id = characterUpdateForm.getJobId();
+        String name = characterUpdateForm.getJobName();
+        List<JobForm> jobFormList = characterUpdateForm.getJobList();
 
         List<InvestigatorSkillType> skillList = new ArrayList<>();
-        jobFormList.stream().forEach(j -> skillList.add(InvestigatorSkillType.getType(j.getId())));
+        jobFormList.forEach(j -> skillList.add(InvestigatorSkillType.getType(j.getId())));
 
         Job job = new Job(id, name, skillList);
         return job;
@@ -212,7 +212,7 @@ public class CharacterCreateHelper {
         jobForm.setName(job.getName());
         List<Integer> skillList = new ArrayList<Integer>();
         List<InvestigatorSkillType> investigatorSkillTypeList = job.getSkillList();
-        investigatorSkillTypeList.stream().forEach(i -> skillList.add(i.getId()));
+        investigatorSkillTypeList.forEach(i -> skillList.add(i.getId()));
         jobForm.setSkillList(skillList);
 
         return jobForm;

@@ -194,4 +194,38 @@ public class CharacterService {
 
         return human;
     }
+
+    /**
+     * Human情報を登録する。
+     *
+     * @param human Humanドメイン
+     * @return characterId
+     */
+    public int updateHuman(Human human){
+
+        // characterInfoテーブルへ登録
+        CharacterInfoEntity characterInfoEntity = CharacterInfoMapper.toEntity((Character)human);
+        CharacterInfoEntity afterCharacterInfoEntity = characterInfoRepository.save(characterInfoEntity);
+        int characterId = afterCharacterInfoEntity.getId();
+
+        // humanテーブルへ登録
+        HumanEntity humanEntity = HumanMapper.toEntity(human);
+        humanEntity.setCharacterId(characterId);
+        HumanEntity afterHumanEntity = humanRepository.save(humanEntity);
+
+        //Detailテーブルへ登録
+        DetailList detailList = human.getDetailList();
+        for(Detail detail : detailList.getDetailList()){
+            DetailEntity detailEntity = DetailMapper.toEntity(characterId, detail);
+            detailRepository.save(detailEntity);
+        }
+
+        //Belongingテーブルへ登録
+        belongingService.updateBelongings(human.getBelongingList());
+
+        //Parameterテーブルへ登録
+        parameterService.updateParameter(human.getParameterList(), characterId);
+
+        return characterId;
+    }
 }

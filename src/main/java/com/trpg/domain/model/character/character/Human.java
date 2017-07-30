@@ -49,4 +49,16 @@ public class Human extends Character {
         this.type = type;
         this.detailList = detailList;
     }
+
+    /**
+     * 職業IDを取得する。職業が存在しない場合は-1を返却する。
+     *
+     * @return 職業ID
+     */
+    public int getJobId(){
+        if(job != null){
+            return job.getId();
+        }
+        return 0;
+    }
 }

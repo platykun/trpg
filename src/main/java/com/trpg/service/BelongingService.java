@@ -45,6 +45,19 @@ public class BelongingService {
     }
 
     /**
+     * 所持品リストをDBへ更新する。
+     *
+     * @param belongingList
+     */
+    public void updateBelongings(BelongingList belongingList){
+        //Belongingテーブルを更新
+        for(Belonging belonging : belongingList.getBelongings()) {
+            BelongingEntity belongingEntity = BelongingMapper.toEntity(belonging);
+            belongingRepository.save(belongingEntity);
+        }
+    }
+
+    /**
      * 所持品を取得する
      *
      * @param id 所持品
