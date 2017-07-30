@@ -14,7 +14,7 @@
       <!--サイドメニュー-->
       <div th:include="common/sideMenu"></div>
       <!--本体-->
-      <form th:action="@{/character/add/confirm}" th:object="${character}" method="POST">
+      <form th:action="@{/character/update/confirm}" th:object="${character}" method="POST">
         <div class="mainText">
           <div class="mainDiv">
             <h2 class="ui header">キャラクター追加</h2>
