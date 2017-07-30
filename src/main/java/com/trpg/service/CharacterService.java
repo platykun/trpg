@@ -136,12 +136,8 @@ public class CharacterService {
             detailRepository.save(detailEntity);
         }
 
-        //Jobテーブルへ登録
-//        JobEntity jobEntity = JobMapper.toEntity(human.getJob());
-//        jobRepository.save(jobEntity);
-
         //Belongingテーブルへ登録
-        belongingService.insertBelongings(human.getBelongingList());
+        belongingService.insertBelongings(human.getCharacterId(), human.getBelongingList());
 
         //Parameterテーブルへ登録
         parameterService.insertParameter(human.getParameterList(), characterId);
@@ -221,7 +217,7 @@ public class CharacterService {
         }
 
         //Belongingテーブルへ登録
-        belongingService.updateBelongings(human.getBelongingList());
+        belongingService.updateBelongings(human.getCharacterId(), human.getBelongingList());
 
         //Parameterテーブルへ登録
         parameterService.updateParameter(human.getParameterList(), characterId);

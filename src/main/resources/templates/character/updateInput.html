@@ -66,9 +66,10 @@
               <div th:each="ability, stat: *{abilityList}">
                 <p class="col-lg-2 col-sm-3 text-right" th:name="|abilityList[${stat.index}].name|" th:text="${ability.name}"></p>
                 <div class="col-lg-1 col-sm-1">
-                  <input class="beginner form-control" type="text" th:name="|abilityList[${stat.index}].value|" th:value="${ability.value}" />
-                  <input type="hidden" th:name="|abilityList[${stat.index}].paramId|" th:value="${ability.paramId}" />
-                  <input type="hidden" th:name="|abilityList[${stat.index}].paramSubId|" th:value="${ability.paramSubId}" />
+                  <input class="beginner form-control" type="text" th:name="|abilityList[${stat.index}].parameterValue|" th:value="${ability.parameterValue}" />
+                  <input type="hidden" th:name="|abilityList[${stat.index}].id|" th:value="${ability.id}" />
+                  <input type="hidden" th:name="|abilityList[${stat.index}].parameterTypeId|" th:value="${ability.parameterTypeId}" />
+                  <input type="hidden" th:name="|abilityList[${stat.index}].paramSubTypeId|" th:value="${ability.paramSubTypeId}" />
                   <input type="hidden" th:name="|abilityList[${stat.index}].initValue|" th:value="${ability.initValue}" />
                   <input type="hidden" th:name="|abilityList[${stat.index}].stringValue|" th:value="${ability.stringValue}" />
                   <input type="hidden" th:name="|abilityList[${stat.index}].name|" th:value="${ability.name}" />
@@ -82,9 +83,10 @@
               <div th:each="status, stat: *{statusList}">
                 <p class="col-lg-2 col-sm-3 text-right" th:name="|statusList[${stat.index}].name|" th:text="${status.name}"></p>
                 <div class="col-lg-1 col-sm-1">
-                  <input class="form-control" type="text" th:name="|statusList[${stat.index}].value|" th:value="${status.value}" />
-                  <input type="hidden" th:name="|statusList[${stat.index}].paramId|" th:value="${status.paramId}" />
-                  <input type="hidden" th:name="|statusList[${stat.index}].paramSubId|" th:value="${status.paramSubId}" />
+                  <input class="form-control" type="text" th:name="|statusList[${stat.index}].parameterValue|" th:value="${status.parameterValue}" />
+                  <input type="hidden" th:name="|statusList[${stat.index}].id|" th:value="${status.id}" />
+                  <input type="hidden" th:name="|statusList[${stat.index}].parameterTypeId|" th:value="${status.parameterTypeId}" />
+                  <input type="hidden" th:name="|statusList[${stat.index}].paramSubTypeId|" th:value="${status.paramSubTypeId}" />
                   <input type="hidden" th:name="|statusList[${stat.index}].initValue|" th:value="${status.initValue}" />
                   <input type="hidden" th:name="|statusList[${stat.index}].stringValue|" th:value="${status.stringValue}" />
                   <input type="hidden" th:name="|statusList[${stat.index}].name|" th:value="${status.name}" />
@@ -106,8 +108,8 @@
               <br/>
               <h3>専門技能</h3>
               <div>
-                <select class="col-lg-2">
-                  <option th:each="jobSkill : *{skillList}" th:text="${jobSkill.name}" th:value="${jobSkill.paramSubId}">-</option>
+                <select class="form-control col-lg-2">
+                  <option th:each="jobSkill : *{skillList}" th:text="${jobSkill.name}" th:value="${jobSkill.paramSubTypeId}">-</option>
                 </select>
               </div>
             </div>
@@ -118,9 +120,10 @@
               <div th:each="skill, stat: *{skillList}">
                 <p class="col-lg-2 col-sm-3 text-right" th:name="|skillList[${stat.index}].name|" th:text="${skill.name}"></p>
                 <div class="col-lg-1 col-sm-1">
-                  <input class="skillText beginner form-control" type="text" th:name="|skillList[${stat.index}].value|" th:value="${skill.value}" />
-                  <input type="hidden" th:name="|skillList[${stat.index}].paramId|" th:value="${skill.paramId}" />
-                  <input type="hidden" th:name="|skillList[${stat.index}].paramSubId|" th:value="${skill.paramSubId}" />
+                  <input class="skillText beginner form-control" type="text" th:name="|skillList[${stat.index}].parameterValue|" th:value="${skill.parameterValue}" />
+                  <input type="hidden" th:name="|skillList[${stat.index}].id|" th:value="${skill.id}" />
+                  <input type="hidden" th:name="|skillList[${stat.index}].parameterTypeId|" th:value="${skill.parameterTypeId}" />
+                  <input type="hidden" th:name="|skillList[${stat.index}].paramSubTypeId|" th:value="${skill.paramSubTypeId}" />
                   <input type="hidden" th:name="|skillList[${stat.index}].initValue|" th:value="${skill.initValue}" />
                   <input type="hidden" th:name="|skillList[${stat.index}].stringValue|" th:value="${skill.stringValue}" />
                   <input type="hidden" th:name="|skillList[${stat.index}].name|" th:value="${skill.name}" />
@@ -131,22 +134,25 @@
           <div class="mainDiv">
             <h2 class="ui header">所持品</h2>
             <div class="column">
-              <div th:each="belonging: *{belongingList}">
-                <p class="col-lg-2 col-sm-3 text-right" th:text="${belonging.name}"></p>
-                <div class="col-lg-1 col-sm-1">
-                  <input class="form-control" type="text" th:value="${belonging.description}" />
+              <div th:each="belonging, stat: *{belongingList}">
+                <div class="col-lg-6 col-sm-6">
+                  <input class="form-control" type="text" th:name="|belongingList[${stat.index}].name|" th:value="${belonging.name}" />
                 </div>
+                <div class="col-lg-6 col-sm-6">
+                  <input class="form-control" type="text" th:name="|belongingList[${stat.index}].description|" th:value="${belonging.description}" />
+                </div>
+                <input class="form-control" type="hidden" th:name="|belongingList[${stat.index}].id|" th:value="${belonging.id}" />
+                <input class="form-control" type="hidden" th:name="|belongingList[${stat.index}].belongingType|" th:value="${belonging.belongingType}" />
               </div>
             </div>
           </div>
             <div class="mainDiv">
                 <h2 class="ui header">詳細</h2>
                 <div class="column">
-                    <div th:each="detail: *{detailList}">
-                        <p class="col-lg-2 col-sm-3 text-right" th:text="${detail.name}"></p>
-                        <div class="col-lg-1 col-sm-1">
-                            <input class="form-control" type="text" th:value="${detail.stringValue}" />
-                        </div>
+                    <div class="col-lg-12 col-sm-6" th:each="detail, stat: *{detailList}">
+                      <input type="text" th:name="|detailList[${stat.index}].detail|" th:value="${detail.detail}" />
+                      <input type="hidden" th:name="|detailList[${stat.index}].id|" th:value="${detail.id}" />
+                      <input type="hidden" th:name="|detailList[${stat.index}].detailType|" th:value="${detail.detailType}" />
                     </div>
                 </div>
             </div>

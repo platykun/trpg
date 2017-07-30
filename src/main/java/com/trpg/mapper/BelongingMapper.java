@@ -35,9 +35,12 @@ public class BelongingMapper {
         return belonging;
     }
 
-    public static BelongingEntity toEntity(Belonging belonging){
-        BelongingEntity entity = new BelongingEntity();
+    public static BelongingEntity toEntity(int characterId, Belonging belonging){
+        int id = belonging.getId();
+        int belongingType = belonging.getType().getId();
+        String name = belonging.getName();
+        String description = belonging.getDescription();
 
-        return null;
+        return new BelongingEntity(id, characterId, belongingType, name, description);
     }
 }

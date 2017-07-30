@@ -1,4 +1,4 @@
-package com.trpg.helper;
+package com.trpg.helper.Character;
 
 import java.util.ArrayList;
 import java.util.List;

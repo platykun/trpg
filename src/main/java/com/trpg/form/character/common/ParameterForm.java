@@ -12,14 +12,17 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ParameterForm {
 
+    /** ID */
+    private int id;
+
     /** パラメータID */
-    private int paramId;
+    private int parameterTypeId;
 
     /** パラメータサブID */
-    private int paramSubId;
+    private int paramSubTypeId;
 
     /** 値 */
-    private int value;
+    private int parameterValue;
 
     /** 文字値 */
     private String stringValue;

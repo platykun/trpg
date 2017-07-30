@@ -1,14 +1,13 @@
 package com.trpg.controller;
 
 import com.trpg.domain.model.character.character.HumanList;
-import com.trpg.domain.model.character.character.Job;
 import com.trpg.domain.model.character.character.JobList;
 import com.trpg.form.character.CharacterAddForm;
 import com.trpg.form.character.CharacterDetailForm;
 import com.trpg.form.character.CharacterUpdateForm;
-import com.trpg.helper.CharacterCreateHelper;
-import com.trpg.helper.CharacterDetailHelper;
-import com.trpg.helper.CharacterUpdateHelper;
+import com.trpg.helper.Character.CharacterCreateHelper;
+import com.trpg.helper.Character.CharacterDetailHelper;
+import com.trpg.helper.Character.CharacterUpdateHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.trpg.domain.model.character.character.Human;
 import com.trpg.form.character.CharacterTopForm;
-import com.trpg.helper.CharacterOutlineHelper;
+import com.trpg.helper.Character.CharacterOutlineHelper;
 import com.trpg.service.CharacterService;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 

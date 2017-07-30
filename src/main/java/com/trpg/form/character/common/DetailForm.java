@@ -12,22 +12,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class DetailForm {
 
-    /** パラメータID */
-    private int paramId;
+    private int id;
 
-    /** パラメータサブID */
-    private int paramSubId;
+    private int detailType;
 
-    /** 値 */
-    private int value;
-
-    /** 文字値 */
-    private String stringValue;
-
-    /** 名前 */
-    private String name;
-
-    /** 初期値 */
-    private int initValue;
-
+    private String detail;
 }

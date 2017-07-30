@@ -75,7 +75,7 @@
             <div th:each="avility: *{abilityList}">
               <p class="col-lg-2 col-sm-3 text-right" th:text="${avility.name}"></p>
               <div class="col-lg-1 col-sm-1">
-                <p  th:text="${avility.value}" />
+                <p  th:text="${avility.parameterValue}" />
               </div>
             </div>
           </div>
@@ -86,7 +86,7 @@
             <div th:each="status: *{statusList}">
               <p class="col-lg-2 col-sm-3 text-right" th:text="${status.name}"></p>
               <div class="col-lg-1 col-sm-1">
-                <p th:text="${status.value}" />
+                <p th:text="${status.parameterValue}" />
               </div>
             </div>
           </div>
@@ -97,7 +97,7 @@
             <div th:each="skill: *{skillList}">
               <p class="col-lg-2 col-sm-3 text-right" th:text="${skill.name}"></p>
               <div class="col-lg-1 col-sm-1">
-                <p th:text="${skill.value}" />
+                <p th:text="${skill.parameterValue}" />
               </div>
             </div>
           </div>
@@ -125,10 +125,7 @@
           <h2 class="ui header">詳細</h2>
           <div class="column">
             <div th:each="detail: *{detailList}">
-              <p class="col-lg-2 col-sm-3 text-right" th:text="${detail.name}"></p>
-              <div class="col-lg-1 col-sm-1">
-                <p th:text="${detail.value}" />
-              </div>
+              <p class="col-lg-2 col-sm-3 text-right" th:text="${detail.detail}"></p>
             </div>
           </div>
         </div>

@@ -36,10 +36,14 @@ public class BelongingService {
      *
      * @param belongingList 所持品リスト。
      */
-    public void insertBelongings(BelongingList belongingList){
+    public void insertBelongings(int characterId, BelongingList belongingList){
+        if(belongingList == null){
+            return;
+        }
+
         //Belongingテーブルへ登録
         for(Belonging belonging : belongingList.getBelongings()) {
-            BelongingEntity belongingEntity = BelongingMapper.toEntity(belonging);
+            BelongingEntity belongingEntity = BelongingMapper.toEntity(characterId, belonging);
             belongingRepository.save(belongingEntity);
         }
     }
@@ -49,10 +53,13 @@ public class BelongingService {
      *
      * @param belongingList
      */
-    public void updateBelongings(BelongingList belongingList){
+    public void updateBelongings(int characterId, BelongingList belongingList){
+        if(belongingList == null){
+            return;
+        }
         //Belongingテーブルを更新
         for(Belonging belonging : belongingList.getBelongings()) {
-            BelongingEntity belongingEntity = BelongingMapper.toEntity(belonging);
+            BelongingEntity belongingEntity = BelongingMapper.toEntity(characterId, belonging);
             belongingRepository.save(belongingEntity);
         }
     }
